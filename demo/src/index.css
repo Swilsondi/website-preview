@@ -1,3 +1,7 @@
+@tailwind base;        /* resets + sensible defaults            */
+@tailwind components;  /* reusable class-based components       */
+@tailwind utilities;   /* thousands of single-purpose utilities */
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
