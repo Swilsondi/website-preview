@@ -1,12 +1,10 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        ...defaultTheme.colors, // <-- add this line
         background: "#fff",
         foreground: "#000",
         card: "#fff",
@@ -20,6 +18,9 @@ export default {
         border: "#e5e7eb",
         input: "#e5e7eb",
         ring: "#6366f1",
+      },
+      fontFamily: {
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
     },
   },
