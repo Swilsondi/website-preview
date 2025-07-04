@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#fff",
+        background: "#f3f4f6",
         foreground: "#000",
         card: "#fff",
         "card-foreground": "#000",
