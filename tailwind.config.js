@@ -2,7 +2,24 @@
 module.exports = {
   content: ["./demo/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // Example palette, adjust as needed
+        background: "#fff",
+        foreground: "#000",
+        card: "#fff",
+        "card-foreground": "#000",
+        primary: "#6366f1",
+        "primary-foreground": "#fff",
+        accent: "#f3f4f6",
+        "accent-foreground": "#000",
+        muted: "#f3f4f6",
+        "muted-foreground": "#6b7280",
+        border: "#e5e7eb",
+        input: "#e5e7eb",
+        ring: "#6366f1",
+      },
+    },
   },
   plugins: [],
 };
