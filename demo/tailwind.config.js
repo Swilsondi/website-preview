@@ -1,9 +1,12 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
+        ...defaultTheme.colors, // <-- add this line
         background: "#fff",
         foreground: "#000",
         card: "#fff",
