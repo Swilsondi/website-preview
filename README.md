@@ -57,6 +57,9 @@ npm install
  Start the development server
 npm run dev
 Then visit http://localhost:5173 in your browser.
+```
+---
+
 📣 About Me
 
 Hi! I'm Spencer, a freelance web designer based in Northern Virginia. I help small business owners:
