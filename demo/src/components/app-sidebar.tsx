@@ -49,29 +49,19 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader>
+    <Sidebar className="border-r border-gray-700 bg-gray-800/95 backdrop-blur-sm">
+      <SidebarHeader className="border-b border-gray-700">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col gap-4 p-4"
+          className="flex items-center gap-3 px-4 py-3"
         >
-          <motion.h2
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg font-semibold"
-          >
-            TechMotiveSupreme
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            <DarkModeToggle />
-          </motion.div>
+          <div className="flex flex-col">
+            <span className="font-bold text-lg text-white">
+              TechMotiveSupreme
+            </span>
+          </div>
         </motion.div>
       </SidebarHeader>
       <SidebarContent>
@@ -81,7 +71,7 @@ export function AppSidebar() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-gray-400 font-medium px-2">Navigation</SidebarGroupLabel>
           </motion.div>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -102,10 +92,10 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild>
                       <a
                         href={item.url}
-                        className="transition-all duration-200 hover:bg-sidebar-accent"
+                        className="group transition-all duration-200 hover:bg-gray-700/80 hover:text-white text-gray-300 data-[active=true]:bg-indigo-600 data-[active=true]:text-white"
                       >
-                        <item.icon className="transition-transform duration-200 hover:scale-110" />
-                        <span>{item.title}</span>
+                        <item.icon className="transition-transform duration-200 group-hover:scale-110" />
+                        <span className="font-medium">{item.title}</span>
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -115,14 +105,16 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="border-t border-gray-700">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="p-4 text-sm text-muted-foreground"
+          className="p-4 text-center"
         >
-          © 2025 TechMotiveSupreme
+          <p className="text-xs text-gray-400">
+            © 2025 TechMotiveSupreme
+          </p>
         </motion.div>
       </SidebarFooter>
     </Sidebar>

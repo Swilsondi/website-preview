@@ -38,10 +38,12 @@ function App() {
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <div className="dark min-h-screen bg-gray-900 w-full">
           <SidebarProvider>
-            <div className="flex min-h-screen w-full bg-gray-900 sidebar-layout">
+            <div className="flex w-full bg-gray-900">
               <AppSidebar />
               <SidebarInset className="flex-1 bg-gray-900 min-h-screen">
-                <SidebarTrigger className="fixed top-4 left-4 z-50 bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-200" />
+                {/* Toggle: Right of sidebar when open, top-left when collapsed */}
+                <SidebarTrigger className="fixed top-4 left-[calc(var(--sidebar-width)+1rem)] z-50 bg-gray-800 text-white hover:bg-gray-700 shadow-lg border border-gray-600 transition-all duration-200 group-data-[state=collapsed]/sidebar-wrapper:left-4" />
+                
                 <main className="w-full min-h-screen bg-gray-900">
                   <Suspense fallback={<PageLoader />}>
                     <Routes>
