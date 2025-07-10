@@ -76,9 +76,9 @@ const SplitText = ({ children, className = "" }) => {
   )
 }
 
-// Enhanced Hero Section
+// Enhanced Hero Section - FULL WIDTH
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 -mx-4 lg:-mx-6 -mt-4 lg:-mt-6 overflow-hidden">
+  <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 w-screen -ml-2 overflow-hidden">
     {/* Enhanced background with subtle animation */}
     <div className="absolute inset-0">
       <motion.div

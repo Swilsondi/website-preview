@@ -47,19 +47,26 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/*" element={
             <SidebarProvider>
-              <AppSidebar />
-              <main className="flex-1 bg-background">
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <SidebarTrigger />
-                </motion.div>
-                <div className="p-6">
-                  <AnimatedRoutes />
-                </div>
-              </main>
+              <div className="flex min-h-screen">
+                <AppSidebar />
+                <main className="flex-1 bg-background">
+                  {/* Fixed sidebar trigger positioning */}
+                  <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/10">
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="p-2"
+                    >
+                      <SidebarTrigger />
+                    </motion.div>
+                  </div>
+                  {/* Content without extra padding */}
+                  <div className="w-full">
+                    <AnimatedRoutes />
+                  </div>
+                </main>
+              </div>
             </SidebarProvider>
           } />
         </Routes>
