@@ -76,9 +76,9 @@ const SplitText = ({ children, className = "" }) => {
   )
 }
 
-// Enhanced Hero Section - FULL WIDTH
+// Enhanced Hero Section - FIXED
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 w-screen -ml-2 overflow-hidden">
+  <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
     {/* Enhanced background with subtle animation */}
     <div className="absolute inset-0">
       <motion.div
@@ -107,102 +107,104 @@ const HeroSection = () => (
       />
     </div>
 
-    <div className="relative container mx-auto px-4 text-center">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: -20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-        className="mb-8"
-      >
-        <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-8 backdrop-blur-sm">
-          🚀 Premium Web Development & Digital Branding
-        </Badge>
-      </motion.div>
-
-      <SplitText className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight">
-        BUILD. LAUNCH. MONETIZE.
-      </SplitText>
-
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
-        className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-      >
-        <span className="text-blue-400 font-semibold">TechMotiveSupreme</span> creates 
-        <span className="text-purple-400 font-semibold"> high-performing websites </span> 
-        for creators, brands, and entrepreneurs who are ready to 
-        <span className="text-green-400 font-semibold"> dominate their market.</span>
-      </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
-        className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
-      >
+    <div className="relative flex items-center justify-center min-h-screen px-4 md:px-6 lg:px-8">
+      <div className="text-center max-w-6xl mx-auto">
         <motion.div
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          initial={{ opacity: 0, scale: 0.8, y: -20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
+          className="mb-8"
         >
-          <Button 
-            size="lg" 
-            className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
-          >
-            Book Your Site Now
-            <Rocket className="ml-2 w-5 h-5" />
-          </Button>
+          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-8 backdrop-blur-sm">
+            🚀 Premium Web Development & Digital Branding
+          </Badge>
         </motion.div>
-        <motion.div
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        >
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
-          >
-            View Our Work
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-        </motion.div>
-      </motion.div>
 
-      {/* Enhanced stats with stagger */}
-      <motion.div
-        variants={stagger}
-        initial="initial"
-        animate="animate"
-        className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
-      >
-        {[
-          { number: "100+", label: "Sites Launched" },
-          { number: "500%", label: "Avg ROI Increase" },
-          { number: "48hrs", label: "Launch Time" }
-        ].map((stat, index) => (
-          <motion.div 
-            key={index} 
-            variants={fadeInUp}
-            whileHover={{ scale: 1.1, y: -5 }}
+        <SplitText className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight">
+          BUILD. LAUNCH. MONETIZE.
+        </SplitText>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
+          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+        >
+          <span className="text-blue-400 font-semibold">TechMotiveSupreme</span> creates 
+          <span className="text-purple-400 font-semibold"> high-performing websites </span> 
+          for creators, brands, and entrepreneurs who are ready to 
+          <span className="text-green-400 font-semibold"> dominate their market.</span>
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="text-center"
           >
-            <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
-              {stat.number}
-            </div>
-            <div className="text-gray-400 text-sm">
-              {stat.label}
-            </div>
+            <Button 
+              size="lg" 
+              className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+            >
+              Book Your Site Now
+              <Rocket className="ml-2 w-5 h-5" />
+            </Button>
           </motion.div>
-        ))}
-      </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+            >
+              View Our Work
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </motion.div>
+        </motion.div>
+
+        {/* Enhanced stats with stagger */}
+        <motion.div
+          variants={stagger}
+          initial="initial"
+          animate="animate"
+          className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+        >
+          {[
+            { number: "100+", label: "Sites Launched" },
+            { number: "500%", label: "Avg ROI Increase" },
+            { number: "48hrs", label: "Launch Time" }
+          ].map((stat, index) => (
+            <motion.div 
+              key={index} 
+              variants={fadeInUp}
+              whileHover={{ scale: 1.1, y: -5 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="text-center"
+            >
+              <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-400 text-sm">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   </section>
 )
 
-// Simplified services section
+// Simplified services section - FIXED
 const ServicesSection = () => {
   const services = [
     {
@@ -230,7 +232,7 @@ const ServicesSection = () => {
 
   return (
     <section className="py-24 bg-gray-900">
-      <div className="container mx-auto px-4">
+      <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             We Don't Just Build.
@@ -276,11 +278,11 @@ const ServicesSection = () => {
   )
 }
 
-// Static social proof section
+// Static social proof section - FIXED
 const SocialProofSection = () => (
   <section className="py-20 bg-gradient-to-r from-blue-900 to-purple-900">
-    <div className="container mx-auto px-4 text-center">
-      <div className="mb-12">
+    <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="text-center mb-12">
         <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">
           Trusted by Industry Leaders
         </h2>
@@ -313,11 +315,11 @@ const SocialProofSection = () => (
   </section>
 )
 
-// Minimal CTA section
+// Minimal CTA section - FIXED
 const CTASection = () => (
   <section className="py-24 bg-black">
-    <div className="container mx-auto px-4 text-center">
-      <div className="max-w-4xl mx-auto">
+    <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
+      <div className="text-center">
         <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
           Ready to 
           <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"> Dominate </span>
@@ -347,7 +349,7 @@ const CTASection = () => (
 // Main HomePage Component
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900 w-full">
       <HeroSection />
       <ServicesSection />
       <SocialProofSection />

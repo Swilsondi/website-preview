@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ThemeProvider } from "@/hooks/use-theme";
 import { motion, AnimatePresence } from "framer-motion";
@@ -42,35 +42,18 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="website-theme">
-      <div className="min-h-screen bg-background text-foreground">
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/*" element={
-            <SidebarProvider>
-              <div className="flex min-h-screen">
-                <AppSidebar />
-                <main className="flex-1 bg-background">
-                  {/* Fixed sidebar trigger positioning */}
-                  <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/10">
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="p-2"
-                    >
-                      <SidebarTrigger />
-                    </motion.div>
-                  </div>
-                  {/* Content without extra padding */}
-                  <div className="w-full">
-                    <AnimatedRoutes />
-                  </div>
-                </main>
-              </div>
-            </SidebarProvider>
-          } />
-        </Routes>
-      </div>
+      <SidebarProvider defaultOpen={true}>
+        <div className="flex min-h-screen w-full">
+          <AppSidebar />
+          <SidebarInset className="flex-1 w-full">
+            {/* Your page content goes here */}
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/*" element={<AnimatedRoutes />} />
+            </Routes>
+          </SidebarInset>
+        </div>
+      </SidebarProvider>
     </ThemeProvider>
   );
 }

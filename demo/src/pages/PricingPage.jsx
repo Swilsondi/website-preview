@@ -5,32 +5,29 @@ import { Badge } from "@/components/ui/badge"
 import { 
   Check, 
   X, 
-  Star, 
   Zap, 
   Crown, 
   Rocket,
-  ArrowRight,
   Sparkles,
-  Shield,
-  Globe,
-  Palette,
-  TrendingUp,
-  Users,
-  Coffee,
-  MessageCircle,
+  Star,
+  ArrowRight,
+  CheckCircle,
   Heart,
-  Brush
+  Globe,
+  Target,
+  Award,
+  Users,
+  TrendingUp
 } from "lucide-react"
 
-// Faster, more responsive animation variants
+// Animation variants
 const fadeInUp = {
-  initial: { opacity: 0, y: 20, scale: 0.98 },
+  initial: { opacity: 0, y: 30 },
   animate: { 
     opacity: 1, 
-    y: 0, 
-    scale: 1,
+    y: 0,
     transition: { 
-      duration: 0.4, 
+      duration: 0.6, 
       ease: [0.25, 0.46, 0.45, 0.94]
     }
   }
@@ -44,9 +41,9 @@ const stagger = {
   }
 }
 
-// Hero Section - Full viewport width
+// Hero Section - FIXED
 const PricingHero = () => (
-  <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 -mx-4 md:-mx-6 lg:-mx-8 xl:-mx-12 2xl:-mx-16 overflow-hidden">
+  <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
     {/* Animated background elements */}
     <div className="absolute inset-0">
       <motion.div
@@ -75,7 +72,7 @@ const PricingHero = () => (
       />
     </div>
 
-    <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
+    <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: -20 }}
@@ -113,193 +110,187 @@ const PricingHero = () => (
   </section>
 )
 
-// Main Pricing Section - Full viewport width
+// Pricing Cards Section - FIXED
 const PricingCards = () => {
   const plans = [
     {
-      name: "Creator Launch",
-      price: "$1,999",
-      period: "one-time",
-      description: "Perfect for creators and freelancers ready to go professional",
-      icon: Heart,
-      accent: "from-pink-500 to-rose-500",
+      name: "Starter",
+      price: "$2,499",
+      duration: "one-time",
+      description: "Perfect for new creators ready to launch",
+      icon: Zap,
+      accent: "from-blue-500 to-cyan-500",
+      borderColor: "border-blue-500/50",
+      bgColor: "bg-blue-500/10",
       popular: false,
       features: [
         "5-Page Custom Website",
-        "Mobile-First Design",
+        "Mobile Responsive Design",
         "Basic SEO Setup",
-        "Contact Forms",
+        "Contact Form Integration", 
         "1 Month Support",
-        "Social Media Integration",
-        "Basic Analytics"
+        "Social Media Links",
+        "Fast Loading Speed"
       ],
       notIncluded: [
         "E-commerce Functionality",
-        "Advanced Animations",
-        "Brand Package"
+        "Advanced Animations", 
+        "Content Management",
+        "Analytics Setup"
       ]
     },
     {
-      name: "Business Pro",
-      price: "$3,999",
-      period: "one-time",
-      description: "The sweet spot for small businesses ready to dominate",
+      name: "Professional",
+      price: "$4,999", 
+      duration: "one-time",
+      description: "For serious creators ready to scale",
       icon: Crown,
-      accent: "from-purple-500 to-pink-500",
+      accent: "from-purple-500 to-pink-500", 
+      borderColor: "border-purple-500/50",
+      bgColor: "bg-purple-500/10",
       popular: true,
       features: [
         "10-Page Custom Website",
         "Advanced Animations",
+        "Premium SEO Package",
         "E-commerce Ready",
-        "Advanced SEO Package",
+        "Content Management System",
+        "Analytics & Tracking",
         "3 Months Support",
-        "Analytics Dashboard",
-        "Social Media Strategy",
-        "Basic Brand Package",
-        "Performance Optimization",
-        "Content Management Training"
+        "Brand Guidelines",
+        "Lead Generation Forms",
+        "Newsletter Integration"
       ],
       notIncluded: [
-        "Video Production",
-        "24/7 Priority Support"
+        "Custom App Development",
+        "Advanced Integrations"
       ]
     },
     {
-      name: "Brand Domination",
-      price: "$6,999",
-      period: "one-time",
-      description: "For ambitious brands ready to own their market",
-      icon: Sparkles,
-      accent: "from-blue-500 to-cyan-500",
+      name: "Enterprise", 
+      price: "$9,999",
+      duration: "one-time",
+      description: "Complete digital transformation",
+      icon: Rocket,
+      accent: "from-green-500 to-emerald-500",
+      borderColor: "border-green-500/50", 
+      bgColor: "bg-green-500/10",
       popular: false,
       features: [
         "Unlimited Pages",
-        "Custom Development",
-        "Advanced E-commerce",
-        "Complete SEO Strategy",
-        "6 Months Support",
-        "Advanced Analytics",
+        "Custom App Development", 
+        "Advanced Integrations",
+        "Complete Brand Package",
         "Marketing Automation",
-        "Complete Brand Suite",
-        "Logo & Brand Guidelines",
-        "Priority Support",
-        "Monthly Strategy Calls",
-        "Performance Guarantees"
+        "Advanced Analytics",
+        "6 Months Priority Support",
+        "Performance Optimization",
+        "Security & Maintenance",
+        "Custom Feature Development",
+        "Dedicated Project Manager",
+        "Training & Documentation"
       ],
       notIncluded: []
     }
   ]
 
   return (
-    <section className="py-24 bg-gray-900 -mx-4 md:-mx-6 lg:-mx-8 xl:-mx-12 2xl:-mx-16">
-      <div className="px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
+    <section className="py-24 bg-gray-900">
+      <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+            Transparent Pricing.
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Exceptional Value.</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Choose the package that fits your vision. All plans include everything you need to succeed.
+          </p>
+        </motion.div>
+
         <motion.div
           variants={stagger}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+          className="grid lg:grid-cols-3 gap-8"
         >
           {plans.map((plan, index) => (
             <motion.div
               key={index}
               variants={fadeInUp}
-              whileHover={{ y: -10, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="relative group w-full"
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="group relative"
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 font-bold shadow-lg">
-                    🔥 MOST POPULAR
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                  <Badge className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 text-sm font-semibold shadow-lg">
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    Most Popular
                   </Badge>
                 </div>
               )}
               
-              <Card className={`h-full relative overflow-hidden ${
-                plan.popular 
-                  ? 'bg-gray-800/80 border-purple-500/50 shadow-2xl shadow-purple-500/20' 
-                  : 'bg-gray-800/50 border-gray-700'
-              } backdrop-blur-sm hover:bg-gray-800/90 hover:border-blue-500/50 transition-all duration-300 shadow-xl hover:shadow-2xl`}>
-                
-                {/* Card Background Glow */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${plan.accent} opacity-5 group-hover:opacity-10 transition-opacity duration-300`} />
-                
-                <CardContent className="relative z-10 p-6">
-                  {/* Header Section */}
-                  <div className="text-center pb-6">
-                    <motion.div
-                      className={`w-16 h-16 bg-gradient-to-r ${plan.accent} rounded-2xl flex items-center justify-center mx-auto mb-4`}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    >
-                      <plan.icon className="w-8 h-8 text-white" />
-                    </motion.div>
-
-                    <h3 className="text-xl font-bold text-white mb-2">
-                      {plan.name}
-                    </h3>
-                    
-                    <p className="text-gray-400 mb-4 leading-relaxed text-sm">
-                      {plan.description}
-                    </p>
-
-                    <div className="mb-4">
-                      <div className="text-3xl lg:text-4xl font-black text-white mb-1">
-                        {plan.price}
-                      </div>
-                      <div className="text-gray-400 text-sm">
-                        {plan.period}
-                      </div>
-                    </div>
-
-                    <motion.div
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    >
-                      <Button 
-                        size="lg" 
-                        className={`w-full text-base py-3 ${
-                          plan.popular 
-                            ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700' 
-                            : `bg-gradient-to-r ${plan.accent} hover:opacity-90`
-                        } text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300`}
-                      >
-                        Get Started
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    </motion.div>
+              <Card className={`h-full ${plan.bgColor} ${plan.borderColor} border-2 hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 relative overflow-hidden`}>
+                <CardContent className="p-8">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${plan.accent} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
+                    <plan.icon className="w-8 h-8 text-white" />
                   </div>
-
-                  {/* Features Section */}
-                  <div className="space-y-3">
-                    <h4 className="text-base font-semibold text-white mb-3">What's Included:</h4>
+                  
+                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">
+                    {plan.name}
+                  </h3>
+                  
+                  <p className="text-gray-400 mb-6">
+                    {plan.description}
+                  </p>
+                  
+                  <div className="mb-8">
+                    <span className="text-4xl lg:text-5xl font-black text-white">
+                      {plan.price}
+                    </span>
+                    <span className="text-gray-400 ml-2">
+                      {plan.duration}
+                    </span>
+                  </div>
+                  
+                  <Button 
+                    size="lg" 
+                    className={`w-full mb-8 bg-gradient-to-r ${plan.accent} hover:opacity-90 text-white font-semibold shadow-xl transition-all duration-300`}
+                  >
+                    Get Started
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                  
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-white">What's included:</h4>
+                    <ul className="space-y-3">
+                      {plan.features.map((feature, i) => (
+                        <li key={i} className="flex items-start text-gray-300">
+                          <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                     
-                    {plan.features.map((feature, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.02, duration: 0.3 }}
-                        viewport={{ once: true, amount: 0.8 }}
-                        className="flex items-center text-gray-300 text-sm"
-                      >
-                        <Check className="w-4 h-4 text-green-400 mr-2 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </motion.div>
-                    ))}
-
                     {plan.notIncluded.length > 0 && (
-                      <div className="pt-3 border-t border-gray-700">
-                        <h4 className="text-xs font-medium text-gray-500 mb-2">Not Included:</h4>
-                        {plan.notIncluded.map((feature, i) => (
-                          <div key={i} className="flex items-center text-gray-500 mb-1">
-                            <X className="w-3 h-3 mr-2 flex-shrink-0" />
-                            <span className="text-xs">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
+                      <>
+                        <h4 className="text-lg font-semibold text-white pt-4">Not included:</h4>
+                        <ul className="space-y-3">
+                          {plan.notIncluded.map((feature, i) => (
+                            <li key={i} className="flex items-start text-gray-500">
+                              <X className="w-5 h-5 text-gray-500 mr-3 flex-shrink-0 mt-0.5" />
+                              <span className="text-sm">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
                     )}
                   </div>
                 </CardContent>
@@ -312,149 +303,128 @@ const PricingCards = () => {
   )
 }
 
-// FAQ Section - Full viewport width
+// FAQ Section - FIXED
 const FAQSection = () => (
-  <section className="py-20 bg-gradient-to-r from-blue-900 to-purple-900 -mx-4 md:-mx-6 lg:-mx-8 xl:-mx-12 2xl:-mx-16">
-    <div className="px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
+  <section className="py-20 bg-gradient-to-r from-blue-900 to-purple-900">
+    <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
         className="text-center mb-16"
       >
         <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-          Questions? We've Got 
-          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> Answers</span>
+          Questions? 
+          <span className="bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent"> We've Got Answers.</span>
         </h2>
-        <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-          Everything you need to know about our packages and process
+        <p className="text-xl text-blue-200">
+          Everything you need to know about our packages and process.
         </p>
       </motion.div>
 
-      <motion.div
-        variants={stagger}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.1 }}
-        className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-      >
+      <div className="space-y-6">
         {[
           {
-            icon: Coffee,
-            question: "How long does it take?",
-            answer: "Creator Launch: 1-2 weeks, Business Pro: 2-4 weeks, Brand Domination: 4-8 weeks"
+            question: "What's included in the timeline?",
+            answer: "Most projects are completed within 2-4 weeks from start to finish. Enterprise projects may take 4-8 weeks depending on complexity."
           },
           {
-            icon: MessageCircle,
-            question: "Do you provide support?",
-            answer: "Yes! All packages include support. Brand Domination gets priority access."
+            question: "Do you offer payment plans?",
+            answer: "Yes! We offer flexible payment options including 50% upfront and 50% on completion, or monthly payment plans for Enterprise packages."
           },
           {
-            icon: Shield,
-            question: "What if I'm not satisfied?",
-            answer: "14-day money-back guarantee. We're confident you'll love the results."
+            question: "What happens after launch?",
+            answer: "You'll receive full training, documentation, and our support package. We're here to help you succeed long after launch."
           },
           {
-            icon: Users,
-            question: "Can I upgrade later?",
-            answer: "Absolutely! Upgrade anytime and we'll credit your previous investment."
+            question: "Can I upgrade my package later?",
+            answer: "Absolutely! You can upgrade at any time. We'll credit your previous investment toward the higher package."
           }
         ].map((faq, index) => (
           <motion.div
             key={index}
-            variants={fadeInUp}
-            whileHover={{ scale: 1.02, y: -5 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="text-left"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.6 }}
+            viewport={{ once: true }}
           >
             <Card className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
               <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <faq.icon className="w-6 h-6 text-blue-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white mb-2">
-                      {faq.question}
-                    </h3>
-                    <p className="text-blue-200 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {faq.question}
+                </h3>
+                <p className="text-blue-200 leading-relaxed">
+                  {faq.answer}
+                </p>
               </CardContent>
             </Card>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </div>
   </section>
 )
 
-// CTA Section - Full viewport width
+// CTA Section - FIXED
 const PricingCTA = () => (
-  <section className="py-24 bg-black -mx-4 md:-mx-6 lg:-mx-8 xl:-mx-12 2xl:-mx-16 relative overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-blue-600/10" />
-    
-    <div className="relative px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
+  <section className="py-24 bg-black relative overflow-hidden">
+    <div className="relative px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: "backOut" }}
-        viewport={{ once: true, amount: 0.1 }}
-        className="max-w-4xl mx-auto text-center"
+        transition={{ duration: 0.6, ease: "backOut" }}
+        viewport={{ once: true }}
+        className="text-center"
       >
         <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
           Ready to 
-          <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Invest </span>
-          in Your Success?
+          <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Transform </span>
+          Your Business?
         </h2>
         
         <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-          Book a free consultation and let's discuss which package will skyrocket your brand.
+          Join hundreds of successful creators who chose TechMotiveSupreme to launch their digital presence.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <motion.div
-            whileHover={{ scale: 1.05, y: -3 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+          <Button 
+            size="lg" 
+            className="text-xl px-12 py-6 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold shadow-2xl transition-all duration-300"
           >
-            <Button 
-              size="lg" 
-              className="text-xl px-12 py-6 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
-            >
-              Book Free Consultation
-              <ArrowRight className="ml-3 w-6 h-6" />
-            </Button>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ scale: 1.05, y: -3 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            Book Free Consultation
+            <ArrowRight className="ml-3 w-6 h-6" />
+          </Button>
+          
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
           >
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold backdrop-blur-sm transition-all duration-300"
-            >
-              View Our Work
-              <Globe className="ml-3 w-6 h-6" />
-            </Button>
-          </motion.div>
+            View Our Work
+            <Globe className="ml-3 w-6 h-6" />
+          </Button>
         </div>
         
-        <p className="text-gray-500 mt-8">
-          Free consultation • No pressure • Get honest recommendations
-        </p>
+        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+          {[
+            { icon: Heart, text: "100% Satisfaction Guarantee" },
+            { icon: Zap, text: "Lightning Fast Delivery" },
+            { icon: Award, text: "Award-Winning Design" }
+          ].map((item, index) => (
+            <div key={index} className="text-center">
+              <item.icon className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+              <p className="text-gray-400 text-sm">
+                {item.text}
+              </p>
+            </div>
+          ))}
+        </div>
       </motion.div>
     </div>
   </section>
 )
 
-// Main Pricing Page Component
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gray-900 w-full overflow-x-hidden">
