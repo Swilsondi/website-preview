@@ -17,46 +17,116 @@ import {
   Users
 } from "lucide-react"
 
-// Minimal animation variants for maximum performance
-const fadeIn = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 0.3, ease: "easeOut" }
+// Optimized animation variants - GPU accelerated
+const fadeInUp = {
+  initial: { opacity: 0, y: 30, scale: 0.95 },
+  animate: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { 
+      duration: 0.6, 
+      ease: [0.25, 0.46, 0.45, 0.94] // Smooth easing
+    }
+  }
 }
 
-const slideUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.3, ease: "easeOut" }
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
 }
 
-// Ultra-simple hero section
+// Enhanced split text animation
+const SplitText = ({ children, className = "" }) => {
+  const words = children.split(" ")
+  
+  return (
+    <motion.h1 
+      className={className}
+      variants={stagger}
+      initial="initial"
+      animate="animate"
+    >
+      {words.map((word, index) => (
+        <motion.span
+          key={index}
+          className="inline-block mr-3"
+          variants={{
+            initial: { opacity: 0, y: 100, rotateX: -90 },
+            animate: { 
+              opacity: 1, 
+              y: 0, 
+              rotateX: 0,
+              transition: {
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                delay: index * 0.1
+              }
+            }
+          }}
+          style={{ transformOrigin: "50% 50%" }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </motion.h1>
+  )
+}
+
+// Enhanced Hero Section
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 -mx-4 lg:-mx-6">
-    {/* Static background - no animations */}
+  <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 -mx-4 lg:-mx-6 -mt-4 lg:-mt-6 overflow-hidden">
+    {/* Enhanced background with subtle animation */}
     <div className="absolute inset-0">
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-2xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-2xl" />
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.05, 0.08, 0.05],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{
+          scale: [1.1, 1, 1.1],
+          opacity: [0.03, 0.06, 0.03],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl"
+      />
     </div>
 
     <div className="relative container mx-auto px-4 text-center">
-      <motion.div {...fadeIn} className="mb-8">
-        <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-8">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, y: -20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
+        className="mb-8"
+      >
+        <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-8 backdrop-blur-sm">
           🚀 Premium Web Development & Digital Branding
         </Badge>
       </motion.div>
 
-      <motion.h1 
-        {...slideUp}
-        className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
-      >
+      <SplitText className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight">
         BUILD. LAUNCH. MONETIZE.
-      </motion.h1>
+      </SplitText>
 
       <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.2 }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
         className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
       >
         <span className="text-blue-400 font-semibold">TechMotiveSupreme</span> creates 
@@ -66,33 +136,45 @@ const HeroSection = () => (
       </motion.p>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.3 }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
         className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
       >
-        <Button 
-          size="lg" 
-          className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-colors duration-150"
+        <motion.div
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          Book Your Site Now
-          <Rocket className="ml-2 w-5 h-5" />
-        </Button>
-        <Button 
-          size="lg" 
-          variant="outline" 
-          className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold transition-colors duration-150"
+          <Button 
+            size="lg" 
+            className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+          >
+            Book Your Site Now
+            <Rocket className="ml-2 w-5 h-5" />
+          </Button>
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          View Our Work
-          <ArrowRight className="ml-2 w-5 h-5" />
-        </Button>
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+          >
+            View Our Work
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+        </motion.div>
       </motion.div>
 
-      {/* Static stats - no hover animations */}
+      {/* Enhanced stats with stagger */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.4 }}
+        variants={stagger}
+        initial="initial"
+        animate="animate"
         className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
       >
         {[
@@ -100,14 +182,20 @@ const HeroSection = () => (
           { number: "500%", label: "Avg ROI Increase" },
           { number: "48hrs", label: "Launch Time" }
         ].map((stat, index) => (
-          <div key={index} className="text-center">
+          <motion.div 
+            key={index} 
+            variants={fadeInUp}
+            whileHover={{ scale: 1.1, y: -5 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="text-center"
+          >
             <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
               {stat.number}
             </div>
             <div className="text-gray-400 text-sm">
               {stat.label}
             </div>
-          </div>
+          </motion.div>
         ))}
       </motion.div>
     </div>
