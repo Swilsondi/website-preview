@@ -2,11 +2,28 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TechMotiveSupreme</title>
+    <meta name="description" content="TechMotiveSupreme - Premium web development and digital solutions for creators and businesses" />
+    <meta name="keywords" content="web development, digital solutions, website design, business growth" />
+    <meta name="author" content="TechMotiveSupreme" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>TechMotiveSupreme - Digital Excellence</title>
+    
     <style>
-      /* Prevent white flash and layout shifts */
+      /* Critical CSS - prevents FOUC */
       html, body {
         background-color: #111827;
         margin: 0;
@@ -14,6 +31,7 @@
         width: 100%;
         height: 100%;
         overflow-x: hidden;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
       }
       
       #root {
@@ -24,7 +42,7 @@
         flex-direction: column;
       }
       
-      /* Loading spinner */
+      /* Optimized loading spinner */
       .loading-spinner {
         position: fixed;
         top: 50%;
@@ -37,6 +55,7 @@
         border-radius: 50%;
         animation: spin 1s linear infinite;
         z-index: 9999;
+        will-change: transform;
       }
       
       @keyframes spin {
@@ -44,7 +63,7 @@
         100% { transform: translate(-50%, -50%) rotate(360deg); }
       }
       
-      /* Prevent content jumping */
+      /* Prevent layout shift */
       .loading-container {
         width: 100%;
         min-height: 100vh;
@@ -52,6 +71,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        contain: layout style paint;
+      }
+      
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .loading-spinner {
+          animation: none;
+        }
       }
     </style>
   </head>

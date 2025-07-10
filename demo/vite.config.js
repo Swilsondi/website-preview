@@ -14,4 +14,27 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          motion: ["framer-motion"],
+          icons: ["lucide-react"],
+          router: ["react-router-dom"],
+        },
+      },
+    },
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+  },
+  server: {
+    port: 3000,
+    host: true,
+  },
 });

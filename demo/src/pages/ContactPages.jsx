@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { 
   Send, 
   Mail, 
-  Phone, 
   MapPin, 
   Clock,
   ArrowRight,
@@ -18,9 +17,10 @@ import {
   Globe,
   Calendar,
   CheckCircle,
-  Coffee
+  Coffee,
+  ChevronDown
 } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useState, useEffect } from 'react'
 
 // Animation variants
 const fadeInUp = {
@@ -43,7 +43,54 @@ const stagger = {
   }
 }
 
-// Hero Section - FIXED
+// Custom Select Component
+const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [selected, setSelected] = useState(defaultValue || options[0])
+
+  return (
+    <div className="relative">
+      <label className="block text-sm font-medium text-gray-300 mb-2">
+        {label}
+      </label>
+      <div className={`relative ${className}`}>
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white text-left flex items-center justify-between hover:border-indigo-500 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200"
+        >
+          <span>{selected}</span>
+          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+        
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-full left-0 right-0 mt-1 bg-gray-700 border border-gray-600 rounded-lg shadow-xl z-10 overflow-hidden"
+          >
+            {options.map((option, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => {
+                  setSelected(option)
+                  setIsOpen(false)
+                }}
+                className="w-full px-4 py-3 text-left text-white hover:bg-gray-600 transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg"
+              >
+                {option}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// Hero Section - same as before
 const ContactHero = () => (
   <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 overflow-hidden">
     <div className="absolute inset-0">
@@ -135,109 +182,219 @@ const ContactHero = () => (
   </section>
 )
 
-// Contact Form & Info Section - FIXED
+// Updated Contact Form with validation
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    projectType: '',
+    budget: '',
+    message: ''
+  })
+  const [errors, setErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: sanitizeInput(value)
+    }))
+    
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: ''
+      }))
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    const validation = validateForm(formData)
+    
+    if (!validation.isValid) {
+      setErrors(validation.errors)
+      setIsSubmitting(false)
+      return
+    }
+    
+    try {
+      // Simulate API call - replace with actual endpoint
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      setSubmitStatus('success')
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        projectType: '',
+        budget: '',
+        message: ''
+      })
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <Card className="bg-gray-800/50 border-gray-700 p-8 backdrop-blur-sm">
+      <CardContent className="p-0">
+        <h2 className="text-3xl font-bold text-white mb-2">
+          Send us a message
+        </h2>
+        <p className="text-gray-400 mb-8">
+          Tell us about your project and we'll get back to you within 24 hours.
+        </p>
+        
+        {submitStatus === 'success' && (
+          <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
+            <p className="text-green-400 font-medium">Message sent successfully! We'll be in touch soon.</p>
+          </div>
+        )}
+        
+        {submitStatus === 'error' && (
+          <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+            <p className="text-red-400 font-medium">Failed to send message. Please try again.</p>
+          </div>
+        )}
+        
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                First Name *
+              </label>
+              <Input 
+                placeholder="John" 
+                value={formData.firstName}
+                onChange={(e) => handleInputChange('firstName', e.target.value)}
+                className={`bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200 ${errors.firstName ? 'border-red-500' : ''}`}
+                required
+              />
+              {errors.firstName && <p className="text-red-400 text-sm mt-1">{errors.firstName}</p>}
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Last Name *
+              </label>
+              <Input 
+                placeholder="Doe" 
+                value={formData.lastName}
+                onChange={(e) => handleInputChange('lastName', e.target.value)}
+                className={`bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200 ${errors.lastName ? 'border-red-500' : ''}`}
+                required
+              />
+              {errors.lastName && <p className="text-red-400 text-sm mt-1">{errors.lastName}</p>}
+            </div>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Email *
+            </label>
+            <Input 
+              type="email" 
+              placeholder="john@example.com" 
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+              className={`bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200 ${errors.email ? 'border-red-500' : ''}`}
+              required
+            />
+            {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
+          </div>
+          
+          <CustomSelect
+            label="Project Type *"
+            options={[
+              "Website Development",
+              "Brand Design",
+              "Mobile App",
+              "E-commerce Platform",
+              "Full Digital Package",
+              "Other"
+            ]}
+            value={formData.projectType}
+            onChange={(value) => handleInputChange('projectType', value)}
+            error={errors.projectType}
+          />
+          
+          <CustomSelect
+            label="Budget Range *"
+            options={[
+              "$2,000 - $5,000",
+              "$5,000 - $10,000",
+              "$10,000 - $25,000",
+              "$25,000 - $50,000",
+              "$50,000+"
+            ]}
+            value={formData.budget}
+            onChange={(value) => handleInputChange('budget', value)}
+            error={errors.budget}
+          />
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Project Details *
+            </label>
+            <Textarea 
+              placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
+              rows={5}
+              value={formData.message}
+              onChange={(e) => handleInputChange('message', e.target.value)}
+              className={`bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 rounded-lg transition-all duration-200 resize-none ${errors.message ? 'border-red-500' : ''}`}
+              required
+            />
+            {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
+          </div>
+          
+          <Button 
+            type="submit"
+            size="lg" 
+            disabled={isSubmitting}
+            className="w-full h-14 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? (
+              <>
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                Sending...
+              </>
+            ) : (
+              <>
+                Send Message
+                <Send className="ml-2 w-5 h-5" />
+              </>
+            )}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
+
+// Contact Section - replaced with updated form
 const ContactSection = () => (
   <section className="py-24 bg-gray-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-16">
-        {/* Contact Form */}
+        {/* Contact Form - UPDATED: With validation */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <Card className="bg-gray-800/50 border-gray-700 p-8">
-            <CardContent className="p-0">
-              <h2 className="text-3xl font-bold text-white mb-2">
-                Send us a message
-              </h2>
-              <p className="text-gray-400 mb-8">
-                Tell us about your project and we'll get back to you within 24 hours.
-              </p>
-              
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      First Name
-                    </label>
-                    <Input 
-                      placeholder="John" 
-                      className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Last Name
-                    </label>
-                    <Input 
-                      placeholder="Doe" 
-                      className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <Input 
-                    type="email" 
-                    placeholder="john@example.com" 
-                    className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Project Type
-                  </label>
-                  <select className="w-full px-3 py-2 bg-gray-700/50 border border-gray-600 rounded-md text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
-                    <option>Website Development</option>
-                    <option>Brand Design</option>
-                    <option>Mobile App</option>
-                    <option>Full Digital Package</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Budget Range
-                  </label>
-                  <select className="w-full px-3 py-2 bg-gray-700/50 border border-gray-600 rounded-md text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
-                    <option>$2,000 - $5,000</option>
-                    <option>$5,000 - $10,000</option>
-                    <option>$10,000 - $25,000</option>
-                    <option>$25,000+</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Project Details
-                  </label>
-                  <Textarea 
-                    placeholder="Tell us about your project, goals, and timeline..."
-                    rows={5}
-                    className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500"
-                  />
-                </div>
-                
-                <Button 
-                  size="lg" 
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl transition-all duration-300"
-                >
-                  Send Message
-                  <Send className="ml-2 w-5 h-5" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+          <ContactForm />
         </motion.div>
 
-        {/* Contact Info */}
+        {/* Contact Info - UPDATED: Removed phone */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -261,12 +418,6 @@ const ContactSection = () => (
                 title: "Email Us",
                 info: "hello@techmotivesupreme.com",
                 subtitle: "We typically respond within 4 hours"
-              },
-              {
-                icon: Phone,
-                title: "Call Us",
-                info: "+1 (555) 123-4567",
-                subtitle: "Mon-Fri 9AM-6PM EST"
               },
               {
                 icon: MapPin,
@@ -307,7 +458,7 @@ const ContactSection = () => (
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl p-6 border border-indigo-500/30">
+          <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl p-6 border border-indigo-500/30 backdrop-blur-sm">
             <h3 className="text-xl font-bold text-white mb-4">
               Why Choose TechMotiveSupreme?
             </h3>
@@ -332,7 +483,7 @@ const ContactSection = () => (
   </section>
 )
 
-// FAQ Section - FIXED
+// FAQ Section - same as before
 const ContactFAQ = () => (
   <section className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -395,7 +546,7 @@ const ContactFAQ = () => (
   </section>
 )
 
-// CTA Section - FIXED
+// CTA Section - same as before
 const ContactCTA = () => (
   <section className="py-24 bg-black">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -417,7 +568,7 @@ const ContactCTA = () => (
         
         <Button 
           size="lg" 
-          className="text-xl px-12 py-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl transition-all duration-300"
+          className="text-xl px-12 py-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl transition-all duration-300 rounded-lg"
         >
           Book Free Consultation
           <Coffee className="ml-3 w-6 h-6" />
@@ -431,16 +582,13 @@ const ContactCTA = () => (
   </section>
 )
 
-// Better version - add this to ALL your pages
 export default function ContactPage() {
   const [pageLoaded, setPageLoaded] = useState(false)
 
   useEffect(() => {
-    // Slight delay ensures smoother transition after route change
     const timer = setTimeout(() => {
       setPageLoaded(true)
     }, 100)
-    
     return () => clearTimeout(timer)
   }, [])
 
