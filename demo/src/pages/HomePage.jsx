@@ -16,6 +16,7 @@ import {
   Briefcase,
   Users
 } from "lucide-react"
+import { useEffect, useState } from "react"
 
 // Optimized animation variants - GPU accelerated
 const fadeInUp = {
@@ -346,10 +347,21 @@ const CTASection = () => (
   </section>
 )
 
-// Main HomePage Component
+// Better version - add this to ALL your pages
 export default function HomePage() {
+  const [pageLoaded, setPageLoaded] = useState(false)
+
+  useEffect(() => {
+    // Slight delay ensures smoother transition after route change
+    const timer = setTimeout(() => {
+      setPageLoaded(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <div className="min-h-screen bg-gray-900 w-full">
+    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <HeroSection />
       <ServicesSection />
       <SocialProofSection />

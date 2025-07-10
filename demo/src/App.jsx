@@ -1,59 +1,56 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { Routes, Route } from 'react-router-dom'; // ✅ Remove BrowserRouter import
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
-import { ThemeProvider } from "@/hooks/use-theme";
-import { motion, AnimatePresence } from "framer-motion";
-import Home from './pages/HomePage';
-import About from './pages/AboutPages';
-import Contact from './pages/ContactPages';
-import Login from './pages/LoginPage';
-import Pricing from './pages/PricingPage';
-import Services from './pages/ServicesPage';
+import { ThemeProvider } from "@/components/theme-provider";
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import PricingPage from './pages/PricingPage';
+import AboutPage from './pages/AboutPages';
+import ContactPage from './pages/ContactPages';
+import { useState, useEffect } from 'react';
 
-const pageTransition = {
-  initial: { opacity: 0, x: 20 },
-  animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -20 },
-  transition: { duration: 0.3, ease: "easeInOut" }
-};
+function App() {
+  const [isLoading, setIsLoading] = useState(true);
 
-function AnimatedRoutes() {
-  const location = useLocation();
-  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        {...pageTransition}
-        className="w-full"
-      >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/services" element={<Services />} />
-        </Routes>
-      </motion.div>
-    </AnimatePresence>
-  );
-}
-
-export default function App() {
-  return (
-    <ThemeProvider defaultTheme="light" storageKey="website-theme">
-      <SidebarProvider defaultOpen={true}>
-        <div className="flex min-h-screen w-full">
-          <AppSidebar />
-          <SidebarInset className="flex-1 w-full">
-            {/* Your page content goes here */}
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/*" element={<AnimatedRoutes />} />
-            </Routes>
-          </SidebarInset>
-        </div>
-      </SidebarProvider>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      {/* ✅ REMOVED: Router wrapper - it's already in main.jsx */}
+      <div className="dark min-h-screen bg-gray-900 w-full">
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full bg-gray-900">
+            <AppSidebar />
+            <SidebarInset className="flex-1 bg-gray-900 min-h-screen">
+              <SidebarTrigger className="fixed top-4 left-4 z-50 bg-gray-800 text-white hover:bg-gray-700" />
+              <main className="w-full min-h-screen bg-gray-900">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/services" element={<ServicesPage />} />
+                  <Route path="/pricing" element={<PricingPage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                </Routes>
+              </main>
+            </SidebarInset>
+          </div>
+        </SidebarProvider>
+      </div>
     </ThemeProvider>
   );
 }
+
+export default App;
