@@ -16,7 +16,7 @@ import {
   Briefcase,
   Users
 } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useLayoutEffect } from "react"
 import Footer from "@/components/Footer"
 import { useNavigate } from 'react-router-dom';
 
@@ -79,134 +79,148 @@ const SplitText = ({ children, className = "" }) => {
   )
 }
 
+
 // Enhanced Hero Section - FIXED
-const HeroSection = () => (
-  <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
-    {/* Enhanced background with subtle animation */}
-    <div className="absolute inset-0">
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.05, 0.08, 0.05],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.1, 1, 1.1],
-          opacity: [0.03, 0.06, 0.03],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl"
-      />
-    </div>
-
-    <div className="relative flex items-center justify-center min-h-screen px-4 md:px-6 lg:px-8">
-      <div className="text-center max-w-6xl mx-auto">
+const HeroSection = ({ handleNavigation }) => {
+  return (
+    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
+      {/* Enhanced background with subtle animation */}
+      <div className="absolute inset-0">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-          className="mb-8"
-        >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-8 backdrop-blur-sm">
-            🚀 Premium Web Development & Digital Branding
-          </Badge>
-        </motion.div>
-
-        <SplitText className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight">
-          BUILD. LAUNCH. MONETIZE.
-        </SplitText>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
-          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-        >
-          <span className="text-blue-400 font-semibold">Tech Motive Supreme</span> creates 
-          <span className="text-purple-400 font-semibold"> high-performing websites </span> 
-          for creators, brands, and entrepreneurs who are ready to 
-          <span className="text-green-400 font-semibold"> dominate their market.</span>
-        </motion.p>
-
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.05, 0.08, 0.05],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl"
+        />
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <Button 
-              size="lg" 
-              className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
-            >
-              Book Your Site Now
-              <Rocket className="ml-2 w-5 h-5" />
-            </Button>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
-              onClick={() => navigate('/showcase', { state: { scrollToTop: true } })}
-            >
-              View Our Work
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        {/* Enhanced stats with stagger */}
-        <motion.div
-          variants={stagger}
-          initial="initial"
-          animate="animate"
-          className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
-        >
-          {[
-            { number: "100+", label: "Sites Launched" },
-            { number: "500%", label: "Avg ROI Increase" },
-            { number: "48hrs", label: "Launch Time" }
-          ].map((stat, index) => (
-            <motion.div 
-              key={index} 
-              variants={fadeInUp}
-              whileHover={{ scale: 1.1, y: -5 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="text-center"
-            >
-              <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-400 text-sm">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          animate={{
+            scale: [1.1, 1, 1.1],
+            opacity: [0.03, 0.06, 0.03],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl"
+        />
       </div>
-    </div>
-  </section>
-)
+
+      <div className="relative flex items-center justify-center min-h-screen px-4 md:px-6 lg:px-8">
+        <div className="text-center max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
+            className="mb-8"
+          >
+            <Badge
+              variant="outline"
+              className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-8 backdrop-blur-sm"
+            >
+              🚀 Premium Web Development & Digital Branding
+            </Badge>
+          </motion.div>
+
+          <SplitText className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight">
+            BUILD. LAUNCH. MONETIZE.
+          </SplitText>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
+            className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          >
+            <span className="text-blue-400 font-semibold">Tech Motive Supreme</span> creates
+            <span className="text-purple-400 font-semibold"> high-performing websites </span>
+            for creators, brands, and entrepreneurs who are ready to
+            <span className="text-green-400 font-semibold"> dominate their market.</span>
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Button
+                size="lg"
+                className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+                onClick={() => handleNavigation("/pricing")}
+              >
+                Book Your Site Now
+                <Rocket className="ml-2 w-5 h-5" />
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+                onClick={() => handleNavigation("/showcase")}
+              >
+                View Our Work
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Enhanced stats with stagger */}
+          <motion.div
+            variants={stagger}
+            initial="initial"
+            animate="animate"
+            className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+          >
+            { [
+              {
+                number: "100+",
+                label: "Sites Launched",
+              },
+              {
+                number: "500%",
+                label: "Avg ROI Increase",
+              },
+              {
+                number: "48hrs",
+                label: "Launch Time",
+              },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                whileHover={{ scale: 1.1, y: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="text-center"
+              >
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-gray-400 text-sm">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // Simplified services section 
 const ServicesSection = () => {
@@ -337,6 +351,7 @@ const CTASection = () => (
         <Button 
           size="lg" 
           className="text-xl px-12 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold transition-colors duration-200"
+          onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
         >
           Book Your Consultation Now
           <ArrowRight className="ml-3 w-6 h-6" />
@@ -352,30 +367,49 @@ const CTASection = () => (
 
 // Better version - add this to ALL your pages
 export default function HomePage() {
-  const [pageLoaded, setPageLoaded] = useState(false)
+  const [pageLoaded, setPageLoaded] = useState(false);
   const navigate = useNavigate();
+
+  const disableAnimations = true; // Set to true to disable animations globally
 
   useEffect(() => {
     // Slight delay ensures smoother transition after route change
     const timer = setTimeout(() => {
-      setPageLoaded(true)
-    }, 100)
-    
-    return () => clearTimeout(timer)
+      setPageLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [])
 
-  // Ensure the page scrolls to the top on navigation
-  useEffect(() => {
+  useLayoutEffect(() => {
+    console.log("Scroll position before reset:", window.scrollY);
+
+    // Reset scroll position for primary containers
     window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }, []);
 
+  const handleNavigation = (path) => {
+    navigate(path);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }, 100); // Delay to ensure navigation completes
+  };
+
   return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      <HeroSection />
+    <div
+      className={`min-h-screen bg-gray-900 w-full overflow-auto transition-all duration-700 ease-out ${
+        pageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      } ${disableAnimations ? "transition-none" : ""}`}
+    >
+      <HeroSection handleNavigation={handleNavigation} />
       <ServicesSection />
       <SocialProofSection />
       <CTASection />
       <Footer />
     </div>
-  )
+  );
 }

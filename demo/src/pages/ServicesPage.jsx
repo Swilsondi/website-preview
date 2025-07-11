@@ -105,9 +105,9 @@ const ServicesHero = () => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-            onClick={() => navigate('/showcase', { state: { scrollToTop: true } })}
+            onClick={() => navigate('/innovation-lab')}
           >
-            View Our Work
+            Explore Branding Solutions
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </motion.div>
@@ -278,7 +278,7 @@ const ProcessSection = () => (
 )
 
 // CTA Section - FIXED
-const ServicesCTA = () => (
+const ServicesCTA = ({ navigate }) => (
   <section className="py-24 bg-black">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
       <motion.div
@@ -289,35 +289,37 @@ const ServicesCTA = () => (
         className="text-center"
       >
         <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
-          Ready to Transform 
-          <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Your Business?</span>
+          Explore Our 
+          <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Unique Offerings</span>
         </h2>
         
         <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-          Let's discuss your project and create something amazing together.
+          Discover how we innovate and deliver success through our specialized services.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <Button 
             size="lg" 
             className="text-xl px-12 py-6 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold shadow-2xl transition-all duration-300"
+            onClick={() => navigate('/innovation-lab')}
           >
-            Start Your Project
-            <ArrowRight className="ml-3 w-6 h-6" />
+            Innovation Lab
+            <Lightbulb className="ml-3 w-6 h-6" />
           </Button>
           
           <Button 
             size="lg" 
             variant="outline"
             className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+            onClick={() => navigate('/client-success-stories')}
           >
-            View Portfolio
-            <Globe className="ml-3 w-6 h-6" />
+            Client Success Stories
+            <Star className="ml-3 w-6 h-6" />
           </Button>
         </div>
         
         <p className="text-gray-500 mt-8">
-          Free consultation • Custom quotes • Fast turnaround
+          Innovation • Excellence • Results
         </p>
       </motion.div>
     </div>
@@ -342,7 +344,7 @@ export default function ServicesPage() {
       <ServicesHero />
       <ServicesGrid />
       <ProcessSection />
-      <ServicesCTA />
+      <ServicesCTA navigate={navigate} />
       <Footer />
     </div>
   )

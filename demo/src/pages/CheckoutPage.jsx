@@ -479,7 +479,7 @@ export default function CheckoutPage() {
         pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
     >
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         ::-webkit-scrollbar {
           width: 8px;
         }
@@ -502,7 +502,7 @@ export default function CheckoutPage() {
           scrollbar-width: thin;
           scrollbar-color: #6366f1 transparent;
         }
-      `}</style>
+      ` }} />
 
       <CheckoutHero />
 

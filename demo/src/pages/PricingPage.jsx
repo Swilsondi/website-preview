@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -22,6 +21,7 @@ import {
   Minus,
   ShoppingCart
 } from "lucide-react"
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCart } from "@/hooks/useCart"
@@ -836,37 +836,40 @@ export default function PricingPage() {
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       {/* Custom Scrollbar Styles */}
-      <style jsx global>{`
-        /* Webkit Scrollbar */
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-          background: linear-gradient(180deg, #6366f1, #8b5cf6);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(180deg, #4f46e5, #7c3aed);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        
-        /* Firefox Scrollbar */
-        html {
-          scrollbar-width: thin;
-          scrollbar-color: #6366f1 transparent;
-        }
-      `}</style>
-      
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            /* Webkit Scrollbar */
+            ::-webkit-scrollbar {
+              width: 8px;
+            }
+            
+            ::-webkit-scrollbar-track {
+              background: transparent;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+              background: linear-gradient(180deg, #6366f1, #8b5cf6);
+              border-radius: 4px;
+              border: 2px solid transparent;
+              background-clip: content-box;
+            }
+            
+            ::-webkit-scrollbar-thumb:hover {
+              background: linear-gradient(180deg, #4f46e5, #7c3aed);
+              border-radius: 4px;
+              border: 2px solid transparent;
+              background-clip: content-box;
+            }
+            
+            /* Firefox Scrollbar */
+            html {
+              scrollbar-width: thin;
+              scrollbar-color: #6366f1 transparent;
+            }
+          `,
+        }}
+      />
       <PricingHero />
       <PricingCards />
       <AddOnsSection />

@@ -5,6 +5,9 @@ import App from './App';
 import './index.css';
 import ScrollToTop from './components/ScrollToTop';
 
+// Ensure browser does not restore scroll position automatically
+history.scrollRestoration = "manual";
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <ScrollToTop />

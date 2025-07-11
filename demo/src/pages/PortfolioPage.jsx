@@ -476,7 +476,7 @@ export default function ShowcasePage() {
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       {/* Custom Scrollbar Styles */}
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         ::-webkit-scrollbar {
           width: 8px;
         }
@@ -499,7 +499,7 @@ export default function ShowcasePage() {
           scrollbar-width: thin;
           scrollbar-color: #6366f1 transparent;
         }
-      `}</style>
+      ` }} />
       
       <PortfolioHero />
       <PortfolioGrid />

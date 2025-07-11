@@ -7,6 +7,7 @@ import CartProvider from "@/contexts/CartContext"
 import CartSidebar from "@/components/CartSidebar"
 import { TopNavbar } from '@/components/TopNavbar';
 import { lazy, Suspense, useState, useEffect } from 'react'
+import ScrollToTop from "./components/ScrollToTop";
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'))
@@ -15,7 +16,12 @@ const PricingPage = lazy(() => import('./pages/PricingPage'))
 const AboutPage = lazy(() => import('./pages/AboutPages'))
 const ContactPage = lazy(() => import('./pages/ContactPages'))
 const CheckoutPage = lazy(() => import('./pages/CheckoutPage'))
-const ShowcasePage = lazy(() => import("./pages/PortfolioPage"));
+const ShowcasePage = lazy(() => import("./pages/PortfolioPage"))
+const OurJourneyPage = lazy(() => import('./pages/OurJourneyPage'))
+const StartProjectPage = lazy(() => import('./pages/StartProjectPage'))
+const LearnMorePage = lazy(() => import('./pages/LearnMorePage'))
+const InnovationLabPage = lazy(() => import('./pages/InnovationLabPage'))
+const ClientSuccessStoriesPage = lazy(() => import('./pages/ClientSuccessStoriesPage'));
 
 // Loading component
 const PageLoader = () => (
@@ -47,6 +53,7 @@ function App() {
   console.log('Rendering main application')
   return (
     <ErrorBoundary>
+      <ScrollToTop />
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <CartProvider>
           <div className="dark min-h-screen bg-gray-900 w-full">
@@ -66,6 +73,11 @@ function App() {
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/checkout" element={<CheckoutPage />} />
                         <Route path="/showcase" element={<ShowcasePage />} /> {/* Updated route */}
+                        <Route path="/our-journey" element={<OurJourneyPage />} />
+                        <Route path="/start-project" element={<StartProjectPage />} />
+                        <Route path="/learn-more" element={<LearnMorePage />} />
+                        <Route path="/innovation-lab" element={<InnovationLabPage />} />
+                        <Route path="/client-success-stories" element={<ClientSuccessStoriesPage />} />
                         <Route path="*" element={<HomePage />} />
                       </Routes>
                     </Suspense>

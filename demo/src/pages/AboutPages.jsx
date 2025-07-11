@@ -18,92 +18,97 @@ import {
   Shield,
   Code,
   Palette
-} from "lucide-react"
-import { useState, useEffect } from 'react'
+} from "lucide-react";
 import Footer from "@/components/Footer"
+import { useNavigate } from 'react-router-dom';
 
 // Hero Section - FIXED
-const AboutHero = () => (
-  <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-emerald-900 to-blue-900 overflow-hidden">
-    <div className="absolute inset-0">
-      <div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.04, 0.08, 0.04],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/4 left-1/3 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"
-      />
-      <div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.02, 0.06, 0.02],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500 rounded-full blur-3xl"
-      />
-    </div>
+const AboutHero = () => {
+  const navigate = useNavigate();
 
-    <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8">
-      <div className="text-center max-w-5xl mx-auto">
+  return (
+    <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-emerald-900 to-blue-900 overflow-hidden">
+      <div className="absolute inset-0">
         <div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-          className="mb-8"
-        >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-emerald-500/20 border-emerald-400 text-emerald-200 mb-8 backdrop-blur-sm">
-            🌟 Our Story • Built for Excellence
-          </Badge>
-        </div>
-
-        <h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
-        >
-          Crafting Digital 
-          <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"> Excellence </span>
-          Since Day One
-        </h1>
-
-        <p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-        >
-          We're not just another web agency. We're 
-          <span className="text-emerald-400 font-semibold"> digital architects </span>
-          who turn ambitious visions into reality through cutting-edge technology and strategic thinking.
-        </p>
-
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.04, 0.08, 0.04],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/3 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"
+        />
         <div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-        >
-          <Button 
-            size="lg" 
-            className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.02, 0.06, 0.02],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto">
+          <div
+            initial={{ opacity: 0, scale: 0.8, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
+            className="mb-8"
           >
-            Our Journey
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+            <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-emerald-500/20 border-emerald-400 text-emerald-200 mb-8 backdrop-blur-sm">
+              🌟 Our Story • Built for Excellence
+            </Badge>
+          </div>
+
+          <h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+          >
+            Crafting Digital 
+            <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"> Excellence </span>
+            Since Day One
+          </h1>
+
+          <p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          >
+            We're not just another web agency. We're 
+            <span className="text-emerald-400 font-semibold"> digital architects </span>
+            who turn ambitious visions into reality through cutting-edge technology and strategic thinking.
+          </p>
+
+          <div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+          >
+            <Button 
+              size="lg" 
+              className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+              onClick={() => navigate('/our-journey')}
+            >
+              Our Journey
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 // Mission & Values - FIXED
 const MissionSection = () => (
@@ -323,74 +328,67 @@ const StatsSection = () => (
 )
 
 // CTA Section - FIXED
-const AboutCTA = () => (
-  <section className="py-24 bg-black">
-    <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
-      <div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: "backOut" }}
-        viewport={{ once: true }}
-        className="text-center"
-      >
-        <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
-          Ready to Work 
-          <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"> Together?</span>
-        </h2>
-        
-        <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-          Let's discuss your vision and create something extraordinary that drives real results.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <Button 
-            size="lg" 
-            className="text-xl px-12 py-6 bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 hover:from-emerald-700 hover:via-blue-700 hover:to-purple-700 text-white font-bold shadow-2xl transition-all duration-300"
-          >
-            Start Your Project
-            <Rocket className="ml-3 w-6 h-6" />
-          </Button>
+const AboutCTA = () => {
+  const navigate = useNavigate();
+
+  return (
+    <section className="py-24 bg-black">
+      <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: "backOut" }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
+            Ready to Work 
+            <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"> Together?</span>
+          </h2>
           
-          <Button 
-            size="lg" 
-            variant="outline"
-            className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
-            onClick={() => console.log('Learning more about us...')}
-          >
-            Learn More
-            <Lightbulb className="ml-3 w-6 h-6" />
-          </Button>
+          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+            Let's discuss your vision and create something extraordinary that drives real results.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button 
+              size="lg" 
+              className="text-xl px-12 py-6 bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 hover:from-emerald-700 hover:via-blue-700 hover:to-purple-700 text-white font-bold shadow-2xl transition-all duration-300"
+              onClick={() => navigate('/start-project')}
+            >
+              Start Your Project
+              <Rocket className="ml-3 w-6 h-6" />
+            </Button>
+            
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+              onClick={() => navigate('/learn-more')}
+            >
+              Learn More
+              <Lightbulb className="ml-3 w-6 h-6" />
+            </Button>
+          </div>
+          
+          <p className="text-gray-500 mt-8">
+            Free consultation • Personal approach • Exceptional results
+          </p>
         </div>
-        
-        <p className="text-gray-500 mt-8">
-          Free consultation • Personal approach • Exceptional results
-        </p>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  );
+}
 
 // Better version - add this to ALL your pages
 export default function AboutPage() {
-  const [pageLoaded, setPageLoaded] = useState(false)
-
-  useEffect(() => {
-    // Slight delay ensures smoother transition after route change
-    const timer = setTimeout(() => {
-      setPageLoaded(true)
-    }, 100)
-    
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out`}>
       <AboutHero />
       <MissionSection />
       <ExpertiseSection />
       <StatsSection />
       <AboutCTA />
-      <Footer />
     </div>
-  )
+  );
 }
