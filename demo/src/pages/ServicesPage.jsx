@@ -19,7 +19,9 @@ import {
   Rocket,
   Shield
 } from "lucide-react"
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
 
 // Animation variants
@@ -103,6 +105,7 @@ const ServicesHero = () => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+            onClick={() => navigate('/showcase', { state: { scrollToTop: true } })}
           >
             View Our Work
             <ArrowRight className="ml-2 w-5 h-5" />
@@ -323,6 +326,7 @@ const ServicesCTA = () => (
 
 export default function ServicesPage() {
   const [pageLoaded, setPageLoaded] = useState(false)
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Slight delay ensures smoother transition after route change

@@ -452,7 +452,7 @@ const PortfolioCTA = () => (
 )
 
 // Main Portfolio Page Component
-export default function PortfolioPage() {
+export default function ShowcasePage() {
   const location = useLocation();
   const [pageLoaded, setPageLoaded] = useState(false)
 
@@ -464,14 +464,13 @@ export default function PortfolioPage() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Ensure the page scrolls to the top on navigation
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    if (location.state?.scrollToTop) {
-      window.scrollTo(0, 0);
-    }
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (

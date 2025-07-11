@@ -41,6 +41,11 @@ const items = [
     icon: Phone,
   },
   {
+    title: "Showcase",
+    url: "/showcase",
+    icon: Briefcase,
+  },
+  {
     title: "Settings",
     url: "#",
     icon: Settings,

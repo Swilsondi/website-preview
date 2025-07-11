@@ -15,7 +15,7 @@ const PricingPage = lazy(() => import('./pages/PricingPage'))
 const AboutPage = lazy(() => import('./pages/AboutPages'))
 const ContactPage = lazy(() => import('./pages/ContactPages'))
 const CheckoutPage = lazy(() => import('./pages/CheckoutPage'))
-const PortfolioPage = lazy(() => import('./pages/PortfolioPage'))
+const ShowcasePage = lazy(() => import("./pages/PortfolioPage"));
 
 // Loading component
 const PageLoader = () => (
@@ -65,7 +65,7 @@ function App() {
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/checkout" element={<CheckoutPage />} />
-                        <Route path="/portfolio" element={<PortfolioPage />} />
+                        <Route path="/showcase" element={<ShowcasePage />} /> {/* Updated route */}
                         <Route path="*" element={<HomePage />} />
                       </Routes>
                     </Suspense>

@@ -788,7 +788,7 @@ const PricingCTA = () => {
               size="lg" 
               variant="outline"
               className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
-              onClick={() => navigate('/portfolio', { state: { scrollToTop: true } })}
+              onClick={() => navigate('/showcase', { state: { scrollToTop: true } })}
             >
               View Our Work
               <Globe className="ml-3 w-6 h-6" />
@@ -827,6 +827,11 @@ export default function PricingPage() {
     
     return () => clearTimeout(timer)
   }, [])
+
+  // Ensure the page scrolls to the top on navigation
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>

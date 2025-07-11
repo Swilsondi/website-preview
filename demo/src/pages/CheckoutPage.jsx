@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -23,7 +22,7 @@ import Footer from "@/components/Footer"
 const CheckoutHero = () => (
   <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden">
     <div className="absolute inset-0">
-      <motion.div
+      <div
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.03, 0.06, 0.03],
@@ -38,7 +37,7 @@ const CheckoutHero = () => (
     </div>
 
     <div className="relative text-center max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
-      <motion.div
+      <div
         initial={{ opacity: 0, scale: 0.8, y: -20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: "backOut" }}
@@ -47,9 +46,9 @@ const CheckoutHero = () => (
         <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-green-500/20 border-green-400 text-green-200 mb-6 backdrop-blur-sm">
           🔒 Secure Checkout • SSL Protected
         </Badge>
-      </motion.div>
+      </div>
 
-      <motion.h1
+      <div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -57,16 +56,16 @@ const CheckoutHero = () => (
       >
         Complete Your
         <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Order</span>
-      </motion.h1>
+      </div>
 
-      <motion.p
+      <div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
         className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
       >
         You're just a few steps away from transforming your digital presence. Secure your spot with a 50% deposit.
-      </motion.p>
+      </div>
     </div>
   </section>
 )
@@ -221,7 +220,7 @@ const CartSection = ({ selectedPlan, cart }) => {
   return (
     <section className="py-20 bg-gray-800">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-        <motion.div
+        <div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -235,14 +234,14 @@ const CartSection = ({ selectedPlan, cart }) => {
           <p className="text-xl text-gray-400">
             Add premium services to maximize your website's impact
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Add-ons Grid */}
           <div className="lg:col-span-2">
             <div className="grid md:grid-cols-2 gap-6">
               {addOns.map((addon, index) => (
-                <motion.div
+                <div
                   key={addon.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -299,7 +298,7 @@ const CartSection = ({ selectedPlan, cart }) => {
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -397,7 +396,7 @@ const CartSection = ({ selectedPlan, cart }) => {
 const CalendlySection = () => (
   <section className="py-20 bg-gradient-to-br from-purple-900 to-blue-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-      <motion.div
+      <div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -437,7 +436,7 @@ const CalendlySection = () => (
             <Calendar className="ml-3 w-5 h-5" />
           </Button>
         </Card>
-      </motion.div>
+      </div>
     </div>
   </section>
 )
@@ -454,6 +453,11 @@ export default function CheckoutPage() {
     }, 100);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  // Ensure the page scrolls to the top on navigation
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   const handleQuestionsComplete = (answers) => {

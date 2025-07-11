@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { useEffect, useState } from "react"
 import Footer from "@/components/Footer"
+import { useNavigate } from 'react-router-dom';
 
 // Optimized animation variants - GPU accelerated
 const fadeInUp = {
@@ -166,6 +167,7 @@ const HeroSection = () => (
               size="lg" 
               variant="outline" 
               className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+              onClick={() => navigate('/showcase', { state: { scrollToTop: true } })}
             >
               View Our Work
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -351,6 +353,7 @@ const CTASection = () => (
 // Better version - add this to ALL your pages
 export default function HomePage() {
   const [pageLoaded, setPageLoaded] = useState(false)
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Slight delay ensures smoother transition after route change
@@ -361,18 +364,17 @@ export default function HomePage() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Ensure the page scrolls to the top on navigation
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <HeroSection />
       <ServicesSection />
       <SocialProofSection />
       <CTASection />
-      <Button
-        onClick={() => console.log('Exploring features...')}
-        className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg"
-      >
-        Explore Features
-      </Button>
       <Footer />
     </div>
   )
