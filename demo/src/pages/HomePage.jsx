@@ -17,6 +17,7 @@ import {
   Users
 } from "lucide-react"
 import { useEffect, useState } from "react"
+import Footer from "@/components/Footer"
 
 // Optimized animation variants - GPU accelerated
 const fadeInUp = {
@@ -131,7 +132,7 @@ const HeroSection = () => (
           transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
           className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
         >
-          <span className="text-blue-400 font-semibold">TechMotiveSupreme</span> creates 
+          <span className="text-blue-400 font-semibold">Tech Motive Supreme</span> creates 
           <span className="text-purple-400 font-semibold"> high-performing websites </span> 
           for creators, brands, and entrepreneurs who are ready to 
           <span className="text-green-400 font-semibold"> dominate their market.</span>
@@ -205,7 +206,7 @@ const HeroSection = () => (
   </section>
 )
 
-// Simplified services section - FIXED
+// Simplified services section 
 const ServicesSection = () => {
   const services = [
     {
@@ -366,6 +367,13 @@ export default function HomePage() {
       <ServicesSection />
       <SocialProofSection />
       <CTASection />
+      <Button
+        onClick={() => console.log('Exploring features...')}
+        className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg"
+      >
+        Explore Features
+      </Button>
+      <Footer />
     </div>
   )
 }

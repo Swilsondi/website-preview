@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -21,32 +20,13 @@ import {
   ChevronDown
 } from "lucide-react"
 import { useState, useEffect } from 'react'
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { 
-    opacity: 1, 
-    y: 0,
-    transition: { 
-      duration: 0.6, 
-      ease: [0.25, 0.46, 0.45, 0.94]
-    }
-  }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
+import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
+/* eslint-disable no-unused-vars */
 // Custom Select Component
 const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [selected, setSelected] = useState(defaultValue || options[0])
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(defaultValue || options[0]);
 
   return (
     <div className="relative">
@@ -57,26 +37,26 @@ const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white text-left flex items-center justify-between hover:border-indigo-500 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200"
+          className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white text-left flex items-center justify-between hover:border-indigo-500 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200"
         >
           <span>{selected}</span>
           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
-        
+
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 right-0 mt-1 bg-gray-700 border border-gray-600 rounded-lg shadow-xl z-10 overflow-hidden"
+            className="absolute top-full left-0 right-0 mt-1 bg-gray-900 border border-gray-600 rounded-lg shadow-xl z-10 overflow-hidden"
           >
             {options.map((option, index) => (
               <button
                 key={index}
                 type="button"
                 onClick={() => {
-                  setSelected(option)
-                  setIsOpen(false)
+                  setSelected(option);
+                  setIsOpen(false);
                 }}
                 className="w-full px-4 py-3 text-left text-white hover:bg-gray-600 transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg"
               >
@@ -87,7 +67,7 @@ const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 // Hero Section - same as before
@@ -191,58 +171,20 @@ const ContactForm = () => {
     projectType: '',
     budget: '',
     message: ''
-  })
-  const [errors, setErrors] = useState({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null)
+  });
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
-      [field]: sanitizeInput(value)
-    }))
-    
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors(prev => ({
-        ...prev,
-        [field]: ''
-      }))
-    }
-  }
+      [field]: value
+    }));
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    const validation = validateForm(formData)
-    
-    if (!validation.isValid) {
-      setErrors(validation.errors)
-      setIsSubmitting(false)
-      return
-    }
-    
-    try {
-      // Simulate API call - replace with actual endpoint
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      setSubmitStatus('success')
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        projectType: '',
-        budget: '',
-        message: ''
-      })
-    } catch (error) {
-      console.error('Form submission error:', error)
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Validation logic here
+  };
 
   return (
     <Card className="bg-gray-800/50 border-gray-700 p-8 backdrop-blur-sm">
@@ -253,19 +195,7 @@ const ContactForm = () => {
         <p className="text-gray-400 mb-8">
           Tell us about your project and we'll get back to you within 24 hours.
         </p>
-        
-        {submitStatus === 'success' && (
-          <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
-            <p className="text-green-400 font-medium">Message sent successfully! We'll be in touch soon.</p>
-          </div>
-        )}
-        
-        {submitStatus === 'error' && (
-          <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
-            <p className="text-red-400 font-medium">Failed to send message. Please try again.</p>
-          </div>
-        )}
-        
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div>
@@ -276,10 +206,9 @@ const ContactForm = () => {
                 placeholder="John" 
                 value={formData.firstName}
                 onChange={(e) => handleInputChange('firstName', e.target.value)}
-                className={`bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200 ${errors.firstName ? 'border-red-500' : ''}`}
+                className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200"
                 required
               />
-              {errors.firstName && <p className="text-red-400 text-sm mt-1">{errors.firstName}</p>}
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -289,13 +218,12 @@ const ContactForm = () => {
                 placeholder="Doe" 
                 value={formData.lastName}
                 onChange={(e) => handleInputChange('lastName', e.target.value)}
-                className={`bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200 ${errors.lastName ? 'border-red-500' : ''}`}
+                className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200"
                 required
               />
-              {errors.lastName && <p className="text-red-400 text-sm mt-1">{errors.lastName}</p>}
             </div>
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Email *
@@ -305,41 +233,50 @@ const ContactForm = () => {
               placeholder="john@example.com" 
               value={formData.email}
               onChange={(e) => handleInputChange('email', e.target.value)}
-              className={`bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200 ${errors.email ? 'border-red-500' : ''}`}
+              className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200"
               required
             />
-            {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
           </div>
-          
-          <CustomSelect
-            label="Project Type *"
-            options={[
-              "Website Development",
-              "Brand Design",
-              "Mobile App",
-              "E-commerce Platform",
-              "Full Digital Package",
-              "Other"
-            ]}
-            value={formData.projectType}
-            onChange={(value) => handleInputChange('projectType', value)}
-            error={errors.projectType}
-          />
-          
-          <CustomSelect
-            label="Budget Range *"
-            options={[
-              "$2,000 - $5,000",
-              "$5,000 - $10,000",
-              "$10,000 - $25,000",
-              "$25,000 - $50,000",
-              "$50,000+"
-            ]}
-            value={formData.budget}
-            onChange={(value) => handleInputChange('budget', value)}
-            error={errors.budget}
-          />
-          
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Project Type *
+            </label>
+            <select
+              value={formData.projectType}
+              onChange={(e) => handleInputChange('projectType', e.target.value)}
+              className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200"
+              required
+            >
+              <option value="">Select a project type</option>
+              <option value="Website Development">Website Development</option>
+              <option value="Brand Design">Brand Design</option>
+              <option value="Mobile App">Mobile App</option>
+              <option value="E-commerce Platform">E-commerce Platform</option>
+              <option value="Full Digital Package">Full Digital Package</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Budget Range *
+            </label>
+            <select
+              value={formData.budget}
+              onChange={(e) => handleInputChange('budget', e.target.value)}
+              className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200"
+              required
+            >
+              <option value="">Select a budget range</option>
+              <option value="$2,000 - $5,000">$2,000 - $5,000</option>
+              <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+              <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+              <option value="$25,000 - $50,000">$25,000 - $50,000</option>
+              <option value="$50,000+">$50,000+</option>
+            </select>
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Project Details *
@@ -349,35 +286,23 @@ const ContactForm = () => {
               rows={5}
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
-              className={`bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 rounded-lg transition-all duration-200 resize-none ${errors.message ? 'border-red-500' : ''}`}
+              className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 rounded-lg transition-all duration-200 resize-none"
               required
             />
-            {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
           </div>
-          
+
           <Button 
             type="submit"
             size="lg" 
-            disabled={isSubmitting}
-            className="w-full h-14 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl transition-all duration-300 rounded-lg"
           >
-            {isSubmitting ? (
-              <>
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                Sending...
-              </>
-            ) : (
-              <>
-                Send Message
-                <Send className="ml-2 w-5 h-5" />
-              </>
-            )}
+            Send Message
           </Button>
         </form>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 // Contact Section - replaced with updated form
 const ContactSection = () => (
@@ -583,21 +508,26 @@ const ContactCTA = () => (
 )
 
 export default function ContactPage() {
-  const [pageLoaded, setPageLoaded] = useState(false)
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setPageLoaded(true)
-    }, 100)
-    return () => clearTimeout(timer)
-  }, [])
+      setPageLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div
+      className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${
+        pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}
+    >
       <ContactHero />
       <ContactSection />
       <ContactFAQ />
       <ContactCTA />
+      <Footer />
     </div>
-  )
+  );
 }

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -21,33 +20,13 @@ import {
   Palette
 } from "lucide-react"
 import { useState, useEffect } from 'react'
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { 
-    opacity: 1, 
-    y: 0,
-    transition: { 
-      duration: 0.6, 
-      ease: [0.25, 0.46, 0.45, 0.94]
-    }
-  }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
+import Footer from "@/components/Footer"
 
 // Hero Section - FIXED
 const AboutHero = () => (
   <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-emerald-900 to-blue-900 overflow-hidden">
     <div className="absolute inset-0">
-      <motion.div
+      <div
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.04, 0.08, 0.04],
@@ -59,7 +38,7 @@ const AboutHero = () => (
         }}
         className="absolute top-1/4 left-1/3 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"
       />
-      <motion.div
+      <div
         animate={{
           scale: [1.2, 1, 1.2],
           opacity: [0.02, 0.06, 0.02],
@@ -75,7 +54,7 @@ const AboutHero = () => (
 
     <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-5xl mx-auto">
-        <motion.div
+        <div
           initial={{ opacity: 0, scale: 0.8, y: -20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
@@ -84,9 +63,9 @@ const AboutHero = () => (
           <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-emerald-500/20 border-emerald-400 text-emerald-200 mb-8 backdrop-blur-sm">
             🌟 Our Story • Built for Excellence
           </Badge>
-        </motion.div>
+        </div>
 
-        <motion.h1
+        <h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -95,9 +74,9 @@ const AboutHero = () => (
           Crafting Digital 
           <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"> Excellence </span>
           Since Day One
-        </motion.h1>
+        </h1>
 
-        <motion.p
+        <p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -106,9 +85,9 @@ const AboutHero = () => (
           We're not just another web agency. We're 
           <span className="text-emerald-400 font-semibold"> digital architects </span>
           who turn ambitious visions into reality through cutting-edge technology and strategic thinking.
-        </motion.p>
+        </p>
 
-        <motion.div
+        <div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
@@ -120,7 +99,7 @@ const AboutHero = () => (
             Our Journey
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
-        </motion.div>
+        </div>
       </div>
     </div>
   </section>
@@ -130,7 +109,7 @@ const AboutHero = () => (
 const MissionSection = () => (
   <section className="py-24 bg-gray-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-      <motion.div
+      <div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -144,7 +123,7 @@ const MissionSection = () => (
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
           Everything we do is guided by these fundamental principles that drive our success.
         </p>
-      </motion.div>
+      </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[
@@ -185,7 +164,7 @@ const MissionSection = () => (
             accent: "from-green-500 to-emerald-500"
           }
         ].map((value, index) => (
-          <motion.div
+          <div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -209,7 +188,7 @@ const MissionSection = () => (
                 </p>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
@@ -220,7 +199,7 @@ const MissionSection = () => (
 const ExpertiseSection = () => (
   <section className="py-20 bg-gradient-to-r from-emerald-900 to-blue-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
-      <motion.div
+      <div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -234,7 +213,7 @@ const ExpertiseSection = () => (
         <p className="text-xl text-emerald-200 max-w-3xl mx-auto">
           Our team combines technical mastery with creative vision to deliver exceptional results.
         </p>
-      </motion.div>
+      </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {[
@@ -263,7 +242,7 @@ const ExpertiseSection = () => (
             accent: "from-orange-400 to-red-400"
           }
         ].map((expertise, index) => (
-          <motion.div
+          <div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -284,7 +263,7 @@ const ExpertiseSection = () => (
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
@@ -295,7 +274,7 @@ const ExpertiseSection = () => (
 const StatsSection = () => (
   <section className="py-20 bg-gray-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
-      <motion.div
+      <div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -309,7 +288,7 @@ const StatsSection = () => (
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
           Numbers that speak to our commitment to excellence and client success.
         </p>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         {[
@@ -318,7 +297,7 @@ const StatsSection = () => (
           { number: "$10M+", label: "Revenue Generated", icon: TrendingUp },
           { number: "24/7", label: "Support Available", icon: Heart }
         ].map((stat, index) => (
-          <motion.div
+          <div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -336,7 +315,7 @@ const StatsSection = () => (
             <div className="text-gray-400 font-medium">
               {stat.label}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
@@ -347,7 +326,7 @@ const StatsSection = () => (
 const AboutCTA = () => (
   <section className="py-24 bg-black">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
-      <motion.div
+      <div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, ease: "backOut" }}
@@ -376,6 +355,7 @@ const AboutCTA = () => (
             size="lg" 
             variant="outline"
             className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+            onClick={() => console.log('Learning more about us...')}
           >
             Learn More
             <Lightbulb className="ml-3 w-6 h-6" />
@@ -385,7 +365,7 @@ const AboutCTA = () => (
         <p className="text-gray-500 mt-8">
           Free consultation • Personal approach • Exceptional results
         </p>
-      </motion.div>
+      </div>
     </div>
   </section>
 )
@@ -410,6 +390,7 @@ export default function AboutPage() {
       <ExpertiseSection />
       <StatsSection />
       <AboutCTA />
+      <Footer />
     </div>
   )
 }
