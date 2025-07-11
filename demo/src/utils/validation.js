@@ -9,6 +9,7 @@ export const validateName = (name) => {
 };
 
 export const sanitizeInput = (input) => {
+  if (typeof input !== "string") return "";
   return input.trim().replace(/<[^>]*>?/gm, ""); // Remove HTML tags
 };
 

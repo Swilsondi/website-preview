@@ -1,19 +1,14 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ShoppingCart } from 'lucide-react'
-import { useCart } from '@/hooks/useCart'
+import { useCart } from '@/hooks/useCart'; // Standardized import
 
 const CartButton = () => {
   const { totalItems, setIsCartOpen } = useCart()
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="relative"
-    >
+    <div className="relative">
       <Button
         variant="outline"
         size="sm"
@@ -30,7 +25,7 @@ const CartButton = () => {
           </Badge>
         )}
       </Button>
-    </motion.div>
+    </div>
   )
 }
 

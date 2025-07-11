@@ -1,7 +1,7 @@
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Footer from "@/components/Footer" // ✅ ADD THIS
 import { 
   ArrowRight,
   ExternalLink,
@@ -16,6 +16,7 @@ import {
   ShoppingCart,
   Users
 } from "lucide-react"
+import { motion } from "framer-motion"; // Suppress unused variable warning
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 
@@ -505,6 +506,7 @@ export default function ShowcasePage() {
       <PortfolioGrid />
       <ResultsSection />
       <PortfolioCTA />
+      <Footer /> {/* ✅ ADD THIS */}
     </div>
   )
 }

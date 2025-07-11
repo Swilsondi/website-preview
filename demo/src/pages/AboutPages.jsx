@@ -18,103 +18,110 @@ import {
   Shield,
   Code,
   Palette
-} from "lucide-react";
+} from "lucide-react"
 import Footer from "@/components/Footer"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react' // ✅ ENSURE THIS IS IMPORTED
+import { motion } from "framer-motion"; // Ensure motion is imported
 
-// Hero Section - FIXED
-const AboutHero = () => {
-  const navigate = useNavigate();
+// About Hero Section - FIXED
+const AboutHero = () => (
+  <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-emerald-900 to-blue-900 overflow-hidden">
+    <div className="absolute inset-0">
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.04, 0.08, 0.04],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-1/4 left-1/3 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.02, 0.06, 0.02],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500 rounded-full blur-3xl"
+      />
+    </div>
 
-  return (
-    <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-emerald-900 to-blue-900 overflow-hidden">
-      <div className="absolute inset-0">
-        <div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.04, 0.08, 0.04],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/4 left-1/3 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"
-        />
-        <div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.02, 0.06, 0.02],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500 rounded-full blur-3xl"
-        />
+    <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8">
+      <div className="text-center max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: -20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
+          className="mb-8"
+        >
+          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-emerald-500/20 border-emerald-400 text-emerald-200 mb-8 backdrop-blur-sm">
+            🚀 About TechMotiveSupreme • Digital Innovation Leaders
+          </Badge>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+        >
+          Crafting Digital 
+          <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"> Excellence </span>
+          Since Day One
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+        >
+          We're not just another web agency. We're 
+          <span className="text-emerald-400 font-semibold"> digital architects </span>
+          who turn ambitious visions into reality through cutting-edge technology and strategic thinking.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row gap-6 justify-center"
+        >
+          <Button 
+            size="lg" 
+            className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+          >
+            Our Story
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+          
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+          >
+            Meet the Team
+            <Users className="ml-2 w-5 h-5" />
+          </Button>
+        </motion.div>
       </div>
+    </div>
+  </section>
+)
 
-      <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8">
-        <div className="text-center max-w-5xl mx-auto">
-          <div
-            initial={{ opacity: 0, scale: 0.8, y: -20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-            className="mb-8"
-          >
-            <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-emerald-500/20 border-emerald-400 text-emerald-200 mb-8 backdrop-blur-sm">
-              🌟 Our Story • Built for Excellence
-            </Badge>
-          </div>
-
-          <h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
-          >
-            Crafting Digital 
-            <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"> Excellence </span>
-            Since Day One
-          </h1>
-
-          <p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-          >
-            We're not just another web agency. We're 
-            <span className="text-emerald-400 font-semibold"> digital architects </span>
-            who turn ambitious visions into reality through cutting-edge technology and strategic thinking.
-          </p>
-
-          <div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-          >
-            <Button 
-              size="lg" 
-              className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-              onClick={() => navigate('/our-journey')}
-            >
-              Our Journey
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// Mission & Values - FIXED
+// Mission/Values Section - FIXED 
 const MissionSection = () => (
   <section className="py-24 bg-gray-900">
-    <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div
+    <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -128,7 +135,7 @@ const MissionSection = () => (
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
           Everything we do is guided by these fundamental principles that drive our success.
         </p>
-      </div>
+      </motion.div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[
@@ -169,7 +176,7 @@ const MissionSection = () => (
             accent: "from-green-500 to-emerald-500"
           }
         ].map((value, index) => (
-          <div
+          <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -193,7 +200,7 @@ const MissionSection = () => (
                 </p>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -204,7 +211,7 @@ const MissionSection = () => (
 const ExpertiseSection = () => (
   <section className="py-20 bg-gradient-to-r from-emerald-900 to-blue-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -218,7 +225,7 @@ const ExpertiseSection = () => (
         <p className="text-xl text-emerald-200 max-w-3xl mx-auto">
           Our team combines technical mastery with creative vision to deliver exceptional results.
         </p>
-      </div>
+      </motion.div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {[
@@ -247,7 +254,7 @@ const ExpertiseSection = () => (
             accent: "from-orange-400 to-red-400"
           }
         ].map((expertise, index) => (
-          <div
+          <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -268,7 +275,7 @@ const ExpertiseSection = () => (
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -279,7 +286,7 @@ const ExpertiseSection = () => (
 const StatsSection = () => (
   <section className="py-20 bg-gray-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -293,7 +300,7 @@ const StatsSection = () => (
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
           Numbers that speak to our commitment to excellence and client success.
         </p>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         {[
@@ -302,25 +309,24 @@ const StatsSection = () => (
           { number: "$10M+", label: "Revenue Generated", icon: TrendingUp },
           { number: "24/7", label: "Support Available", icon: Heart }
         ].map((stat, index) => (
-          <div
+          <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.6 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.05, y: -5 }}
             className="text-center group"
           >
             <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110">
               <stat.icon className="w-8 h-8 text-white" />
             </div>
-            <div className="text-4xl lg:text-5xl font-black text-white mb-2">
+            <div className="text-4xl font-black text-white mb-2">
               {stat.number}
             </div>
-            <div className="text-gray-400 font-medium">
+            <div className="text-emerald-200">
               {stat.label}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -329,12 +335,12 @@ const StatsSection = () => (
 
 // CTA Section - FIXED
 const AboutCTA = () => {
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
+  
   return (
     <section className="py-24 bg-black">
       <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "backOut" }}
@@ -374,21 +380,35 @@ const AboutCTA = () => {
           <p className="text-gray-500 mt-8">
             Free consultation • Personal approach • Exceptional results
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
-  );
+  )
 }
 
-// Better version - add this to ALL your pages
+// Main About Page Component
 export default function AboutPage() {
+  const [pageLoaded, setPageLoaded] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageLoaded(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out`}>
+    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <AboutHero />
       <MissionSection />
       <ExpertiseSection />
       <StatsSection />
       <AboutCTA />
+      <Footer />
     </div>
-  );
+  )
 }

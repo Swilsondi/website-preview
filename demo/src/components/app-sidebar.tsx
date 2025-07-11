@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 import { DarkModeToggle } from "@/components/dark-mode-toggle"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 
 const items = [
   {
@@ -95,13 +96,13 @@ export function AppSidebar() {
                 >
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
-                      <a
-                        href={item.url}
+                      <Link
+                        to={item.url}
                         className="group transition-all duration-200 hover:bg-gray-700/80 hover:text-white text-gray-300 data-[active=true]:bg-indigo-600 data-[active=true]:text-white"
                       >
                         <item.icon className="transition-transform duration-200 group-hover:scale-110" />
                         <span className="font-medium">{item.title}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 </motion.div>

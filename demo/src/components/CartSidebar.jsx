@@ -1,42 +1,36 @@
-import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { 
-  X, 
-  ShoppingCart, 
-  Plus, 
-  Minus, 
-  ArrowRight, 
-  Trash2,
-  Package
-} from 'lucide-react'
-import { useCart } from '@/hooks/useCart'
-import { useNavigate } from 'react-router-dom'
+import React, { memo } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { X, ShoppingCart, Plus, Minus, ArrowRight, Trash2, Package } from 'lucide-react';
+import { useCart } from '@/hooks/useCart';
+import { useNavigate } from 'react-router-dom';
 
-const CartSidebar = () => {
-  const { 
-    cart, 
-    selectedPlan, 
-    isCartOpen, 
-    setIsCartOpen, 
-    addToCart, 
-    removeFromCart, 
-    clearCart, 
-    cartTotal, 
-    totalItems 
-  } = useCart()
-  
-  const navigate = useNavigate()
+const CartSidebar = memo(() => {
+  const {
+    cart,
+    selectedPlan,
+    isCartOpen,
+    setIsCartOpen,
+    addToCart,
+    removeFromCart,
+    clearCart,
+    cartTotal,
+    totalItems,
+  } = useCart();
+
+  const navigate = useNavigate();
 
   const handleCheckout = () => {
-    setIsCartOpen(false)
-    navigate('/checkout')
-  }
+    setIsCartOpen(false);
+    navigate('/checkout');
+  };
 
-  const planTotal = selectedPlan ? parseInt(selectedPlan.price.replace('$', '').replace('+', '')) : 0
-  const grandTotal = planTotal + cartTotal
+  const planTotal = selectedPlan ? parseInt(selectedPlan.price.replace('$', '').replace('+', '')) : 0;
+  const grandTotal = planTotal + cartTotal;
+
+  console.log('CartSidebar rendered. isCartOpen:', isCartOpen); // Debug log
 
   return (
     <AnimatePresence>
@@ -58,7 +52,7 @@ const CartSidebar = () => {
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed right-0 top-0 h-full w-full max-w-md bg-gray-900 border-l border-gray-700 shadow-2xl z-50 flex flex-col"
-            style={{ paddingTop: '64px' }} // Account for navbar height
+            style={{ paddingTop: '64px' }}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-700">
@@ -126,7 +120,7 @@ const CartSidebar = () => {
                             )}
                           </div>
                         </div>
-                        
+
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <Button
@@ -155,13 +149,11 @@ const CartSidebar = () => {
                   ))}
                 </div>
               ) : (
-                !selectedPlan && (
-                  <div className="text-center py-12">
-                    <ShoppingCart className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-gray-400 mb-2">Your cart is empty</h3>
-                    <p className="text-gray-500">Start by selecting a package or add-ons</p>
-                  </div>
-                )
+                <div className="text-center py-12">
+                  <ShoppingCart className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+                  <h3 className="text-lg font-medium text-gray-400 mb-2">Your cart is empty</h3>
+                  <p className="text-gray-500">Start by selecting a package or add-ons</p>
+                </div>
               )}
             </div>
 
@@ -197,7 +189,7 @@ const CartSidebar = () => {
                     Proceed to Checkout
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
-                  
+
                   {(cart.length > 0 || selectedPlan) && (
                     <Button
                       variant="outline"
@@ -215,7 +207,7 @@ const CartSidebar = () => {
         </>
       )}
     </AnimatePresence>
-  )
-}
+  );
+});
 
-export default CartSidebar
+export default CartSidebar;

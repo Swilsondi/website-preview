@@ -20,9 +20,10 @@ import {
   ChevronDown
 } from "lucide-react"
 import { useState, useEffect } from 'react'
-import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
-/* eslint-disable no-unused-vars */
+import { sanitizeInput, validateForm } from "@/utils/validation"
+import { motion } from "framer-motion"; // Ensure motion is imported
+
 // Custom Select Component
 const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -171,20 +172,58 @@ const ContactForm = () => {
     projectType: '',
     budget: '',
     message: ''
-  });
-  const [errors, setErrors] = useState({});
+  })
+  const [errors, setErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
-      [field]: value
-    }));
-  };
+      [field]: sanitizeInput(value)
+    }))
+    
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: ''
+      }))
+    }
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Validation logic here
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    const validation = validateForm(formData)
+    
+    if (!validation.isValid) {
+      setErrors(validation.errors)
+      setIsSubmitting(false)
+      return
+    }
+    
+    try {
+      // Simulate API call - replace with actual endpoint
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      setSubmitStatus('success')
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        projectType: '',
+        budget: '',
+        message: ''
+      })
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <Card className="bg-gray-800/50 border-gray-700 p-8 backdrop-blur-sm">
@@ -209,6 +248,11 @@ const ContactForm = () => {
                 className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200"
                 required
               />
+              {errors.firstName && (
+                <p className="mt-2 text-sm text-red-400">
+                  {errors.firstName}
+                </p>
+              )}
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -221,6 +265,11 @@ const ContactForm = () => {
                 className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200"
                 required
               />
+              {errors.lastName && (
+                <p className="mt-2 text-sm text-red-400">
+                  {errors.lastName}
+                </p>
+              )}
             </div>
           </div>
 
@@ -236,6 +285,11 @@ const ContactForm = () => {
               className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 h-12 rounded-lg transition-all duration-200"
               required
             />
+            {errors.email && (
+              <p className="mt-2 text-sm text-red-400">
+                {errors.email}
+              </p>
+            )}
           </div>
 
           <div>
@@ -256,6 +310,11 @@ const ContactForm = () => {
               <option value="Full Digital Package">Full Digital Package</option>
               <option value="Other">Other</option>
             </select>
+            {errors.projectType && (
+              <p className="mt-2 text-sm text-red-400">
+                {errors.projectType}
+              </p>
+            )}
           </div>
 
           <div>
@@ -275,6 +334,11 @@ const ContactForm = () => {
               <option value="$25,000 - $50,000">$25,000 - $50,000</option>
               <option value="$50,000+">$50,000+</option>
             </select>
+            {errors.budget && (
+              <p className="mt-2 text-sm text-red-400">
+                {errors.budget}
+              </p>
+            )}
           </div>
 
           <div>
@@ -289,15 +353,32 @@ const ContactForm = () => {
               className="bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 rounded-lg transition-all duration-200 resize-none"
               required
             />
+            {errors.message && (
+              <p className="mt-2 text-sm text-red-400">
+                {errors.message}
+              </p>
+            )}
           </div>
 
           <Button 
             type="submit"
             size="lg" 
             className="w-full h-14 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl transition-all duration-300 rounded-lg"
+            disabled={isSubmitting}
           >
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </Button>
+
+          {submitStatus === 'success' && (
+            <p className="mt-4 text-sm text-green-400">
+              Message sent successfully! We will get back to you soon.
+            </p>
+          )}
+          {submitStatus === 'error' && (
+            <p className="mt-4 text-sm text-red-400">
+              Oops! Something went wrong. Please try again later.
+            </p>
+          )}
         </form>
       </CardContent>
     </Card>

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -19,6 +18,7 @@ import {
 import { useEffect, useState, useLayoutEffect } from "react"
 import Footer from "@/components/Footer"
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion"; // Add this import for motion
 
 // Optimized animation variants - GPU accelerated
 const fadeInUp = {

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useCart } from "@/hooks/useCart"
+import { useCart } from '@/hooks/useCart'; // Standardized import
 import { 
   ArrowRight,
   CheckCircle,

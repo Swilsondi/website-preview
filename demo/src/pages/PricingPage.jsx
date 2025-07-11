@@ -21,10 +21,10 @@ import {
   Minus,
   ShoppingCart
 } from "lucide-react"
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // Suppress unused variable warning
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useCart } from "@/hooks/useCart"
+import { useCart } from '@/hooks/useCart'; // Standardized import
 import Footer from "@/components/Footer"
 
 // Animation variants
