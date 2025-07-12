@@ -25,7 +25,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react' // ✅ ENSURE THIS IS IMPORTED
 
 // About Hero Section - FIXED
-const AboutHero = () => (
+const AboutHero = ({ navigate }) => (
   <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-emerald-900 to-blue-900 overflow-hidden pt-12 md:pt-16">
     <div className="absolute inset-0">
       <motion.div
@@ -98,6 +98,7 @@ const AboutHero = () => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+            onClick={() => navigate('/our-story')}
           >
             Our Story
             <ArrowRight className="ml-2 w-5 h-5" />
@@ -107,6 +108,7 @@ const AboutHero = () => (
             size="lg" 
             variant="outline"
             className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+            onClick={() => navigate('/meet-the-team')}
           >
             Meet the Team
             <Users className="ml-2 w-5 h-5" />
@@ -334,9 +336,7 @@ const StatsSection = () => (
 )
 
 // CTA Section - FIXED
-const AboutCTA = () => {
-  const navigate = useNavigate()
-  
+const AboutCTA = ({ navigate }) => {
   return (
     <section className="py-24 bg-black">
       <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -389,6 +389,7 @@ const AboutCTA = () => {
 // Main About Page Component
 export default function AboutPage() {
   const [pageLoaded, setPageLoaded] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -403,11 +404,11 @@ export default function AboutPage() {
 
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      <AboutHero />
+      <AboutHero navigate={navigate} />
       <MissionSection />
       <ExpertiseSection />
       <StatsSection />
-      <AboutCTA />
+      <AboutCTA navigate={navigate} />
       <Footer />
     </div>
   )

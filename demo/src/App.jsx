@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import ErrorBoundary from "@/components/ErrorBoundary"
 import { CartProvider } from "@/hooks/useCart" 
@@ -11,6 +11,7 @@ import ScrollToTop from '@/components/ScrollToTop'
 import ResourceHints from '@/components/ResourceHints'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LazyMotion } from '@/components/LazyMotion'
+import SidebarToggle from '@/components/SidebarToggle'
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'))
@@ -161,7 +162,8 @@ function App() {
                     <AppSidebar />
                     <SidebarInset className="flex-1 bg-gray-900 min-h-screen">
                       <TopNavbar isOnline={isOnline} />
-                      <SidebarTrigger className="fixed top-4 left-[calc(var(--sidebar-width)+1rem)] z-50 bg-gray-800 text-white hover:bg-gray-700 shadow-lg border border-gray-600 transition-all duration-200 group-data-[state=collapsed]/sidebar-wrapper:left-4" />
+                      {/* Custom sidebar toggle button positioned outside navbar */}
+                      <SidebarToggle />
                       
                       <main className="w-full min-h-screen bg-gray-900">
                         <Suspense fallback={<PageLoader />}>

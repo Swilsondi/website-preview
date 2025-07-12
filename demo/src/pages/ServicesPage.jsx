@@ -100,7 +100,7 @@ const ServicesHero = ({ navigate }) => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-            onClick={() => navigate('/innovation-lab')}
+            onClick={() => window.open('https://www.brandingstrategy.com', '_blank')}
           >
             Explore Branding Solutions
             <ArrowRight className="ml-2 w-5 h-5" />

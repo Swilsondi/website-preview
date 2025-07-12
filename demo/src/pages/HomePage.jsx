@@ -84,7 +84,7 @@ const SplitText = ({ children, className = "" }) => {
 // Enhanced Hero Section - FIXED
 const HeroSection = ({ handleNavigation }) => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-12 md:pt-16">
+    <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-12 md:pt-16">
       {/* Enhanced background with subtle animation */}
       <div className="absolute inset-0">
         <motion.div
@@ -113,7 +113,7 @@ const HeroSection = ({ handleNavigation }) => {
         />
       </div>
 
-      <div className="relative flex items-center justify-center min-h-screen px-4 md:px-6 lg:px-8 pt-4">
+      <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8 pt-4">
         <div className="text-center max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
@@ -139,7 +139,7 @@ const HeroSection = ({ handleNavigation }) => {
             transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
             className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
           >
-            <span className="text-blue-400 font-semibold">Tech Motive Supreme</span> creates
+            <span className="text-blue-400 font-semibold">TechMotive-Supreme</span> creates
             <span className="text-purple-400 font-semibold"> high-performing websites </span>
             for creators, brands, and entrepreneurs who are ready to
             <span className="text-green-400 font-semibold"> dominate their market.</span>

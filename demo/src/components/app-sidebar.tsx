@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 import { DarkModeToggle } from "@/components/dark-mode-toggle"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 const items = [
   {
@@ -49,9 +49,20 @@ const items = [
 ]
 
 export function AppSidebar() {
+  const location = useLocation();
+
+  // Function to handle link clicks
+  const handleLinkClick = (url: string, e: React.MouseEvent) => {
+    // If current path matches the link's URL, refresh the page
+    if (location.pathname === url) {
+      e.preventDefault();
+      window.location.reload();
+    }
+  };
+
   return (
     <Sidebar className="border-r border-gray-700 bg-gray-800/95 backdrop-blur-sm">
-      <SidebarHeader className="border-b border-gray-700">
+      <SidebarHeader className="">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -93,7 +104,9 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild>
                       <Link
                         to={item.url}
+                        onClick={(e) => handleLinkClick(item.url, e)}
                         className="group transition-all duration-200 hover:bg-gray-700/80 hover:text-white text-gray-300 data-[active=true]:bg-indigo-600 data-[active=true]:text-white"
+                        data-active={location.pathname === item.url}
                       >
                         <item.icon className="transition-transform duration-200 group-hover:scale-110" />
                         <span className="font-medium">{item.title}</span>
