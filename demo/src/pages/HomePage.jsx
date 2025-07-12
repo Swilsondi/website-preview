@@ -15,404 +15,437 @@ import {
   Briefcase,
   Users
 } from "lucide-react"
-import { useEffect, useState, useLayoutEffect } from "react"
+import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
 import Footer from "@/components/Footer"
-import { useNavigate } from 'react-router-dom';
-import usePerformance from '@/hooks/usePerformance';
+import { Link } from 'react-router-dom';
+import useScrollControl from '@/hooks/useScrollControl';
 
-// Optimized animation variants - GPU accelerated
-const fadeInUp = {
-  initial: { opacity: 0, y: 30, scale: 0.95 },
-  animate: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: { 
-      duration: 0.6, 
-      ease: [0.25, 0.46, 0.45, 0.94] // Smooth easing
-    }
-  }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-// Enhanced split text animation
-const SplitText = ({ children, className = "" }) => {
-  const words = children.split(" ")
+/**
+ * HomePage Component
+ * 
+ * This is the main landing page for the website. It serves as the primary entry point
+ * for users and showcases the key services and value propositions of the agency.
+ * 
+ * The page is structured in sections:
+ * 1. Hero Section - Eye-catching introduction with CTA
+ * 2. Services Overview - Showcases main service offerings
+ * 3. Featured Work - Portfolio highlights
+ * 4. Testimonials - Social proof from clients
+ * 5. Process - How we work with clients
+ * 6. CTA Section - Final call to action
+ * 
+ * Each section follows the standardized padding pattern:
+ * - Hero sections: pt-12 md:pt-16 (top padding)
+ * - Content containers: pt-4 (inner content padding)
+ * 
+ * Performance considerations:
+ * - Uses lazy loading for images below the fold
+ * - Implements intersection observer for animations
+ * - Optimizes animation for reduced motion preferences
+ */
+const HomePage = () => {
+  // Control scroll behavior for smooth anchor navigation
+  useScrollControl(true);
   
-  return (
-    <motion.h1 
-      className={className}
-      variants={stagger}
-      initial="initial"
-      animate="animate"
-    >
-      {words.map((word, index) => (
-        <motion.span
-          key={index}
-          className="inline-block mr-3"
-          variants={{
-            initial: { opacity: 0, y: 100, rotateX: -90 },
-            animate: { 
-              opacity: 1, 
-              y: 0, 
-              rotateX: 0,
-              transition: {
-                duration: 0.8,
-                ease: [0.25, 0.46, 0.45, 0.94],
-                delay: index * 0.1
-              }
-            }
-          }}
-          style={{ transformOrigin: "50% 50%" }}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </motion.h1>
-  )
-}
+  // Track whether animations should play based on user preferences
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+  
+  // Reference to feature section for scroll navigation
+  const featuresRef = useRef(null);
 
-
-// Enhanced Hero Section - FIXED
-const HeroSection = ({ handleNavigation }) => {
-  return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-12 md:pt-16">
-      {/* Enhanced background with subtle animation */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.05, 0.08, 0.05],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.1, 1, 1.1],
-            opacity: [0.03, 0.06, 0.03],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl"
-        />
-      </div>
-
-      <div className="relative flex items-center justify-center min-h-screen px-4 md:px-6 lg:px-8 pt-4">
-        <div className="text-center max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: -20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-            className="mb-8 pt-4"
-          >
-            <Badge
-              variant="outline"
-              className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-8 backdrop-blur-sm"
-            >
-              🚀 Premium Web Development & Digital Branding
-            </Badge>
-          </motion.div>
-
-          <SplitText className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight">
-            BUILD. LAUNCH. MONETIZE.
-          </SplitText>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
-            className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-          >
-            <span className="text-blue-400 font-semibold">Tech Motive Supreme</span> creates
-            <span className="text-purple-400 font-semibold"> high-performing websites </span>
-            for creators, brands, and entrepreneurs who are ready to
-            <span className="text-green-400 font-semibold"> dominate their market.</span>
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button
-                size="lg"
-                className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
-                onClick={() => handleNavigation("/pricing")}
-              >
-                Book Your Site Now
-                <Rocket className="ml-2 w-5 h-5" />
-              </Button>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
-                onClick={() => handleNavigation("/showcase")}
-              >
-                View Our Work
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          {/* Enhanced stats with stagger */}
-          <motion.div
-            variants={stagger}
-            initial="initial"
-            animate="animate"
-            className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
-          >
-            { [
-              {
-                number: "100+",
-                label: "Sites Launched",
-              },
-              {
-                number: "500%",
-                label: "Avg ROI Increase",
-              },
-              {
-                number: "48hrs",
-                label: "Launch Time",
-              },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ scale: 1.1, y: -5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="text-center"
-              >
-                <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// Simplified services section 
-const ServicesSection = () => {
-  const services = [
-    {
-      icon: Globe,
-      title: "High-Converting Websites",
-      description: "Lightning-fast, mobile-first websites that turn visitors into customers. Built with modern tech and optimized for conversions.",
-      features: ["Conversion Optimized", "Mobile-First", "SEO Ready"],
-      accent: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: Palette,
-      title: "Brand Identity & Design",
-      description: "Complete visual identity that makes you unforgettable. From logos to brand guidelines that command attention.",
-      features: ["Logo Design", "Brand Guidelines", "Visual Systems"],
-      accent: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: TrendingUp,
-      title: "Launch & Growth Strategy",
-      description: "We don't just build and disappear. Get a complete roadmap to launch, scale, and monetize your digital presence.",
-      features: ["Launch Strategy", "Growth Tactics", "Revenue Optimization"],
-      accent: "from-green-500 to-emerald-500"
-    }
-  ]
-
-  return (
-    <section className="py-24 bg-gray-900">
-      <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-            We Don't Just Build.
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> We Launch.</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            End-to-end solutions for creators and entrepreneurs who refuse to settle for average.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="group">
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-colors duration-200">
-                <CardContent className="p-8">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${service.accent} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-200 group-hover:scale-105`}>
-                    <service.icon className="w-8 h-8 text-white" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-200 group-hover:text-blue-400">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-gray-300 mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
-                  
-                  <ul className="space-y-3">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-gray-400">
-                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// Static social proof section - FIXED
-const SocialProofSection = () => (
-  <section className="py-20 bg-gradient-to-r from-blue-900 to-purple-900">
-    <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">
-          Trusted by Industry Leaders
-        </h2>
-        <p className="text-xl text-blue-200">
-          Join successful creators and brands who chose excellence
-        </p>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-        {[
-          { number: "150+", label: "Projects Launched", icon: Rocket },
-          { number: "98%", label: "Client Satisfaction", icon: Star },
-          { number: "$2M+", label: "Revenue Generated", icon: TrendingUp },
-          { number: "24/7", label: "Elite Support", icon: Users }
-        ].map((stat, index) => (
-          <div key={index} className="text-center group">
-            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors duration-200 group-hover:bg-white/20">
-              <stat.icon className="w-8 h-8 text-blue-300" />
-            </div>
-            <div className="text-4xl font-bold text-white mb-2">
-              {stat.number}
-            </div>
-            <div className="text-blue-200">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-)
-
-// Minimal CTA section - FIXED
-const CTASection = () => (
-  <section className="py-24 bg-black">
-    <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
-      <div className="text-center">
-        <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
-          Ready to 
-          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"> Dominate </span>
-          Your Market?
-        </h2>
-        
-        <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-          Stop settling for average. Book your consultation and let's build something extraordinary together.
-        </p>
-        
-        <Button 
-          size="lg" 
-          className="text-xl px-12 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold transition-colors duration-200"
-          onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
-        >
-          Book Your Consultation Now
-          <ArrowRight className="ml-3 w-6 h-6" />
-        </Button>
-        
-        <p className="text-gray-500 mt-6">
-          Free 30-minute strategy session • No commitment required
-        </p>
-      </div>
-    </div>
-  </section>
-)
-
-// Better version - add this to ALL your pages
-export default function HomePage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
-  const navigate = useNavigate();
-
-  const disableAnimations = false; // Set to false to enable animations
-
-  usePerformance('HomePage');
-
+  // Check user's motion preferences
   useEffect(() => {
-    // Slight delay ensures smoother transition after route change
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [])
-
-  useLayoutEffect(() => {
-    console.log("Scroll position before reset:", window.scrollY);
-
-    // Reset scroll position for primary containers
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setShouldAnimate(!prefersReducedMotion);
   }, []);
 
-  const handleNavigation = (path) => {
-    navigate(path);
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }, 100); // Delay to ensure navigation completes
+  // Animation variants for staggered animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+        duration: 0.6
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 }
+    }
   };
 
   return (
-    <div
-      className={`min-h-screen bg-gray-900 w-full overflow-auto transition-all duration-700 ease-out ${
-        pageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      } ${disableAnimations ? "transition-none" : ""}`}
-    >
-      <HeroSection handleNavigation={handleNavigation} />
-      <ServicesSection />
-      <SocialProofSection />
-      <CTASection />
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* 
+        Hero Section
+        This section includes:
+        - Main headline and subheading
+        - CTA buttons
+        - Background animation
+        
+        Note the standard padding pattern:
+        - pt-12 md:pt-16 for top padding (adjusts for mobile/desktop)
+        - pt-4 for content container
+      */}
+      <header className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-r from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-12 md:pt-16">
+        {/* Background Elements - Animated gradient spheres */}
+        <div className="absolute inset-0 overflow-hidden">
+          {shouldAnimate && (
+            <>
+              <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-5xl opacity-[0.15] animate-blob"></div>
+              <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-5xl opacity-[0.15] animate-blob animation-delay-2000"></div>
+              <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-5xl opacity-[0.15] animate-blob animation-delay-4000"></div>
+            </>
+          )}
+        </div>
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+          <motion.div 
+            className="text-center max-w-4xl mx-auto"
+            initial={shouldAnimate ? "hidden" : "visible"}
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.h1 
+              className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight"
+              variants={itemVariants}
+            >
+              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">Build. Launch. Monetize.</span>
+            </motion.h1>
+            
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-300 mb-10"
+              variants={itemVariants}
+            >
+              We create stunning websites that drive business growth and deliver exceptional user experiences.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              variants={itemVariants}
+            >
+              <Link 
+                to="/pricing" 
+                className="px-8 py-4 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors shadow-lg"
+              >
+                View Pricing
+              </Link>
+              
+              <Link 
+                to="/portfolio" 
+                className="px-8 py-4 bg-transparent border border-white text-white font-medium rounded-lg hover:bg-white/10 transition-colors"
+              >
+                See Our Work
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </header>
+
+      {/* 
+        Services Section 
+        This section showcases the key service offerings with:
+        - Section headline
+        - Service cards with icons
+        - "Learn more" links for each service
+      */}
+      <section className="py-20 bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-4">Our Services</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              We offer comprehensive digital solutions tailored to your specific needs and goals.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Service 1: Web Design */}
+            <motion.div 
+              className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="w-14 h-14 bg-purple-600/20 flex items-center justify-center rounded-lg mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Web Design</h3>
+              <p className="text-gray-400 mb-6">
+                Stunning, responsive websites that look great on any device and engage your audience effectively.
+              </p>
+              <Link to="/services#web-design" className="text-purple-400 hover:text-purple-300 inline-flex items-center font-medium">
+                Learn more 
+                <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </motion.div>
+
+            {/* Service 2: Development */}
+            <motion.div 
+              className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="w-14 h-14 bg-blue-600/20 flex items-center justify-center rounded-lg mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Web Development</h3>
+              <p className="text-gray-400 mb-6">
+                Fast, secure, and scalable websites built with modern technologies and best practices.
+              </p>
+              <Link to="/services#development" className="text-blue-400 hover:text-blue-300 inline-flex items-center font-medium">
+                Learn more 
+                <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </motion.div>
+
+            {/* Service 3: E-commerce */}
+            <motion.div 
+              className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="w-14 h-14 bg-pink-600/20 flex items-center justify-center rounded-lg mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-3">E-Commerce</h3>
+              <p className="text-gray-400 mb-6">
+                Custom online stores that drive sales, with seamless payment processing and inventory management.
+              </p>
+              <Link to="/services#ecommerce" className="text-pink-400 hover:text-pink-300 inline-flex items-center font-medium">
+                Learn more 
+                <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        Featured Work Section
+        This section highlights portfolio pieces:
+        - Section headline
+        - Featured projects with images
+        - CTA to full portfolio
+      */}
+      <section className="py-20 bg-gray-800" ref={featuresRef}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-4">Featured Work</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Check out some of our recent projects and see the results we deliver.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* This would typically be mapped from a data array */}
+            {[1, 2, 3].map((item) => (
+              <motion.div 
+                key={item}
+                className="relative group overflow-hidden rounded-xl"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: item * 0.1 }}
+              >
+                <img 
+                  src={`https://source.unsplash.com/random/600x400?website,${item}`} 
+                  alt={`Project ${item}`} 
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <h3 className="text-xl font-bold mb-2">Project Title {item}</h3>
+                  <p className="text-gray-300 mb-4">Brief description of the project and the results achieved.</p>
+                  <Link to={`/portfolio/project-${item}`} className="text-white font-medium inline-flex items-center">
+                    View Project
+                    <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Link 
+              to="/portfolio" 
+              className="inline-flex items-center px-6 py-3 border border-white text-white font-medium rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+            >
+              View Full Portfolio
+              <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 
+        Testimonials Section
+        This section provides social proof:
+        - Section headline
+        - Client testimonials with ratings
+        - Client logos
+      */}
+      <section className="py-20 bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-4">What Our Clients Say</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Don't just take our word for it - hear from some of our satisfied clients.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* This would typically be mapped from a testimonials array */}
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "CEO, TechStart Inc",
+                quote: "Working with this team was an absolute pleasure. They delivered our website on time and exceeded all expectations.",
+                rating: 5
+              },
+              {
+                name: "Michael Chen",
+                role: "Marketing Director, GrowFast",
+                quote: "Our e-commerce sales have increased by 200% since launching our new website. The team was professional and responsive.",
+                rating: 5
+              },
+              {
+                name: "Emma Rodriguez",
+                role: "Founder, Design Studio",
+                quote: "The attention to detail and creative solutions provided by the team helped us stand out in a competitive market.",
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <motion.div 
+                key={index}
+                className="bg-gray-800 p-6 rounded-xl shadow-lg"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="flex mb-4">
+                  {/* Star rating */}
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                
+                <blockquote className="text-gray-300 italic mb-6">"{testimonial.quote}"</blockquote>
+                
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+                    {testimonial.name.charAt(0)}
+                  </div>
+                  <div className="ml-3">
+                    <p className="font-medium text-white">{testimonial.name}</p>
+                    <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        CTA Section
+        Final call to action to convert visitors:
+        - Eye-catching headline
+        - Subheading with value proposition
+        - Primary and secondary CTAs
+      */}
+      <section className="py-20 bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-600">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-4 text-white">Ready to Transform Your Online Presence?</h2>
+            <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-8">
+              Let's work together to create a stunning website that drives results for your business.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                to="/start-project" 
+                className="px-8 py-4 bg-white text-purple-600 font-medium rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
+              >
+                Start Your Project
+              </Link>
+              
+              <Link 
+                to="/contact?type=consultation" 
+                className="px-8 py-4 bg-transparent border border-white text-white font-medium rounded-lg hover:bg-white/10 transition-colors"
+              >
+                Book a Free Consultation
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer Component */}
       <Footer />
     </div>
   );
-}
+};
+
+export default HomePage;
