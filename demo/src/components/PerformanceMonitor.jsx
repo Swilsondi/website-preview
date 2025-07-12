@@ -12,6 +12,19 @@ import { usePerformance } from '@/hooks/usePerformance';
  * - Time to Interactive (TTI)
  * - Memory usage
  * - Frame rate
+ * 
+ * Implementation details:
+ * - Uses PerformanceObserver to track Core Web Vitals
+ * - Reports metrics to console and/or analytics service
+ * - No visual rendering - purely functional component
+ * - Connects with usePerformance hook for broader usage
+ * 
+ * Performance Budget Targets:
+ * - First Contentful Paint (FCP): < 1.8s
+ * - Largest Contentful Paint (LCP): < 2.5s
+ * - First Input Delay (FID): < 100ms
+ * - Cumulative Layout Shift (CLS): < 0.1
+ * - Time to Interactive (TTI): < 3.8s
  */
 export function PerformanceMonitor({ children }) {
   const [metrics, setMetrics] = useState({
@@ -70,43 +83,90 @@ export function PerformanceMonitor({ children }) {
     
     // Setup Core Web Vitals monitoring
     if ('PerformanceObserver' in window) {
-      // First Contentful Paint
-      const fcpObserver = new PerformanceObserver((entryList) => {
-        const entries = entryList.getEntries();
-        if (entries.length > 0) {
-          const fcp = entries[0].startTime;
-          console.log(`FCP: ${fcp}ms`);
-          setMetrics(prev => ({ ...prev, fcp }));
+      /**
+       * Report a performance metric to analytics and/or console
+       * 
+       * @param {string} metricName - The name of the metric
+       * @param {number} value - The metric value
+       * @param {string} unit - The unit of measurement (ms, score, etc)
+       */
+      const reportMetric = (metricName, value, unit = 'ms') => {
+        console.info(`Performance: ${metricName} - ${value}${unit}`);
+        
+        // Here you would typically send to your analytics service
+        // Example: analyticsService.reportPerformance(metricName, value);
+        
+        // Check against performance budget
+        const budgets = {
+          'FCP': 1800,
+          'LCP': 2500,
+          'FID': 100,
+          'CLS': 0.1,
+          'TTI': 3800
+        };
+        
+        if (budgets[metricName] && value > budgets[metricName]) {
+          console.warn(`Performance budget exceeded: ${metricName} - ${value}${unit} (budget: ${budgets[metricName]}${unit})`);
         }
-      });
+      };
       
-      // Largest Contentful Paint
+      // Track Largest Contentful Paint (LCP)
       const lcpObserver = new PerformanceObserver((entryList) => {
         const entries = entryList.getEntries();
         const lastEntry = entries[entries.length - 1];
+        
+        // LCP may have multiple entries, we want the most recent one
         if (lastEntry) {
-          const lcp = lastEntry.startTime;
-          console.log(`LCP: ${lcp}ms`);
+          const lcp = Math.round(lastEntry.startTime);
+          reportMetric('LCP', lcp);
           setMetrics(prev => ({ ...prev, lcp }));
         }
       });
       
-      // Layout Shift (CLS)
+      // Track First Input Delay (FID)
+      const fidObserver = new PerformanceObserver((entryList) => {
+        const entries = entryList.getEntries();
+        entries.forEach(entry => {
+          const fid = Math.round(entry.processingStart - entry.startTime);
+          reportMetric('FID', fid);
+        });
+      });
+      
+      // Track Cumulative Layout Shift (CLS)
+      let clsValue = 0;
+      let clsEntries = [];
+      
       const clsObserver = new PerformanceObserver((entryList) => {
-        let clsValue = 0;
-        for (const entry of entryList.getEntries()) {
+        const entries = entryList.getEntries();
+        
+        entries.forEach(entry => {
+          // Only count layout shifts without recent user input
           if (!entry.hadRecentInput) {
             clsValue += entry.value;
+            clsEntries.push(entry);
           }
-        }
-        console.log(`CLS: ${clsValue}`);
+        });
+        
+        reportMetric('CLS', clsValue.toFixed(4), '');
         setMetrics(prev => ({ ...prev, cls: clsValue }));
       });
       
       // Register the observers
-      fcpObserver.observe({ type: 'paint', buffered: true });
       lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
+      fidObserver.observe({ type: 'first-input', buffered: true });
       clsObserver.observe({ type: 'layout-shift', buffered: true });
+      
+      // Track First Contentful Paint (FCP)
+      const fcpObserver = new PerformanceObserver((entryList) => {
+        const entries = entryList.getEntries();
+        entries.forEach(entry => {
+          const fcp = Math.round(entry.startTime);
+          reportMetric('FCP', fcp);
+          setMetrics(prev => ({ ...prev, fcp }));
+        });
+      });
+      
+      fcpObserver.observe({ type: 'paint', buffered: true });
       
       // Frame rate monitoring (if possible)
       let frameCount = 0;
@@ -159,9 +219,10 @@ export function PerformanceMonitor({ children }) {
       
       return () => {
         // Clean up observers
-        fcpObserver.disconnect();
         lcpObserver.disconnect();
+        fidObserver.disconnect();
         clsObserver.disconnect();
+        fcpObserver.disconnect();
         
         // Clean up frame rate measurement
         cancelAnimationFrame(frameID);

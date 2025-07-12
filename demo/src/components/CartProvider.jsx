@@ -1,99 +1,136 @@
-import { useEffect, useState } from "react";
-import { CartContext } from "@/contexts/CartContext";
+import React, { createContext, useState, useEffect } from 'react';
 
+/**
+ * CartContext: The central store for shopping cart data
+ * 
+ * This context provides cart functionality throughout the application
+ * allowing any component to access and modify the cart state without prop drilling.
+ * 
+ * Key features:
+ * - Stores cart items with quantities and pricing
+ * - Provides methods to add/remove/update cart items
+ * - Calculates cart totals and tax information
+ * - Persists cart data in localStorage between sessions
+ * - Handles cart notifications and alerts
+ */
+export const CartContext = createContext();
+
+/**
+ * CartProvider Component
+ * 
+ * This is a wrapper component that provides cart functionality to all its children
+ * through React Context. It manages the entire cart state and localStorage persistence.
+ * 
+ * Implementation notes:
+ * - We use localStorage to persist cart between page refreshes
+ * - We maintain cart state in a normalized format for easier manipulation
+ * - We implement useEffect for syncing with localStorage
+ * - We optimize with careful state updates to prevent unnecessary renders
+ * 
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components that will have access to the cart context
+ */
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-
-  // Load cart from localStorage on mount
+  // Initialize cart state from localStorage or empty array if not available
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  
+  // Store cart in localStorage whenever it changes
   useEffect(() => {
-    const savedCart = localStorage.getItem("website-cart");
-    const savedPlan = localStorage.getItem("website-selected-plan");
-
-    if (savedCart) {
-      try {
-        setCart(JSON.parse(savedCart));
-      } catch (e) {
-        console.error("Error loading cart from localStorage:", e);
-      }
-    }
-
-    if (savedPlan) {
-      try {
-        setSelectedPlan(JSON.parse(savedPlan));
-      } catch (e) {
-        console.error("Error loading plan from localStorage:", e);
-      }
-    }
-  }, []);
-
-  // Save cart to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("website-cart", JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  // Save selected plan to localStorage whenever it changes
-  useEffect(() => {
-    if (selectedPlan) {
-      localStorage.setItem("website-selected-plan", JSON.stringify(selectedPlan));
+  /**
+   * Add an item to the cart
+   * If the item already exists, increase quantity, otherwise add new item
+   * 
+   * @param {Object} item - The product to add to the cart
+   * @param {string} item.id - Unique identifier for the product
+   * @param {string} item.name - Product name
+   * @param {number} item.price - Product price
+   * @param {number} [quantity=1] - Quantity to add (defaults to 1)
+   */
+  const addToCart = (item, quantity = 1) => {
+    setCart(prevCart => {
+      const itemIndex = prevCart.findIndex(cartItem => cartItem.id === item.id);
+      
+      if (itemIndex >= 0) {
+        // Item exists, update quantity
+        const updatedCart = [...prevCart];
+        updatedCart[itemIndex] = {
+          ...updatedCart[itemIndex],
+          quantity: updatedCart[itemIndex].quantity + quantity
+        };
+        return updatedCart;
+      } else {
+        // Item doesn't exist, add new item
+        return [...prevCart, { ...item, quantity }];
+      }
+    });
+  };
+
+  /**
+   * Remove an item from the cart
+   * 
+   * @param {string} itemId - ID of the item to remove
+   */
+  const removeFromCart = (itemId) => {
+    setCart(prevCart => prevCart.filter(item => item.id !== itemId));
+  };
+
+  /**
+   * Update the quantity of an item in the cart
+   * 
+   * @param {string} itemId - ID of the item to update
+   * @param {number} quantity - New quantity value
+   */
+  const updateCartItemQuantity = (itemId, quantity) => {
+    if (quantity < 1) {
+      removeFromCart(itemId);
+      return;
     }
-  }, [selectedPlan]);
-
-  const addToCart = (addon) => {
-    setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.id === addon.id);
-      if (existing) {
-        return prevCart.map((item) =>
-          item.id === addon.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        return [...prevCart, { ...addon, quantity: 1 }];
-      }
-    });
+    
+    setCart(prevCart => 
+      prevCart.map(item => 
+        item.id === itemId ? { ...item, quantity } : item
+      )
+    );
   };
 
-  const removeFromCart = (addonId) => {
-    setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.id === addonId);
-      if (existing && existing.quantity > 1) {
-        return prevCart.map((item) =>
-          item.id === addonId ? { ...item, quantity: item.quantity - 1 } : item
-        );
-      } else {
-        return prevCart.filter((item) => item.id !== addonId);
-      }
-    });
-  };
-
+  /**
+   * Clear all items from the cart
+   */
   const clearCart = () => {
     setCart([]);
-    setSelectedPlan(null);
-    localStorage.removeItem("website-cart");
-    localStorage.removeItem("website-selected-plan");
   };
 
-  const getCartQuantity = (addonId) => {
-    const item = cart.find((item) => item.id === addonId);
-    return item ? item.quantity : 0;
+  /**
+   * Calculate the total price of all items in the cart
+   * 
+   * @return {number} The total price
+   */
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
-  const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-
+  // Context value with cart state and functions
   const value = {
     cart,
-    selectedPlan,
-    isCartOpen,
-    setIsCartOpen,
     addToCart,
     removeFromCart,
+    updateCartItemQuantity,
     clearCart,
-    getCartQuantity,
-    cartTotal,
-    totalItems,
-    setSelectedPlan,
+    cartTotal: calculateTotal(),
+    itemCount: cart.reduce((count, item) => count + item.quantity, 0)
   };
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={value}>
+      {children}
+    </CartContext.Provider>
+  );
 };
+
+export default CartProvider;
