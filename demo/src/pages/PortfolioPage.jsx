@@ -454,24 +454,34 @@ const PortfolioCTA = () => (
 
 // Main Portfolio Page Component
 export default function ShowcasePage() {
-  const location = useLocation();
-  const [pageLoaded, setPageLoaded] = useState(false)
+  const [pageLoaded, setPageLoaded] = useState(false);
+  
+  // Create state to track if component is mounted
+  const [isMounted, setIsMounted] = useState(false);
+  // Only access location after the component is mounted
+  const location = isMounted ? useLocation() : null;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setPageLoaded(true)
-    }, 100)
+    // Mark component as mounted to safely use useLocation
+    setIsMounted(true);
     
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => {
+      setPageLoaded(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   // Ensure the page scrolls to the top on navigation
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Only add this effect when location is available
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (location) {
+      window.scrollTo(0, 0);
+    }
   }, [location]);
 
   return (

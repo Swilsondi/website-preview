@@ -9,8 +9,12 @@ const TopNavbar = ({ isOnline }) => {
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-white font-bold text-xl">
-              Tech Motive Supreme
+            <Link to="/" className="flex items-center">
+              <img 
+                src="/assets/2CD47992-113A-4465-8751-028D4E0B51B5.png" 
+                alt="Tech Motive Supreme Logo" 
+                className="h-10 w-auto" 
+              />
             </Link>
           </div>
           

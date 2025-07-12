@@ -5,43 +5,37 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { fileURLToPath } from "url";
 import { visualizer } from "rollup-plugin-visualizer"; // Add visualizer plugin
+import crypto from "crypto";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Properly implement crypto.hash to return a hex string that can be used with substring
+if (typeof crypto.hash !== "function") {
+  crypto.hash = function hash(algorithm, data) {
+    return crypto.createHash(algorithm).update(data).digest("hex");
+  };
+}
+
+// Apply to global scope if needed
+if (typeof global !== "undefined" && global.crypto) {
+  if (!global.crypto.hash) {
+    global.crypto.hash = function hash(algorithm, data) {
+      return crypto.createHash(algorithm).update(data).digest("hex");
+    };
+  }
+}
 
 export default defineConfig({
   plugins: [
     react(),
     visualizer({
       filename: "dist/stats.html",
-      open: true, // Automatically open the analysis in the browser
+      open: false, // Don't automatically open in browser
     }),
-    // Add a plugin to provide a mock crypto.hash function that Vite needs
-    {
-      name: "vite:crypto-polyfill",
-      resolveId(id) {
-        if (id === "node:crypto") return id;
-      },
-      load(id) {
-        if (id === "node:crypto") {
-          return `export default { 
-            hash: function(algorithm, data) { 
-              const str = typeof data === 'string' ? data : JSON.stringify(data);
-              let hash = 0;
-              for (let i = 0; i < str.length; i++) {
-                hash = ((hash << 5) - hash) + str.charCodeAt(i);
-                hash |= 0;
-              }
-              return new Uint8Array([hash & 0xFF, (hash >> 8) & 0xFF, (hash >> 16) & 0xFF, (hash >> 24) & 0xFF]);
-            }
-          }`;
-        }
-      },
-    },
   ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
-      crypto: "node:crypto",
     },
   },
   optimizeDeps: {
@@ -73,6 +67,8 @@ export default defineConfig({
         drop_debugger: true,
       },
     },
+    // Add sourcemap for better debugging
+    sourcemap: false, // Change to true if needed for debugging production issues
   },
   server: {
     port: 3000,

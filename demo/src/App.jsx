@@ -98,91 +98,43 @@ function App() {
         offlineNotification.style.position = 'fixed';
         offlineNotification.style.bottom = '1rem';
         offlineNotification.style.right = '1rem';
-        offlineNotification.style.backgroundColor = '#ef4444';
+        offlineNotification.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
         offlineNotification.style.color = 'white';
         offlineNotification.style.padding = '0.75rem 1.5rem';
-        offlineNotification.style.borderRadius = '0.375rem';
+        offlineNotification.style.borderRadius = '0.5rem';
         offlineNotification.style.zIndex = '9999';
-        offlineNotification.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
-        offlineNotification.textContent = 'You are offline. Some features may not be available.';
+        offlineNotification.textContent = 'You are offline. Some features may be unavailable.';
+        document.body.appendChild(offlineNotification);
         
-        // Add to document if not already present
-        if (!document.getElementById('offline-notification')) {
-          document.body.appendChild(offlineNotification);
-        }
-      } else {
-        // Remove offline notification if it exists
-        const offlineNotification = document.getElementById('offline-notification');
-        if (offlineNotification) {
-          document.body.removeChild(offlineNotification);
-        }
+        // Remove notification after 5 seconds
+        setTimeout(() => {
+          const notification = document.getElementById('offline-notification');
+          if (notification) {
+            document.body.removeChild(notification);
+          }
+        }, 5000);
       }
     };
     
     window.addEventListener('online', handleOnlineStatus);
     window.addEventListener('offline', handleOnlineStatus);
     
-    // Initial check
-    handleOnlineStatus();
+    // Initialize state
+    setIsLoading(false);
+    setAppState('ready');
 
-    // Register event listeners for performance tracking
-    const trackEventPerformance = (name) => {
-      if (window.performance && window.performance.mark) {
-        window.performance.mark(`event-${name}-start`);
-        return () => {
-          window.performance.mark(`event-${name}-end`);
-          window.performance.measure(`event-${name}-duration`, 
-            `event-${name}-start`, `event-${name}-end`);
-        };
-      }
-      return () => {};
-    };
-
-    // Set up memory watcher
-    const memoryWatcher = setInterval(() => {
-      if (window.performance && window.performance.memory) {
-        const { usedJSHeapSize, totalJSHeapSize } = window.performance.memory;
-        const heapPercentage = (usedJSHeapSize / totalJSHeapSize * 100).toFixed(2);
-        
-        // Log severe memory issues
-        if (heapPercentage > 90) {
-          console.warn(`Memory usage high: ${heapPercentage}%`);
-        }
-      }
-    }, 30000);
-
-    // Shorter loading time for better UX
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      setAppState('ready');
-      
-      // Mark app ready for performance tracking
-      if (window.performance && window.performance.mark) {
-        window.performance.mark('app-ready');
-        window.performance.measure('time-to-ready', 'initial-load-start', 'app-ready');
-      }
-      
+    // For production, we'll only log in development mode
+    if (import.meta.env.DEV) {
       console.log(`App initial load time: ${(performance.now() - startTime).toFixed(2)}ms`);
-    }, 600);
+    }
     
-    // Track long tasks with PerformanceObserver
-    if ('PerformanceObserver' in window) {
-      try {
-        const longTaskObserver = new PerformanceObserver((list) => {
-          list.getEntries().forEach((entry) => {
-            console.warn(`Long task detected: ${entry.duration.toFixed(2)}ms`);
-          });
-        });
-        
-        longTaskObserver.observe({ entryTypes: ['longtask'] });
-      } catch (e) {
-        console.error('PerformanceObserver for longtask not supported');
-      }
+    // Mark initial load end for performance tracking
+    if (window.performance && window.performance.mark) {
+      window.performance.mark('initial-load-end');
+      window.performance.measure('initial-load', 'initial-load-start', 'initial-load-end');
     }
     
     return () => {
-      clearTimeout(timer);
-      clearInterval(memoryWatcher);
       window.removeEventListener('online', handleOnlineStatus);
       window.removeEventListener('offline', handleOnlineStatus);
     };

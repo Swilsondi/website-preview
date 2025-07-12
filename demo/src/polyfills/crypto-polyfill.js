@@ -23,24 +23,21 @@ function simpleHash(str, algorithm = "md5") {
   return hashBytes;
 }
 
-// Create a mock crypto implementation that provides the hash method Vite needs
-const mockCrypto = {
-  // The hash method that Vite is looking for
-  hash: (algorithm, data) => {
-    // Convert data to string if it's not already
-    const dataStr = typeof data === "string" ? data : JSON.stringify(data);
-    return simpleHash(dataStr, algorithm);
-  },
-};
-
-// Instead of modifying window.crypto directly (which is readonly),
-// we'll create a proxy for node's crypto module
-// that Vite can use when it tries to access crypto.hash
-
-// Export our mock implementation
-export default mockCrypto;
-
-// Add a global constructor that Vite might be looking for
-if (typeof globalThis !== "undefined") {
-  globalThis._ViteCryptoPolyfill = mockCrypto;
+// Create a hash function for Node.js environment
+function nodeHash(algorithm, data) {
+  // Convert data to string if it's not already
+  const dataStr = typeof data === "string" ? data : JSON.stringify(data);
+  return simpleHash(dataStr, algorithm);
 }
+
+// Safely provide the hash method to the global crypto object for Node.js environment
+if (typeof global !== "undefined" && global.crypto && !global.crypto.hash) {
+  global.crypto.hash = nodeHash;
+}
+
+// Don't modify browser's crypto object as it's protected
+// This polyfill is mainly for Node.js environment where Vite is running
+
+export default {
+  hash: nodeHash,
+};

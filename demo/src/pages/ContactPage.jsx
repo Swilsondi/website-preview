@@ -121,21 +121,52 @@ const ProjectForm = ({ selectedPlan }) => {
     addOns: []
   })
 
-  const handleSubmit = (e) => {
+  const [submitting, setSubmitting] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would integrate with your payment processor
-    console.log('Form submitted:', formData)
     
-    // For now, redirect to a Stripe checkout or payment link
-    // You can replace this with your actual payment integration
-    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_your_payment_link_here"
+    // Validate form
+    if (!validateForm()) return
     
-    // Store form data for after payment
-    localStorage.setItem('projectFormData', JSON.stringify(formData))
+    setSubmitting(true)
     
-    // Redirect to payment (replace with your actual payment URL)
-    alert('Form submitted! In production, this would redirect to Stripe checkout.')
-    // window.location.href = STRIPE_PAYMENT_LINK
+    // In a real app, this would be an API call
+    await new Promise(resolve => setTimeout(resolve, 1500))
+    
+    // Form data would be sent to the server here
+    // For demonstration purposes, we're just showing a success message
+    
+    setSubmitting(false)
+    setSubmitSuccess(true)
+    resetForm()
+  }
+
+  const validateForm = () => {
+    // Basic validation: check required fields
+    const requiredFields = ['name', 'email', 'projectType', 'timeline', 'description']
+    for (let field of requiredFields) {
+      if (!formData[field]) {
+        alert(`Please fill out the ${field} field.`)
+        return false
+      }
+    }
+    return true
+  }
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      projectType: selectedPlan?.name || '',
+      timeline: '',
+      budget: selectedPlan?.price || '',
+      description: '',
+      addOns: []
+    })
   }
 
   return (
@@ -293,14 +324,24 @@ const ProjectForm = ({ selectedPlan }) => {
                     type="submit"
                     size="lg"
                     className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-12 py-4 text-lg shadow-2xl transition-all duration-300"
+                    disabled={submitting}
                   >
-                    Proceed to Payment
+                    {submitting ? 'Submitting...' : 'Proceed to Payment'}
                     <CreditCard className="ml-3 w-6 h-6" />
                   </Button>
                   <p className="text-gray-400 text-sm mt-4">
                     🔒 Secure payment processing • 50% deposit to start
                   </p>
                 </div>
+
+                {/* Success Message */}
+                {submitSuccess && (
+                  <div className="mt-4 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-green-500">
+                    <p className="text-sm">
+                      ✔️ Your details have been submitted successfully! We will contact you soon.
+                    </p>
+                  </div>
+                )}
               </form>
             </CardContent>
           </Card>

@@ -30,8 +30,6 @@ const CartSidebar = memo(() => {
   const planTotal = selectedPlan ? parseInt(selectedPlan.price.replace('$', '').replace('+', '')) : 0;
   const grandTotal = planTotal + cartTotal;
 
-  console.log('CartSidebar rendered. isCartOpen:', isCartOpen); // Debug log
-
   return (
     <AnimatePresence>
       {isCartOpen && (

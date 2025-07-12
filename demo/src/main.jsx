@@ -11,57 +11,87 @@ setupErrorLogging();
 // Ensure browser does not restore scroll position automatically
 history.scrollRestoration = "manual";
 
-// Register service worker for PWA support
+// Service Worker Registration
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then((registration) => {
+        // Only log in development mode
+        if (import.meta.env.DEV) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }
         
         // Check for updates to the service worker
         registration.addEventListener('updatefound', () => {
           const newWorker = registration.installing;
           
-          // Track progress
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // New content is available, show notification to user
+              // Only log in development mode
+              if (import.meta.env.DEV) {
+                console.log('New content is available; please refresh.');
+              }
+              
+              // Show update notification to the user
               const updateNotification = document.createElement('div');
+              updateNotification.id = 'update-notification';
               updateNotification.style.position = 'fixed';
-              updateNotification.style.bottom = '0';
-              updateNotification.style.left = '0';
-              updateNotification.style.right = '0';
-              updateNotification.style.backgroundColor = '#4f46e5';
+              updateNotification.style.bottom = '1rem';
+              updateNotification.style.right = '1rem';
+              updateNotification.style.backgroundColor = 'rgba(139, 92, 246, 0.9)';
               updateNotification.style.color = 'white';
               updateNotification.style.padding = '1rem';
-              updateNotification.style.textAlign = 'center';
+              updateNotification.style.borderRadius = '0.5rem';
               updateNotification.style.zIndex = '9999';
-              updateNotification.innerHTML = `
-                New version available! 
-                <button id="update-app" style="background:#ffffff; color:#4338ca; border:none; padding:0.5rem 1rem; margin-left:1rem; border-radius:0.375rem; cursor:pointer;">
-                  Update now
-                </button>
-              `;
+              updateNotification.style.display = 'flex';
+              updateNotification.style.alignItems = 'center';
+              updateNotification.style.gap = '0.5rem';
               
-              document.body.appendChild(updateNotification);
+              // Create the message
+              const message = document.createElement('span');
+              message.textContent = 'New version available! ';
+              updateNotification.appendChild(message);
               
-              document.getElementById('update-app').addEventListener('click', () => {
-                // Refresh the page to load new version
+              // Create the button
+              const refreshButton = document.createElement('button');
+              refreshButton.textContent = 'Refresh';
+              refreshButton.style.backgroundColor = 'white';
+              refreshButton.style.color = 'rgb(139, 92, 246)';
+              refreshButton.style.border = 'none';
+              refreshButton.style.borderRadius = '0.25rem';
+              refreshButton.style.padding = '0.5rem 1rem';
+              refreshButton.style.cursor = 'pointer';
+              refreshButton.style.fontWeight = 'bold';
+              
+              refreshButton.addEventListener('click', () => {
+                // Tell the service worker to skipWaiting
+                newWorker.postMessage({ action: 'skipWaiting' });
+                
+                // Refresh the page to load the new version
                 window.location.reload();
               });
+              
+              updateNotification.appendChild(refreshButton);
+              document.body.appendChild(updateNotification);
             }
           });
         });
       })
-      .catch(error => {
-        console.error('ServiceWorker registration failed: ', error);
+      .catch((error) => {
+        // Only log errors in development mode
+        if (import.meta.env.DEV) {
+          console.error('Service worker registration failed:', error);
+        }
       });
   });
   
-  // Handle service worker communication
-  navigator.serviceWorker.addEventListener('message', event => {
-    if (event.data && event.data.type === 'CACHE_UPDATED') {
-      console.log('New content is available; please refresh.');
+  // Handle controller change (when skipWaiting is called)
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
     }
   });
 }
