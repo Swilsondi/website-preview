@@ -1,4 +1,4 @@
-import { Home, Settings, User, Phone, DollarSign, Briefcase } from "lucide-react"
+import { Home, User, Phone, DollarSign, Briefcase } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -45,11 +45,6 @@ const items = [
     title: "Showcase",
     url: "/showcase",
     icon: Briefcase,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
   },
 ]
 

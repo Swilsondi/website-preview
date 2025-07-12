@@ -19,10 +19,10 @@ import {
   Code,
   Palette
 } from "lucide-react"
+import { motion } from "framer-motion"
 import Footer from "@/components/Footer"
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react' // ✅ ENSURE THIS IS IMPORTED
-import { motion } from "framer-motion"; // Ensure motion is imported
 
 // About Hero Section - FIXED
 const AboutHero = () => (

@@ -1,9 +1,13 @@
-import { createContext, useState, useContext } from "react";
+import { useState } from "react";
+import { CART_INITIAL_STATE } from "@/utils/cartConstants";
+import { calculateCartTotal, calculateTotalItems } from "./cartHelpers";
+import { CartContext } from "@/contexts/CartContext";
+import { useCart } from "./useCartHook"; // Import the hook to re-export it
 
-const CartContext = createContext();
+export { useCart }; // Re-export the useCart hook
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(CART_INITIAL_STATE);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -40,11 +44,8 @@ export const CartProvider = ({ children }) => {
     return item ? item.quantity : 0;
   };
 
-  const cartTotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const cartTotal = calculateCartTotal(cart);
+  const totalItems = calculateTotalItems(cart);
 
   return (
     <CartContext.Provider
@@ -65,13 +66,3 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
-
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error("useCart must be used within a CartProvider");
-  }
-  return context;
-};
-
-export default CartContext;

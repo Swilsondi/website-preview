@@ -12,6 +12,10 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo)
+    // Log error to an external service like Sentry
+    if (typeof window !== 'undefined' && window.location.hostname === 'production') {
+      // Example: Log errors to an external service
+    }
     this.setState({ hasError: true, error })
   }
 

@@ -16,9 +16,10 @@ import {
   Users
 } from "lucide-react"
 import { useEffect, useState, useLayoutEffect } from "react"
+import { motion } from "framer-motion"
 import Footer from "@/components/Footer"
 import { useNavigate } from 'react-router-dom';
-import { motion } from "framer-motion"; // Add this import for motion
+import usePerformance from '@/hooks/usePerformance';
 
 // Optimized animation variants - GPU accelerated
 const fadeInUp = {
@@ -370,7 +371,9 @@ export default function HomePage() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const navigate = useNavigate();
 
-  const disableAnimations = true; // Set to true to disable animations globally
+  const disableAnimations = false; // Set to false to enable animations
+
+  usePerformance('HomePage');
 
   useEffect(() => {
     // Slight delay ensures smoother transition after route change

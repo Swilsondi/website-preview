@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea"
 import { 
   Send, 
@@ -20,9 +20,9 @@ import {
   ChevronDown
 } from "lucide-react"
 import { useState, useEffect } from 'react'
+import { motion } from "framer-motion"
 import Footer from "@/components/Footer";
 import { sanitizeInput, validateForm } from "@/utils/validation"
-import { motion } from "framer-motion"; // Ensure motion is imported
 
 // Custom Select Component
 const CustomSelect = ({ label, options, defaultValue, className = "" }) => {

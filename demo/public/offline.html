@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline - TechMotiveSupreme</title>
+  <meta name="theme-color" content="#111827">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #111827;
+      color: #f3f4f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .container {
+      padding: 2rem;
+      max-width: 600px;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #6366f1;
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #6366f1;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
+    }
+    
+    .btn:hover {
+      background-color: #4f46e5;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .btn {
+        transition: none;
+      }
+    }
+    
+    .cached-content {
+      margin-top: 2rem;
+      border-top: 1px solid #4b5563;
+      padding-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+    
+    <h1>You're offline</h1>
+    
+    <p>It looks like you've lost your internet connection. Don't worry - we've saved some content so you can still access parts of TechMotiveSupreme while offline.</p>
+    
+    <p>Check your connection and try again when you're back online.</p>
+    
+    <a href="/" class="btn" id="retry-button">Retry Connection</a>
+    
+    <div class="cached-content">
+      <h2>Available Offline</h2>
+      <div id="cached-pages">
+        <!-- Dynamic content will be inserted here by the script -->
+        <p>Loading cached content...</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Check if the browser is online periodically
+    function checkOnlineStatus() {
+      if (navigator.onLine) {
+        document.getElementById('retry-button').textContent = 'Back Online! Return to Home';
+      }
+    }
+    
+    // Set up interval to check connection status
+    setInterval(checkOnlineStatus, 5000);
+    
+    // Retry button handler
+    document.getElementById('retry-button').addEventListener('click', function(e) {
+      if (!navigator.onLine) {
+        e.preventDefault();
+        alert('Still offline. Please check your connection and try again.');
+      }
+    });
+    
+    // Get list of cached pages
+    if ('caches' in window) {
+      caches.open('techmotive-v1').then(function(cache) {
+        cache.keys().then(function(requests) {
+          const htmlRequests = requests.filter(request => {
+            const url = new URL(request.url);
+            return url.pathname.endsWith('.html') || url.pathname === '/' || url.pathname.endsWith('/');
+          });
+          
+          if (htmlRequests.length > 0) {
+            const cachedPagesList = document.getElementById('cached-pages');
+            cachedPagesList.innerHTML = '';
+            
+            const ul = document.createElement('ul');
+            ul.style.textAlign = 'left';
+            ul.style.paddingLeft = '1.5rem';
+            
+            htmlRequests.slice(0, 5).forEach(request => {
+              const url = new URL(request.url);
+              const pathname = url.pathname;
+              
+              // Create readable label from pathname
+              let label = pathname;
+              if (pathname === '/' || pathname === '') {
+                label = 'Home Page';
+              } else {
+                // Remove trailing slash and convert to title case
+                label = pathname.replace(/\/$/, '').split('/').pop();
+                label = label.replace(/-/g, ' ');
+                label = label.replace(/\.html$/, '');
+                label = label.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+                
+                if (!label) label = 'Home Page';
+              }
+              
+              const li = document.createElement('li');
+              const a = document.createElement('a');
+              a.href = pathname;
+              a.textContent = label;
+              a.style.color = '#93c5fd';
+              
+              li.appendChild(a);
+              ul.appendChild(li);
+            });
+            
+            cachedPagesList.appendChild(ul);
+          } else {
+            document.getElementById('cached-pages').innerHTML = '<p>No pages available offline. Try again when you\'re connected.</p>';
+          }
+        });
+      }).catch(error => {
+        console.error('Error checking cache:', error);
+        document.getElementById('cached-pages').innerHTML = '<p>Unable to check for cached content.</p>';
+      });
+    } else {
+      document.getElementById('cached-pages').innerHTML = '<p>Your browser doesn\'t support offline content.</p>';
+    }
+  </script>
+</body>
+</html>

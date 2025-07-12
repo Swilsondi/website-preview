@@ -19,10 +19,14 @@ import {
   Rocket,
   Shield
 } from "lucide-react"
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
+import { LazyMotion } from "@/components/LazyMotion"
+import OptimizedImage from "@/components/OptimizedImage"
+import { usePerformance } from "@/hooks/usePerformance"
 
 // Animation variants
 const fadeInUp = {
@@ -45,11 +49,13 @@ const stagger = {
   }
 }
 
-// Hero Section - FIXED
-const ServicesHero = () => (
+// Hero Section - OPTIMIZED
+const ServicesHero = ({ navigate }) => (
   <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 overflow-hidden">
     <div className="absolute inset-0">
-      <motion.div
+      <LazyMotion
+        animationType="fadeIn"
+        className="absolute top-1/4 right-1/4 w-80 h-80 bg-purple-500 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.1, 1],
           opacity: [0.05, 0.08, 0.05],
@@ -59,49 +65,38 @@ const ServicesHero = () => (
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="absolute top-1/4 right-1/4 w-80 h-80 bg-purple-500 rounded-full blur-3xl"
       />
     </div>
 
     <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
+        <LazyMotion
+          animationType="slideUp"
           className="mb-8"
         >
           <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-purple-500/20 border-purple-400 text-purple-200 mb-8 backdrop-blur-sm">
             🎯 Professional Services • Exceptional Results
           </Badge>
-        </motion.div>
+        </LazyMotion>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        <LazyMotion
+          animationType="slideUp"
           className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
         >
           Services That 
           <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Scale </span>
           Your Business
-        </motion.h1>
+        </LazyMotion>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+        <LazyMotion
+          animationType="slideUp"
           className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
         >
           From web development to complete digital transformation. 
           <span className="text-purple-400 font-semibold"> We deliver solutions that drive real growth.</span>
-        </motion.p>
+        </LazyMotion>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-        >
+        <LazyMotion animationType="slideUp">
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
@@ -110,13 +105,13 @@ const ServicesHero = () => (
             Explore Branding Solutions
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
-        </motion.div>
+        </LazyMotion>
       </div>
     </div>
   </section>
 )
 
-// Services Grid - FIXED
+// Services Grid - OPTIMIZED
 const ServicesGrid = () => {
   const services = [
     {
@@ -166,11 +161,8 @@ const ServicesGrid = () => {
   return (
     <section className="py-24 bg-gray-900">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+        <LazyMotion
+          animationType="slideUp"
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
@@ -180,21 +172,17 @@ const ServicesGrid = () => {
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Comprehensive digital solutions designed to take your business to the next level.
           </p>
-        </motion.div>
+        </LazyMotion>
 
-        <motion.div
-          variants={stagger}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
+        <LazyMotion
+          as="div"
+          animationType="staggered"
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {services.map((service, index) => (
-            <motion.div
+            <LazyMotion
               key={index}
-              variants={fadeInUp}
-              whileHover={{ y: -5, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              animationType="fadeIn"
               className="group"
             >
               <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-purple-500/50 transition-all duration-300">
@@ -221,23 +209,20 @@ const ServicesGrid = () => {
                   </ul>
                 </CardContent>
               </Card>
-            </motion.div>
+            </LazyMotion>
           ))}
-        </motion.div>
+        </LazyMotion>
       </div>
     </section>
   )
 }
 
-// Process Section - FIXED
+// Process Section - OPTIMIZED
 const ProcessSection = () => (
   <section className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+      <LazyMotion
+        animationType="slideUp"
         className="text-center mb-16"
       >
         <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
@@ -247,7 +232,7 @@ const ProcessSection = () => (
         <p className="text-xl text-purple-200 max-w-3xl mx-auto">
           A streamlined approach that delivers exceptional results every time.
         </p>
-      </motion.div>
+      </LazyMotion>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {[
@@ -256,12 +241,9 @@ const ProcessSection = () => (
           { step: "03", title: "Design & Build", description: "Create and develop your solution with precision.", icon: Code },
           { step: "04", title: "Launch & Optimize", description: "Deploy and continuously improve performance.", icon: Rocket }
         ].map((phase, index) => (
-          <motion.div
+          <LazyMotion
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.6 }}
-            viewport={{ once: true }}
+            animationType="fadeIn"
             className="text-center"
           >
             <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
@@ -270,22 +252,19 @@ const ProcessSection = () => (
             <div className="text-2xl font-bold text-purple-300 mb-2">{phase.step}</div>
             <h3 className="text-xl font-bold text-white mb-3">{phase.title}</h3>
             <p className="text-purple-200 leading-relaxed">{phase.description}</p>
-          </motion.div>
+          </LazyMotion>
         ))}
       </div>
     </div>
   </section>
 )
 
-// CTA Section - FIXED
+// CTA Section - OPTIMIZED
 const ServicesCTA = ({ navigate }) => (
   <section className="py-24 bg-black">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: "backOut" }}
-        viewport={{ once: true }}
+      <LazyMotion
+        animationType="fadeIn"
         className="text-center"
       >
         <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
@@ -321,7 +300,7 @@ const ServicesCTA = ({ navigate }) => (
         <p className="text-gray-500 mt-8">
           Innovation • Excellence • Results
         </p>
-      </motion.div>
+      </LazyMotion>
     </div>
   </section>
 )
@@ -329,6 +308,9 @@ const ServicesCTA = ({ navigate }) => (
 export default function ServicesPage() {
   const [pageLoaded, setPageLoaded] = useState(false)
   const navigate = useNavigate();
+  
+  // Track page performance
+  usePerformance("ServicesPage");
 
   useEffect(() => {
     // Slight delay ensures smoother transition after route change
@@ -341,7 +323,7 @@ export default function ServicesPage() {
 
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      <ServicesHero />
+      <ServicesHero navigate={navigate} />
       <ServicesGrid />
       <ProcessSection />
       <ServicesCTA navigate={navigate} />

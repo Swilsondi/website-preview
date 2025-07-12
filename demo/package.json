@@ -12,7 +12,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext js,jsx --fix",
     "size-check": "npm run build && du -sh dist/assets/*.js",
-    "test:build": "npm run build && npm run preview"
+    "test:build": "npm run build && npm run preview",
+    "test": "echo 'No tests defined yet' && exit 0"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
@@ -41,8 +42,10 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
     "postcss": "^8.5.6",
+    "rollup-plugin-visualizer": "^6.0.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "vite-bundle-analyzer": "^1.1.0"
   }
 }

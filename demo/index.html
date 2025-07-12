@@ -8,17 +8,23 @@
     <meta name="author" content="TechMotiveSupreme" />
     <meta name="robots" content="index, follow" />
     
-    <!-- Security headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <!-- Security headers are now provided via HTTP headers in Vite config -->
     
-    <!-- Performance hints -->
+    <!-- Resource priority hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preload" href="/src/assets/react.svg" as="image" fetchpriority="high" />
+    <link rel="preload" href="/fonts/main-font.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    
+    <!-- Modern browser feature detection -->
+    <link rel="modulepreload" href="/src/main.jsx" />
     
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- Add manifest for PWA support -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#111827" />
+    
     <title>TechMotiveSupreme - Digital Excellence</title>
     
     <style>
@@ -39,9 +45,10 @@
         background-color: #111827;
         display: flex;
         flex-direction: column;
+        isolation: isolate; /* Create new stacking context for better compositing */
       }
       
-      /* Optimized loading spinner */
+      /* Optimized loading spinner with reduced motion */
       .loading-spinner {
         position: fixed;
         top: 50%;
@@ -55,6 +62,7 @@
         animation: spin 1s linear infinite;
         z-index: 9999;
         will-change: transform;
+        contain: layout style paint; /* Optimize rendering performance */
       }
       
       @keyframes spin {
@@ -62,7 +70,7 @@
         100% { transform: translate(-50%, -50%) rotate(360deg); }
       }
       
-      /* Prevent layout shift */
+      /* Prevent layout shift with improved container */
       .loading-container {
         width: 100%;
         min-height: 100vh;
@@ -71,6 +79,8 @@
         align-items: center;
         justify-content: center;
         contain: layout style paint;
+        position: fixed;
+        inset: 0;
       }
       
       /* Reduce motion for accessibility */
@@ -79,7 +89,48 @@
           animation: none;
         }
       }
+      
+      /* Pre-define key interface classes to reduce CLS */
+      .interface-ready .sidebar,
+      .interface-ready .navbar {
+        transition: opacity 0.3s ease-out;
+        opacity: 1;
+      }
     </style>
+    
+    <!-- Inline script for early connection optimizations -->
+    <script>
+      // Early connections to essential domains
+      (function() {
+        const domains = [
+          window.location.origin,
+          'https://fonts.googleapis.com',
+          'https://fonts.gstatic.com'
+        ];
+        
+        // Create connection optimizations
+        domains.forEach(domain => {
+          const link = document.createElement('link');
+          link.rel = 'preconnect';
+          link.href = domain;
+          document.head.appendChild(link);
+        });
+        
+        // Browser capability detection
+        window.supportIntersectionObserver = 'IntersectionObserver' in window;
+        window.supportModern = 'noModule' in document.createElement('script');
+        
+        // Add class if reduced motion is preferred
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.add('reduced-motion');
+        }
+        
+        // Performance mark for initial load timing
+        if (window.performance && window.performance.mark) {
+          window.performance.mark('initial-load-start');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root">
@@ -88,5 +139,11 @@
       </div>
     </div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Error recovery script -->
+    <script nomodule>
+      // Fallback for older browsers
+      document.body.innerHTML = '<div style="padding: 2rem; text-align: center; font-family: sans-serif;"><h1>Browser Not Supported</h1><p>Please use a modern browser like Chrome, Firefox, Safari, or Edge to view this site.</p></div>';
+    </script>
   </body>
 </html>
