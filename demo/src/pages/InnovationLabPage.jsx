@@ -4,9 +4,11 @@ import Footer from '@/components/Footer';
 const InnovationLabPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <header className="py-20 text-center bg-gradient-to-r from-purple-500 to-pink-600">
-        <h1 className="text-6xl font-extrabold text-white">Innovation Lab</h1>
-        <p className="text-2xl mt-4 text-gray-200">Custom Branding Solutions Tailored to Your Needs</p>
+      <header className="py-20 text-center bg-gradient-to-r from-purple-500 to-pink-600 pt-12 md:pt-16">
+        <div className="pt-4">
+          <h1 className="text-6xl font-extrabold text-white">Innovation Lab</h1>
+          <p className="text-2xl mt-4 text-gray-200">Custom Branding Solutions Tailored to Your Needs</p>
+        </div>
       </header>
 
       <main className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">

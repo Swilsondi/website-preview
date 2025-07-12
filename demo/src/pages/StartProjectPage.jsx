@@ -10,8 +10,8 @@ const StartProjectPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Hero Section */}
-      <header className="relative py-20 text-center bg-gradient-to-r from-blue-500 to-purple-600">
-        <div>
+      <header className="relative py-20 text-center bg-gradient-to-r from-blue-500 to-purple-600 pt-12 md:pt-16">
+        <div className="pt-4">
           <h1 className="text-6xl font-extrabold text-white">Start Your Project</h1>
           <p className="text-2xl mt-4 text-gray-200">Let us help you bring your vision to life with our expertise.</p>
           <ScrollButton 
