@@ -84,7 +84,7 @@ const SplitText = ({ children, className = "" }) => {
 // Enhanced Hero Section - FIXED
 const HeroSection = ({ handleNavigation }) => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-12 md:pt-16">
       {/* Enhanced background with subtle animation */}
       <div className="absolute inset-0">
         <motion.div
@@ -113,13 +113,13 @@ const HeroSection = ({ handleNavigation }) => {
         />
       </div>
 
-      <div className="relative flex items-center justify-center min-h-screen px-4 md:px-6 lg:px-8">
+      <div className="relative flex items-center justify-center min-h-screen px-4 md:px-6 lg:px-8 pt-4">
         <div className="text-center max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-            className="mb-8"
+            className="mb-8 pt-4"
           >
             <Badge
               variant="outline"

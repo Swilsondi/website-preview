@@ -4,9 +4,11 @@ import Footer from '@/components/Footer';
 const ClientSuccessStoriesPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <header className="py-20 text-center bg-gradient-to-r from-green-500 to-teal-600">
-        <h1 className="text-6xl font-extrabold text-white">Client Success Stories</h1>
-        <p className="text-2xl mt-4 text-gray-200">Real Stories, Real Results</p>
+      <header className="py-20 text-center bg-gradient-to-r from-green-500 to-teal-600 pt-12 md:pt-16">
+        <div className="pt-4">
+          <h1 className="text-6xl font-extrabold text-white">Client Success Stories</h1>
+          <p className="text-2xl mt-4 text-gray-200">Real Stories, Real Results</p>
+        </div>
       </header>
 
       <main className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">

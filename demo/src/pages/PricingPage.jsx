@@ -50,7 +50,7 @@ const stagger = {
 
 // Hero Section - FIXED
 const PricingHero = () => (
-  <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
+  <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-12 md:pt-16">
     {/* Animated background elements */}
     <div className="absolute inset-0">
       <motion.div
@@ -79,15 +79,15 @@ const PricingHero = () => (
       />
     </div>
 
-    <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
+    <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8 pt-4">
       <div className="text-center max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: -20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "backOut" }}
-          className="mb-8"
+          className="mb-8 pt-4"
         >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-purple-500/20 border-purple-400 text-purple-200 mb-8 backdrop-blur-sm">
+          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-purple-500/20 border-purple-400 text-purple-200 mb-8 backdrop-blur-sm inline-block relative z-20">
             💎 Creator-Focused Pricing • Built for Growth
           </Badge>
           
@@ -96,14 +96,14 @@ const PricingHero = () => (
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4, ease: "backOut" }}
-            className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-400/50 rounded-2xl p-6 backdrop-blur-sm mb-8 max-w-2xl mx-auto"
+            className="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-400/50 rounded-2xl p-6 backdrop-blur-sm mb-8 max-w-2xl mx-auto relative z-10"
           >
             <div className="flex items-center justify-center gap-3 mb-2">
               <span className="text-2xl">🔥</span>
               <h3 className="text-xl font-bold text-red-300">LAUNCH PROMO — LIMITED TIME</h3>
               <span className="text-2xl">🔥</span>
             </div>
-            <p className="text-red-200 text-center mb-2">
+            <p className="text-red-200 text-center mb-2 text-base">
               Get a <span className="font-bold text-white line-through">$2,000+</span> site for just <span className="font-bold text-yellow-300">$500</span>
             </p>
             <p className="text-red-300 text-sm text-center">
@@ -778,7 +778,7 @@ const PricingCTA = () => {
             <Button 
               size="lg" 
               className="text-xl px-12 py-6 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold shadow-2xl transition-all duration-300"
-              onClick={() => navigate('/contact?type=consultation')}
+              onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
             >
               Book Free Consultation
               <ArrowRight className="ml-3 w-6 h-6" />

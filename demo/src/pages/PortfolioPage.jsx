@@ -441,7 +441,7 @@ const PortfolioCTA = () => (
             size="lg" 
             variant="outline"
             className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
-            onClick={() => window.location.href = '/contact?type=consultation'}
+            onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
           >
             Free Consultation
             <Globe className="ml-3 w-6 h-6" />

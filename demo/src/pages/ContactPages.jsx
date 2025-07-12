@@ -71,9 +71,9 @@ const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
   );
 }
 
-// Hero Section - same as before
+// Hero Section - updated to fix content blocking issue
 const ContactHero = () => (
-  <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 overflow-hidden">
+  <section className="relative py-24 bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 overflow-hidden">
     <div className="absolute inset-0">
       <motion.div
         animate={{
@@ -101,7 +101,7 @@ const ContactHero = () => (
       />
     </div>
 
-    <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
+    <div className="relative flex items-center justify-center px-4 md:px-6 lg:px-8 py-16">
       <div className="text-center max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: -20 }}
@@ -575,6 +575,7 @@ const ContactCTA = () => (
         <Button 
           size="lg" 
           className="text-xl px-12 py-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl transition-all duration-300 rounded-lg"
+          onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
         >
           Book Free Consultation
           <Coffee className="ml-3 w-6 h-6" />

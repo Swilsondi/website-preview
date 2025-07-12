@@ -1,7 +1,12 @@
 import React from 'react';
 import Footer from '@/components/Footer';
+import { useScrollControl } from '@/hooks/useScrollControl';
+import ScrollButton from '@/components/ScrollButton';
 
 const StartProjectPage = () => {
+  // Use our custom hook for scroll control
+  useScrollControl(true);
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Hero Section */}
@@ -9,9 +14,12 @@ const StartProjectPage = () => {
         <div>
           <h1 className="text-6xl font-extrabold text-white">Start Your Project</h1>
           <p className="text-2xl mt-4 text-gray-200">Let us help you bring your vision to life with our expertise.</p>
-          <button className="mt-8 px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg shadow-lg hover:bg-gray-200">
+          <ScrollButton 
+            className="mt-8 px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg shadow-lg hover:bg-gray-200"
+            smooth={true}
+          >
             Get Started Now
-          </button>
+          </ScrollButton>
         </div>
       </header>
 

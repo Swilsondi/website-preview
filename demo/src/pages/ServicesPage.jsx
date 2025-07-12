@@ -51,7 +51,7 @@ const stagger = {
 
 // Hero Section - OPTIMIZED
 const ServicesHero = ({ navigate }) => (
-  <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 overflow-hidden">
+  <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 overflow-hidden pt-12 md:pt-16">
     <div className="absolute inset-0">
       <LazyMotion
         animationType="fadeIn"
@@ -68,11 +68,11 @@ const ServicesHero = ({ navigate }) => (
       />
     </div>
 
-    <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8">
+    <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8 pt-4">
       <div className="text-center max-w-5xl mx-auto">
         <LazyMotion
           animationType="slideUp"
-          className="mb-8"
+          className="mb-8 pt-4"
         >
           <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-purple-500/20 border-purple-400 text-purple-200 mb-8 backdrop-blur-sm">
             🎯 Professional Services • Exceptional Results

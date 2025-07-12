@@ -30,7 +30,7 @@ const fadeInUp = {
 
 // Contact Hero Section
 const ContactHero = ({ selectedPlan, consultationType }) => (
-  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden">
+  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-12 md:pt-16">
     {/* Animated background elements */}
     <div className="absolute inset-0">
       <motion.div
@@ -59,13 +59,13 @@ const ContactHero = ({ selectedPlan, consultationType }) => (
       />
     </div>
 
-    <div className="relative flex items-center justify-center min-h-[60vh] px-4 md:px-6 lg:px-8">
+    <div className="relative flex items-center justify-center min-h-[60vh] px-4 md:px-6 lg:px-8 pt-4">
       <div className="text-center max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: -20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "backOut" }}
-          className="mb-8"
+          className="mb-8 pt-4"
         >
           {selectedPlan && (
             <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-green-500/20 border-green-400 text-green-200 mb-6 backdrop-blur-sm">

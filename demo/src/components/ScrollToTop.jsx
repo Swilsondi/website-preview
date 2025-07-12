@@ -10,13 +10,31 @@ export default function ScrollToTop() {
   const { pathname } = useLocation();
   
   useEffect(() => {
-    // Force immediate scroll to top without smooth behavior
+    // First attempt - immediate scroll with no smooth behavior
     window.scrollTo(0, 0);
     
-    // For cases where the above doesn't work (due to timing issues),
-    // add a fallback with small delay
+    // Second attempt with a small delay
     const timeoutId = setTimeout(() => {
       window.scrollTo(0, 0);
+      
+      // Third attempt with a longer delay for complex pages
+      const secondTimeoutId = setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'auto'
+        });
+        
+        // Force scroll on html and body elements to cover all bases
+        if (document.documentElement) {
+          document.documentElement.scrollTop = 0;
+        }
+        if (document.body) {
+          document.body.scrollTop = 0;
+        }
+      }, 150);
+      
+      return () => clearTimeout(secondTimeoutId);
     }, 50);
 
     return () => clearTimeout(timeoutId);
