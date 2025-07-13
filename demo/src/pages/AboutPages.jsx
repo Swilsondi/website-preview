@@ -98,7 +98,7 @@ const AboutHero = ({ navigate }) => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-            onClick={() => navigate('/our-story')}
+            onClick={() => window.location.href = '/our-journey'}
           >
             Our Story
             <ArrowRight className="ml-2 w-5 h-5" />
@@ -108,7 +108,7 @@ const AboutHero = ({ navigate }) => (
             size="lg" 
             variant="outline"
             className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
-            onClick={() => navigate('/meet-the-team')}
+            onClick={() => window.location.href = '/client-success-stories'}
           >
             Meet the Team
             <Users className="ml-2 w-5 h-5" />
@@ -360,7 +360,7 @@ const AboutCTA = ({ navigate }) => {
             <Button 
               size="lg" 
               className="text-xl px-12 py-6 bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 hover:from-emerald-700 hover:via-blue-700 hover:to-purple-700 text-white font-bold shadow-2xl transition-all duration-300"
-              onClick={() => navigate('/start-project')}
+              onClick={() => window.location.href = '/start-project'}
             >
               Start Your Project
               <Rocket className="ml-3 w-6 h-6" />
@@ -370,7 +370,7 @@ const AboutCTA = ({ navigate }) => {
               size="lg" 
               variant="outline"
               className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
-              onClick={() => navigate('/learn-more')}
+              onClick={() => window.location.href = '/learn-more'}
             >
               Learn More
               <Lightbulb className="ml-3 w-6 h-6" />

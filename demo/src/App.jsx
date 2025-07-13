@@ -20,6 +20,8 @@ const PricingPage = lazy(() => import('./pages/PricingPage'))
 const AboutPage = lazy(() => import('./pages/AboutPages')) // Note: Using the correct filename
 const ContactPage = lazy(() => import('./pages/ContactPages')) // Using the plural version that seems to be your file
 const CheckoutPage = lazy(() => import('./pages/CheckoutPage'))
+const CheckoutSuccessPage = lazy(() => import('./pages/CheckoutSuccessPage'))
+const FinalPaymentPage = lazy(() => import('./pages/FinalPaymentPage')) // Add import for FinalPaymentPage
 const ShowcasePage = lazy(() => import('./pages/PortfolioPage')) // This is your portfolio page for the showcase route
 const OurJourneyPage = lazy(() => import('./pages/OurJourneyPage'))
 const StartProjectPage = lazy(() => import('./pages/StartProjectPage'))
@@ -41,7 +43,8 @@ const preconnectDomains = [
   'https://fonts.gstatic.com',
   'https://api.yourdomain.com',
   'https://cdn.yourdomain.com',
-  'https://analytics.yourdomain.com'
+  'https://analytics.yourdomain.com',
+  'https://js.stripe.com' // Add Stripe domain for preconnect
 ];
 
 const prefetchRoutes = [
@@ -76,7 +79,6 @@ const preloadAssets = [
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(true);
-  const [appState, setAppState] = useState('loading');
 
   useEffect(() => {
     // Measure initial page load performance
@@ -122,7 +124,6 @@ function App() {
     
     // Initialize state
     setIsLoading(false);
-    setAppState('ready');
 
     // For production, we'll only log in development mode
     if (import.meta.env.DEV) {
@@ -149,11 +150,6 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark" storageKey="website-theme">
         <CartProvider>
-          <ResourceHints 
-            preconnectDomains={preconnectDomains}
-            prefetchRoutes={prefetchRoutes}
-            preloadAssets={preloadAssets}
-          />
           <PerformanceMonitor>
             <LazyMotion>
               <div className="dark min-h-screen bg-gray-900 w-full">
@@ -177,6 +173,8 @@ function App() {
                             <Route path="/contact" element={<ContactPage />} />
                             <Route path="/showcase" element={<ShowcasePage />} />
                             <Route path="/checkout" element={<CheckoutPage />} />
+                            <Route path="/checkout-success" element={<CheckoutSuccessPage />} />
+                            <Route path="/final-payment" element={<FinalPaymentPage />} /> {/* Add FinalPaymentPage route */}
                             <Route path="/our-journey" element={<OurJourneyPage />} />
                             <Route path="/start-project" element={<StartProjectPage />} />
                             <Route path="/learn-more" element={<LearnMorePage />} />
@@ -186,6 +184,12 @@ function App() {
                             {/* Add a catch-all route for 404 pages */}
                             <Route path="*" element={<HomePage />} />
                           </Routes>
+                          {/* ResourceHints with Router context */}
+                          <ResourceHints 
+                            preconnectDomains={preconnectDomains}
+                            prefetchRoutes={prefetchRoutes}
+                            preloadAssets={preloadAssets}
+                          />
                         </Suspense>
                       </main>
                     </SidebarInset>

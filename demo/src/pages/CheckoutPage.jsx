@@ -18,6 +18,8 @@ import {
 } from "lucide-react"
 import { useEffect, useState } from "react"
 import Footer from "@/components/Footer"
+import { useNavigate, useLocation } from "react-router-dom"
+import { redirectToCheckout } from "@/services/stripeService"
 
 // Checkout Hero Section
 const CheckoutHero = () => (
@@ -161,6 +163,10 @@ const PreCheckoutQuestions = ({ onComplete }) => {
 // Cart and Add-ons Section
 const CartSection = ({ selectedPlan, cart }) => {
   const { addToCart, removeFromCart, cartTotal, getCartQuantity } = useCart()
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [checkoutError, setCheckoutError] = useState('')
+  const navigate = useNavigate()
+  
   const addOns = [
     { 
       id: 'extra-page',
@@ -213,10 +219,47 @@ const CartSection = ({ selectedPlan, cart }) => {
     }
   ]
 
-  const basePrice = parseInt(selectedPlan.price.replace('$', '').replace('+', ''))
+  // Use the numericPrice property if available, otherwise fall back to parsing the price string
+  const basePrice = selectedPlan.numericPrice || parseInt(selectedPlan.price.replace(/[^0-9]/g, ''))
   const addOnsTotal = cartTotal
   const subtotal = basePrice + addOnsTotal
   const deposit = Math.ceil(subtotal * 0.5)
+
+  const handleCheckout = async () => {
+    try {
+      setIsProcessing(true)
+      setCheckoutError('')
+
+      // Get customer information from localStorage if available
+      const projectAnswers = JSON.parse(localStorage.getItem('projectAnswers') || '{}')
+      const customerInfo = {
+        projectType: projectAnswers.projectType || '',
+        budget: projectAnswers.budget || '',
+        timeline: projectAnswers.timeline || '',
+        goals: projectAnswers.goals || ''
+      }
+      
+      // Store order data
+      const orderData = {
+        plan: selectedPlan,
+        addOns: cart,
+        totals: { subtotal, deposit, remaining: subtotal - deposit }
+      }
+      localStorage.setItem('orderData', JSON.stringify(orderData))
+      
+      console.log("Starting checkout with selected plan:", selectedPlan);
+      console.log("Cart items:", cart);
+      
+      // Redirect to Stripe checkout
+      const result = await redirectToCheckout(selectedPlan, cart, customerInfo);
+      console.log("Checkout result:", result);
+    } catch (error) {
+      console.error('Checkout error:', error)
+      setCheckoutError('There was an error processing your checkout. Please try again.')
+    } finally {
+      setIsProcessing(false)
+    }
+  }
 
   return (
     <section className="py-20 bg-gray-800">
@@ -359,23 +402,16 @@ const CartSection = ({ selectedPlan, cart }) => {
                   <Button
                     size="lg"
                     className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 text-lg shadow-2xl transition-all duration-300"
-                    onClick={() => {
-                      // Store order data and redirect to payment
-                      const orderData = {
-                        plan: selectedPlan,
-                        addOns: cart,
-                        totals: { subtotal, deposit, remaining: subtotal - deposit }
-                      }
-                      localStorage.setItem('orderData', JSON.stringify(orderData))
-                      
-                      // Replace with your actual Stripe checkout URL
-                      alert(`Proceeding to payment for $${deposit} deposit. In production, this would redirect to Stripe.`)
-                      // window.location.href = 'your-stripe-checkout-url'
-                    }}
+                    onClick={handleCheckout}
+                    disabled={isProcessing}
                   >
-                    Secure Checkout - ${deposit}
+                    {isProcessing ? 'Processing...' : `Secure Checkout - $${deposit}`}
                     <CreditCard className="ml-3 w-6 h-6" />
                   </Button>
+                  
+                  {checkoutError && (
+                    <p className="text-red-500 mt-3 text-sm">{checkoutError}</p>
+                  )}
                   
                   <div className="text-center mt-4">
                     <p className="text-gray-400 text-sm flex items-center justify-center gap-2">
@@ -447,6 +483,8 @@ export default function CheckoutPage() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [currentStep, setCurrentStep] = useState('questions'); // questions, checkout
   const { selectedPlan, cart } = useCart();
+  const location = useLocation();
+  const [paymentCanceled, setPaymentCanceled] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -455,6 +493,14 @@ export default function CheckoutPage() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Check if payment was canceled
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.get('canceled') === 'true') {
+      setPaymentCanceled(true);
+    }
+  }, [location]);
 
   // Ensure the page scrolls to the top on navigation
   useEffect(() => {
@@ -476,7 +522,7 @@ export default function CheckoutPage() {
 
   return (
     <div
-      className={`min-h-screen bg-gray-900 w-full px-4 md:px-6 lg:px-8 overflow-x-hidden transition-all duration-700 ease-out ${
+      className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out mt-20 ${
         pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
     >
@@ -505,16 +551,26 @@ export default function CheckoutPage() {
         }
       ` }} />
 
-      <CheckoutHero />
+      <div className="w-full">
+        <CheckoutHero />
 
-      {currentStep === 'questions' ? (
-        <PreCheckoutQuestions onComplete={handleQuestionsComplete} />
-      ) : (
-        <>
-          <CartSection selectedPlan={selectedPlan} cart={cart} />
-          <CalendlySection />
-        </>
-      )}
+        {paymentCanceled && (
+          <div className="bg-amber-500/20 border border-amber-500/50 text-amber-200 p-4 rounded-lg mb-6 mx-4 md:mx-6 lg:mx-8 text-center">
+            Your payment was canceled. You can continue customizing your order or try again.
+          </div>
+        )}
+
+        {currentStep === 'questions' ? (
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
+            <PreCheckoutQuestions onComplete={handleQuestionsComplete} />
+          </div>
+        ) : (
+          <>
+            <CartSection selectedPlan={selectedPlan} cart={cart} />
+            <CalendlySection />
+          </>
+        )}
+      </div>
 
       <Footer />
     </div>

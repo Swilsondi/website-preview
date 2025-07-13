@@ -48,8 +48,18 @@ const items = [
   },
 ]
 
+// Safe router hook that doesn't crash outside Router context
+function useSafeLocation() {
+  try {
+    return useLocation();
+  } catch (error) {
+    // Return a default location object if useLocation fails (outside Router context)
+    return { pathname: window.location.pathname };
+  }
+}
+
 export function AppSidebar() {
-  const location = useLocation();
+  const location = useSafeLocation();
 
   // Function to handle link clicks
   const handleLinkClick = (url: string, e: React.MouseEvent) => {

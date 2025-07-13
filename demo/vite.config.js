@@ -76,9 +76,9 @@ export default defineConfig({
     // Use HTTP instead of HTTPS to avoid SSL errors
     https: false,
     headers: {
-      // Updated CSP to allow Google Fonts
+      // Updated CSP to allow Google Fonts and Stripe.js
       "Content-Security-Policy":
-        "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://* blob:; connect-src 'self' *; object-src 'none'; base-uri 'self';",
+        "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://* blob:; connect-src 'self' *; object-src 'none'; base-uri 'self'; frame-src https://js.stripe.com https://hooks.stripe.com;",
       "X-Frame-Options": "SAMEORIGIN",
       "X-Content-Type-Options": "nosniff",
       "X-XSS-Protection": "1; mode=block",

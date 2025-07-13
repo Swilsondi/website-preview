@@ -323,7 +323,12 @@ const PricingCards = () => {
                       // Store plan data in global state and localStorage
                       const planData = {
                         name: plan.name,
-                        price: plan.price,
+                        // Fix enterprise package price by removing "+" and storing as numeric
+                        price: plan.price.includes("+") ? plan.price.replace("+", "") : plan.price,
+                        // Also add a numeric price for calculations
+                        numericPrice: plan.price.includes("+") 
+                          ? parseInt(plan.price.replace(/[^0-9]/g, "")) 
+                          : parseInt(plan.price.replace(/[^0-9]/g, "")),
                         features: plan.features,
                         deliveryTime: plan.deliveryTime,
                         revisions: plan.revisions

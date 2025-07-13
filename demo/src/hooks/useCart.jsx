@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 import { CART_INITIAL_STATE } from "@/utils/cartConstants";
 import { calculateCartTotal, calculateTotalItems } from "./cartHelpers";
-import { CartContext } from "@/contexts/CartContext";
-import { useCart } from "./useCartHook"; // Import the hook to re-export it
 
-export { useCart }; // Re-export the useCart hook
+// Create the CartContext here instead of importing it
+export const CartContext = createContext(null);
+
+// Define the useCart hook directly in this file
+export function useCart() {
+  const context = useContext(CartContext);
+
+  if (!context) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+
+  return context;
+}
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(CART_INITIAL_STATE);

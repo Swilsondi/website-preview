@@ -23,8 +23,14 @@ const CartSidebar = memo(() => {
   const navigate = useNavigate();
 
   const handleCheckout = () => {
+    // First close the cart sidebar
     setIsCartOpen(false);
-    navigate('/checkout');
+    
+    // Add a small delay before navigation to ensure sidebar closes smoothly
+    setTimeout(() => {
+      // Navigate to checkout page
+      navigate('/checkout');
+    }, 300);
   };
 
   const planTotal = selectedPlan ? parseInt(selectedPlan.price.replace('$', '').replace('+', '')) : 0;

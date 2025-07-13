@@ -14,6 +14,7 @@
 10. [Testing](#testing)
 11. [Debugging Guide](#debugging-guide)
 12. [Common Issues & Solutions](#common-issues--solutions)
+13. [Payment Processing](#payment-processing)
 
 ## Introduction
 
@@ -346,6 +347,117 @@ try {
 
 **Problem**: Navigation is difficult on small screens
 **Solution**: Test and adjust the responsive behavior of the app-sidebar component
+
+## Payment Processing
+
+### 50% Deposit Payment Model
+
+The website implements a 50% deposit payment model where clients:
+
+1. Pay 50% of the total project cost upfront when placing an order
+2. Pay the remaining 50% upon project completion
+
+#### Initial Payment Setup
+
+- All prices in Stripe should be set to 50% of the actual service cost
+- For example: If a website package costs $1000 total, create a price in Stripe for $500
+- The checkout page and success page clearly communicate that this is a deposit
+
+### Stripe Integration
+
+The website uses Stripe for payment processing with a client-side checkout flow:
+
+1. Enable client-only integration in your Stripe Dashboard:
+
+   - Go to: https://dashboard.stripe.com/account/checkout/settings
+   - Enable "Client-only integration"
+
+2. Create products and prices in Stripe:
+
+   - Each plan (Starter, Premium, Platinum) should have a corresponding price
+   - Add-on services should each have their own price
+   - Set all prices to 50% of the total service cost
+
+3. Update price IDs in the code:
+   - Edit `/src/services/stripeService.js`
+   - Replace placeholder IDs in `PLAN_PRICE_MAP` and `ADDON_PRICE_MAP` with your actual Stripe price IDs
+
+### Final Payment Process
+
+When a project is complete, you'll need to collect the remaining 50% payment from the client. A special final payment page has been created for this purpose.
+
+#### Generating Final Payment Links (Manual Process)
+
+When your client's project is complete and ready for final payment:
+
+1. Open your browser's developer console on any page of your website (press F12 or right-click > Inspect)
+2. Run the following JavaScript code in the console:
+
+```javascript
+// Import the function from your service
+import { generateFinalPaymentLink } from "/src/services/stripeService.js";
+
+// Generate a payment link for the completed project
+const paymentLink = generateFinalPaymentLink({
+  id: "client-unique-id", // Create a unique ID for this project
+  name: "Client Website", // Project name
+  description: "Custom website with booking functionality", // Brief description
+  totalAmount: 1000, // Total project cost in dollars
+  remainingAmount: 500, // Remaining payment (50% of total)
+  completionDate: new Date().toISOString(), // Current date
+});
+
+// Copy the link to clipboard
+navigator.clipboard.writeText(paymentLink).then(() => {
+  console.log("Payment link copied to clipboard:", paymentLink);
+});
+```
+
+3. The final payment URL will be copied to your clipboard
+4. Send this link to your client via email with a message like:
+
+> Subject: Your website project is complete - Final payment
+>
+> Hi [Client Name],
+>
+> Great news! Your website project is now complete and ready for your review.
+>
+> To view the completed project and process the final 50% payment, please click the link below:
+>
+> [PAYMENT_LINK]
+>
+> After your payment is processed, we'll deliver all final files and launch your website.
+>
+> Please let me know if you have any questions!
+>
+> Best regards,
+> [Your Name]
+
+#### How the Final Payment Link Works
+
+When your client clicks the payment link:
+
+1. They'll see the FinalPaymentPage with their project details
+2. The remaining amount due (50%) will be clearly displayed
+3. When they click "Complete Final Payment", they'll be redirected to Stripe checkout
+4. After payment is successful, they'll receive access to their completed project
+
+### Testing Payments
+
+For testing Stripe payments:
+
+- Use Stripe's test mode with test cards
+- Test card number: 4242 4242 4242 4242
+- Any future expiration date and any 3-digit CVC
+
+### Troubleshooting Payment Issues
+
+If payments aren't working correctly:
+
+- Check browser console for errors
+- Verify Stripe publishable key is correct in your .env file
+- Confirm client-only integration is enabled in Stripe dashboard
+- Verify price IDs match those in your Stripe account
 
 ---
 

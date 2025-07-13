@@ -1,6 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+// Safe router hook that doesn't crash outside Router context
+function useSafeLocation() {
+  try {
+    return useLocation();
+  } catch (error) {
+    // Return a default location object if useLocation fails (outside Router context)
+    return { pathname: window.location.pathname };
+  }
+}
+
 /**
  * ResourceHints component
  * 
@@ -12,7 +22,7 @@ import { useLocation } from 'react-router-dom';
  * @param {Array<{url: string, type: string, routes?: string[], critical?: boolean}>} props.preloadAssets - Assets to preload
  */
 function ResourceHints({ preconnectDomains = [], prefetchRoutes = [], preloadAssets = [] }) {
-  const location = useLocation();
+  const location = useSafeLocation();
   const [currentPath, setCurrentPath] = useState(location.pathname);
   const [observedAssets, setObservedAssets] = useState(new Set());
   
