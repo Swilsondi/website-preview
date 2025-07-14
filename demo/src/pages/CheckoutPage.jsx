@@ -20,6 +20,7 @@ import { useEffect, useState } from "react"
 import Footer from "@/components/Footer"
 import { useNavigate, useLocation } from "react-router-dom"
 import { redirectToCheckout } from "@/services/stripeService"
+import emailjs from 'emailjs-com';
 
 // Checkout Hero Section
 const CheckoutHero = () => (
@@ -76,31 +77,80 @@ const CheckoutHero = () => (
 // Pre-Checkout Questions
 const PreCheckoutQuestions = ({ onComplete }) => {
   const [answers, setAnswers] = useState({
+    name: '',
+    email: '',
+    phone: '',
     projectType: '',
     budget: '',
     timeline: '',
     goals: ''
   });
+  const [sending, setSending] = useState(false);
+  const [sendSuccess, setSendSuccess] = useState(false);
+  const [sendError, setSendError] = useState('');
 
   const handleInputChange = (field, value) => {
     setAnswers((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onComplete(answers);
+    setSending(true);
+    setSendError('');
+    setSendSuccess(false);
+    // Send email via EmailJS
+    try {
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        answers,
+        'YOUR_USER_ID' // Replace with your EmailJS user ID (public key)
+      );
+      setSendSuccess(true);
+      onComplete(answers);
+    } catch (err) {
+      setSendError('Could not send your info. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="p-6 bg-gray-800 rounded-lg shadow-md">
       <h2 className="text-xl font-bold text-white mb-4">Tell us about your project</h2>
-
+      <label className="block text-gray-300 mb-2">Full Name</label>
+      <input
+        type="text"
+        name="name"
+        value={answers.name}
+        onChange={e => handleInputChange('name', e.target.value)}
+        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white mb-4"
+        required
+      />
+      <label className="block text-gray-300 mb-2">Email</label>
+      <input
+        type="email"
+        name="email"
+        value={answers.email}
+        onChange={e => handleInputChange('email', e.target.value)}
+        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white mb-4"
+        required
+      />
+      <label className="block text-gray-300 mb-2">Phone</label>
+      <input
+        type="tel"
+        name="phone"
+        value={answers.phone}
+        onChange={e => handleInputChange('phone', e.target.value)}
+        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white mb-4"
+        required
+      />
       <label className="block text-gray-300 mb-2">What type of project are you planning?</label>
       <select
         name="projectType"
         value={answers.projectType}
-        onChange={(e) => handleInputChange('projectType', e.target.value)}
-        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200 mb-4"
+        onChange={e => handleInputChange('projectType', e.target.value)}
+        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white mb-4"
         required
       >
         <option value="">Select a project type</option>
@@ -111,13 +161,12 @@ const PreCheckoutQuestions = ({ onComplete }) => {
         <option value="Full Digital Package">Full Digital Package</option>
         <option value="Other">Other</option>
       </select>
-
       <label className="block text-gray-300 mb-2">What is your budget?</label>
       <select
         name="budget"
         value={answers.budget}
-        onChange={(e) => handleInputChange('budget', e.target.value)}
-        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200 mb-4"
+        onChange={e => handleInputChange('budget', e.target.value)}
+        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white mb-4"
         required
       >
         <option value="">Select a budget range</option>
@@ -127,34 +176,34 @@ const PreCheckoutQuestions = ({ onComplete }) => {
         <option value="$20,000 - $50,000">$20,000 - $50,000</option>
         <option value="$50,000+">$50,000+</option>
       </select>
-
       <label className="block text-gray-300 mb-2">What is your timeline?</label>
       <input
         type="text"
         name="timeline"
         value={answers.timeline}
-        onChange={(e) => handleInputChange('timeline', e.target.value)}
-        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200 mb-4"
+        onChange={e => handleInputChange('timeline', e.target.value)}
+        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white mb-4"
         placeholder="e.g., 3 months"
         required
       />
-
       <label className="block text-gray-300 mb-2">What are your main goals?</label>
       <textarea
         name="goals"
         value={answers.goals}
-        onChange={(e) => handleInputChange('goals', e.target.value)}
-        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all duration-200 resize-none mb-4"
+        onChange={e => handleInputChange('goals', e.target.value)}
+        className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white resize-none mb-4"
         placeholder="e.g., Increase sales, improve user experience"
         rows={4}
         required
       />
-
+      {sendError && <p className="text-red-400 mb-2">{sendError}</p>}
+      {sendSuccess && <p className="text-green-400 mb-2">Your info was sent! Continue below.</p>}
       <button
         type="submit"
         className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700"
+        disabled={sending}
       >
-        Continue to Checkout
+        {sending ? 'Sending...' : 'Continue to Checkout'}
       </button>
     </form>
   );

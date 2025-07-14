@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { X, ShoppingCart, Plus, Minus, ArrowRight, Trash2, Package } from 'lucide-react';
-import { useCart } from '@/hooks/useCart';
+import { useCart } from '@/components/CartProvider';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const CartSidebar = memo(() => {

@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ShoppingCart } from 'lucide-react'
-import { useCart } from '@/hooks/useCart'; // Standardized import
+import { useCart } from '@/components/CartProvider'; // Standardized import
 
 const CartButton = () => {
   const { totalItems, setIsCartOpen } = useCart()
