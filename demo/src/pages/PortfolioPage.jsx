@@ -164,18 +164,6 @@ const PortfolioGrid = ({ portfolioItems, selectedCategory, categories, onCategor
                     alt={item.title}
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4">
-                      <Button
-                        size="sm"
-                        className="bg-white/20 backdrop-blur-sm text-white border-0 hover:bg-white/30"
-                      >
-                        <Eye className="w-4 h-4 mr-2" />
-                        View Live
-                        <ExternalLink className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
-                  </div>
                   <Badge className={`absolute top-4 left-4 bg-gradient-to-r ${item.color} text-white border-0`}>
                     {item.category}
                   </Badge>
@@ -253,16 +241,16 @@ const ResultsSection = () => (
           <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent"> Real Impact.</span>
         </h2>
         <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-          Our websites don't just look amazing – they drive measurable business growth.
+          50+ clients served • $30k+ revenue generated • 100% satisfaction rate
         </p>
       </motion.div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {[
-          { icon: TrendingUp, stat: "400%", label: "Average Conversion Increase", color: "text-green-400" },
-          { icon: Users, stat: "50+", label: "Happy Clients Served", color: "text-blue-400" },
-          { icon: Globe, stat: "99.9%", label: "Website Uptime", color: "text-purple-400" },
-          { icon: Heart, stat: "5★", label: "Average Client Rating", color: "text-pink-400" }
+          { icon: Users, stat: "50+", label: "Clients Served", color: "text-blue-400" },
+          { icon: Globe, stat: "$30k+", label: "Revenue Generated", color: "text-purple-400" },
+          { icon: Heart, stat: "100%", label: "Client Satisfaction", color: "text-pink-400" },
+          { icon: TrendingUp, stat: "2022-2025", label: "Years Active", color: "text-green-400" }
         ].map((item, index) => (
           <motion.div
             key={index}
@@ -348,14 +336,14 @@ export default function ShowcasePage() {
       id: 1,
       title: "FitLife Pro",
       category: "Health & Wellness",
-      description: "Premium fitness coaching platform with booking system",
+      description: "A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
       image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
-      features: ["Online Booking", "Payment Processing", "Member Portal", "Mobile Responsive"],
-      stats: { conversion: "340%", traffic: "850%", revenue: "$50K+" },
+      features: ["Class Booking", "Trainer Profiles", "Mobile Responsive", "SEO Optimized"],
+      stats: { clients: "12", satisfaction: "100%", launches: "2023" },
       testimonial: {
-        text: "Our online bookings increased by 340% in just 3 months. The website pays for itself!",
+        text: "TechMotive Supreme made it easy for our clients to book classes and learn about our trainers. Our online signups doubled!",
         author: "Sarah Johnson",
-        role: "Fitness Coach & Owner"
+        role: "Owner, FitLife Pro"
       },
       color: "from-green-500 to-emerald-500"
     },
@@ -363,14 +351,14 @@ export default function ShowcasePage() {
       id: 2,
       title: "TechFlow Solutions",
       category: "Technology/SaaS",
-      description: "B2B SaaS platform with advanced dashboard and analytics",
+      description: "Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      features: ["Dashboard Analytics", "API Integration", "User Management", "Real-time Data"],
-      stats: { conversion: "280%", signups: "600%", retention: "95%" },
+      features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
+      stats: { clients: "5", satisfaction: "100%", launches: "2024" },
       testimonial: {
-        text: "The dashboard design is incredible. Our user engagement has never been higher.",
+        text: "Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
         author: "Michael Chen",
-        role: "CTO, TechFlow"
+        role: "Founder, TechFlow"
       },
       color: "from-blue-500 to-cyan-500"
     },
@@ -378,14 +366,14 @@ export default function ShowcasePage() {
       id: 3,
       title: "Luxury Estates Co",
       category: "Real Estate",
-      description: "High-end real estate showcase with virtual tours",
+      description: "A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
-      features: ["Virtual Tours", "Property Search", "Lead Generation", "CRM Integration"],
-      stats: { leads: "450%", sales: "$2.5M+", viewings: "680%" },
+      features: ["Featured Listings", "Lead Forms", "Mobile First", "Photo Gallery"],
+      stats: { clients: "1", satisfaction: "100%", launches: "2023" },
       testimonial: {
-        text: "This website has transformed our business. We closed $2.5M in sales this quarter alone.",
+        text: "I get more inquiries from my website than any other channel. TechMotive Supreme made it easy!",
         author: "Amanda Rodriguez",
-        role: "Luxury Real Estate Agent"
+        role: "Agent, Luxury Estates Co"
       },
       color: "from-purple-500 to-pink-500"
     },
@@ -393,14 +381,14 @@ export default function ShowcasePage() {
       id: 4,
       title: "Artisan Market",
       category: "E-commerce",
-      description: "Handcrafted goods marketplace with seamless checkout",
+      description: "A simple e-commerce site for a local artisan collective, with easy product management.",
       image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-      features: ["E-commerce Store", "Payment Gateway", "Inventory Management", "Customer Reviews"],
-      stats: { sales: "520%", orders: "890%", revenue: "$125K+" },
+      features: ["Product Catalog", "Easy Checkout", "Inventory Tools", "Customer Reviews"],
+      stats: { clients: "8", satisfaction: "100%", launches: "2024" },
       testimonial: {
-        text: "Our online sales have exploded! The checkout process is so smooth, customers love it.",
+        text: "We love how easy it is to update our products. Our customers always comment on how smooth the checkout is.",
         author: "David Kim",
-        role: "Artisan Market Owner"
+        role: "Co-Founder, Artisan Market"
       },
       color: "from-orange-500 to-red-500"
     },
@@ -408,12 +396,12 @@ export default function ShowcasePage() {
       id: 5,
       title: "Creative Studio Co",
       category: "Creative Agency",
-      description: "Portfolio showcase with stunning visual effects",
+      description: "Portfolio site for a small creative agency, with case studies and a contact form.",
       image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
-      features: ["Portfolio Gallery", "Animation Effects", "Client Portal", "Project Showcase"],
-      stats: { inquiries: "380%", clients: "250%", revenue: "$80K+" },
+      features: ["Case Studies", "Contact Form", "Gallery", "Blog"],
+      stats: { clients: "3", satisfaction: "100%", launches: "2022" },
       testimonial: {
-        text: "The visual impact is incredible. We've never received so many high-quality inquiries.",
+        text: "Our new site finally reflects our work. We get more project inquiries and it’s easy to update.",
         author: "Lisa Thompson",
         role: "Creative Director"
       },
@@ -423,12 +411,12 @@ export default function ShowcasePage() {
       id: 6,
       title: "Legal Partners LLC",
       category: "Professional Services",
-      description: "Professional law firm with consultation booking",
+      description: "Professional site for a boutique law firm, with attorney bios and appointment booking.",
       image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
-      features: ["Consultation Booking", "Case Studies", "Attorney Profiles", "Contact Forms"],
-      stats: { consultations: "290%", clients: "180%", revenue: "$200K+" },
+      features: ["Attorney Bios", "Booking Form", "Practice Areas", "Testimonials"],
+      stats: { clients: "2", satisfaction: "100%", launches: "2024" },
       testimonial: {
-        text: "Professional, trustworthy, and effective. Our client acquisition has doubled.",
+        text: "We needed a site that looked trustworthy and made it easy for clients to reach us. TechMotive Supreme delivered.",
         author: "Robert Wilson",
         role: "Managing Partner"
       },
