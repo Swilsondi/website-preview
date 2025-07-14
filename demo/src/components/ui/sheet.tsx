@@ -61,7 +61,7 @@ const SheetContent = React.forwardRef<
   SheetContentProps
 >(({ side = "right", className, children, allowOverlayInteraction = false, ...props }, ref) => (
   <SheetPortal>
-    <SheetOverlay allowPointerEvents={allowOverlayInteraction} />
+    <SheetOverlay allowPointerEvents={true} />
     <SheetPrimitive.Content
       ref={ref}
       className={cn(sheetVariants({ side }), className)}
