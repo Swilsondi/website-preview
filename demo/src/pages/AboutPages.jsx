@@ -360,7 +360,7 @@ const AboutCTA = ({ navigate }) => {
             <Button 
               size="lg" 
               className="text-xl px-12 py-6 bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 hover:from-emerald-700 hover:via-blue-700 hover:to-purple-700 text-white font-bold shadow-2xl transition-all duration-300"
-              onClick={() => window.location.href = '/start-project'}
+              onClick={() => navigate('/start-project')}
             >
               Start Your Project
               <Rocket className="ml-3 w-6 h-6" />
@@ -370,7 +370,7 @@ const AboutCTA = ({ navigate }) => {
               size="lg" 
               variant="outline"
               className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
-              onClick={() => window.location.href = '/learn-more'}
+              onClick={() => navigate('/learn-more')}
             >
               Learn More
               <Lightbulb className="ml-3 w-6 h-6" />
