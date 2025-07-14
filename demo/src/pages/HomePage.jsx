@@ -191,11 +191,11 @@ const HeroSection = ({ handleNavigation }) => {
           >
             { [
               {
-                number: "100+",
+                number: "50+",
                 label: "Sites Launched",
               },
               {
-                number: "500%",
+                number: "110%",
                 label: "Avg ROI Increase",
               },
               {
@@ -312,9 +312,9 @@ const SocialProofSection = () => (
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
         {[
-          { number: "150+", label: "Projects Launched", icon: Rocket },
-          { number: "98%", label: "Client Satisfaction", icon: Star },
-          { number: "$2M+", label: "Revenue Generated", icon: TrendingUp },
+          { number: "50+", label: "Projects Launched", icon: Rocket },
+          { number: "100%", label: "Client Satisfaction", icon: Star },
+          { number: "$30k", label: "Revenue Generated", icon: TrendingUp },
           { number: "24/7", label: "Elite Support", icon: Users }
         ].map((stat, index) => (
           <div key={index} className="text-center group">
