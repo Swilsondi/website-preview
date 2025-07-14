@@ -42,7 +42,7 @@ const stagger = {
 }
 
 // Portfolio Hero Section
-const PortfolioHero = () => (
+const PortfolioHero = ({ categories, selectedCategory, onCategoryChange }) => (
   <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-12 md:pt-16">
     {/* Animated background elements */}
     <div className="absolute inset-0">
@@ -112,10 +112,19 @@ const PortfolioHero = () => (
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           className="flex flex-wrap gap-4 justify-center"
         >
-          {['E-commerce', 'SaaS', 'Health & Wellness', 'Real Estate', 'Creative', 'Professional'].map((category, index) => (
-            <Badge key={index} variant="outline" className="px-4 py-2 bg-white/10 border-white/20 text-white hover:bg-purple-500/20 transition-all duration-300 cursor-pointer">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              onClick={() => onCategoryChange(category)}
+              className={`px-6 py-2 transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0"
+                  : "border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+              }`}
+            >
               {category}
-            </Badge>
+            </Button>
           ))}
         </motion.div>
       </div>
@@ -124,145 +133,14 @@ const PortfolioHero = () => (
 )
 
 // Portfolio Grid Section
-const PortfolioGrid = () => {
-  const portfolioItems = [
-    {
-      id: 1,
-      title: "FitLife Pro",
-      category: "Health & Wellness",
-      description: "Premium fitness coaching platform with booking system",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
-      features: ["Online Booking", "Payment Processing", "Member Portal", "Mobile Responsive"],
-      stats: { conversion: "340%", traffic: "850%", revenue: "$50K+" },
-      testimonial: {
-        text: "Our online bookings increased by 340% in just 3 months. The website pays for itself!",
-        author: "Sarah Johnson",
-        role: "Fitness Coach & Owner"
-      },
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      id: 2,
-      title: "TechFlow Solutions",
-      category: "Technology/SaaS",
-      description: "B2B SaaS platform with advanced dashboard and analytics",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      features: ["Dashboard Analytics", "API Integration", "User Management", "Real-time Data"],
-      stats: { conversion: "280%", signups: "600%", retention: "95%" },
-      testimonial: {
-        text: "The dashboard design is incredible. Our user engagement has never been higher.",
-        author: "Michael Chen",
-        role: "CTO, TechFlow"
-      },
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      id: 3,
-      title: "Luxury Estates Co",
-      category: "Real Estate",
-      description: "High-end real estate showcase with virtual tours",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
-      features: ["Virtual Tours", "Property Search", "Lead Generation", "CRM Integration"],
-      stats: { leads: "450%", sales: "$2.5M+", viewings: "680%" },
-      testimonial: {
-        text: "This website has transformed our business. We closed $2.5M in sales this quarter alone.",
-        author: "Amanda Rodriguez",
-        role: "Luxury Real Estate Agent"
-      },
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      id: 4,
-      title: "Artisan Market",
-      category: "E-commerce",
-      description: "Handcrafted goods marketplace with seamless checkout",
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-      features: ["E-commerce Store", "Payment Gateway", "Inventory Management", "Customer Reviews"],
-      stats: { sales: "520%", orders: "890%", revenue: "$125K+" },
-      testimonial: {
-        text: "Our online sales have exploded! The checkout process is so smooth, customers love it.",
-        author: "David Kim",
-        role: "Artisan Market Owner"
-      },
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      id: 5,
-      title: "Creative Studio Co",
-      category: "Creative Agency",
-      description: "Portfolio showcase with stunning visual effects",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
-      features: ["Portfolio Gallery", "Animation Effects", "Client Portal", "Project Showcase"],
-      stats: { inquiries: "380%", clients: "250%", revenue: "$80K+" },
-      testimonial: {
-        text: "The visual impact is incredible. We've never received so many high-quality inquiries.",
-        author: "Lisa Thompson",
-        role: "Creative Director"
-      },
-      color: "from-pink-500 to-purple-500"
-    },
-    {
-      id: 6,
-      title: "Legal Partners LLC",
-      category: "Professional Services",
-      description: "Professional law firm with consultation booking",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
-      features: ["Consultation Booking", "Case Studies", "Attorney Profiles", "Contact Forms"],
-      stats: { consultations: "290%", clients: "180%", revenue: "$200K+" },
-      testimonial: {
-        text: "Professional, trustworthy, and effective. Our client acquisition has doubled.",
-        author: "Robert Wilson",
-        role: "Managing Partner"
-      },
-      color: "from-gray-600 to-gray-800"
-    }
-  ]
-
-  const [selectedCategory, setSelectedCategory] = useState('All')
-  const categories = ['All', 'E-commerce', 'Technology/SaaS', 'Health & Wellness', 'Real Estate', 'Creative Agency', 'Professional Services']
-
-  const filteredItems = selectedCategory === 'All' 
-    ? portfolioItems 
+const PortfolioGrid = ({ portfolioItems, selectedCategory, categories, onCategoryChange }) => {
+  const filteredItems = selectedCategory === 'All'
+    ? portfolioItems
     : portfolioItems.filter(item => item.category === selectedCategory)
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category)
-  }
 
   return (
     <section className="py-24 bg-gray-900">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-8">
-            Industry
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Showcase</span>
-          </h2>
-          
-          <div className="flex flex-wrap gap-4 justify-center mb-8">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                onClick={() => handleCategoryChange(category)}
-                className={`px-6 py-2 transition-all duration-300 ${
-                  selectedCategory === category
-                    ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0"
-                    : "border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
-                }`}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Portfolio Grid */}
         <motion.div
           variants={stagger}
@@ -455,7 +333,109 @@ const PortfolioCTA = () => (
 // Main Portfolio Page Component
 export default function ShowcasePage() {
   const [pageLoaded, setPageLoaded] = useState(false);
-  
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const categories = [
+    'All',
+    'E-commerce',
+    'Technology/SaaS',
+    'Health & Wellness',
+    'Real Estate',
+    'Creative Agency',
+    'Professional Services'
+  ];
+  const portfolioItems = [
+    {
+      id: 1,
+      title: "FitLife Pro",
+      category: "Health & Wellness",
+      description: "Premium fitness coaching platform with booking system",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+      features: ["Online Booking", "Payment Processing", "Member Portal", "Mobile Responsive"],
+      stats: { conversion: "340%", traffic: "850%", revenue: "$50K+" },
+      testimonial: {
+        text: "Our online bookings increased by 340% in just 3 months. The website pays for itself!",
+        author: "Sarah Johnson",
+        role: "Fitness Coach & Owner"
+      },
+      color: "from-green-500 to-emerald-500"
+    },
+    {
+      id: 2,
+      title: "TechFlow Solutions",
+      category: "Technology/SaaS",
+      description: "B2B SaaS platform with advanced dashboard and analytics",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      features: ["Dashboard Analytics", "API Integration", "User Management", "Real-time Data"],
+      stats: { conversion: "280%", signups: "600%", retention: "95%" },
+      testimonial: {
+        text: "The dashboard design is incredible. Our user engagement has never been higher.",
+        author: "Michael Chen",
+        role: "CTO, TechFlow"
+      },
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      id: 3,
+      title: "Luxury Estates Co",
+      category: "Real Estate",
+      description: "High-end real estate showcase with virtual tours",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
+      features: ["Virtual Tours", "Property Search", "Lead Generation", "CRM Integration"],
+      stats: { leads: "450%", sales: "$2.5M+", viewings: "680%" },
+      testimonial: {
+        text: "This website has transformed our business. We closed $2.5M in sales this quarter alone.",
+        author: "Amanda Rodriguez",
+        role: "Luxury Real Estate Agent"
+      },
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      id: 4,
+      title: "Artisan Market",
+      category: "E-commerce",
+      description: "Handcrafted goods marketplace with seamless checkout",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+      features: ["E-commerce Store", "Payment Gateway", "Inventory Management", "Customer Reviews"],
+      stats: { sales: "520%", orders: "890%", revenue: "$125K+" },
+      testimonial: {
+        text: "Our online sales have exploded! The checkout process is so smooth, customers love it.",
+        author: "David Kim",
+        role: "Artisan Market Owner"
+      },
+      color: "from-orange-500 to-red-500"
+    },
+    {
+      id: 5,
+      title: "Creative Studio Co",
+      category: "Creative Agency",
+      description: "Portfolio showcase with stunning visual effects",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
+      features: ["Portfolio Gallery", "Animation Effects", "Client Portal", "Project Showcase"],
+      stats: { inquiries: "380%", clients: "250%", revenue: "$80K+" },
+      testimonial: {
+        text: "The visual impact is incredible. We've never received so many high-quality inquiries.",
+        author: "Lisa Thompson",
+        role: "Creative Director"
+      },
+      color: "from-pink-500 to-purple-500"
+    },
+    {
+      id: 6,
+      title: "Legal Partners LLC",
+      category: "Professional Services",
+      description: "Professional law firm with consultation booking",
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
+      features: ["Consultation Booking", "Case Studies", "Attorney Profiles", "Contact Forms"],
+      stats: { consultations: "290%", clients: "180%", revenue: "$200K+" },
+      testimonial: {
+        text: "Professional, trustworthy, and effective. Our client acquisition has doubled.",
+        author: "Robert Wilson",
+        role: "Managing Partner"
+      },
+      color: "from-gray-600 to-gray-800"
+    }
+  ]
+
   // Create state to track if component is mounted
   const [isMounted, setIsMounted] = useState(false);
   // Only access location after the component is mounted
@@ -512,8 +492,8 @@ export default function ShowcasePage() {
         }
       ` }} />
       
-      <PortfolioHero />
-      <PortfolioGrid />
+      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
+      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} />
       <ResultsSection />
       <PortfolioCTA />
       <Footer /> {/* ✅ ADD THIS */}
