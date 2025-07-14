@@ -114,7 +114,7 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           viewport={{ once: false }}
-          className="flex flex-wrap gap-4 justify-center"
+          className="flex flex-wrap gap-4 justify-center mb-10"
         >
           {categories.map((category) => (
             <Button

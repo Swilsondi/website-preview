@@ -187,7 +187,7 @@ const HeroSection = ({ handleNavigation }) => {
             variants={stagger}
             initial="initial"
             animate="animate"
-            className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+            className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-12"
           >
             { [
               {
