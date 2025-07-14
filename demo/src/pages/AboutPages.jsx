@@ -306,10 +306,10 @@ const StatsSection = () => (
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         {[
-          { number: "500+", label: "Projects Completed", icon: CheckCircle },
-          { number: "98%", label: "Client Satisfaction", icon: Star },
-          { number: "$10M+", label: "Revenue Generated", icon: TrendingUp },
-          { number: "24/7", label: "Support Available", icon: Heart }
+          { number: "100%", label: "Client Satisfaction", icon: Star },
+          { number: "2025", label: "Founded In", icon: Award },
+          { number: "10+", label: "Industries Served", icon: Globe },
+          { number: "8+", label: "Team Certifications", icon: Shield }
         ].map((stat, index) => (
           <motion.div
             key={index}
