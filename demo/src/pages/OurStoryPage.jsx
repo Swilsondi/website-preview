@@ -190,25 +190,25 @@ const TimelineSection = () => {
       icon: Rocket
     },
     {
-      year: "2025",
+      year: "Feburary - 2025",
       title: "Word of Mouth Growth",
       description: "Happy clients referred friends and family, helping us grow project by project.",
       icon: Users
     },
     {
-      year: "2026",
+      year: "April - 2025",
       title: "Expanding Services",
       description: "Added branding, SEO, and e-commerce to help clients do even more online.",
       icon: TrendingUp
     },
     {
-      year: "2027",
+      year: "June - 2025",
       title: "50+ Projects Completed",
       description: "Reached a milestone of 50+ websites launched for creators and small businesses.",
       icon: Award
     },
     {
-      year: "2028",
+      year: "July - 2025",
       title: "Still People-First",
       description: "Focused on honest work, fast results, and helping every client succeed—no matter their size.",
       icon: Heart
