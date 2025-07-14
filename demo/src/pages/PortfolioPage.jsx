@@ -115,14 +115,16 @@ const PortfolioHero = ({ categories, selectedCategory, onCategoryChange }) => (
         >
           {categories.map((category) => (
             <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
+              key={normalize(category)}
+              variant={normalize(selectedCategory) === normalize(category) ? "default" : "outline"}
               onClick={() => onCategoryChange(category)}
               className={`px-6 py-2 transition-all duration-300 ${
-                selectedCategory === category
+                normalize(selectedCategory) === normalize(category)
                   ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0"
                   : "border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
               }`}
+              tabIndex={0}
+              type="button"
             >
               {category}
             </Button>
