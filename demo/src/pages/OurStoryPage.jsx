@@ -448,28 +448,18 @@ const VisionSection = () => {
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
             Our vision is about more than just websites—it's about empowering creators and businesses to thrive in a digital world, together.
           </p>
-          <div className="bg-gray-800/50 p-8 rounded-2xl border border-blue-500/20 mb-12 flex flex-col md:flex-row items-center justify-center gap-8">
+          <blockquote className="text-2xl text-blue-200 italic font-light leading-relaxed mb-8 mx-auto max-w-2xl">
+            "My goal for TechMotiveSupreme is simple: to help real people and small teams turn their ideas into digital realities that make a difference. We believe in honest work, creative solutions, and building lasting partnerships. Every project is personal to us, and our team is committed to your growth, your vision, and your success."
+          </blockquote>
+          <div className="flex flex-col items-center mb-6">
             <img 
               src={darkLogo} 
-              alt="TechMotiveSupreme Logo" 
-              className="w-24 h-24 object-contain rounded-xl mb-6 md:mb-0"
-              style={{ background: '#18181b' }}
+              alt="Spencer Wilson / TechMotiveSupreme Logo"
+              className="w-28 h-28 object-contain rounded-full border-4 border-blue-500 bg-gray-900 mb-3"
             />
-            <blockquote className="text-2xl text-blue-200 italic font-light leading-relaxed mb-6 md:mb-0 text-left">
-              "My goal for TechMotiveSupreme is simple: to help real people and small teams turn their ideas into digital realities that make a difference. We believe in honest work, creative solutions, and building lasting partnerships. Every project is personal to us, and our team is committed to your growth, your vision, and your success."
-            </blockquote>
-            <div className="flex flex-col items-center md:items-start">
-              <div className="w-12 h-12 rounded-full overflow-hidden mb-2">
-                <img 
-                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" 
-                  alt="Spencer Wilson"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="text-left">
-                <p className="text-white font-semibold">Spencer Wilson</p>
-                <p className="text-blue-400 text-sm">CEO & Founder</p>
-              </div>
+            <div className="text-center">
+              <p className="text-white font-semibold">Spencer Wilson</p>
+              <p className="text-blue-400 text-sm">CEO & Founder</p>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
