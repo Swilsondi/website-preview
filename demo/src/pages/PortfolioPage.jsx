@@ -139,7 +139,7 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
 ))
 
 // Portfolio Grid Section
-const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, categories, onCategoryChange }) => {
+const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory }) => {
   const filteredItems = normalize(selectedCategory) === 'all'
     ? portfolioItems
     : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory))
@@ -431,35 +431,28 @@ const portfolioItems = [
 export default function ShowcasePage() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  // Create state to track if component is mounted
+  // Always call useLocation at the top level
+  const location = useLocation();
   const [isMounted, setIsMounted] = useState(false);
-  // Only access location after the component is mounted
-  const location = isMounted ? useLocation() : null;
 
   useEffect(() => {
-    // Mark component as mounted to safely use useLocation
     setIsMounted(true);
-    
     const timer = setTimeout(() => {
       setPageLoaded(true);
     }, 100);
-    
     return () => clearTimeout(timer);
   }, []);
 
-  // Ensure the page scrolls to the top on navigation
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Only add this effect when location is available
   useEffect(() => {
-    if (location) {
+    if (isMounted && location) {
       window.scrollTo(0, 0);
     }
-  }, [location]);
+  }, [location, isMounted]);
 
-  // Use useCallback to memoize the handler
   const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
 
   return (
@@ -491,7 +484,7 @@ export default function ShowcasePage() {
       ` }} />
       
       <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} />
-      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} categories={categories} onCategoryChange={handleCategoryChange} />
+      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} />
       <ResultsSection />
       <PortfolioCTA />
       <Footer /> {/* ✅ ADD THIS */}
