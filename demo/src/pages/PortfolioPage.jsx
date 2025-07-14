@@ -339,7 +339,7 @@ export default function ShowcasePage() {
       description: "A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
       image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
       features: ["Class Booking", "Trainer Profiles", "Mobile Responsive", "SEO Optimized"],
-      stats: { clients: "12", satisfaction: "100%", launches: "2023" },
+      stats: { clients: "1,200", satisfaction: "100%", launches: "2023" },
       testimonial: {
         text: "TechMotive Supreme made it easy for our clients to book classes and learn about our trainers. Our online signups doubled!",
         author: "Sarah Johnson",
@@ -354,7 +354,7 @@ export default function ShowcasePage() {
       description: "Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
-      stats: { clients: "5", satisfaction: "100%", launches: "2024" },
+      stats: { clients: "2,500", satisfaction: "100%", launches: "2024" },
       testimonial: {
         text: "Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
         author: "Michael Chen",
@@ -369,7 +369,7 @@ export default function ShowcasePage() {
       description: "A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
       features: ["Featured Listings", "Lead Forms", "Mobile First", "Photo Gallery"],
-      stats: { clients: "1", satisfaction: "100%", launches: "2023" },
+      stats: { clients: "800", satisfaction: "100%", launches: "2023" },
       testimonial: {
         text: "I get more inquiries from my website than any other channel. TechMotive Supreme made it easy!",
         author: "Amanda Rodriguez",
@@ -384,7 +384,7 @@ export default function ShowcasePage() {
       description: "A simple e-commerce site for a local artisan collective, with easy product management.",
       image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
       features: ["Product Catalog", "Easy Checkout", "Inventory Tools", "Customer Reviews"],
-      stats: { clients: "8", satisfaction: "100%", launches: "2024" },
+      stats: { clients: "3,400", satisfaction: "100%", launches: "2024" },
       testimonial: {
         text: "We love how easy it is to update our products. Our customers always comment on how smooth the checkout is.",
         author: "David Kim",
@@ -399,7 +399,7 @@ export default function ShowcasePage() {
       description: "Portfolio site for a small creative agency, with case studies and a contact form.",
       image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
       features: ["Case Studies", "Contact Form", "Gallery", "Blog"],
-      stats: { clients: "3", satisfaction: "100%", launches: "2022" },
+      stats: { clients: "650", satisfaction: "100%", launches: "2022" },
       testimonial: {
         text: "Our new site finally reflects our work. We get more project inquiries and it’s easy to update.",
         author: "Lisa Thompson",
@@ -414,7 +414,7 @@ export default function ShowcasePage() {
       description: "Professional site for a boutique law firm, with attorney bios and appointment booking.",
       image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
       features: ["Attorney Bios", "Booking Form", "Practice Areas", "Testimonials"],
-      stats: { clients: "2", satisfaction: "100%", launches: "2024" },
+      stats: { clients: "10,000", satisfaction: "100%", launches: "2024" },
       testimonial: {
         text: "We needed a site that looked trustworthy and made it easy for clients to reach us. TechMotive Supreme delivered.",
         author: "Robert Wilson",
