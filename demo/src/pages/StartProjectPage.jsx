@@ -1,11 +1,12 @@
 import React from 'react';
 import Footer from '@/components/Footer';
 import { useScrollControl } from '@/hooks/useScrollControl';
-import ScrollButton from '@/components/ScrollButton';
+import { useNavigate } from 'react-router-dom';
 
 const StartProjectPage = () => {
   // Use our custom hook for scroll control
   useScrollControl(true);
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -14,12 +15,12 @@ const StartProjectPage = () => {
         <div className="pt-4">
           <h1 className="text-6xl font-extrabold text-white">Start Your Project</h1>
           <p className="text-2xl mt-4 text-gray-200">Let us help you bring your vision to life with our expertise.</p>
-          <ScrollButton 
+          <button 
             className="mt-8 px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg shadow-lg hover:bg-gray-200"
-            smooth={true}
+            onClick={() => navigate('/pricing')}
           >
             Get Started Now
-          </ScrollButton>
+          </button>
         </div>
       </header>
 
