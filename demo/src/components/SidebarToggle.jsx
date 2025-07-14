@@ -9,25 +9,19 @@ const SidebarToggle = () => {
   const isOpen = state === "expanded";
   const isMobile = useIsMobile();
 
-  // Tailwind: top-16 = 64px (navbar), left-2 = 0.5rem, left-[16rem] = 256px (sidebar width)
-  // On desktop: md:top-6 md:left-6, md:left-[14rem] when open
-  // On mobile: top-16 left-2 when closed, top-16 left-[16rem] when open
-  let positionClass = '';
+  // Only one left class at a time
+  let leftClass = '';
   if (isMobile) {
-    positionClass = isOpen ? 'top-16 left-[16rem]' : 'top-16 left-2';
+    leftClass = isOpen ? 'left-[16rem]' : 'left-2';
   } else {
-    positionClass = isOpen ? 'md:top-6 md:left-[14rem]' : 'md:top-6 md:left-6';
+    leftClass = isOpen ? 'md:left-[14rem]' : 'md:left-6';
   }
 
   return (
     <Button
       variant="ghost"
       onClick={toggleSidebar}
-      className={`
-        fixed z-30 transition-all duration-300 ease-in-out
-        h-9 w-9 rounded-full backdrop-blur-sm border border-gray-700/50 shadow-md hover:shadow-lg
-        ${positionClass}
-      `}
+      className={`fixed z-30 transition-all duration-300 ease-in-out h-9 w-9 rounded-full backdrop-blur-sm border border-gray-700/50 shadow-md hover:shadow-lg top-16 ${leftClass}`}
       title={isOpen ? "Close Sidebar" : "Open Sidebar"}
     >
       {isOpen ? (
