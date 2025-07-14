@@ -145,6 +145,10 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
 
 // Portfolio Grid Section
 const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef }) => {
+  const [animateKey, setAnimateKey] = useState(0);
+  useEffect(() => {
+    setAnimateKey((k) => k + 1);
+  }, [selectedCategory]);
   const filteredItems = normalize(selectedCategory) === 'all'
     ? portfolioItems
     : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory))
@@ -154,6 +158,7 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Portfolio Grid */}
         <motion.div
+          key={animateKey}
           variants={stagger}
           initial="initial"
           animate="animate"
