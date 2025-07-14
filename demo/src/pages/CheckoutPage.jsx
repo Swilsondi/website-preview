@@ -101,10 +101,10 @@ const PreCheckoutQuestions = ({ onComplete }) => {
     // Send email via EmailJS
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_cby8mnr', // Your EmailJS service ID
+        'template_81ka64b', // Your EmailJS template ID
         answers,
-        'YOUR_USER_ID' // Replace with your EmailJS user ID (public key)
+        'BC0wai72dA16OIPrs' // Your EmailJS public key
       );
       setSendSuccess(true);
       onComplete(answers);
