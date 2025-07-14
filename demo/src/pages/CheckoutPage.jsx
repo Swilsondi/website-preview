@@ -400,6 +400,7 @@ const CartSection = ({ selectedPlan, cart }) => {
 
                 <div className="mt-8">
                   <Button
+                    id="secure-checkout-btn"
                     size="lg"
                     className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 text-lg shadow-2xl transition-all duration-300"
                     onClick={handleCheckout}

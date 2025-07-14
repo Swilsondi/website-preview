@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { X, ShoppingCart, Plus, Minus, ArrowRight, Trash2, Package } from 'lucide-react';
 import { useCart } from '@/hooks/useCart';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const CartSidebar = memo(() => {
   const {
@@ -21,15 +21,21 @@ const CartSidebar = memo(() => {
   } = useCart();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleCheckout = () => {
-    // First close the cart sidebar
     setIsCartOpen(false);
-    
-    // Add a small delay before navigation to ensure sidebar closes smoothly
     setTimeout(() => {
-      // Navigate to checkout page
-      navigate('/checkout');
+      if (location.pathname === '/checkout') {
+        // Scroll to the secure checkout button if already on checkout page
+        const btn = document.getElementById('secure-checkout-btn');
+        if (btn) {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          btn.focus();
+        }
+      } else {
+        navigate('/checkout');
+      }
     }, 300);
   };
 
