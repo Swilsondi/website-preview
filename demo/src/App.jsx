@@ -29,6 +29,7 @@ const LearnMorePage = lazy(() => import('./pages/LearnMorePage'))
 const InnovationLabPage = lazy(() => import('./pages/InnovationLabPage'))
 const ClientSuccessStoriesPage = lazy(() => import('./pages/ClientSuccessStoriesPage'))
 const LoginPage = lazy(() => import('./pages/LoginPage'))
+const OurStoryPage = lazy(() => import('./pages/OurStoryPage'))
 
 // Loading component with better UX
 const PageLoader = () => (
@@ -174,8 +175,9 @@ function App() {
                             <Route path="/showcase" element={<ShowcasePage />} />
                             <Route path="/checkout" element={<CheckoutPage />} />
                             <Route path="/checkout-success" element={<CheckoutSuccessPage />} />
-                            <Route path="/final-payment" element={<FinalPaymentPage />} /> {/* Add FinalPaymentPage route */}
+                            <Route path="/final-payment" element={<FinalPaymentPage />} />
                             <Route path="/our-journey" element={<OurJourneyPage />} />
+                            <Route path="/our-story" element={<OurStoryPage />} />
                             <Route path="/start-project" element={<StartProjectPage />} />
                             <Route path="/learn-more" element={<LearnMorePage />} />
                             <Route path="/innovation-lab" element={<InnovationLabPage />} />
