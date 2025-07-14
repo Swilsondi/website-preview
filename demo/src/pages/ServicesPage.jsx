@@ -100,7 +100,7 @@ const ServicesHero = ({ navigate }) => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-            onClick={() => window.open('https://www.brandingstrategy.com', '_blank')}
+            onClick={() => window.open('https://www.adobe.com/express/learn/blog/brand-strategy#:~:text=with%20automated%20tools-,What%20is%20brand%20strategy?,consistent%20message%20across%20all%20channels.', '_blank')}
           >
             Explore Branding Solutions
             <ArrowRight className="ml-2 w-5 h-5" />
