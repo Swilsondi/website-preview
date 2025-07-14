@@ -209,6 +209,7 @@ const Sidebar = React.forwardRef<
               } as React.CSSProperties
             }
             side={side}
+            allowOverlayInteraction={true}
           >
             <SheetHeader className="sr-only">
               <SheetTitle>Sidebar</SheetTitle>
