@@ -320,12 +320,9 @@ const PricingCards = () => {
                     size="lg" 
                     className={`w-full mb-8 relative overflow-hidden group bg-gradient-to-r ${plan.accent} hover:scale-105 text-white font-semibold shadow-2xl transition-all duration-500 border-0 h-14`}
                     onClick={() => {
-                      // Store plan data in global state and localStorage
                       const planData = {
                         name: plan.name,
-                        // Fix enterprise package price by removing "+" and storing as numeric
                         price: plan.price.includes("+") ? plan.price.replace("+", "") : plan.price,
-                        // Also add a numeric price for calculations
                         numericPrice: plan.price.includes("+") 
                           ? parseInt(plan.price.replace(/[^0-9]/g, "")) 
                           : parseInt(plan.price.replace(/[^0-9]/g, "")),
@@ -334,8 +331,9 @@ const PricingCards = () => {
                         revisions: plan.revisions
                       }
                       setSelectedPlan(planData)
-                      // Navigate to checkout page using React Router
-                      navigate('/checkout')
+                      setTimeout(() => {
+                        navigate('/checkout')
+                      }, 100)
                     }}
                   >
                     <span className="relative z-10 flex items-center justify-center">
