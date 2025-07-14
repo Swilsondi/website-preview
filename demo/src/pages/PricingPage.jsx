@@ -24,7 +24,7 @@ import {
 import { motion } from "framer-motion" // Add the missing import
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useCart } from '@/hooks/useCart'; // Standardized import
+import { useCart } from '@/components/CartProvider';
 import Footer from "@/components/Footer"
 
 // Animation variants
