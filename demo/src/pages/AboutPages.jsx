@@ -98,7 +98,7 @@ const AboutHero = ({ navigate }) => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-            onClick={() => window.location.href = '/our-journey'}
+            onClick={() => navigate('/our-journey')}
           >
             Our Story
             <ArrowRight className="ml-2 w-5 h-5" />
@@ -108,7 +108,7 @@ const AboutHero = ({ navigate }) => (
             size="lg" 
             variant="outline"
             className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
-            onClick={() => window.location.href = '/client-success-stories'}
+            onClick={() => navigate('/client-success-stories')}
           >
             Meet the Team
             <Users className="ml-2 w-5 h-5" />
