@@ -417,15 +417,9 @@ const TeamPhotoSection = ({ navigate }) => (
           <div className="max-w-xl">
             <h3 className="text-3xl font-bold text-white mb-4">Stronger Together</h3>
             <p className="text-lg text-gray-300 mb-6">
-              Our team of 85+ professionals spans 12 countries and 5 continents, bringing diverse perspectives and expertise to every project.
+              Our team of 7 professionals bringing diverse perspectives and expertise to every project. Starting from the implementation of the design to the security of the code we handle all diverse areas. 
             </p>
-            <Button 
-              className="bg-white text-gray-900 hover:bg-gray-100"
-              onClick={() => navigate('/meet-the-team')}
-            >
-              Meet Our Team
-              <Users className="ml-2 w-5 h-5" />
-            </Button>
+            
           </div>
         </div>
       </motion.div>
