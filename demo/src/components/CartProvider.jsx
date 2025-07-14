@@ -138,6 +138,9 @@ export const CartProvider = ({ children }) => {
     return item ? item.quantity : 0;
   }
 
+  // Add cart sidebar open state
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
   // Context value with cart state and functions
   const value = {
     cart,
@@ -152,6 +155,9 @@ export const CartProvider = ({ children }) => {
     selectedPlan,
     setSelectedPlan: selectPlan,
     getCartQuantity,
+    // Add these for sidebar control
+    isCartOpen,
+    setIsCartOpen,
   };
 
   return (
