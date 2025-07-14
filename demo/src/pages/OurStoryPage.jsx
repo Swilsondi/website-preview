@@ -21,6 +21,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
+import darkLogo from '@/src/assets/dark-logo.png'
 
 // Animation variants
 const fadeIn = {
@@ -449,7 +450,7 @@ const VisionSection = () => {
           </p>
           <div className="bg-gray-800/50 p-8 rounded-2xl border border-blue-500/20 mb-12 flex flex-col md:flex-row items-center justify-center gap-8">
             <img 
-              src={require('@/src/assets/dark-logo.png')} 
+              src={darkLogo} 
               alt="TechMotiveSupreme Logo" 
               className="w-24 h-24 object-contain rounded-xl mb-6 md:mb-0"
               style={{ background: '#18181b' }}
