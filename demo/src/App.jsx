@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import ErrorBoundary from "@/components/ErrorBoundary"
-import { CartProvider } from "@/hooks/useCart" 
+import CartProvider from "@/components/CartProvider" // Corrected import for CartProvider
 import { lazy, Suspense, useState, useEffect } from 'react'
 import TopNavbar from "@/components/TopNavbar"
 import CartSidebar from '@/components/CartSidebar'
