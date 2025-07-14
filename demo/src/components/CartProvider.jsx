@@ -99,6 +99,12 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  // Add selectedPlan state
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  // Only allow one plan at a time
+  const selectPlan = (plan) => setSelectedPlan(plan);
+
   /**
    * Clear all items from the cart
    */
@@ -107,14 +113,24 @@ export const CartProvider = ({ children }) => {
     setSelectedPlan(null); // Also clear the selected package
   };
 
-  /**
-   * Calculate the total price of all items in the cart
-   * 
-   * @return {number} The total price
-   */
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
+  // Calculate plan total
+  function getPlanTotal(plan) {
+    if (!plan) return 0;
+    if (typeof plan.price === 'number') return plan.price;
+    if (typeof plan.price === 'string') {
+      const num = Number(plan.price.replace(/[^\d.]/g, ''));
+      return isNaN(num) ? 0 : num;
+    }
+    return 0;
+  }
+
+  // Cart total includes selected plan
+  const planTotal = getPlanTotal(selectedPlan);
+  const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  const grandTotal = planTotal + cartTotal;
+
+  // Item count: 1 for plan if selected, plus add-ons
+  const itemCount = (selectedPlan ? 1 : 0) + cart.reduce((count, item) => count + item.quantity, 0);
 
   // Context value with cart state and functions
   const value = {
@@ -123,8 +139,12 @@ export const CartProvider = ({ children }) => {
     removeFromCart,
     updateCartItemQuantity,
     clearCart,
-    cartTotal: calculateTotal(),
-    itemCount: cart.reduce((count, item) => count + item.quantity, 0)
+    cartTotal,
+    planTotal,
+    grandTotal,
+    itemCount,
+    selectedPlan,
+    setSelectedPlan: selectPlan,
   };
 
   return (
