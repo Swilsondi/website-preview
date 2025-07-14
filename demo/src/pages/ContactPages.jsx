@@ -19,7 +19,7 @@ import {
   Coffee,
   ChevronDown
 } from "lucide-react"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from "framer-motion"
 import Footer from "@/components/Footer";
 import { sanitizeInput, validateForm } from "@/utils/validation"
@@ -72,7 +72,7 @@ const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
 }
 
 // Hero Section - updated to fix content blocking issue
-const ContactHero = () => (
+const ContactHero = ({ onMessageClick }) => (
   <section className="relative py-24 bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 overflow-hidden">
     <div className="absolute inset-0">
       <motion.div
@@ -144,6 +144,7 @@ const ContactHero = () => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+            onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
           >
             Schedule a Call
             <Calendar className="ml-2 w-5 h-5" />
@@ -153,6 +154,7 @@ const ContactHero = () => (
             size="lg" 
             variant="outline"
             className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+            onClick={onMessageClick}
           >
             Send a Message
             <MessageCircle className="ml-2 w-5 h-5" />
@@ -591,6 +593,7 @@ const ContactCTA = () => (
 
 export default function ContactPage() {
   const [pageLoaded, setPageLoaded] = useState(false);
+  const formRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -605,8 +608,14 @@ export default function ContactPage() {
         pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
     >
-      <ContactHero />
-      <ContactSection />
+      <ContactHero onMessageClick={() => {
+        if (formRef.current) {
+          formRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }} />
+      <div ref={formRef}>
+        <ContactSection />
+      </div>
       <ContactFAQ />
       <ContactCTA />
       <Footer />
