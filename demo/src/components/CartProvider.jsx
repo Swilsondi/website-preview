@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 
 /**
  * CartContext: The central store for shopping cart data
@@ -153,5 +153,17 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
+/**
+ * Custom hook to use the CartContext
+ * 
+ * This hook provides a convenient way to access the cart context
+ * values and functions in any component.
+ * 
+ * @returns {Object} Cart context values and functions
+ */
+export function useCart() {
+  return useContext(CartContext);
+}
 
 export default CartProvider;
