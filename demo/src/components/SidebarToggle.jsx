@@ -10,18 +10,18 @@ const SidebarToggle = () => {
   return (
     <Button
       variant="ghost"
-      size="icon"
       onClick={toggleSidebar}
       className={`
         fixed z-30 transition-all duration-300 ease-in-out
-        ${isOpen 
-          ? 'top-[5.7rem] left-[14rem] bg-gray-800/70 hover:bg-gray-700' 
-          : 'top-[4.5rem] left-4 bg-gray-800/70 hover:bg-gray-700'
-        }
-        h-9 w-9 rounded-full backdrop-blur-sm border border-gray-700/50 shadow-md
-        hover:shadow-lg
+        top-16 left-2 md:top-6 md:left-6
+        ${isOpen ? 'md:left-[14rem] left-[70vw]' : ''}
+        h-9 w-9 rounded-full backdrop-blur-sm border border-gray-700/50 shadow-md hover:shadow-lg
       `}
       title={isOpen ? "Close Sidebar" : "Open Sidebar"}
+      style={{
+        // On mobile, push the button to the right of the sidebar when open
+        left: isOpen && window.innerWidth < 768 ? '16rem' : undefined
+      }}
     >
       {isOpen ? (
         <PanelLeft className="h-5 w-5 text-gray-300" />
