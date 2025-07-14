@@ -110,6 +110,7 @@ const PortfolioHero = ({ categories, selectedCategory, onCategoryChange }) => (
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          viewport={{ once: false }}
           className="flex flex-wrap gap-4 justify-center"
         >
           {categories.map((category) => (
@@ -148,7 +149,7 @@ const PortfolioGrid = ({ portfolioItems, selectedCategory, categories, onCategor
           variants={stagger}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: false, amount: 0.1 }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {filteredItems.map((item) => (
