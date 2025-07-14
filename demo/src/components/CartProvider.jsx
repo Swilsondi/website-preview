@@ -104,6 +104,7 @@ export const CartProvider = ({ children }) => {
    */
   const clearCart = () => {
     setCart([]);
+    setSelectedPlan(null); // Also clear the selected package
   };
 
   /**

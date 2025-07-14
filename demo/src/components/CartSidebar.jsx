@@ -33,7 +33,19 @@ const CartSidebar = memo(() => {
     }, 300);
   };
 
-  const planTotal = selectedPlan ? parseInt(selectedPlan.price.replace('$', '').replace('+', '')) : 0;
+  // Robust plan total calculation
+  function getPlanTotal(selectedPlan) {
+    if (!selectedPlan) return 0;
+    if (typeof selectedPlan.price === 'number') return selectedPlan.price;
+    if (typeof selectedPlan.price === 'string') {
+      // Remove any non-numeric characters (except dot)
+      const num = Number(selectedPlan.price.replace(/[^\d.]/g, ''));
+      return isNaN(num) ? 0 : num;
+    }
+    return 0;
+  }
+
+  const planTotal = getPlanTotal(selectedPlan);
   const grandTotal = planTotal + cartTotal;
 
   return (
