@@ -1,3 +1,4 @@
+import React, { useEffect, useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -17,8 +18,10 @@ import {
   ShoppingCart,
   Users
 } from "lucide-react"
-import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+
+// Move normalize to the top so all components share the same reference
+const normalize = str => (str ? str.trim().toLowerCase() : "");
 
 // Animation variants
 const fadeInUp = {
@@ -42,7 +45,7 @@ const stagger = {
 }
 
 // Portfolio Hero Section
-const PortfolioHero = ({ categories, selectedCategory, onCategoryChange }) => (
+const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChange }) => (
   <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-12 md:pt-16">
     {/* Animated background elements */}
     <div className="absolute inset-0">
@@ -133,12 +136,10 @@ const PortfolioHero = ({ categories, selectedCategory, onCategoryChange }) => (
       </div>
     </div>
   </section>
-)
+))
 
 // Portfolio Grid Section
-const normalize = str => str.trim().toLowerCase();
-
-const PortfolioGrid = ({ portfolioItems, selectedCategory, categories, onCategoryChange }) => {
+const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, categories, onCategoryChange }) => {
   const filteredItems = normalize(selectedCategory) === 'all'
     ? portfolioItems
     : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory))
@@ -228,7 +229,7 @@ const PortfolioGrid = ({ portfolioItems, selectedCategory, categories, onCategor
       </div>
     </section>
   )
-}
+})
 
 // Results Section
 const ResultsSection = () => (
@@ -458,6 +459,9 @@ export default function ShowcasePage() {
     }
   }, [location]);
 
+  // Use useCallback to memoize the handler
+  const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
+
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       {/* Custom Scrollbar Styles */}
@@ -486,8 +490,8 @@ export default function ShowcasePage() {
         }
       ` }} />
       
-      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
-      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} categories={categories} onCategoryChange={setSelectedCategory} />
+      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} />
+      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} categories={categories} onCategoryChange={handleCategoryChange} />
       <ResultsSection />
       <PortfolioCTA />
       <Footer /> {/* ✅ ADD THIS */}
