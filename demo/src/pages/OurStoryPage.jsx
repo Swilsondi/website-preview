@@ -21,7 +21,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
-import darkLogo from '@/src/assets/dark-logo.png'
+import darkLogo from '@/assets/dark-logo.png'
 
 // Animation variants
 const fadeIn = {
