@@ -13,7 +13,9 @@ import {
   Clock,
   Shield
 } from "lucide-react"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
+import { useEffect, useState, useRef } from "react"
+import emailjs from 'emailjs-com';
 
 // Animation variants
 const fadeInUp = {
@@ -108,7 +110,7 @@ const ContactHero = ({ selectedPlan, consultationType }) => (
 )
 
 // Project Details Form
-const ProjectForm = ({ selectedPlan }) => {
+const ProjectForm = ({ selectedPlan, formRef }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -123,24 +125,27 @@ const ProjectForm = ({ selectedPlan }) => {
 
   const [submitting, setSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
-    // Validate form
     if (!validateForm()) return
-    
     setSubmitting(true)
-    
-    // In a real app, this would be an API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    // Form data would be sent to the server here
-    // For demonstration purposes, we're just showing a success message
-    
-    setSubmitting(false)
-    setSubmitSuccess(true)
-    resetForm()
+    setSubmitError('')
+    try {
+      await emailjs.send(
+        'service_cby8mnr', // Your EmailJS service ID
+        'template_81ka64b', // Your EmailJS template ID
+        formData,
+        'BC0wai72dA16OIPrs' // Your EmailJS public key
+      );
+      setSubmitSuccess(true)
+      resetForm()
+    } catch (err) {
+      setSubmitError('Could not send your message. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const validateForm = () => {
@@ -170,7 +175,7 @@ const ProjectForm = ({ selectedPlan }) => {
   }
 
   return (
-    <section className="py-20 bg-gray-900">
+    <section ref={formRef} className="py-20 bg-gray-900">
       <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -332,6 +337,11 @@ const ProjectForm = ({ selectedPlan }) => {
                   <p className="text-gray-400 text-sm mt-4">
                     🔒 Secure payment processing • 50% deposit to start
                   </p>
+                  {submitError && (
+                    <div className="mt-4 p-2 bg-red-500/10 border border-red-500/30 rounded-lg text-red-500">
+                      {submitError}
+                    </div>
+                  )}
                 </div>
 
                 {/* Success Message */}
@@ -352,7 +362,7 @@ const ProjectForm = ({ selectedPlan }) => {
 }
 
 // Contact Options Section
-const ContactOptions = () => (
+const ContactOptions = ({ onSendMessageClick }) => (
   <section className="py-20 bg-gray-800">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
       <motion.div
@@ -378,21 +388,24 @@ const ContactOptions = () => (
             title: "Call Us",
             description: "Speak directly with our team",
             action: "Schedule Call",
-            color: "from-green-500 to-emerald-500"
+            color: "from-green-500 to-emerald-500",
+            onClick: () => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')
           },
           {
             icon: Mail,
             title: "Email Us",
             description: "Get detailed information",
-            action: "Send Email",
-            color: "from-blue-500 to-cyan-500"
+            action: "Send Message",
+            color: "from-blue-500 to-cyan-500",
+            onClick: onSendMessageClick
           },
           {
             icon: MessageSquare,
             title: "Live Chat",
             description: "Instant answers to your questions",
             action: "Start Chat",
-            color: "from-purple-500 to-pink-500"
+            color: "from-purple-500 to-pink-500",
+            onClick: () => {} // Placeholder
           }
         ].map((option, index) => (
           <motion.div
@@ -420,6 +433,7 @@ const ContactOptions = () => (
                 <Button
                   variant="outline"
                   className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 hover:border-purple-500 transition-all duration-300"
+                  onClick={option.onClick}
                 >
                   {option.action}
                 </Button>
@@ -437,6 +451,7 @@ export default function ContactPage() {
   const [pageLoaded, setPageLoaded] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState(null)
   const [consultationType, setConsultationType] = useState(null)
+  const formRef = useRef(null)
 
   useEffect(() => {
     // Get selected plan from localStorage
@@ -493,8 +508,8 @@ export default function ContactPage() {
       ` }} />
       
       <ContactHero selectedPlan={selectedPlan} consultationType={consultationType} />
-      {consultationType !== 'consultation' && <ProjectForm selectedPlan={selectedPlan} />}
-      <ContactOptions />
+      {consultationType !== 'consultation' && <ProjectForm selectedPlan={selectedPlan} formRef={formRef} />}
+      <ContactOptions onSendMessageClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })} />
     </div>
   )
 }
