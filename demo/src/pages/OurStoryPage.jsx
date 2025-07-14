@@ -430,7 +430,6 @@ const TeamPhotoSection = ({ navigate }) => (
 // Vision for the Future Section
 const VisionSection = () => {
   const navigate = useNavigate();
-  
   return (
     <section className="py-24 bg-gradient-to-r from-gray-900 to-blue-900">
       <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -445,30 +444,33 @@ const VisionSection = () => {
             Looking 
             <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent"> Forward</span>
           </h2>
-          
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-            Our vision for the future is centered on continued innovation, expansion into new markets, and delivering even greater value to our clients.
+            Our vision is about more than just websites—it's about empowering creators and businesses to thrive in a digital world, together.
           </p>
-          
-          <div className="bg-gray-800/50 p-8 rounded-2xl border border-blue-500/20 mb-12">
-            <blockquote className="text-2xl text-blue-200 italic font-light leading-relaxed mb-6">
-              "We're just getting started. The digital landscape is constantly evolving, and we're committed to staying at the forefront—not just keeping pace with change, but driving it."
+          <div className="bg-gray-800/50 p-8 rounded-2xl border border-blue-500/20 mb-12 flex flex-col md:flex-row items-center justify-center gap-8">
+            <img 
+              src={require('@/src/assets/dark-logo.png')} 
+              alt="TechMotiveSupreme Logo" 
+              className="w-24 h-24 object-contain rounded-xl mb-6 md:mb-0"
+              style={{ background: '#18181b' }}
+            />
+            <blockquote className="text-2xl text-blue-200 italic font-light leading-relaxed mb-6 md:mb-0 text-left">
+              "My goal for TechMotiveSupreme is simple: to help real people and small teams turn their ideas into digital realities that make a difference. We believe in honest work, creative solutions, and building lasting partnerships. Every project is personal to us, and our team is committed to your growth, your vision, and your success."
             </blockquote>
-            <div className="flex items-center justify-center">
-              <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+            <div className="flex flex-col items-center md:items-start">
+              <div className="w-12 h-12 rounded-full overflow-hidden mb-2">
                 <img 
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
-                  alt="Sarah Chen"
+                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" 
+                  alt="Spencer Wilson"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="text-left">
-                <p className="text-white font-semibold">Sarah Chen</p>
-                <p className="text-blue-400 text-sm">CEO & Co-Founder</p>
+                <p className="text-white font-semibold">Spencer Wilson</p>
+                <p className="text-blue-400 text-sm">CEO & Founder</p>
               </div>
             </div>
           </div>
-          
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
               size="lg" 
@@ -478,7 +480,6 @@ const VisionSection = () => {
               Partner With Us
               <ArrowRight className="ml-3 w-6 h-6" />
             </Button>
-            
             <Button 
               size="lg" 
               variant="outline"
