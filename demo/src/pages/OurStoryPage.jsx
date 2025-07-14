@@ -380,7 +380,7 @@ const ValuesSection = () => {
 }
 
 // Team Photo Section
-const TeamPhotoSection = () => (
+const TeamPhotoSection = ({ navigate }) => (
   <section className="py-24 bg-black">
     <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
       <motion.div
