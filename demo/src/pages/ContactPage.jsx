@@ -31,7 +31,7 @@ const fadeInUp = {
 }
 
 // Contact Hero Section
-const ContactHero = ({ selectedPlan, consultationType }) => (
+const ContactHero = ({ onMessageClick, selectedPlan, consultationType }) => (
   <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-12 md:pt-16">
     {/* Animated background elements */}
     <div className="absolute inset-0">
@@ -104,6 +104,31 @@ const ContactHero = ({ selectedPlan, consultationType }) => (
             ? "Let's discuss your vision and create a custom solution that fits your needs perfectly."
             : "Ready to transform your digital presence? Let's get started with your project details and secure your spot."}
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row gap-6 justify-center"
+        >
+          <Button 
+            size="lg" 
+            className="text-lg px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+            onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
+          >
+            Schedule a Call
+            <Calendar className="ml-2 w-5 h-5" />
+          </Button>
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+            onClick={onMessageClick}
+          >
+            Send a Message
+            <MessageCircle className="ml-2 w-5 h-5" />
+          </Button>
+        </motion.div>
       </div>
     </div>
   </section>
@@ -451,7 +476,7 @@ export default function ContactPage() {
   const [pageLoaded, setPageLoaded] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState(null)
   const [consultationType, setConsultationType] = useState(null)
-  const formRef = useRef(null)
+  const formRef = useRef(null);
 
   useEffect(() => {
     // Get selected plan from localStorage
@@ -507,7 +532,11 @@ export default function ContactPage() {
         }
       ` }} />
       
-      <ContactHero selectedPlan={selectedPlan} consultationType={consultationType} />
+      <ContactHero selectedPlan={selectedPlan} consultationType={consultationType} onMessageClick={() => {
+        if (formRef.current) {
+          formRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }} />
       {consultationType !== 'consultation' && <ProjectForm selectedPlan={selectedPlan} formRef={formRef} />}
       <ContactOptions onSendMessageClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })} />
     </div>
