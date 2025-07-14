@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react"
+import React, { useEffect, useState, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -45,7 +45,7 @@ const stagger = {
 }
 
 // Portfolio Hero Section
-const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChange }) => (
+const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChange, gridRef }) => (
   <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-12 md:pt-16">
     {/* Animated background elements */}
     <div className="absolute inset-0">
@@ -120,8 +120,13 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
             <Button
               key={normalize(category)}
               variant={normalize(selectedCategory) === normalize(category) ? "default" : "outline"}
-              onClick={() => onCategoryChange(category)}
-              className={`px-6 py-2 transition-all duration-300 ${
+              onClick={() => {
+                onCategoryChange(category);
+                if (gridRef && gridRef.current) {
+                  gridRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
+              className={`px-6 py-2 transition-all duration-200 ${
                 normalize(selectedCategory) === normalize(category)
                   ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0"
                   : "border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
@@ -139,20 +144,20 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
 ))
 
 // Portfolio Grid Section
-const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory }) => {
+const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef }) => {
   const filteredItems = normalize(selectedCategory) === 'all'
     ? portfolioItems
     : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory))
 
   return (
-    <section className="py-24 bg-gray-900">
+    <section className="py-24 bg-gray-900" ref={gridRef}>
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Portfolio Grid */}
         <motion.div
           variants={stagger}
           initial="initial"
-          whileInView="animate"
-          viewport={{ once: false, amount: 0.1 }}
+          animate="animate"
+          transition={{ duration: 0.3 }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {filteredItems.map((item) => (
@@ -434,6 +439,7 @@ export default function ShowcasePage() {
   // Always call useLocation at the top level
   const location = useLocation();
   const [isMounted, setIsMounted] = useState(false);
+  const gridRef = useRef(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -483,8 +489,8 @@ export default function ShowcasePage() {
         }
       ` }} />
       
-      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} />
-      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} />
+      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
+      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} gridRef={gridRef} />
       <ResultsSection />
       <PortfolioCTA />
       <Footer /> {/* ✅ ADD THIS */}
