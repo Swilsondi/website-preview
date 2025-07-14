@@ -63,10 +63,10 @@ export function AppSidebar() {
 
   // Function to handle link clicks
   const handleLinkClick = (url: string, e: React.MouseEvent) => {
-    // If current path matches the link's URL, refresh the page
+    // Prevent default behavior only if the current path matches the link's URL
     if (location.pathname === url) {
       e.preventDefault();
-      window.location.reload();
+      // Optionally, you can add a toast or visual feedback instead of reloading
     }
   };
 
