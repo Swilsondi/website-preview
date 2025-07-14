@@ -424,13 +424,13 @@ const ContactSection = () => (
               {
                 icon: Mail,
                 title: "Email Us",
-                info: "hello@techmotivesupreme.com",
+                info: "techmotivesupreme@gmail.com",
                 subtitle: "We typically respond within 4 hours"
               },
               {
                 icon: MapPin,
                 title: "Location",
-                info: "New York, NY",
+                info: "DMV",
                 subtitle: "Available worldwide remotely"
               },
               {
