@@ -133,10 +133,12 @@ const PortfolioHero = ({ categories, selectedCategory, onCategoryChange }) => (
 )
 
 // Portfolio Grid Section
+const normalize = str => str.trim().toLowerCase();
+
 const PortfolioGrid = ({ portfolioItems, selectedCategory, categories, onCategoryChange }) => {
-  const filteredItems = selectedCategory === 'All'
+  const filteredItems = normalize(selectedCategory) === 'all'
     ? portfolioItems
-    : portfolioItems.filter(item => item.category === selectedCategory)
+    : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory))
 
   return (
     <section className="py-24 bg-gray-900">
