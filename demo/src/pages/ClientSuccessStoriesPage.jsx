@@ -154,13 +154,6 @@ const FeaturedCaseStudy = () => {
                   <p className="text-gray-300 text-lg mb-6">
                     How we helped a leading tech company transform their customer acquisition strategy and double their conversion rate in just 3 months.
                   </p>
-
-                  <Button
-                    className="text-lg bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 text-white"
-                  >
-                    Read Full Case Study
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
                 </div>
 
                 <div className="hidden md:flex justify-end">
