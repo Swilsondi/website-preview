@@ -1,3 +1,2 @@
-import { createContext } from "react";
-
-export const CartContext = createContext();
+// This file is deprecated. Please use CartProvider and useCart from '@/components/CartProvider' instead.
+export {};
