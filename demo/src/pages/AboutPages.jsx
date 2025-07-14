@@ -98,7 +98,7 @@ const AboutHero = ({ navigate }) => (
           <Button 
             size="lg" 
             className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-            onClick={() => navigate('/our-journey')}
+            onClick={() => navigate('/our-story')}
           >
             Our Story
             <ArrowRight className="ml-2 w-5 h-5" />
