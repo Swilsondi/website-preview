@@ -307,10 +307,7 @@ const CaseStudiesGrid = () => {
                       </div>
                     </div>
 
-                    <Button variant="ghost" className="text-cyan-400 hover:text-cyan-300 p-0 hover:bg-transparent">
-                      Read full case study
-                      <ArrowUpRight className="ml-2 w-4 h-4" />
-                    </Button>
+                    {/* Remove the Read full case study button */}
                   </div>
                 </CardContent>
               </Card>
@@ -327,7 +324,7 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       quote: "Working with TechMotiveSupreme transformed our online presence. They didn't just build us a website — they built us a growth engine that continues to deliver results.",
-      author: "Sarah Johnson",
+      author: "Grayson Belt",
       role: "CEO, RetailGrow",
       image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
     },
