@@ -215,7 +215,7 @@ const CaseStudiesGrid = () => {
       image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
       problem: "Poor mobile conversion rates (under 1%)",
       solution: "Complete UX redesign with mobile-first approach",
-      results: ["Mobile conversion up 4.2%", "Cart abandonment down 35%", "Revenue increase of $1.2M"]
+      results: ["Mobile conversion up 4.2%", "Cart abandonment down 35%", "Revenue increase of $16K"]
     },
     {
       client: "FinSecure",
