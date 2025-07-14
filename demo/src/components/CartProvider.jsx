@@ -132,6 +132,12 @@ export const CartProvider = ({ children }) => {
   // Item count: 1 for plan if selected, plus add-ons
   const itemCount = (selectedPlan ? 1 : 0) + cart.reduce((count, item) => count + item.quantity, 0);
 
+  // Get cart quantity for a specific item
+  function getCartQuantity(itemId) {
+    const item = cart.find(i => i.id === itemId);
+    return item ? item.quantity : 0;
+  }
+
   // Context value with cart state and functions
   const value = {
     cart,
@@ -145,6 +151,7 @@ export const CartProvider = ({ children }) => {
     itemCount,
     selectedPlan,
     setSelectedPlan: selectPlan,
+    getCartQuantity,
   };
 
   return (
