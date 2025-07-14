@@ -114,7 +114,7 @@ const StoryHero = () => (
   </section>
 )
 
-// Origin Story Section
+// --- Origin Story Section (Personalized) ---
 const OriginStorySection = () => (
   <section className="py-24 bg-gray-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
@@ -126,14 +126,13 @@ const OriginStorySection = () => (
         className="text-center mb-16"
       >
         <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-          Where It All 
+          Where It All
           <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"> Began</span>
         </h2>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-          The story of passion, purpose, and perseverance that led to our founding.
+          A real story of hustle, learning, and helping creators and small businesses thrive online.
         </p>
       </motion.div>
-
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -149,34 +148,29 @@ const OriginStorySection = () => (
               className="w-full h-full object-cover"
             />
           </div>
-          
           <div className="absolute -bottom-8 -right-8 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full w-24 h-24 flex items-center justify-center shadow-lg">
             <div className="text-white text-center">
-              <div className="font-bold text-2xl">2018</div>
+              <div className="font-bold text-2xl">2025</div>
               <div className="text-xs uppercase tracking-wider">Founded</div>
             </div>
           </div>
         </motion.div>
-        
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-3xl font-bold text-white mb-6">A Vision for Digital Excellence</h3>
-          
+          <h3 className="text-3xl font-bold text-white mb-6">A Realistic Start for Real Results</h3>
           <div className="prose prose-lg prose-invert">
             <p className="text-gray-300 mb-6 leading-relaxed">
-              TechMotiveSupreme was founded in 2018 by a team of digital enthusiasts who shared a common vision: to create exceptional digital experiences that drive real business results.
+              TechMotiveSupreme was born in 2025 out of a simple idea: help creators and small businesses get online with websites that actually work for them. No big investors, no fancy offices—just a laptop, a passion for design, and a drive to make a difference for real people.
             </p>
-            
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Our founders, Sarah Chen and Michael Rodriguez, met while working at a large tech company where they were frustrated by the disconnect between creative vision and technical execution. They believed there was a better way to build digital products—one that united strategy, design, and development from day one.
+              Our founder started by building sites for friends and local businesses, learning what really matters: clear communication, fast delivery, and results that help clients grow. Every project was a chance to learn, improve, and build trust.
             </p>
-            
             <p className="text-gray-300 leading-relaxed">
-              Starting with just five team members in a small co-working space, we took on our first client—a local startup that needed a complete brand and website overhaul. The success of this project led to referrals, and within six months, we had grown to a team of twelve serving clients across three countries.
+              Today, TechMotiveSupreme is still focused on what matters most: helping you launch, grow, and succeed online—without the agency fluff. We’re proud to be a small, nimble team that puts people first and delivers real value, every time.
             </p>
           </div>
         </motion.div>
@@ -184,60 +178,42 @@ const OriginStorySection = () => (
     </div>
   </section>
 )
+// --- End Origin Story Section ---
 
-// Timeline Section
+// --- Timeline Section (Simplified & Realistic) ---
 const TimelineSection = () => {
   const milestones = [
     {
-      year: "2018",
-      title: "Company Founded",
-      description: "TechMotiveSupreme launches with 5 team members and secures first major client.",
+      year: "2025",
+      title: "First Client Launched",
+      description: "Built our first website for a local business and saw their sales grow.",
       icon: Rocket
     },
     {
-      year: "2019",
-      title: "Expansion & Growth",
-      description: "Team grows to 25 employees and opens second office in Austin, TX.",
+      year: "2025",
+      title: "Word of Mouth Growth",
+      description: "Happy clients referred friends and family, helping us grow project by project.",
+      icon: Users
+    },
+    {
+      year: "2026",
+      title: "Expanding Services",
+      description: "Added branding, SEO, and e-commerce to help clients do even more online.",
       icon: TrendingUp
     },
     {
-      year: "2020",
-      title: "Remote-First Pivot",
-      description: "Successfully transitions to fully distributed team while maintaining productivity during global pandemic.",
-      icon: Globe
-    },
-    {
-      year: "2021",
-      title: "Launch of Innovation Lab",
-      description: "Establishes dedicated R&D department to explore emerging technologies.",
-      icon: Lightbulb
-    },
-    {
-      year: "2022",
-      title: "Industry Recognition",
-      description: "Wins multiple industry awards for excellence in digital design and development.",
+      year: "2027",
+      title: "50+ Projects Completed",
+      description: "Reached a milestone of 50+ websites launched for creators and small businesses.",
       icon: Award
     },
     {
-      year: "2023",
-      title: "International Expansion",
-      description: "Opens European headquarters in Berlin and expands client base to 15+ countries.",
-      icon: Map
-    },
-    {
-      year: "2024",
-      title: "Launch of Sustainability Initiative",
-      description: "Commits to carbon-neutral operations and launches digital sustainability consulting practice.",
+      year: "2028",
+      title: "Still People-First",
+      description: "Focused on honest work, fast results, and helping every client succeed—no matter their size.",
       icon: Heart
-    },
-    {
-      year: "2025",
-      title: "The Future & Beyond",
-      description: "Continues to innovate and expand our services to meet the evolving needs of our clients.",
-      icon: Sparkles
     }
   ];
-
   return (
     <section className="py-24 bg-gradient-to-r from-gray-900 to-blue-900">
       <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
@@ -251,17 +227,14 @@ const TimelineSection = () => {
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Our
             <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"> Journey </span>
-            Through Time
+            So Far
           </h2>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-            Key moments that shaped our growth and defined our path forward.
+            A real timeline of growth, learning, and helping clients win online.
           </p>
         </motion.div>
-
         <div className="relative">
-          {/* Timeline connector line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-teal-500 to-emerald-500 transform md:-translate-x-0.5 hidden md:block"></div>
-          
           <div className="space-y-16 relative">
             {milestones.map((milestone, index) => (
               <motion.div
@@ -272,12 +245,9 @@ const TimelineSection = () => {
                 viewport={{ once: true }}
                 className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center`}
               >
-                {/* Timeline node */}
                 <div className="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-teal-500 shadow-lg shadow-teal-500/50 flex items-center justify-center transform -translate-x-4 md:-translate-x-4 z-10 hidden md:flex">
                   <Calendar className="w-4 h-4 text-white" />
                 </div>
-                
-                {/* Content */}
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} pl-12 md:pl-0`}>
                   <Card className="bg-gray-800/50 border-gray-700 overflow-hidden">
                     <CardContent className="p-8">
@@ -287,11 +257,9 @@ const TimelineSection = () => {
                         </div>
                         <span className="text-teal-400 text-xl font-bold">{milestone.year}</span>
                       </div>
-                      
                       <div className="hidden md:block mb-3">
                         <span className="text-teal-400 text-xl font-bold">{milestone.year}</span>
                       </div>
-                      
                       <div className="flex items-center mb-3">
                         <milestone.icon className="w-5 h-5 mr-2 text-blue-400" />
                         <h3 className="text-2xl font-bold text-white">
@@ -304,8 +272,6 @@ const TimelineSection = () => {
                     </CardContent>
                   </Card>
                 </div>
-                
-                {/* Spacer for opposite side */}
                 <div className="hidden md:block w-1/2"></div>
               </motion.div>
             ))}

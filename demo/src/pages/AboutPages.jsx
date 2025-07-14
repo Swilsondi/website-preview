@@ -309,7 +309,7 @@ const StatsSection = () => (
           { number: "100%", label: "Client Satisfaction", icon: Star },
           { number: "2025", label: "Founded In", icon: Award },
           { number: "10+", label: "Industries Served", icon: Globe },
-          { number: "8+", label: "Team Certifications", icon: Shield }
+          { number: "30+", label: "Team Certifications", icon: Shield }
         ].map((stat, index) => (
           <motion.div
             key={index}
