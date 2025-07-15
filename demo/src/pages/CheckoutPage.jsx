@@ -532,11 +532,19 @@ const CalendlySection = () => (
 export default function CheckoutPage() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const { selectedPlan, cart } = useCart();
+  const location = useLocation();
   const [currentStep, setCurrentStep] = useState(() =>
     selectedPlan || (cart && cart.length > 0) ? 'checkout' : 'questions'
   ); // questions, checkout
-  const location = useLocation();
   const [paymentCanceled, setPaymentCanceled] = useState(false);
+
+  // Force questions step if ?step=questions is in the URL
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.get('step') === 'questions') {
+      setCurrentStep('questions');
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
