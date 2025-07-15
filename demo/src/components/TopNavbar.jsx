@@ -14,8 +14,11 @@ const TopNavbar = ({ isOnline }) => {
               <div className="rounded-full overflow-hidden bg-transparent flex items-center justify-center h-9 w-9">
                 <img 
                   src="/assets/dark-logo.png" 
-                  alt="Tech Motive Supreme Logo" 
-                  className="h-full w-full object-contain rounded-full"
+                  alt="Tech Motive Supreme logo" 
+                  width={120}
+                  height={40}
+                  loading="eager"
+                  className="h-10 w-auto"
                   style={{ filter: 'drop-shadow(0 0 1px rgba(0,0,0,0.1))' }}
                 />
               </div>

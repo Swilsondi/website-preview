@@ -178,6 +178,9 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                   <img 
                     src={item.image} 
                     alt={item.title}
+                    width={600}
+                    height={400}
+                    loading="lazy"
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <Badge className={`absolute top-4 left-4 bg-gradient-to-r ${item.color} text-white border-0`}>

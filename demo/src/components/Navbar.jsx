@@ -34,13 +34,12 @@ export default function Navbar() {
           backgroundColor: 'transparent'
         }}>
           <img 
-            src="/assets/2CD47992-113A-4465-8751-028D4E0B51B5.png" 
-            alt="TM Logo - Darker Version" 
-            style={{ 
-              height: '100%', 
-              width: '100%',
-              objectFit: 'cover'
-            }} 
+            src="/assets/dark-logo.png"
+            alt="Tech Motive Supreme logo"
+            width={120}
+            height={40}
+            loading="eager"
+            className="h-10 w-auto"
           />
         </div>
         <span style={{ color: '#222', fontWeight: 700, fontSize: '1.25rem', marginLeft: '0.75rem' }}>
