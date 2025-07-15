@@ -531,8 +531,10 @@ const CalendlySection = () => (
 // Main Checkout Page Component
 export default function CheckoutPage() {
   const [pageLoaded, setPageLoaded] = useState(false);
-  const [currentStep, setCurrentStep] = useState('questions'); // questions, checkout
   const { selectedPlan, cart } = useCart();
+  const [currentStep, setCurrentStep] = useState(() =>
+    selectedPlan || (cart && cart.length > 0) ? 'checkout' : 'questions'
+  ); // questions, checkout
   const location = useLocation();
   const [paymentCanceled, setPaymentCanceled] = useState(false);
 
