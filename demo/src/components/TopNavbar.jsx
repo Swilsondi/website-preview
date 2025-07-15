@@ -12,15 +12,17 @@ const TopNavbar = ({ isOnline }) => {
           <div className="flex-shrink-0 ml-0 pl-2">
             <Link to="/" className="flex items-center space-x-2">
               <div className="rounded-full overflow-hidden bg-transparent flex items-center justify-center h-9 w-9">
-                <img 
-                  src="/assets/dark-logo.png" 
-                  alt="Tech Motive Supreme logo" 
-                  width={120}
-                  height={40}
-                  loading="eager"
-                  className="h-10 w-auto"
-                  style={{ filter: 'drop-shadow(0 0 1px rgba(0,0,0,0.1))' }}
-                />
+                <picture>
+                  <source srcSet="/src/assets/dark-logo.webp" type="image/webp" />
+                  <img 
+                    src="/src/assets/dark-logo.png" 
+                    alt="Tech Motive Supreme logo" 
+                    width="120"
+                    height="40"
+                    loading="eager"
+                    className="h-10 w-auto"
+                  />
+                </picture>
               </div>
               <span className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
                 TechMotive-Supreme

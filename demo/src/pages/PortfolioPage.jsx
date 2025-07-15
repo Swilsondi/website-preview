@@ -175,14 +175,17 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
             >
               <Card className="h-full bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden">
                 <div className="relative overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    width={600}
-                    height={400}
-                    loading="lazy"
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <picture>
+                    <source srcSet={item.imageWebp} type="image/webp" />
+                    <img 
+                      src={item.image}
+                      alt={item.title}
+                      width={600}
+                      height={400}
+                      loading="lazy"
+                      className="rounded-lg shadow-lg w-full h-auto object-cover"
+                    />
+                  </picture>
                   <Badge className={`absolute top-4 left-4 bg-gradient-to-r ${item.color} text-white border-0`}>
                     {item.category}
                   </Badge>
@@ -354,6 +357,7 @@ const portfolioItems = [
     category: "Health & Wellness",
     description: "A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+    imageWebp: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&fm=webp",
     features: ["Class Booking", "Trainer Profiles", "Mobile Responsive", "SEO Optimized"],
     stats: { clients: "1,200", satisfaction: "100%", launches: "2023" },
     testimonial: {
@@ -369,6 +373,7 @@ const portfolioItems = [
     category: "Technology/SaaS",
     description: "Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    imageWebp: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp",
     features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
     stats: { clients: "2,500", satisfaction: "100%", launches: "2024" },
     testimonial: {
@@ -384,6 +389,7 @@ const portfolioItems = [
     category: "Real Estate",
     description: "A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
+    imageWebp: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&fm=webp",
     features: ["Featured Listings", "Lead Forms", "Mobile First", "Photo Gallery"],
     stats: { clients: "800", satisfaction: "100%", launches: "2023" },
     testimonial: {
@@ -399,6 +405,7 @@ const portfolioItems = [
     category: "E-commerce",
     description: "A simple e-commerce site for a local artisan collective, with easy product management.",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+    imageWebp: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&fm=webp",
     features: ["Product Catalog", "Easy Checkout", "Inventory Tools", "Customer Reviews"],
     stats: { clients: "3,400", satisfaction: "100%", launches: "2024" },
     testimonial: {
@@ -414,6 +421,7 @@ const portfolioItems = [
     category: "Creative Agency",
     description: "Portfolio site for a small creative agency, with case studies and a contact form.",
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
+    imageWebp: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop&fm=webp",
     features: ["Case Studies", "Contact Form", "Gallery", "Blog"],
     stats: { clients: "650", satisfaction: "100%", launches: "2022" },
     testimonial: {
@@ -429,6 +437,7 @@ const portfolioItems = [
     category: "Professional Services",
     description: "Professional site for a boutique law firm, with attorney bios and appointment booking.",
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
+    imageWebp: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop&fm=webp",
     features: ["Attorney Bios", "Booking Form", "Practice Areas", "Testimonials"],
     stats: { clients: "10,000", satisfaction: "100%", launches: "2024" },
     testimonial: {
