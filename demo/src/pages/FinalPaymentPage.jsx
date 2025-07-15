@@ -73,12 +73,12 @@ export default function FinalPaymentPage() {
 
   return (
     <div
-      className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out mt-20 ${
+      className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${
         pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
     >
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
+      <section className="relative flex items-center justify-center py-24 md:py-32 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
             animate={{
