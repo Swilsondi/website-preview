@@ -15,10 +15,10 @@ const TopNavbar = ({ isOnline }) => {
                 <picture>
                   <source srcSet="/src/assets/dark-logo.webp" type="image/webp" />
                   <img 
-                    src="/src/assets/dark-logo.png" 
-                    alt="Tech Motive Supreme logo" 
-                    width="120"
-                    height="40"
+                    src={require('@/assets/dark-logo.png')}
+                    alt="Tech Motive Supreme logo"
+                    width={120}
+                    height={40}
                     loading="eager"
                     className="h-10 w-auto"
                   />
