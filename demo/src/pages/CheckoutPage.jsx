@@ -211,14 +211,14 @@ const PreCheckoutQuestions = ({ onComplete }) => {
 
 // Cart and Add-ons Section
 const CartSection = ({ selectedPlan, cart }) => {
+  const { addToCart, removeFromCart, cartTotal, getCartQuantity } = useCart();
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [checkoutError, setCheckoutError] = useState('');
+  const navigate = useNavigate();
+
   // Allow rendering if there are add-ons, even if no plan is selected
   if (!selectedPlan && (!cart || cart.length === 0)) return null; // Only hide if nothing in cart
 
-  const { addToCart, removeFromCart, cartTotal, getCartQuantity } = useCart()
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [checkoutError, setCheckoutError] = useState('')
-  const navigate = useNavigate()
-  
   const addOns = [
     { 
       id: 'extra-page',
@@ -314,7 +314,7 @@ const CartSection = ({ selectedPlan, cart }) => {
   }
 
   return (
-    <section className="py-20 bg-gray-800">
+    <section className="py-24 bg-gray-800">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -401,7 +401,7 @@ const CartSection = ({ selectedPlan, cart }) => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-8 bg-gradient-to-br from-gray-900/90 to-black/90 border border-gray-700/50 backdrop-blur-sm">
+            <Card className="sticky top-24 bg-gradient-to-br from-gray-900/90 to-black/90 border border-gray-700/50 backdrop-blur-sm">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-white mb-6">Order Summary</h3>
                 
