@@ -67,16 +67,13 @@ export default defineConfig({
         drop_debugger: true,
       },
     },
-    // Add sourcemap for better debugging
     sourcemap: true, // Enable source maps for debugging
   },
   server: {
     port: 3000,
     host: true,
-    // Use HTTP instead of HTTPS to avoid SSL errors
-    https: false,
+    https: false, // Ensure HTTPS is disabled
     headers: {
-      // Updated CSP to allow Google Fonts and Stripe.js
       "Content-Security-Policy":
         "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://* blob:; connect-src 'self' *; object-src 'none'; base-uri 'self'; frame-src https://js.stripe.com https://hooks.stripe.com;",
       "X-Frame-Options": "SAMEORIGIN",
