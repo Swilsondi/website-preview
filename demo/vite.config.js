@@ -17,9 +17,9 @@ if (typeof crypto.hash !== "function") {
 }
 
 // Apply to global scope if needed
-if (typeof global !== "undefined" && global.crypto) {
-  if (!global.crypto.hash) {
-    global.crypto.hash = function hash(algorithm, data) {
+if (typeof globalThis !== "undefined" && globalThis.crypto) {
+  if (!globalThis.crypto.hash) {
+    globalThis.crypto.hash = function hash(algorithm, data) {
       return crypto.createHash(algorithm).update(data).digest("hex");
     };
   }
