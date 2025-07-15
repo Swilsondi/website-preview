@@ -170,11 +170,10 @@ const PreCheckoutQuestions = ({ onComplete }) => {
         required
       >
         <option value="">Select a budget range</option>
-        <option value="$2,000 - $5,000">$2,000 - $5,000</option>
-        <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-        <option value="$10,000 - $20,000">$10,000 - $20,000</option>
-        <option value="$20,000 - $50,000">$20,000 - $50,000</option>
-        <option value="$50,000+">$50,000+</option>
+        <option value="$400 - $1,000">$400 - $1,000</option>
+        <option value="$1,000 - $2,500">$1,000 - $2,500</option>
+        <option value="$2,500 - $4,000">$2,500 - $4,000</option>
+        <option value="$4,000 - $7,000">$4,000 - $7,000</option>
       </select>
       <label className="block text-gray-300 mb-2">What is your timeline?</label>
       <input

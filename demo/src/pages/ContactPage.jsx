@@ -308,6 +308,23 @@ const ProjectForm = ({ selectedPlan, formRef }) => {
                   </div>
                 </div>
 
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-white font-semibold mb-2">Budget</label>
+                    <select
+                      value={formData.budget}
+                      onChange={(e) => setFormData({...formData, budget: e.target.value})}
+                      className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-purple-500 focus:outline-none"
+                    >
+                      <option value="">Select a budget range</option>
+                      <option value="$400 - $1,000">$400 - $1,000</option>
+                      <option value="$1,000 - $2,500">$1,000 - $2,500</option>
+                      <option value="$2,500 - $4,000">$2,500 - $4,000</option>
+                      <option value="$4,000 - $7,000">$4,000 - $7,000</option>
+                    </select>
+                  </div>
+                </div>
+
                 {/* Project Description */}
                 <div>
                   <label className="block text-white font-semibold mb-2">Project Description *</label>
