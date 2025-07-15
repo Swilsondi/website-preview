@@ -16,12 +16,9 @@ const TopNavbar = ({ isOnline }) => {
                 <picture>
                   <source srcSet="/assets/dark-logo.webp" type="image/webp" />
                   <img 
-                    src={logo}
-                    alt="Tech Motive Supreme logo"
-                    width={120}
-                    height={40}
-                    loading="eager"
-                    className="h-10 w-auto"
+                    src="/images/logo-dark.png"
+                    alt="Site Logo"
+                    className="h-8 w-auto"
                   />
                 </picture>
               </div>
@@ -48,3 +45,4 @@ const TopNavbar = ({ isOnline }) => {
 };
 
 export default TopNavbar;
+};
