@@ -572,10 +572,23 @@ export default function CheckoutPage() {
     setCurrentStep('checkout');
   };
 
-  if (!selectedPlan) {
+  if (!pageLoaded) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
         <p className="text-white">Loading...</p>
+      </div>
+    );
+  }
+
+  // Always show questions step if that's the current step, even if no selectedPlan
+  if (currentStep === 'questions') {
+    return (
+      <div className="min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out mt-20">
+        <CheckoutHero />
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
+          <PreCheckoutQuestions onComplete={handleQuestionsComplete} />
+        </div>
+        <Footer />
       </div>
     );
   }
