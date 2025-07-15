@@ -211,7 +211,8 @@ const PreCheckoutQuestions = ({ onComplete }) => {
 
 // Cart and Add-ons Section
 const CartSection = ({ selectedPlan, cart }) => {
-  if (!selectedPlan) return null; // Prevents crash if selectedPlan is missing
+  // Allow rendering if there are add-ons, even if no plan is selected
+  if (!selectedPlan && (!cart || cart.length === 0)) return null; // Only hide if nothing in cart
 
   const { addToCart, removeFromCart, cartTotal, getCartQuantity } = useCart()
   const [isProcessing, setIsProcessing] = useState(false)
@@ -271,7 +272,7 @@ const CartSection = ({ selectedPlan, cart }) => {
   ]
 
   // Use the numericPrice property if available, otherwise fall back to parsing the price string
-  const basePrice = selectedPlan.numericPrice || parseInt(selectedPlan.price.replace(/[^0-9]/g, ''))
+  const basePrice = selectedPlan ? (selectedPlan.numericPrice || parseInt(selectedPlan.price.replace(/[^0-9]/g, ''))) : 0;
   const addOnsTotal = cartTotal
   const subtotal = basePrice + addOnsTotal
   const deposit = Math.ceil(subtotal * 0.5)
@@ -405,18 +406,20 @@ const CartSection = ({ selectedPlan, cart }) => {
                 <h3 className="text-2xl font-bold text-white mb-6">Order Summary</h3>
                 
                 {/* Selected Plan */}
-                <div className="border-b border-gray-700 pb-6 mb-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    {selectedPlan.name.includes('Starter') && <Zap className="w-6 h-6 text-green-400" />}
-                    {selectedPlan.name.includes('Platinum') && <Crown className="w-6 h-6 text-purple-400" />}
-                    {selectedPlan.name.includes('Premium') && <Rocket className="w-6 h-6 text-blue-400" />}
-                    <span className="text-white font-semibold">{selectedPlan.name}</span>
+                {selectedPlan && (
+                  <div className="border-b border-gray-700 pb-6 mb-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      {selectedPlan.name.includes('Starter') && <Zap className="w-6 h-6 text-green-400" />}
+                      {selectedPlan.name.includes('Platinum') && <Crown className="w-6 h-6 text-purple-400" />}
+                      {selectedPlan.name.includes('Premium') && <Rocket className="w-6 h-6 text-blue-400" />}
+                      <span className="text-white font-semibold">{selectedPlan.name}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-400">Base Package</span>
+                      <span className="text-white font-semibold">${basePrice}</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Base Package</span>
-                    <span className="text-white font-semibold">${basePrice}</span>
-                  </div>
-                </div>
+                )}
 
                 {/* Add-ons */}
                 {cart.length > 0 && (
