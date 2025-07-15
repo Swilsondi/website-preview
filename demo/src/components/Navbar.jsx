@@ -1,6 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Handler for logo/company click
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      window.location.reload();
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <nav style={{ 
       display: 'flex', 
@@ -9,7 +22,7 @@ export default function Navbar() {
       padding: '1rem',
       boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
     }}>
-      <Link to="/" style={{ display: 'flex', alignItems: 'center', marginRight: '1rem' }}>
+      <a href="/" onClick={handleHomeClick} style={{ display: 'flex', alignItems: 'center', marginRight: '1rem', textDecoration: 'none' }}>
         <div style={{
           width: '45px',
           height: '45px',
@@ -30,7 +43,10 @@ export default function Navbar() {
             }} 
           />
         </div>
-      </Link>
+        <span style={{ color: '#222', fontWeight: 700, fontSize: '1.25rem', marginLeft: '0.75rem' }}>
+          TechMotiveSupreme
+        </span>
+      </a>
       <div style={{ display: 'flex', gap: '1.5rem', marginLeft: 'auto' }}>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
