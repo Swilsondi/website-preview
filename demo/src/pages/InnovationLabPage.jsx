@@ -39,99 +39,94 @@ const fadeIn = {
 }
 
 // Hero Section
-const InnovationHero = () => (
-  <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-violet-900 to-indigo-900 overflow-hidden pt-12 md:pt-16">
-    <div className="absolute inset-0">
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.04, 0.08, 0.04],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/4 left-1/3 w-96 h-96 bg-violet-500 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.02, 0.06, 0.02],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500 rounded-full blur-3xl"
-      />
-    </div>
-
-    <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
-      <div className="text-center max-w-5xl mx-auto">
+const InnovationHero = () => {
+  const navigate = useNavigate();
+  return (
+    <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-violet-900 to-indigo-900 overflow-hidden pt-12 md:pt-16">
+      <div className="absolute inset-0">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-          className="mb-8 pt-4"
-        >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-violet-500/20 border-violet-400 text-violet-200 mb-8 backdrop-blur-sm">
-            🧪 Innovation Lab • Where Ideas Take Shape
-          </Badge>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
-        >
-          Pioneering the 
-          <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent"> Future </span>
-          of Digital Experiences
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-        >
-          Our innovation lab combines 
-          <span className="text-violet-400 font-semibold"> cutting-edge technology </span>
-          with 
-          <span className="text-indigo-400 font-semibold"> creative thinking </span>
-          to develop solutions that reshape industries.
-        </motion.p>
-
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.04, 0.08, 0.04],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/3 w-96 h-96 bg-violet-500 rounded-full blur-3xl"
+        />
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-6 justify-center"
-        >
-          <Button 
-            size="lg" 
-            className="text-lg px-10 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-          >
-            Explore Our Innovations
-            <Sparkles className="ml-2 w-5 h-5" />
-          </Button>
-          
-          <Button 
-            size="lg" 
-            variant="outline"
-            className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
-          >
-            View Case Studies
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-        </motion.div>
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.02, 0.06, 0.02],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500 rounded-full blur-3xl"
+        />
       </div>
-    </div>
-  </section>
-)
+
+      <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
+            className="mb-8 pt-4"
+          >
+            <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-violet-500/20 border-violet-400 text-violet-200 mb-8 backdrop-blur-sm">
+              🧪 Innovation Lab • Where Ideas Take Shape
+            </Badge>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+          >
+            Pioneering the 
+            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent"> Future </span>
+            of Digital Experiences
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          >
+            Our innovation lab combines 
+            <span className="text-violet-400 font-semibold"> cutting-edge technology </span>
+            with 
+            <span className="text-indigo-400 font-semibold"> creative thinking </span>
+            to develop solutions that reshape industries.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            className="flex justify-center"
+          >
+            <Button 
+              size="lg" 
+              className="text-lg px-10 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+              onClick={() => navigate('/showcase')}
+            >
+              Explore Our Innovations
+              <Sparkles className="ml-2 w-5 h-5" />
+            </Button>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 // Branding Services Grid
 const BrandingServices = () => {
