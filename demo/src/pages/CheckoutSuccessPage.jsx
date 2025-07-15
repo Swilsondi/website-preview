@@ -295,7 +295,7 @@ export default function CheckoutSuccessPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8"
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 shadow-lg hover:shadow-xl transition-all duration-300"
                     onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
                   >
                     Schedule Kickoff Call
@@ -303,8 +303,7 @@ export default function CheckoutSuccessPage() {
                   </Button>
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900"
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 shadow-lg hover:shadow-xl transition-all duration-300"
                     onClick={() => navigate('/contact')}
                   >
                     Contact Support
@@ -375,7 +374,7 @@ export default function CheckoutSuccessPage() {
             className="mt-12 text-center"
           >
             <Button
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => navigate('/')}
             >
               Return to Homepage
