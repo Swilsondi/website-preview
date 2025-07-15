@@ -78,7 +78,7 @@ export default function FinalPaymentPage() {
       }`}
     >
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center min-h-screen pt-32 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center min-h-screen pt-[45px] bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
             animate={{
@@ -94,7 +94,7 @@ export default function FinalPaymentPage() {
           />
         </div>
 
-        <div className="relative text-center max-w-4xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col items-center justify-center w-full">
+        <div className="relative text-center max-w-4xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col items-center justify-center flex-grow w-full">
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
