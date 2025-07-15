@@ -11,6 +11,7 @@ import ResourceHints from '@/components/ResourceHints'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LazyMotion } from '@/components/LazyMotion'
 import SidebarToggle from '@/components/SidebarToggle'
+import CartSidebar from './components/CartSidebar'; // Use direct import, not lazy
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'))
@@ -29,7 +30,6 @@ const InnovationLabPage = lazy(() => import('./pages/InnovationLabPage'))
 const ClientSuccessStoriesPage = lazy(() => import('./pages/ClientSuccessStoriesPage'))
 const LoginPage = lazy(() => import('./pages/LoginPage'))
 const OurStoryPage = lazy(() => import('./pages/OurStoryPage'))
-const CartSidebar = lazy(() => import('./components/CartSidebar')) // Corrected import path
 
 // Loading component with better UX
 const PageLoader = () => (

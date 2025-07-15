@@ -236,10 +236,4 @@ const CartSidebar = memo(() => {
   );
 });
 
-export default function CartSidebarWrapper() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LazyCartSidebar />
-    </Suspense>
-  );
-}
+export default CartSidebar;
