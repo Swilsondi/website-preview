@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import ErrorBoundary from "@/components/ErrorBoundary"
@@ -171,14 +171,28 @@ function App() {
                       <TopNavbar isOnline={isOnline} />
                       {/* Custom sidebar toggle button positioned outside navbar */}
                       <SidebarToggle />
-                      
                       <main className="w-full min-h-screen bg-gray-900">
                         <Suspense fallback={<PageLoader />}>
-                          {/* Place ScrollToTop inside Routes context */}
                           <ScrollToTop />
-                          {/* Render nested routes here */}
-                          <Outlet />
-                          {/* ResourceHints with Router context */}
+                          <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="services" element={<ServicesPage />} />
+                            <Route path="pricing" element={<PricingPage />} />
+                            <Route path="about" element={<AboutPage />} />
+                            <Route path="contact" element={<ContactPage />} />
+                            <Route path="checkout" element={<CheckoutPage />} />
+                            <Route path="checkout-success" element={<CheckoutSuccessPage />} />
+                            <Route path="final-payment" element={<FinalPaymentPage />} />
+                            <Route path="portfolio" element={<ShowcasePage />} />
+                            <Route path="showcase" element={<ShowcasePage />} />
+                            <Route path="our-journey" element={<OurJourneyPage />} />
+                            <Route path="start-project" element={<StartProjectPage />} />
+                            <Route path="learn-more" element={<LearnMorePage />} />
+                            <Route path="innovation-lab" element={<InnovationLabPage />} />
+                            <Route path="client-success-stories" element={<ClientSuccessStoriesPage />} />
+                            <Route path="login" element={<LoginPage />} />
+                            <Route path="our-story" element={<OurStoryPage />} />
+                          </Routes>
                           <ResourceHints 
                             preconnectDomains={preconnectDomains}
                             prefetchRoutes={prefetchRoutes}
