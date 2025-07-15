@@ -16,7 +16,7 @@ const TopNavbar = ({ isOnline }) => {
                 <img 
                   src="/assets/dark-logo.png"
                   alt="Site Logo"
-                  className="h-8 w-auto"
+                  className="h-9 w-9 rounded-full object-cover bg-white"
                 />
               </div>
               <span className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
