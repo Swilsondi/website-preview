@@ -74,6 +74,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="checkout-success" element={<CheckoutSuccessPage />} />
         <Route path="final-payment" element={<FinalPaymentPage />} />
         <Route path="portfolio" element={<ShowcasePage />} />
+        <Route path="showcase" element={<ShowcasePage />} />
         <Route path="our-journey" element={<OurJourneyPage />} />
         <Route path="start-project" element={<StartProjectPage />} />
         <Route path="learn-more" element={<LearnMorePage />} />
