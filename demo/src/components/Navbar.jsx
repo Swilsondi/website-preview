@@ -34,8 +34,8 @@ export default function Navbar() {
           backgroundColor: 'transparent'
         }}>
           <picture>
-            <source srcSet="/src/assets/dark-logo.webp" type="image/webp" />
-            <img src="/src/assets/dark-logo.png" alt="Tech Motive Supreme logo" width="120" height="40" loading="eager" className="h-10 w-auto" />
+            <source srcSet="/assets/dark-logo.webp" type="image/webp" />
+            <img src="/assets/dark-logo.png" alt="Tech Motive Supreme logo" width="120" height="40" loading="eager" className="h-10 w-auto" />
           </picture>
         </div>
         <span style={{ color: '#222', fontWeight: 700, fontSize: '1.25rem', marginLeft: '0.75rem' }}>

@@ -14,7 +14,7 @@ const TopNavbar = ({ isOnline }) => {
             <Link to="/" className="flex items-center space-x-2">
               <div className="rounded-full overflow-hidden bg-transparent flex items-center justify-center h-9 w-9">
                 <picture>
-                  <source srcSet="/src/assets/dark-logo.webp" type="image/webp" />
+                  <source srcSet="/assets/dark-logo.webp" type="image/webp" />
                   <img 
                     src={logo}
                     alt="Tech Motive Supreme logo"
