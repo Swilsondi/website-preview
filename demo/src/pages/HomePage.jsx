@@ -158,7 +158,7 @@ const HeroSection = ({ handleNavigation }) => {
             >
               <Button
                 size="lg"
-                className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+                className="text-lg px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 mb-4"
                 onClick={() => handleNavigation("/pricing")}
               >
                 Book Your Site Now
@@ -173,7 +173,7 @@ const HeroSection = ({ handleNavigation }) => {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+                className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300 mb-4"
                 onClick={() => handleNavigation("/showcase")}
               >
                 View Our Work

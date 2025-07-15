@@ -11,8 +11,17 @@ const TopNavbar = ({ isOnline }) => {
         <div className="flex justify-between h-16 items-center">
           {/* Logo and Brand Name - absolutely pushed to the left */}
           <div className="flex-shrink-0 ml-0 pl-2">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="rounded-full overflow-hidden bg-transparent flex items-center justify-center h-9 w-9">
+            <Link
+              to="/"
+              className="flex items-center space-x-2"
+              onClick={e => {
+                if (window.location.pathname === "/") {
+                  e.preventDefault();
+                  window.location.reload();
+                }
+              }}
+            >
+              <div className="rounded-full overflow-hidden bg-white flex items-center justify-center h-9 w-9">
                 <img 
                   src="/assets/dark-logo.png"
                   alt="Site Logo"

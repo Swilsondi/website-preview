@@ -113,7 +113,7 @@ const ContactHero = ({ onMessageClick, selectedPlan, consultationType }) => (
         >
           <Button 
             size="lg" 
-            className="text-lg px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+            className="text-lg px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 mb-4"
             onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
           >
             Schedule a Call
@@ -122,7 +122,7 @@ const ContactHero = ({ onMessageClick, selectedPlan, consultationType }) => (
           <Button 
             size="lg" 
             variant="outline"
-            className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+            className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300 mb-4"
             onClick={onMessageClick}
           >
             Send a Message
