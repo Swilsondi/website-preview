@@ -516,9 +516,39 @@ self.addEventListener("notificationclick", (event) => {
   } else {
     // Default action - focus the client
     event.waitUntil(
-      self.clients.matchAll().then((clients) => {
-        clients.forEach((client) => client.focus());
+      self.clients.matchAll({ type: "window" }).then((clientList) => {
+        for (const client of clientList) {
+          if (client.url === "/" && "focus" in client) {
+            return client.focus();
+          }
+        }
+        if (self.clients.openWindow) {
+          return self.clients.openWindow("/");
+        }
       })
     );
   }
+});
+
+// Removed unused function and fixed undefined variables
+const STATIC_CACHE = "static-cache-v1";
+const DYNAMIC_CACHE = "dynamic-cache-v1";
+const IMAGE_CACHE = "image-cache-v1";
+const FONT_CACHE = "font-cache-v1";
+
+// Ensure clients API is used correctly
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  event.waitUntil(
+    self.clients.matchAll({ type: "window" }).then((clientList) => {
+      for (const client of clientList) {
+        if (client.url === "/" && "focus" in client) {
+          return client.focus();
+        }
+      }
+      if (self.clients.openWindow) {
+        return self.clients.openWindow("/");
+      }
+    })
+  );
 });
