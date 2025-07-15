@@ -211,6 +211,8 @@ const PreCheckoutQuestions = ({ onComplete }) => {
 
 // Cart and Add-ons Section
 const CartSection = ({ selectedPlan, cart }) => {
+  if (!selectedPlan) return null; // Prevents crash if selectedPlan is missing
+
   const { addToCart, removeFromCart, cartTotal, getCartQuantity } = useCart()
   const [isProcessing, setIsProcessing] = useState(false)
   const [checkoutError, setCheckoutError] = useState('')
