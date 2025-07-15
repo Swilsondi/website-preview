@@ -332,7 +332,7 @@ const PricingCards = () => {
                       }
                       setSelectedPlan(planData)
                       setTimeout(() => {
-                        navigate('/checkout')
+                        navigate('/checkout?step=questions')
                       }, 100)
                     }}
                   >
