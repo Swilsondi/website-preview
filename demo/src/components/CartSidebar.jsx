@@ -90,6 +90,7 @@ const CartSidebar = memo(() => {
               <Button
                 variant="ghost"
                 size="sm"
+                aria-label="Close cart"
                 onClick={() => setIsCartOpen(false)}
                 className="text-gray-400 hover:text-white"
               >
@@ -148,21 +149,22 @@ const CartSidebar = memo(() => {
                             <Button
                               variant="outline"
                               size="sm"
+                              aria-label="Remove add-on"
                               onClick={() => removeFromCart(item.id)}
-                              className="w-8 h-8 p-0 border-gray-600 hover:bg-gray-700"
+                              className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 w-10 h-10 p-0"
                             >
-                              <Minus className="w-3 h-3" />
+                              <Minus className="w-4 h-4" />
                             </Button>
                             <span className="w-8 text-center text-white font-medium">
                               {item.quantity}
                             </span>
                             <Button
-                              variant="outline"
                               size="sm"
+                              aria-label="Add add-on"
                               onClick={() => addToCart(item)}
-                              className="w-8 h-8 p-0 border-gray-600 hover:bg-gray-700"
+                              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 w-10 h-10 p-0"
                             >
-                              <Plus className="w-3 h-3" />
+                              <Plus className="w-4 h-4" />
                             </Button>
                           </div>
                         </div>

@@ -12,6 +12,7 @@ const CartButton = () => {
       <Button
         variant="outline"
         size="sm"
+        aria-label="Open cart"
         onClick={() => setIsCartOpen(true)}
         className="relative bg-gray-800/50 border-gray-600 hover:bg-gray-700 text-white"
       >
