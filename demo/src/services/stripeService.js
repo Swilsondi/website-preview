@@ -56,7 +56,7 @@ const ADDON_PRICE_MAP = {
   hosting: "price_1RkWljHTxbvTdUoxJug5KRRM",
   rush: "price_1RkXVMHTxbvTdUox3AP1pKun",
   "extra-revision": "price_1RkWmrHTxbvTdUoxwcLShjH1",
-  "domain-dns-setup": "price_1RkWmIHTxbvTdUoxzaYLc2yn",
+  domain: "price_1RkWmIHTxbvTdUoxzaYLc2yn",
   "monthly-maintenance-starter-plan": "price_1RkWfTHTxbvTdUoxhxFIQo8e",
   "monthly-maintenance-platinum-plan": "price_1RkWgfHTxbvTdUoxmvBkijyR",
   "monthly-maintenance-premium-plan": "price_1RkWcZHTxbvTdUoxigEKHuB9",

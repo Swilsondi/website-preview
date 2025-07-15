@@ -447,14 +447,18 @@ const CartSection = ({ selectedPlan, cart }) => {
                     <span className="text-gray-400">Subtotal</span>
                     <span className="text-white font-semibold">${subtotal}</span>
                   </div>
-                  <div className="flex justify-between text-lg font-bold">
-                    <span className="text-purple-400">50% Deposit (Today)</span>
-                    <span className="text-purple-400">${deposit}</span>
-                  </div>
-                  <div className="flex justify-between text-sm text-gray-400">
-                    <span>Remaining (On Completion)</span>
-                    <span>${subtotal - deposit}</span>
-                  </div>
+                  {selectedPlan && (
+                    <div className="flex justify-between text-lg font-bold">
+                      <span className="text-purple-400">50% Deposit (Today)</span>
+                      <span className="text-purple-400">${deposit}</span>
+                    </div>
+                  )}
+                  {selectedPlan && (
+                    <div className="flex justify-between text-sm text-gray-400">
+                      <span>Remaining (On Completion)</span>
+                      <span>${subtotal - deposit}</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-8">
