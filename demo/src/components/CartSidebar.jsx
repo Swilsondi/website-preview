@@ -26,19 +26,14 @@ const CartSidebar = memo(() => {
   const handleCheckout = () => {
     setIsCartOpen(false);
     setTimeout(() => {
-      if (selectedPlan || (cart && cart.length > 0)) {
-        // User has items, go to checkout and scroll to payment
-        if (location.pathname === '/checkout') {
-          const btn = document.getElementById('secure-checkout-btn');
-          if (btn) {
-            btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            btn.focus();
-          }
-        } else {
-          navigate('/checkout');
-        }
+      if (selectedPlan) {
+        // If a plan is selected (with or without add-ons), go directly to secure checkout
+        navigate('/checkout');
+      } else if (cart && cart.length > 0) {
+        // If only add-ons, go to questions step first
+        navigate('/checkout?step=questions');
       } else {
-        // No items, go to checkout and force questions step
+        // No items, go to questions step (or show a message if you want)
         navigate('/checkout?step=questions');
       }
     }, 300);
