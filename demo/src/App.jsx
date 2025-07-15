@@ -5,7 +5,6 @@ import ErrorBoundary from "@/components/ErrorBoundary"
 import CartProvider from "@/components/CartProvider" // Corrected import for CartProvider
 import { lazy, Suspense, useState, useEffect } from 'react'
 import TopNavbar from "@/components/TopNavbar"
-import CartSidebar from '@/components/CartSidebar'
 import { PerformanceMonitor } from '@/components/PerformanceMonitor'
 import ScrollToTop from '@/components/ScrollToTop'
 import ResourceHints from '@/components/ResourceHints'
@@ -197,7 +196,9 @@ function App() {
                     </SidebarInset>
                   </div>
                 </SidebarProvider>
-                <CartSidebar />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <CartSidebar />
+                </Suspense>
               </div>
             </LazyMotion>
           </PerformanceMonitor>
