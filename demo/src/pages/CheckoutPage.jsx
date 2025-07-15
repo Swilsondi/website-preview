@@ -215,8 +215,17 @@ const CartSection = ({ selectedPlan, cart }) => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState('');
 
-  // Allow rendering if there are add-ons, even if no plan is selected
-  if (!selectedPlan && (!cart || cart.length === 0)) return null; // Only hide if nothing in cart
+  // Debug: Log cart and selectedPlan to help diagnose errors
+  console.log('CartSection render:', { selectedPlan, cart });
+
+  // Safe fallback: If both selectedPlan and cart are empty, show a friendly message and return null
+  if (!selectedPlan && (!cart || cart.length === 0)) {
+    return (
+      <div className="text-center text-red-400 py-12">
+        No package or add-ons selected. Please go back and choose a package or add-ons to continue.
+      </div>
+    );
+  }
 
   const addOns = [
     { 
