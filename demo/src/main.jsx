@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // ✅ This is the only Router needed
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // ✅ This is the only Router needed
 import App from './App';
+import HomePage from './pages/HomePage';
 import './index.css';
 import './App.css';
 import setupErrorLogging from './utils/errorHandler';
@@ -47,7 +48,12 @@ if (window.performance && window.performance.mark) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <App />
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<HomePage />} />
+        {/* other routes */}
+      </Route>
+    </Routes>
   </BrowserRouter>
 );
 

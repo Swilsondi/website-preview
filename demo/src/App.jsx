@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import ErrorBoundary from "@/components/ErrorBoundary"
@@ -176,26 +176,8 @@ function App() {
                         <Suspense fallback={<PageLoader />}>
                           {/* Place ScrollToTop inside Routes context */}
                           <ScrollToTop />
-                          <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/about" element={<AboutPage />} />
-                            <Route path="/services" element={<ServicesPage />} />
-                            <Route path="/pricing" element={<PricingPage />} />
-                            <Route path="/contact" element={<ContactPage />} />
-                            <Route path="/showcase" element={<ShowcasePage />} />
-                            <Route path="/checkout" element={<CheckoutPage />} />
-                            <Route path="/checkout-success" element={<CheckoutSuccessPage />} />
-                            <Route path="/final-payment" element={<FinalPaymentPage />} />
-                            <Route path="/our-journey" element={<OurJourneyPage />} />
-                            <Route path="/our-story" element={<OurStoryPage />} />
-                            <Route path="/start-project" element={<StartProjectPage />} />
-                            <Route path="/learn-more" element={<LearnMorePage />} />
-                            <Route path="/innovation-lab" element={<InnovationLabPage />} />
-                            <Route path="/client-success-stories" element={<ClientSuccessStoriesPage />} />
-                            <Route path="/login" element={<LoginPage />} />
-                            {/* Add a catch-all route for 404 pages */}
-                            <Route path="*" element={<HomePage />} />
-                          </Routes>
+                          {/* Render nested routes here */}
+                          <Outlet />
                           {/* ResourceHints with Router context */}
                           <ResourceHints 
                             preconnectDomains={preconnectDomains}
