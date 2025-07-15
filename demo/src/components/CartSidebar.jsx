@@ -26,15 +26,20 @@ const CartSidebar = memo(() => {
   const handleCheckout = () => {
     setIsCartOpen(false);
     setTimeout(() => {
-      if (location.pathname === '/checkout') {
-        // Scroll to the secure checkout button if already on checkout page
-        const btn = document.getElementById('secure-checkout-btn');
-        if (btn) {
-          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          btn.focus();
+      if (selectedPlan || (cart && cart.length > 0)) {
+        // User has items, go to checkout and scroll to payment
+        if (location.pathname === '/checkout') {
+          const btn = document.getElementById('secure-checkout-btn');
+          if (btn) {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            btn.focus();
+          }
+        } else {
+          navigate('/checkout');
         }
       } else {
-        navigate('/checkout');
+        // No items, go to checkout and force questions step
+        navigate('/checkout?step=questions');
       }
     }, 300);
   };
