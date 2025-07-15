@@ -536,7 +536,7 @@ export default function CheckoutPage() {
   const { selectedPlan, cart } = useCart();
   const location = useLocation();
   const [currentStep, setCurrentStep] = useState(() =>
-    selectedPlan || (cart && cart.length > 0) ? 'checkout' : 'questions'
+    (selectedPlan || (cart && cart.length > 0)) ? 'checkout' : 'questions'
   ); // questions, checkout
   const [paymentCanceled, setPaymentCanceled] = useState(false);
 
@@ -582,7 +582,7 @@ export default function CheckoutPage() {
     );
   }
 
-  // Always show questions step if that's the current step, even if no selectedPlan
+  // Always show questions step if that's the current step, even if no selectedPlan or only add-ons
   if (currentStep === 'questions') {
     return (
       <div className="min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out mt-20">
@@ -641,7 +641,10 @@ export default function CheckoutPage() {
           </div>
         ) : (
           <>
-            <CartSection selectedPlan={selectedPlan} cart={cart} />
+            {/* Only render CartSection if there is a plan or add-ons in cart */}
+            {(selectedPlan || (cart && cart.length > 0)) && (
+              <CartSection selectedPlan={selectedPlan} cart={cart} />
+            )}
             <CalendlySection />
           </>
         )}
