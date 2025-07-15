@@ -21,14 +21,9 @@ const PRECACHE_ASSETS = [
   "/offline.html",
   "/vite.svg",
   "/manifest.json",
-  // Add key CSS/JS files here based on your build output
   "/assets/index.css",
   "/assets/index.js",
-  // Critical images that should be available offline
-  "/assets/dark-logo.webp", // Use WebP format for better performance
-  "/assets/banner-logo.webp", // Convert banner-logo to WebP format
-  // Add font files if you're using any
-  // Using relative paths to avoid SSL issues during development
+  "/assets/dark-logo.webp",
 ];
 
 // Detect if we're in development mode
@@ -44,11 +39,7 @@ function devLog(...args) {
 
 // URLs to exclude from caching - add your HomePage.jsx route
 const EXCLUDE_FROM_CACHE = [
-  "./pages/HomePage.jsx",
-  "HomePage.jsx",
-  "/src/pages/HomePage.jsx",
-  // API endpoints should typically not be cached
-  "/api/",
+  "/api/", // API endpoints should typically not be cached
   // Add any other paths you don't want cached
 ];
 
