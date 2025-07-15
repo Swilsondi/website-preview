@@ -163,7 +163,11 @@ export default function CheckoutSuccessPage() {
                         )}
                         <div className="mt-6 text-green-400 flex items-center gap-2">
                           <CheckCircle className="w-5 h-5" />
-                          <span>50% Deposit Received</span>
+                          <span>
+                            {orderDetails?.plan?.name
+                              ? '50% Deposit Received'
+                              : 'Payment Completed'}
+                          </span>
                         </div>
                       </div>
                       <div className="border-t md:border-t-0 md:border-l border-gray-700/50 md:pl-6 pt-6 md:pt-0">
