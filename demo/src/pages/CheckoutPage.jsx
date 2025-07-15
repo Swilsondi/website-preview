@@ -19,12 +19,12 @@ import {
 import { useEffect, useState } from "react"
 import Footer from "@/components/Footer"
 import { useNavigate, useLocation } from "react-router-dom"
-import { redirectToCheckout } from "@/services/stripeService"
+import { redirectToCheckout, stripePromise } from "@/services/stripeService"
 import emailjs from 'emailjs-com';
 
 // Checkout Hero Section
 const CheckoutHero = () => (
-  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden">
+  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-24">
     <div className="absolute inset-0">
       <motion.div
         animate={{
@@ -214,7 +214,6 @@ const CartSection = ({ selectedPlan, cart }) => {
   const { addToCart, removeFromCart, cartTotal, getCartQuantity } = useCart();
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState('');
-  const navigate = useNavigate();
 
   // Allow rendering if there are add-ons, even if no plan is selected
   if (!selectedPlan && (!cart || cart.length === 0)) return null; // Only hide if nothing in cart
