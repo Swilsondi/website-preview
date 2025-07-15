@@ -60,19 +60,19 @@ export default defineConfig({
         },
       },
     },
-    minify: "esbuild", // Use esbuild for minification
+    minify: "esbuild", // Use esbuild for faster minification
     terserOptions: {
       compress: {
-        drop_console: true,
-        drop_debugger: true,
+        drop_console: true, // Remove console logs
+        drop_debugger: true, // Remove debugger statements
       },
     },
-    sourcemap: true, // Enable source maps for debugging
+    sourcemap: false, // Disable source maps for production to reduce bundle size
   },
   server: {
     port: 3000,
     host: true,
-    https: false, // Ensure HTTPS is disabled
+    https: false,
     headers: {
       "Content-Security-Policy":
         "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://* blob:; connect-src 'self' *; object-src 'none'; base-uri 'self'; frame-src https://js.stripe.com https://hooks.stripe.com;",
