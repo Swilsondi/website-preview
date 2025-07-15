@@ -272,9 +272,9 @@ const CartSection = ({ selectedPlan, cart }) => {
 
   // Use the numericPrice property if available, otherwise fall back to parsing the price string
   const basePrice = selectedPlan ? (selectedPlan.numericPrice || parseInt(selectedPlan.price.replace(/[^0-9]/g, ''))) : 0;
-  const addOnsTotal = cartTotal
-  const subtotal = basePrice + addOnsTotal
-  const deposit = Math.ceil(subtotal * 0.5)
+  const addOnsTotal = cartTotal;
+  // Deposit is 50% of plan + 100% of add-ons
+  const deposit = selectedPlan ? Math.ceil(basePrice * 0.5 + addOnsTotal) : subtotal;
 
   const handleCheckout = async () => {
     try {
@@ -423,6 +423,10 @@ const CartSection = ({ selectedPlan, cart }) => {
                       <span className="text-gray-400">Base Package</span>
                       <span className="text-white font-semibold">${basePrice}</span>
                     </div>
+                    <div className="flex justify-between mt-2">
+                      <span className="text-purple-400">50% Deposit Today</span>
+                      <span className="text-purple-400 font-bold">${Math.ceil(basePrice * 0.5)}</span>
+                    </div>
                   </div>
                 )}
 
@@ -438,6 +442,10 @@ const CartSection = ({ selectedPlan, cart }) => {
                         <span className="text-white">${item.price * item.quantity}</span>
                       </div>
                     ))}
+                    <div className="flex justify-between mt-2">
+                      <span className="text-gray-400">Add-ons Total</span>
+                      <span className="text-white font-semibold">${addOnsTotal}</span>
+                    </div>
                   </div>
                 )}
 
@@ -449,14 +457,20 @@ const CartSection = ({ selectedPlan, cart }) => {
                   </div>
                   {selectedPlan && (
                     <div className="flex justify-between text-lg font-bold">
-                      <span className="text-purple-400">50% Deposit (Today)</span>
+                      <span className="text-purple-400">Total Due Today</span>
                       <span className="text-purple-400">${deposit}</span>
+                    </div>
+                  )}
+                  {!selectedPlan && (
+                    <div className="flex justify-between text-lg font-bold">
+                      <span className="text-purple-400">Total Due Today</span>
+                      <span className="text-purple-400">${subtotal}</span>
                     </div>
                   )}
                   {selectedPlan && (
                     <div className="flex justify-between text-sm text-gray-400">
                       <span>Remaining (On Completion)</span>
-                      <span>${subtotal - deposit}</span>
+                      <span>${subtotal - Math.ceil(basePrice * 0.5)}</span>
                     </div>
                   )}
                 </div>
@@ -469,7 +483,11 @@ const CartSection = ({ selectedPlan, cart }) => {
                     onClick={handleCheckout}
                     disabled={isProcessing}
                   >
-                    {isProcessing ? 'Processing...' : `Secure Checkout - $${deposit}`}
+                    {isProcessing
+                      ? 'Processing...'
+                      : selectedPlan
+                        ? `Secure Checkout - $${deposit}`
+                        : `Secure Checkout - $${subtotal}`}
                     <CreditCard className="ml-3 w-6 h-6" />
                   </Button>
                   
