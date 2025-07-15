@@ -273,6 +273,7 @@ const CartSection = ({ selectedPlan, cart }) => {
   // Use the numericPrice property if available, otherwise fall back to parsing the price string
   const basePrice = selectedPlan ? (selectedPlan.numericPrice || parseInt(selectedPlan.price.replace(/[^0-9]/g, ''))) : 0;
   const addOnsTotal = cartTotal;
+  const subtotal = basePrice + addOnsTotal;
   // Deposit is 50% of plan + 100% of add-ons
   const deposit = selectedPlan ? Math.ceil(basePrice * 0.5 + addOnsTotal) : subtotal;
 
