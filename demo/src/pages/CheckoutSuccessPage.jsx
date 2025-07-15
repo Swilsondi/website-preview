@@ -150,14 +150,17 @@ export default function CheckoutSuccessPage() {
                       <div>
                         <h3 className="text-xl font-bold text-white mb-4">Payment Confirmed</h3>
                         <p className="text-gray-300 mb-2">
-                          <strong className="text-white">Package:</strong> {orderDetails?.plan?.name || 'Custom Package'}
+                          <strong className="text-white">Package:</strong> {orderDetails?.plan?.name ? orderDetails.plan.name : (orderDetails?.items?.length > 1 ? 'Add-ons' : 'Add-on')}
                         </p>
                         <p className="text-gray-300 mb-2">
-                          <strong className="text-white">Delivery Timeline:</strong> {orderDetails?.plan?.deliveryTime || '2-4 weeks'}
+                          <strong className="text-white">Delivery Timeline:</strong> {orderDetails?.plan?.deliveryTime ? orderDetails.plan.deliveryTime : '1-2 weeks'}
                         </p>
-                        <p className="text-gray-300 mb-2">
-                          <strong className="text-white">Revision Rounds:</strong> {orderDetails?.plan?.revisions || 'As per package'}
-                        </p>
+                        {/* Only show revision rounds if a plan exists */}
+                        {orderDetails?.plan?.revisions && (
+                          <p className="text-gray-300 mb-2">
+                            <strong className="text-white">Revision Rounds:</strong> {orderDetails.plan.revisions}
+                          </p>
+                        )}
                         <div className="mt-6 text-green-400 flex items-center gap-2">
                           <CheckCircle className="w-5 h-5" />
                           <span>50% Deposit Received</span>
@@ -207,7 +210,6 @@ export default function CheckoutSuccessPage() {
               >
                 Your Payment Process
               </motion.h2>
-              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -223,7 +225,7 @@ export default function CheckoutSuccessPage() {
                     <h3 className="text-xl font-bold text-white mb-2">Step 1: Initial Deposit</h3>
                     <p className="text-green-300 font-semibold mb-1">50% Deposit Paid ✓</p>
                     <p className="text-gray-400 text-sm">
-                      Your initial 50% deposit has been received. We're ready to start work on your project.
+                      <span className="font-semibold text-white">This payment process applies to selected packages only.</span> Add-ons are paid in full up front and do not require a deposit or final payment.
                     </p>
                   </CardContent>
                 </Card>
