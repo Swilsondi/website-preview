@@ -244,6 +244,8 @@ export const generateFinalPaymentLink = (projectDetails) => {
   )}`;
 };
 
+export { stripePromise };
+
 export default {
   redirectToCheckout,
   handleCheckoutSuccess,
