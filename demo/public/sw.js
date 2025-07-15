@@ -25,8 +25,8 @@ const PRECACHE_ASSETS = [
   "/assets/index.css",
   "/assets/index.js",
   // Critical images that should be available offline
-  "/assets/dark-logo.png",
-  "/assets/banner-logo.jpeg",
+  "/assets/dark-logo.webp", // Use WebP format for better performance
+  "/assets/banner-logo.webp", // Convert banner-logo to WebP format
   // Add font files if you're using any
   // Using relative paths to avoid SSL issues during development
 ];

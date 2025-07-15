@@ -77,6 +77,13 @@ const preloadAssets = [
   }
 ];
 
+// Preload critical routes and components for faster initial load
+const preloadCriticalRoutes = () => {
+  import('./pages/HomePage');
+  import('./pages/AboutPages');
+  import('./pages/ServicesPage');
+};
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(true);
@@ -136,6 +143,9 @@ function App() {
       window.performance.mark('initial-load-end');
       window.performance.measure('initial-load', 'initial-load-start', 'initial-load-end');
     }
+    
+    // Call preloadCriticalRoutes on app initialization
+    preloadCriticalRoutes();
     
     return () => {
       window.removeEventListener('online', handleOnlineStatus);
