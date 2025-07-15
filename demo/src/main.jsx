@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom'; // ✅ This is the only Router needed
 import App from './App';
 import './index.css';
+import './App.css';
 import setupErrorLogging from './utils/errorHandler';
 
 // Initialize error logging
