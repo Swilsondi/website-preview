@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CartButton from './CartButton';
+import logo from '@/assets/dark-logo.png';
 
 const TopNavbar = ({ isOnline }) => {
   return (
@@ -15,7 +16,7 @@ const TopNavbar = ({ isOnline }) => {
                 <picture>
                   <source srcSet="/src/assets/dark-logo.webp" type="image/webp" />
                   <img 
-                    src={require('@/assets/dark-logo.png')}
+                    src={logo}
                     alt="Tech Motive Supreme logo"
                     width={120}
                     height={40}
