@@ -26,7 +26,6 @@ const PRECACHE_ASSETS = [
   "/assets/index.js",
   // Critical images that should be available offline
   "/assets/dark-logo.png",
-  "/assets/white-logo.png",
   "/assets/banner-logo.jpeg",
   // Add font files if you're using any
   // Using relative paths to avoid SSL issues during development
