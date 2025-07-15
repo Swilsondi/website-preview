@@ -24,3 +24,18 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
+// Clear old caches during activation
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== 'static-v1') {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});

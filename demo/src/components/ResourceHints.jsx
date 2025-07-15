@@ -192,6 +192,9 @@ function ResourceHints({ preconnectDomains = [], prefetchRoutes = [], preloadAss
         if (asset.type === 'image' || asset.type === 'fetch') {
           // Get the asset base name to compare with observed assets
           const assetUrl = new URL(asset.url, window.location.origin);
+          if (!assetUrl.pathname.startsWith('/assets/')) {
+            assetUrl.pathname = `/assets/${assetUrl.pathname}`;
+          }
           const absoluteUrl = assetUrl.href;
           
           // Check if this asset or a version of it is actually used on the page

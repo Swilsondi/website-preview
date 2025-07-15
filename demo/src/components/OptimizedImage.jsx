@@ -116,7 +116,12 @@ const OptimizedImage = ({
     
     // Try to use modern formats based on browser support
     try {
-      const url = new URL(src, window.location.href);
+      const url = new URL(src, window.location.origin);
+      
+      // Ensure the path is relative to the public directory
+      if (!url.pathname.startsWith('/assets/')) {
+        url.pathname = `/assets/${url.pathname}`;
+      }
       
       // If URL already has format parameter, don't modify
       if (url.searchParams.has('format')) return src;

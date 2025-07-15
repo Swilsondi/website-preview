@@ -66,6 +66,8 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Update background-image URLs to use the correct paths */
+    background-image: url('/assets/background-pattern.png');
   }
   
   #root {
