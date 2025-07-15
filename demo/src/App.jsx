@@ -29,6 +29,7 @@ const InnovationLabPage = lazy(() => import('./pages/InnovationLabPage'))
 const ClientSuccessStoriesPage = lazy(() => import('./pages/ClientSuccessStoriesPage'))
 const LoginPage = lazy(() => import('./pages/LoginPage'))
 const OurStoryPage = lazy(() => import('./pages/OurStoryPage'))
+const CartSidebar = lazy(() => import('./components/CartSidebar')) // Corrected import path
 
 // Loading component with better UX
 const PageLoader = () => (
