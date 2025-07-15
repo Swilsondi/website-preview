@@ -539,6 +539,7 @@ export default function CheckoutPage() {
     (selectedPlan || (cart && cart.length > 0)) ? 'checkout' : 'questions'
   ); // questions, checkout
   const [paymentCanceled, setPaymentCanceled] = useState(false);
+  const navigate = useNavigate();
 
   // Force questions step if ?step=questions is in the URL
   useEffect(() => {
@@ -572,6 +573,7 @@ export default function CheckoutPage() {
   const handleQuestionsComplete = (answers) => {
     localStorage.setItem('projectAnswers', JSON.stringify(answers));
     setCurrentStep('checkout');
+    navigate('/checkout'); // Ensure we show the full checkout UI after questions
   };
 
   if (!pageLoaded) {
