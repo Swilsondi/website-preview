@@ -78,7 +78,7 @@ export default function FinalPaymentPage() {
       }`}
     >
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center min-h-[calc(100vh-5rem)] bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center min-h-screen pt-32 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
             animate={{
