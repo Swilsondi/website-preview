@@ -41,8 +41,8 @@ const stripePromise = loadStripe(PUBLISHABLE_KEY);
 // These prices should be set as 50% of the total cost in your Stripe dashboard
 const PLAN_PRICE_MAP = {
   "Starter Site": "price_1RkWaXHTxbvTdUox6mlx5OrL",
-  "Premium Site": "price_1RkWaXHTxbvTdUox6mlx5OrL",
-  "Platinum Site": "price_1RkWaXHTxbvTdUox6mlx5OrL",
+  "Premium Site": "price_1RkWcZHTxbvTdUoxigEKHuB9",
+  "Platinum Site": "price_1RkWbdHTxbvTdUoxxX4EF0UE",
 };
 
 // Map add-on IDs to their respective Stripe PRICE IDs (not product IDs)
