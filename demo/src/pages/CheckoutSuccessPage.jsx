@@ -60,7 +60,7 @@ export default function CheckoutSuccessPage() {
       }`}
     >
       {/* Success Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-gray-900 via-green-900 to-blue-900 overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-gray-900 via-green-900 to-blue-900 overflow-hidden pt-[88px]">
         <div className="absolute inset-0">
           <motion.div
             animate={{

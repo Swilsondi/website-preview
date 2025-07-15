@@ -24,7 +24,7 @@ import emailjs from 'emailjs-com';
 
 // Checkout Hero Section
 const CheckoutHero = () => (
-  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-24">
+  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-[88px]">
     <div className="absolute inset-0">
       <motion.div
         animate={{
