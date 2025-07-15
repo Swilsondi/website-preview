@@ -16,7 +16,7 @@ const TopNavbar = ({ isOnline }) => {
                 <picture>
                   <source srcSet="/assets/dark-logo.webp" type="image/webp" />
                   <img 
-                    src="/images/logo-dark.png"
+                    src="/assets/dark-logo.png"
                     alt="Site Logo"
                     className="h-8 w-auto"
                   />
@@ -45,4 +45,3 @@ const TopNavbar = ({ isOnline }) => {
 };
 
 export default TopNavbar;
-};
