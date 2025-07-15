@@ -143,11 +143,17 @@ const OriginStorySection = () => (
           className="relative"
         >
           <div className="rounded-2xl overflow-hidden shadow-xl shadow-blue-500/10">
-            <img 
-              src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80" 
-              alt="Our Beginnings" 
-              className="w-full h-full object-cover"
-            />
+            <picture>
+              <source srcSet="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80" type="image/webp" />
+              <img 
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80"
+                alt="Our Beginnings" 
+                width={872}
+                height={580}
+                loading="lazy"
+                className="rounded-lg shadow-lg w-full h-auto object-cover"
+              />
+            </picture>
           </div>
           <div className="absolute -bottom-8 -right-8 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full w-24 h-24 flex items-center justify-center shadow-lg">
             <div className="text-white text-center">
