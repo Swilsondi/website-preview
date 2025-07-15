@@ -302,11 +302,17 @@ const CartSection = ({ selectedPlan, cart }) => {
       console.log("Starting checkout with selected plan:", selectedPlan);
       console.log("Cart items:", cart);
       
+      const stripe = await stripePromise;
+      if (!stripe) {
+        setCheckoutError('Stripe failed to load. Please refresh and try again.');
+        setIsProcessing(false);
+        return;
+      }
+
       // Redirect to Stripe checkout
       const result = await redirectToCheckout(selectedPlan, cart, customerInfo);
       console.log("Checkout result:", result);
     } catch (error) {
-      console.error('Checkout error:', error)
       setCheckoutError('There was an error processing your checkout. Please try again.')
     } finally {
       setIsProcessing(false)
@@ -590,9 +596,9 @@ export default function CheckoutPage() {
   // Always show questions step if that's the current step, even if no selectedPlan or only add-ons
   if (currentStep === 'questions') {
     return (
-      <div className="min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out mt-20">
+      <div className="min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out pt-20">
         <CheckoutHero />
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col justify-center min-h-[calc(100vh-64px)]">
           <PreCheckoutQuestions onComplete={handleQuestionsComplete} />
         </div>
         <Footer />
