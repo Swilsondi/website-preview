@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { lazy, Suspense, memo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { X, ShoppingCart, Plus, Minus, ArrowRight, Trash2, Package } from 'lucide-react';
 import { useCart } from '@/components/CartProvider';
 import { useNavigate, useLocation } from 'react-router-dom';
+
+const LazyCartSidebar = lazy(() => import('./CartSidebar'));
 
 const CartSidebar = memo(() => {
   const {
@@ -234,4 +236,10 @@ const CartSidebar = memo(() => {
   );
 });
 
-export default CartSidebar;
+export default function CartSidebarWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LazyCartSidebar />
+    </Suspense>
+  );
+}

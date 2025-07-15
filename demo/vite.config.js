@@ -68,7 +68,7 @@ export default defineConfig({
       },
     },
     // Add sourcemap for better debugging
-    sourcemap: false, // Change to true if needed for debugging production issues
+    sourcemap: true, // Enable source maps for debugging
   },
   server: {
     port: 3000,
