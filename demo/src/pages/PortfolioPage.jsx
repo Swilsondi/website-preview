@@ -223,7 +223,7 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                   </div>
 
                   {/* Testimonial */}
-                  <div className="relative p-4 bg-purple-500/10 rounded-lg border border-purple-500/20">
+                  <div className="relative p-4 bg-purple-500/10 rounded-lg border border-purple-500/20" style={{ background: 'rgba(80, 0, 120, 0.5)', backdropFilter: 'blur(6px)' }}>
                     <Quote className="w-6 h-6 text-purple-400 mb-2" />
                     <p className="text-gray-300 text-sm mb-3 italic">"{item.testimonial.text}"</p>
                     <div className="flex items-center gap-2">
@@ -280,12 +280,12 @@ const ResultsSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center flex flex-col items-center"
           >
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-6 hover:bg-white/20 transition-all duration-300">
-              <item.icon className={`w-12 h-12 ${item.color} mx-auto mb-4`} />
-              <div className="text-3xl font-black text-white mb-2">{item.stat}</div>
-              <div className="text-blue-200 text-sm">{item.label}</div>
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-6 hover:bg-white/20 transition-all duration-300 flex flex-col items-center">
+              <item.icon className={`w-12 h-12 ${item.color} mb-4`} />
+              <div className="text-3xl font-black text-white mb-2 text-center">{item.stat}</div>
+              <div className="text-blue-200 text-sm text-center">{item.label}</div>
             </Card>
           </motion.div>
         ))}

@@ -193,7 +193,7 @@ const BrandingServices = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -202,18 +202,16 @@ const BrandingServices = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className="group"
+              className="group flex flex-col items-center text-center"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-violet-500/50 transition-all duration-300">
-                <CardContent className="p-8">
+              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-violet-500/50 transition-all duration-300 flex flex-col items-center">
+                <CardContent className="p-8 flex flex-col items-center">
                   <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
-                  
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-violet-400 transition-colors duration-300">
                     {service.title}
                   </h3>
-                  
                   <p className="text-gray-300 leading-relaxed">
                     {service.description}
                   </p>
@@ -388,7 +386,7 @@ const TechnologyShowcase = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {technologies.map((tech, index) => (
             <motion.div
               key={index}
@@ -396,19 +394,17 @@ const TechnologyShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="group"
+              whileHover={{ y: -5 }}
+              className="group flex flex-col items-center text-center"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-fuchsia-500/50 transition-all duration-300">
-                <CardContent className="p-8">
+              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-fuchsia-500/50 transition-all duration-300 flex flex-col items-center">
+                <CardContent className="p-8 flex flex-col items-center">
                   <div className={`w-16 h-16 bg-gradient-to-r ${tech.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
                     <tech.icon className="w-8 h-8 text-white" />
                   </div>
-                  
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-fuchsia-400 transition-colors duration-300">
                     {tech.title}
                   </h3>
-                  
                   <p className="text-gray-300 leading-relaxed">
                     {tech.description}
                   </p>

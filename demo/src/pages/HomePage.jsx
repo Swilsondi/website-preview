@@ -200,7 +200,7 @@ const HeroSection = ({ handleNavigation }) => {
               },
               {
                 number: "48hrs",
-                label: "Launch Time",
+                label: "Typical Launch Turnaround",
               },
             ].map((stat, index) => (
               <motion.div
