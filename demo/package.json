@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --mode sitemap",
     "build:analyze": "vite build && npx vite-bundle-analyzer dist/assets/*.js",
     "preview": "vite preview",
     "preview:build": "npm run build && npm run preview",
