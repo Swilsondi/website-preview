@@ -245,6 +245,18 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                     {item.description}
                   </p>
                 </div>
+
+                {/* Desktop only: show title and description over image */}
+                {typeof window !== 'undefined' && window.innerWidth >= 640 && (
+                  <>
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-center">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6 text-sm text-center">
+                      {item.description}
+                    </p>
+                  </>
+                )}
               </Card>
             </motion.div>
           ))}
