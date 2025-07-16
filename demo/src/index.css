@@ -132,3 +132,17 @@
   height: 100vh;
   z-index: 40;
 }
+
+/* Contact form field alignment fix */
+.contact-form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .contact-form-fields {
+    grid-template-columns: 1fr;
+  }
+}
