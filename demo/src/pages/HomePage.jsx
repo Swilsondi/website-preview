@@ -266,16 +266,16 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div key={index} className="group">
               <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-colors duration-200">
-                <CardContent className="p-8">
+                <CardContent className="p-8 flex flex-col items-center">
                   <div className={`w-16 h-16 bg-gradient-to-r ${service.accent} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-200 group-hover:scale-105`}>
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-200 group-hover:text-blue-400">
+                  <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-200 group-hover:text-blue-400 text-center">
                     {service.title}
                   </h3>
                   
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-gray-300 mb-6 leading-relaxed text-center">
                     {service.description}
                   </p>
                   
