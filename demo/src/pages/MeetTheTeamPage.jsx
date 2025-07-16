@@ -19,6 +19,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
+import { Helmet } from "react-helmet"
 
 // Animation variants
 const fadeIn = {
@@ -694,14 +695,24 @@ export default function MeetTheTeamPage() {
   }, []);
 
   return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      <TeamHero />
-      <LeadershipSection />
-      <TeamGrid />
-      <OfficesSection />
-      <CultureSection />
-      <JoinTeamSection />
-      <Footer />
-    </div>
+    <>
+      <Helmet>
+        <title>Meet the Team | TechMotiveSupreme</title>
+        <meta name="description" content="Meet our talented team of creative thinkers, problem solvers, and digital innovators." />
+        <meta property="og:title" content="Meet the Team | TechMotiveSupreme" />
+        <meta property="og:description" content="Meet our talented team of creative thinkers, problem solvers, and digital innovators." />
+        <meta property="og:image" content="/assets/dark-logo.png" />
+        <meta property="og:url" content="https://techmotivesupreme.com/team" />
+      </Helmet>
+      <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <TeamHero />
+        <LeadershipSection />
+        <TeamGrid />
+        <OfficesSection />
+        <CultureSection />
+        <JoinTeamSection />
+        <Footer />
+      </div>
+    </>
   );
 }

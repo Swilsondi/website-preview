@@ -23,6 +23,7 @@ import { motion } from "framer-motion"
 import Footer from "@/components/Footer"
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react' // ✅ ENSURE THIS IS IMPORTED
+import { Helmet } from "react-helmet"
 
 // About Hero Section - FIXED
 const AboutHero = ({ navigate }) => (
@@ -403,13 +404,23 @@ export default function AboutPage() {
   }, [])
 
   return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      <AboutHero navigate={navigate} />
-      <MissionSection />
-      <ExpertiseSection />
-      <StatsSection />
-      <AboutCTA navigate={navigate} />
-      <Footer />
-    </div>
+    <>
+      <Helmet>
+        <title>About TechMotiveSupreme | Digital Innovation Leaders</title>
+        <meta name="description" content="Learn about TechMotiveSupreme's mission, values, expertise, and proven track record in digital excellence." />
+        <meta property="og:title" content="About TechMotiveSupreme | Digital Innovation Leaders" />
+        <meta property="og:description" content="Discover our mission, values, and expertise in delivering digital excellence." />
+        <meta property="og:image" content="/assets/dark-logo.png" />
+        <meta property="og:url" content="https://techmotivesupreme.com/about" />
+      </Helmet>
+      <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <AboutHero navigate={navigate} />
+        <MissionSection />
+        <ExpertiseSection />
+        <StatsSection />
+        <AboutCTA navigate={navigate} />
+        <Footer />
+      </div>
+    </>
   )
 }

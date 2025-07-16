@@ -19,6 +19,7 @@ import {
   Users
 } from "lucide-react"
 import { useLocation } from "react-router-dom"
+import { Helmet } from "react-helmet";
 
 // Move normalize to the top so all components share the same reference
 const normalize = str => (str ? str.trim().toLowerCase() : "");
@@ -154,127 +155,137 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
     : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory))
 
   return (
-    <section className="py-24 bg-gray-900" ref={gridRef}>
-      <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-        {/* Portfolio Grid */}
-        <motion.div
-          key={animateKey}
-          variants={stagger}
-          initial="initial"
-          animate="animate"
-          transition={{ duration: 0.3 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {filteredItems.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={fadeInUp}
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group"
-            >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden flex flex-col items-center justify-center text-center">
-                <div className="relative overflow-hidden flex flex-col items-center justify-center text-center">
-                  {/* Mobile: show only text, hide image, and left-align text */}
-                  <div className="sm:block hidden">
-                    <picture>
-                      <source srcSet={item.imageWebp} type="image/webp" />
-                      <img 
-                        src={item.image}
-                        alt={item.title}
-                        width={600}
-                        height={400}
-                        loading="lazy"
-                        className="rounded-lg shadow-lg w-full h-auto object-cover mx-auto"
-                      />
-                    </picture>
+    <>
+      <Helmet>
+        <title>Portfolio | TechMotiveSupreme</title>
+        <meta name="description" content="See our portfolio of successful web, branding, and digital transformation projects." />
+        <meta property="og:title" content="Portfolio | TechMotiveSupreme" />
+        <meta property="og:description" content="Browse our portfolio of web, branding, and digital transformation projects." />
+        <meta property="og:image" content="/assets/dark-logo.png" />
+        <meta property="og:url" content="https://techmotivesupreme.com/showcase" />
+      </Helmet>
+      <section className="py-24 bg-gray-900" ref={gridRef}>
+        <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+          {/* Portfolio Grid */}
+          <motion.div
+            key={animateKey}
+            variants={stagger}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 0.3 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredItems.map((item) => (
+              <motion.div
+                key={item.id}
+                variants={fadeInUp}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="group"
+              >
+                <Card className="h-full bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden flex flex-col items-center justify-center text-center">
+                  <div className="relative overflow-hidden flex flex-col items-center justify-center text-center">
+                    {/* Mobile: show only text, hide image, and left-align text */}
+                    <div className="sm:block hidden">
+                      <picture>
+                        <source srcSet={item.imageWebp} type="image/webp" />
+                        <img 
+                          src={item.image}
+                          alt={`Portfolio: ${item.title}`}
+                          width={600}
+                          height={400}
+                          loading="lazy"
+                          className="rounded-lg shadow-lg w-full h-auto object-cover mx-auto"
+                        />
+                      </picture>
+                    </div>
+                    <div className="sm:hidden block w-full text-left">
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-left">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-400 mb-6 text-sm text-left">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <Badge className={`absolute top-4 left-4 bg-gradient-to-r ${item.color} text-white border-0`}>
+                      {item.category}
+                    </Badge>
                   </div>
-                  <div className="sm:hidden block w-full text-left">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-left">
+                  <CardContent className="p-6 flex flex-col items-center justify-center text-center">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 hidden sm:block text-center">
                       {item.title}
                     </h3>
-                    <p className="text-gray-400 mb-6 text-sm text-left">
+                    <p className="text-gray-400 mb-6 text-sm hidden sm:block text-center">
                       {item.description}
                     </p>
-                  </div>
 
-                  <Badge className={`absolute top-4 left-4 bg-gradient-to-r ${item.color} text-white border-0`}>
-                    {item.category}
-                  </Badge>
-                </div>
-                <CardContent className="p-6 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 hidden sm:block text-center">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-400 mb-6 text-sm hidden sm:block text-center">
-                    {item.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="mb-6">
-                    <h4 className="text-white font-semibold mb-3 text-sm">Key Features:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {item.features.map((feature, i) => (
-                        <Badge key={i} variant="outline" className="text-xs border-gray-600 text-gray-300">
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-2 mb-6 p-4 bg-gray-900/50 rounded-lg">
-                    {Object.entries(item.stats).map(([key, value], i) => (
-                      <div key={i} className="text-center">
-                        <div className="text-lg font-bold text-purple-400">+{value}</div>
-                        <div className="text-xs text-gray-400 capitalize">{key}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Testimonial */}
-                  <div className="relative p-4 bg-purple-500/10 rounded-lg border border-purple-500/20" style={{ background: 'rgba(80, 0, 120, 0.5)', backdropFilter: 'blur(6px)' }}>
-                    <Quote className="w-6 h-6 text-purple-400 mb-2" />
-                    <p className="text-gray-300 text-sm mb-3 italic">"{item.testimonial.text}"</p>
-                    <div className="flex items-center gap-2">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
+                    {/* Features */}
+                    <div className="mb-6">
+                      <h4 className="text-white font-semibold mb-3 text-sm">Key Features:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {item.features.map((feature, i) => (
+                          <Badge key={i} variant="outline" className="text-xs border-gray-600 text-gray-300">
+                            {feature}
+                          </Badge>
                         ))}
                       </div>
-                      <div className="text-xs text-gray-400">
-                        <span className="text-white font-semibold">{item.testimonial.author}</span> - {item.testimonial.role}
+                    </div>
+
+                    {/* Stats */}
+                    <div className="grid grid-cols-3 gap-2 mb-6 p-4 bg-gray-900/50 rounded-lg">
+                      {Object.entries(item.stats).map(([key, value], i) => (
+                        <div key={i} className="text-center">
+                          <div className="text-lg font-bold text-purple-400">+{value}</div>
+                          <div className="text-xs text-gray-400 capitalize">{key}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Testimonial */}
+                    <div className="relative p-4 bg-purple-500/10 rounded-lg border border-purple-500/20" style={{ background: 'rgba(80, 0, 120, 0.5)', backdropFilter: 'blur(6px)' }}>
+                      <Quote className="w-6 h-6 text-purple-400 mb-2" />
+                      <p className="text-gray-300 text-sm mb-3 italic">"{item.testimonial.text}"</p>
+                      <div className="flex items-center gap-2">
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
+                          ))}
+                        </div>
+                        <div className="text-xs text-gray-400">
+                          <span className="text-white font-semibold">{item.testimonial.author}</span> - {item.testimonial.role}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-                {/* Mobile-only title and description below image */}
-                <div className="sm:hidden px-6 pb-4 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-xl font-bold text-white mb-2 text-center">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-400 mb-4 text-sm text-center">
-                    {item.description}
-                  </p>
-                </div>
-
-                {/* Desktop only: show title and description over image */}
-                {typeof window !== 'undefined' && window.innerWidth >= 640 && (
-                  <>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-center">
+                  </CardContent>
+                  {/* Mobile-only title and description below image */}
+                  <div className="sm:hidden px-6 pb-4 flex flex-col items-center justify-center text-center">
+                    <h3 className="text-xl font-bold text-white mb-2 text-center">
                       {item.title}
                     </h3>
-                    <p className="text-gray-400 mb-6 text-sm text-center">
+                    <p className="text-gray-400 mb-4 text-sm text-center">
                       {item.description}
                     </p>
-                  </>
-                )}
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+                  </div>
+
+                  {/* Desktop only: show title and description over image */}
+                  {typeof window !== 'undefined' && window.innerWidth >= 640 && (
+                    <>
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-center">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-400 mb-6 text-sm text-center">
+                        {item.description}
+                      </p>
+                    </>
+                  )}
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+    </>
   )
 })
 

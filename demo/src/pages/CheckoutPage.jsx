@@ -21,6 +21,7 @@ import Footer from "@/components/Footer"
 import { useNavigate, useLocation } from "react-router-dom"
 import { redirectToCheckout, stripePromise } from "@/services/stripeService"
 import emailjs from 'emailjs-com';
+import { Helmet } from "react-helmet";
 
 // Checkout Hero Section
 const CheckoutHero = () => (
@@ -637,61 +638,71 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div
-      className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out pt-20${
-        pageLoaded ? ' opacity-100 translate-y-0' : ' opacity-0 translate-y-4'
-      }`}
-    >
-      <style dangerouslySetInnerHTML={{ __html: `
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: linear-gradient(180deg, #6366f1, #8b5cf6);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(180deg, #4f46e5, #7c3aed);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        html {
-          scrollbar-width: thin;
-          scrollbar-color: #6366f1 transparent;
-        }
-      ` }} />
+    <>
+      <Helmet>
+        <title>Checkout | TechMotiveSupreme</title>
+        <meta name="description" content="Secure checkout for your web development, branding, and add-on services. SSL protected." />
+        <meta property="og:title" content="Checkout | TechMotiveSupreme" />
+        <meta property="og:description" content="Secure checkout for your web development, branding, and add-on services." />
+        <meta property="og:image" content="/assets/dark-logo.png" />
+        <meta property="og:url" content="https://techmotivesupreme.com/checkout" />
+      </Helmet>
+      <div
+        className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out pt-20${
+          pageLoaded ? ' opacity-100 translate-y-0' : ' opacity-0 translate-y-4'
+        }`}
+      >
+        <style dangerouslySetInnerHTML={{ __html: `
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
+          ::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366f1, #8b5cf6);
+            border-radius: 4px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+          }
+          ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #4f46e5, #7c3aed);
+            border-radius: 4px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+          }
+          html {
+            scrollbar-width: thin;
+            scrollbar-color: #6366f1 transparent;
+          }
+        ` }} />
 
-      <div className="w-full">
-        <CheckoutHero />
+        <div className="w-full">
+          <CheckoutHero />
 
-        {paymentCanceled && (
-          <div className="bg-amber-500/20 border border-amber-500/50 text-amber-200 p-4 rounded-lg mb-6 mx-4 md:mx-6 lg:mx-8 text-center">
-            Your payment was canceled. You can continue customizing your order or try again.
-          </div>
-        )}
+          {paymentCanceled && (
+            <div className="bg-amber-500/20 border border-amber-500/50 text-amber-200 p-4 rounded-lg mb-6 mx-4 md:mx-6 lg:mx-8 text-center">
+              Your payment was canceled. You can continue customizing your order or try again.
+            </div>
+          )}
 
-        {currentStep === 'questions' ? (
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
-            <PreCheckoutQuestions onComplete={handleQuestionsComplete} />
-          </div>
-        ) : (
-          <>
-            {/* Only render CartSection if there is a plan or add-ons in cart */}
-            {(selectedPlan || (cart && cart.length > 0)) && (
-              <CartSection selectedPlan={selectedPlan} cart={cart} />
-            )}
-            <CalendlySection />
-          </>
-        )}
+          {currentStep === 'questions' ? (
+            <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
+              <PreCheckoutQuestions onComplete={handleQuestionsComplete} />
+            </div>
+          ) : (
+            <>
+              {/* Only render CartSection if there is a plan or add-ons in cart */}
+              {(selectedPlan || (cart && cart.length > 0)) && (
+                <CartSection selectedPlan={selectedPlan} cart={cart} />
+              )}
+              <CalendlySection />
+            </>
+          )}
+        </div>
+
+        <Footer />
       </div>
-
-      <Footer />
-    </div>
+    </>
   );
 }

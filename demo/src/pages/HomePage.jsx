@@ -1,3 +1,6 @@
+// Make sure you have react-helmet installed:
+// npm install react-helmet
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -20,6 +23,7 @@ import { motion } from "framer-motion"
 import Footer from "@/components/Footer"
 import { useNavigate } from 'react-router-dom';
 import usePerformance from '@/hooks/usePerformance';
+import { Helmet } from "react-helmet";
 
 // Optimized animation variants - GPU accelerated
 const fadeInUp = {
@@ -403,16 +407,26 @@ export default function HomePage() {
   };
 
   return (
-    <div
-      className={`min-h-screen bg-gray-900 w-full overflow-auto transition-all duration-700 ease-out ${
-        pageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      } ${disableAnimations ? "transition-none" : ""}`}
-    >
-      <HeroSection handleNavigation={handleNavigation} />
-      <ServicesSection />
-      <SocialProofSection />
-      <CTASection />
-      <Footer />
-    </div>
+    <>
+      <Helmet>
+        <title>TechMotiveSupreme | Premium Web Development & Branding</title>
+        <meta name="description" content="High-performing websites and digital branding for creators, brands, and entrepreneurs. Build, launch, and monetize your digital presence." />
+        <meta property="og:title" content="TechMotiveSupreme | Premium Web Development & Branding" />
+        <meta property="og:description" content="High-performing websites and digital branding for creators, brands, and entrepreneurs." />
+        <meta property="og:image" content="/assets/dark-logo.png" />
+        <meta property="og:url" content="https://techmotivesupreme.com" />
+      </Helmet>
+      <div
+        className={`min-h-screen bg-gray-900 w-full overflow-auto transition-all duration-700 ease-out ${
+          pageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        } ${disableAnimations ? "transition-none" : ""}`}
+      >
+        <HeroSection handleNavigation={handleNavigation} />
+        <ServicesSection />
+        <SocialProofSection />
+        <CTASection />
+        <Footer />
+      </div>
+    </>
   );
 }

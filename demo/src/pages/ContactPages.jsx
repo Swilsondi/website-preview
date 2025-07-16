@@ -23,6 +23,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion } from "framer-motion"
 import Footer from "@/components/Footer";
 import { sanitizeInput, validateForm } from "@/utils/validation"
+import { Helmet } from "react-helmet";
 
 // Custom Select Component
 const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
@@ -603,22 +604,32 @@ export default function ContactPage() {
   }, []);
 
   return (
-    <div
-      className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${
-        pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-      }`}
-    >
-      <ContactHero onMessageClick={() => {
-        if (formRef.current) {
-          formRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }} />
-      <div ref={formRef}>
-        <ContactSection />
+    <>
+      <Helmet>
+        <title>Contact | TechMotiveSupreme</title>
+        <meta name="description" content="Contact TechMotiveSupreme for a free consultation, project inquiry, or support. Fast response guaranteed." />
+        <meta property="og:title" content="Contact | TechMotiveSupreme" />
+        <meta property="og:description" content="Get in touch for a free consultation or project inquiry. Fast response guaranteed." />
+        <meta property="og:image" content="/assets/dark-logo.png" />
+        <meta property="og:url" content="https://techmotivesupreme.com/contact" />
+      </Helmet>
+      <div
+        className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${
+          pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
+        <ContactHero onMessageClick={() => {
+          if (formRef.current) {
+            formRef.current.scrollIntoView({ behavior: 'smooth' });
+          }
+        }} />
+        <div ref={formRef}>
+          <ContactSection />
+        </div>
+        <ContactFAQ />
+        <ContactCTA />
+        <Footer />
       </div>
-      <ContactFAQ />
-      <ContactCTA />
-      <Footer />
-    </div>
+    </>
   );
 }

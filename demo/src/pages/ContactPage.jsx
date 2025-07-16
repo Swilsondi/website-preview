@@ -16,6 +16,7 @@ import {
 import { motion } from "framer-motion"
 import { useEffect, useState, useRef } from "react"
 import emailjs from 'emailjs-com';
+import { Helmet } from "react-helmet";
 
 // Animation variants
 const fadeInUp = {
@@ -522,46 +523,56 @@ export default function ContactPage() {
   }, [])
 
   return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      {/* Custom Scrollbar Styles */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        /* Webkit Scrollbar */
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
+    <>
+      <Helmet>
+        <title>Contact | TechMotiveSupreme</title>
+        <meta name="description" content="Start your project or book a free consultation with TechMotiveSupreme. Secure, fast, and personal service." />
+        <meta property="og:title" content="Contact | TechMotiveSupreme" />
+        <meta property="og:description" content="Start your project or book a free consultation with TechMotiveSupreme." />
+        <meta property="og:image" content="/assets/dark-logo.png" />
+        <meta property="og:url" content="https://techmotivesupreme.com/contact" />
+      </Helmet>
+      <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        {/* Custom Scrollbar Styles */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          /* Webkit Scrollbar */
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
+          
+          ::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          
+          ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366f1, #8b5cf6);
+            border-radius: 4px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+          }
+          
+          ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #4f46e5, #7c3aed);
+            border-radius: 4px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+          }
+          
+          /* Firefox Scrollbar */
+          html {
+            scrollbar-width: thin;
+            scrollbar-color: #6366f1 transparent;
+          }
+        ` }} />
         
-        ::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-          background: linear-gradient(180deg, #6366f1, #8b5cf6);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(180deg, #4f46e5, #7c3aed);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        
-        /* Firefox Scrollbar */
-        html {
-          scrollbar-width: thin;
-          scrollbar-color: #6366f1 transparent;
-        }
-      ` }} />
-      
-      <ContactHero selectedPlan={selectedPlan} consultationType={consultationType} onMessageClick={() => {
-        if (formRef.current) {
-          formRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-      }} />
-      {consultationType !== 'consultation' && <ProjectForm selectedPlan={selectedPlan} formRef={formRef} />}
-      <ContactOptions onSendMessageClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })} />
-    </div>
+        <ContactHero selectedPlan={selectedPlan} consultationType={consultationType} onMessageClick={() => {
+          if (formRef.current) {
+            formRef.current.scrollIntoView({ behavior: 'smooth' });
+          }
+        }} />
+        {consultationType !== 'consultation' && <ProjectForm selectedPlan={selectedPlan} formRef={formRef} />}
+        <ContactOptions onSendMessageClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })} />
+      </div>
+    </>
   )
 }

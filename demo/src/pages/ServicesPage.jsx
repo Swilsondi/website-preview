@@ -27,6 +27,7 @@ import Footer from "@/components/Footer"
 import { LazyMotion } from "@/components/LazyMotion"
 import OptimizedImage from "@/components/OptimizedImage"
 import { usePerformance } from "@/hooks/usePerformance"
+import { Helmet } from "react-helmet"
 
 // Animation variants
 const fadeInUp = {
@@ -51,64 +52,74 @@ const stagger = {
 
 // Hero Section - OPTIMIZED
 const ServicesHero = ({ navigate }) => (
-  <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 overflow-hidden pt-12 md:pt-16">
-    <div className="absolute inset-0">
-      <LazyMotion
-        animationType="fadeIn"
-        className="absolute top-1/4 right-1/4 w-80 h-80 bg-purple-500 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.05, 0.08, 0.05],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-    </div>
-
-    <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8 pt-4">
-      <div className="text-center max-w-5xl mx-auto">
+  <>
+    <Helmet>
+      <title>Services | TechMotiveSupreme</title>
+      <meta name="description" content="Professional web development, branding, mobile apps, analytics, and support services to scale your business." />
+      <meta property="og:title" content="Services | TechMotiveSupreme" />
+      <meta property="og:description" content="Explore our web development, branding, mobile apps, analytics, and support services." />
+      <meta property="og:image" content="/assets/dark-logo.png" />
+      <meta property="og:url" content="https://techmotivesupreme.com/services" />
+    </Helmet>
+    <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 overflow-hidden pt-12 md:pt-16">
+      <div className="absolute inset-0">
         <LazyMotion
-          animationType="slideUp"
-          className="mb-8 pt-4"
-        >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-purple-500/20 border-purple-400 text-purple-200 mb-8 backdrop-blur-sm">
-            🎯 Professional Services • Exceptional Results
-          </Badge>
-        </LazyMotion>
-
-        <LazyMotion
-          animationType="slideUp"
-          className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
-        >
-          Services That 
-          <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Scale </span>
-          Your Business
-        </LazyMotion>
-
-        <LazyMotion
-          animationType="slideUp"
-          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-        >
-          From web development to complete digital transformation. 
-          <span className="text-purple-400 font-semibold"> We deliver solutions that drive real growth.</span>
-        </LazyMotion>
-
-        <LazyMotion animationType="slideUp">
-          <Button 
-            size="lg" 
-            className="text-lg px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 mb-8"
-            onClick={() => window.open('https://www.adobe.com/express/learn/blog/brand-strategy#:~:text=with%20automated%20tools-,What%20is%20brand%20strategy?,consistent%20message%20across%20all%20channels.', '_blank')}
-          >
-            Explore Branding Solutions
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-        </LazyMotion>
+          animationType="fadeIn"
+          className="absolute top-1/4 right-1/4 w-80 h-80 bg-purple-500 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.05, 0.08, 0.05],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
-    </div>
-  </section>
+
+      <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8 pt-4">
+        <div className="text-center max-w-5xl mx-auto">
+          <LazyMotion
+            animationType="slideUp"
+            className="mb-8 pt-4"
+          >
+            <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-purple-500/20 border-purple-400 text-purple-200 mb-8 backdrop-blur-sm">
+              🎯 Professional Services • Exceptional Results
+            </Badge>
+          </LazyMotion>
+
+          <LazyMotion
+            animationType="slideUp"
+            className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+          >
+            Services That 
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Scale </span>
+            Your Business
+          </LazyMotion>
+
+          <LazyMotion
+            animationType="slideUp"
+            className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          >
+            From web development to complete digital transformation. 
+            <span className="text-purple-400 font-semibold"> We deliver solutions that drive real growth.</span>
+          </LazyMotion>
+
+          <LazyMotion animationType="slideUp">
+            <Button 
+              size="lg" 
+              className="text-lg px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 mb-8"
+              onClick={() => window.open('https://www.adobe.com/express/learn/blog/brand-strategy#:~:text=with%20automated%20tools-,What%20is%20brand%20strategy?,consistent%20message%20across%20all%20channels.', '_blank')}
+            >
+              Explore Branding Solutions
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </LazyMotion>
+        </div>
+      </div>
+    </section>
+  </>
 )
 
 // Services Grid - OPTIMIZED
