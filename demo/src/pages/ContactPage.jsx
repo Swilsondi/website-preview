@@ -459,8 +459,8 @@ const ContactOptions = ({ onSendMessageClick }) => (
             className="group"
           >
             <Card className="h-full bg-gray-900/50 border-gray-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20">
-              <CardContent className="p-8 flex items-center">
-                <div className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300`}>
+              <CardContent className="p-8 flex items-center gap-3">
+                <div className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <option.icon className="w-8 h-8 text-white" />
                 </div>
                 <div className="flex-1 text-left">
