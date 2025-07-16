@@ -141,6 +141,11 @@
   align-items: center;
 }
 
+.contact-form-fields > * {
+  justify-self: start;
+  text-align: left;
+}
+
 @media (max-width: 640px) {
   .contact-form-fields {
     grid-template-columns: 1fr;
