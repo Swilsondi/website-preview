@@ -192,10 +192,10 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                 </div>
 
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 hidden sm:block">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 sm:block hidden">
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 mb-6 text-sm hidden sm:block">
+                  <p className="text-gray-400 mb-6 text-sm sm:block hidden">
                     {item.description}
                   </p>
 
@@ -238,7 +238,7 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                   </div>
                 </CardContent>
                 {/* Mobile-only title and description below image */}
-                <div className="block sm:hidden px-6 pb-4">
+                <div className="sm:hidden px-6 pb-4">
                   <h3 className="text-xl font-bold text-white mb-2 text-center">
                     {item.title}
                   </h3>
