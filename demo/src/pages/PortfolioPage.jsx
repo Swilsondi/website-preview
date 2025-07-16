@@ -191,10 +191,10 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                   </Badge>
                 </div>
                 <CardContent className="p-6 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 sm:block hidden text-center">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 sm:hidden text-center">
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 mb-6 text-sm sm:block hidden text-center">
+                  <p className="text-gray-400 mb-6 text-sm sm:hidden text-center">
                     {item.description}
                   </p>
 

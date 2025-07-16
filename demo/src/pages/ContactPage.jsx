@@ -464,10 +464,10 @@ const ContactOptions = ({ onSendMessageClick }) => (
                   <option.icon className="w-8 h-8 text-white" />
                 </div>
                 <div className="flex-1 text-left">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300 text-left">
                     {option.title}
                   </h3>
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-gray-400 mb-6 text-left">
                     {option.description}
                   </p>
                   <Button
