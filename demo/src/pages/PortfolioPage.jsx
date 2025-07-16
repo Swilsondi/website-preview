@@ -282,8 +282,8 @@ const ResultsSection = () => (
             viewport={{ once: true }}
             className="text-center flex flex-col items-center"
           >
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-6 hover:bg-white/20 transition-all duration-300 flex flex-col items-center">
-              <item.icon className={`w-12 h-12 ${item.color} mb-4`} />
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm p-6 hover:bg-white/20 transition-all duration-300 flex flex-col items-center justify-center">
+              <item.icon className={`w-12 h-12 ${item.color} mb-4 mx-auto`} />
               <div className="text-3xl font-black text-white mb-2 text-center">{item.stat}</div>
               <div className="text-blue-200 text-sm text-center">{item.label}</div>
             </Card>

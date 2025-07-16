@@ -202,12 +202,12 @@ const BrandingServices = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className="group flex flex-col items-center text-center"
+              className="group flex flex-col items-center text-center justify-center"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-violet-500/50 transition-all duration-300 flex flex-col items-center">
-                <CardContent className="p-8 flex flex-col items-center">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
-                    <service.icon className="w-8 h-8 text-white" />
+              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-violet-500/50 transition-all duration-300 flex flex-col items-center justify-center">
+                <CardContent className="p-8 flex flex-col items-center justify-center">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 mx-auto`}>
+                    <service.icon className="w-8 h-8 text-white mx-auto" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-violet-400 transition-colors duration-300">
                     {service.title}
@@ -395,12 +395,12 @@ const TechnologyShowcase = () => {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className="group flex flex-col items-center text-center"
+              className="group flex flex-col items-center text-center justify-center"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-fuchsia-500/50 transition-all duration-300 flex flex-col items-center">
-                <CardContent className="p-8 flex flex-col items-center">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${tech.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
-                    <tech.icon className="w-8 h-8 text-white" />
+              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-fuchsia-500/50 transition-all duration-300 flex flex-col items-center justify-center">
+                <CardContent className="p-8 flex flex-col items-center justify-center">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${tech.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 mx-auto`}>
+                    <tech.icon className="w-8 h-8 text-white mx-auto" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-fuchsia-400 transition-colors duration-300">
                     {tech.title}
