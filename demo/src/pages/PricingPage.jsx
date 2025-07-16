@@ -286,7 +286,7 @@ const PricingCards = () => {
               )}
               
               <Card className={`h-full ${plan.bgColor} ${plan.borderColor} border-2 hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 relative overflow-hidden`}>
-                <CardContent className="p-8">
+                <CardContent className="p-8 flex flex-col items-center">
                   <div className={`w-16 h-16 bg-gradient-to-r ${plan.accent} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
                     <plan.icon className="w-8 h-8 text-white" />
                   </div>
@@ -532,23 +532,19 @@ const AddOnsSection = () => {
             >
               <Card className="h-full bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-gray-700/50 hover:border-purple-500/50 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <CardContent className="p-8 relative z-10">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="text-3xl">{addon.icon}</div>
-                    <div className="text-right">
-                      <div className="text-2xl font-black text-white group-hover:text-purple-400 transition-colors duration-300">
-                        ${addon.price}
-                      </div>
-                      {addon.unit && (
-                        <div className="text-sm text-gray-400">{addon.unit}</div>
-                      )}
+                <CardContent className="p-8 flex flex-col items-center relative z-10">
+                  <div className="text-3xl mb-4 flex items-center justify-center w-full">{addon.icon}</div>
+                  <div className="text-right w-full mb-2">
+                    <div className="text-2xl font-black text-white group-hover:text-purple-400 transition-colors duration-300">
+                      ${addon.price}
                     </div>
+                    {addon.unit && (
+                      <div className="text-sm text-gray-400">{addon.unit}</div>
+                    )}
                   </div>
-                  
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
                     {addon.service}
                   </h3>
-                  
                   <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-6">
                     {addon.description}
                   </p>
