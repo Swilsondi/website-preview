@@ -459,26 +459,25 @@ const ContactOptions = ({ onSendMessageClick }) => (
             className="group"
           >
             <Card className="h-full bg-gray-900/50 border-gray-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20">
-              <CardContent className="p-8 text-center">
-                <div className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <CardContent className="p-8 flex items-center">
+                <div className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300`}>
                   <option.icon className="w-8 h-8 text-white" />
                 </div>
-                
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
-                  {option.title}
-                </h3>
-                
-                <p className="text-gray-400 mb-6">
-                  {option.description}
-                </p>
-                
-                <Button
-                  variant="outline"
-                  className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 hover:border-purple-500 transition-all duration-300"
-                  onClick={option.onClick}
-                >
-                  {option.action}
-                </Button>
+                <div className="flex-1 text-left">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300">
+                    {option.title}
+                  </h3>
+                  <p className="text-gray-400 mb-6">
+                    {option.description}
+                  </p>
+                  <Button
+                    variant="outline"
+                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 hover:border-purple-500 transition-all duration-300"
+                    onClick={option.onClick}
+                  >
+                    {option.action}
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </motion.div>
