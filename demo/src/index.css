@@ -151,3 +151,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Contact header alignment fix */
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  text-align: left;
+}
