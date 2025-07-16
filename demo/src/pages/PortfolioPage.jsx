@@ -175,17 +175,29 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
             >
               <Card className="h-full bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden flex flex-col items-center justify-center text-center">
                 <div className="relative overflow-hidden flex flex-col items-center justify-center text-center">
-                  <picture>
-                    <source srcSet={item.imageWebp} type="image/webp" />
-                    <img 
-                      src={item.image}
-                      alt={item.title}
-                      width={600}
-                      height={400}
-                      loading="lazy"
-                      className="rounded-lg shadow-lg w-full h-auto object-cover mx-auto"
-                    />
-                  </picture>
+                  {/* Mobile: show only text, hide image */}
+                  <div className="sm:block hidden">
+                    <picture>
+                      <source srcSet={item.imageWebp} type="image/webp" />
+                      <img 
+                        src={item.image}
+                        alt={item.title}
+                        width={600}
+                        height={400}
+                        loading="lazy"
+                        className="rounded-lg shadow-lg w-full h-auto object-cover mx-auto"
+                      />
+                    </picture>
+                  </div>
+                  <div className="sm:hidden block w-full">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-left">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6 text-sm text-left">
+                      {item.description}
+                    </p>
+                  </div>
+
                   <Badge className={`absolute top-4 left-4 bg-gradient-to-r ${item.color} text-white border-0`}>
                     {item.category}
                   </Badge>

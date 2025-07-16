@@ -463,13 +463,20 @@ const ContactOptions = ({ onSendMessageClick }) => (
                 <div className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-2xl flex items-center justify-center mb-3 sm:mb-0 group-hover:scale-110 transition-transform duration-300`}>
                   <option.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="flex-1 text-left">
+                <div className="flex-1 flex flex-col items-start text-left">
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300 text-left">
                     {option.title}
                   </h3>
-                  <p className="text-gray-400 mb-6 text-left">
+                  <p className="text-gray-400 mb-2 text-left">
                     {option.description}
                   </p>
+                  {/* Add more left-aligned details if present, e.g. email, response time, etc. */}
+                  {option.email && (
+                    <p className="text-gray-300 mb-1 text-left">{option.email}</p>
+                  )}
+                  {option.responseTime && (
+                    <p className="text-gray-400 mb-1 text-left">{option.responseTime}</p>
+                  )}
                   <Button
                     variant="outline"
                     className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 hover:border-purple-500 transition-all duration-300"
