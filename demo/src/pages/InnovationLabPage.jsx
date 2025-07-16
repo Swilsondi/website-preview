@@ -209,10 +209,10 @@ const BrandingServices = () => {
                   <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 mx-auto`}>
                     <service.icon className="w-8 h-8 text-white mx-auto" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-violet-400 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-violet-400 transition-colors duration-300 text-center">
                     {service.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed text-center">
                     {service.description}
                   </p>
                 </CardContent>
@@ -402,10 +402,10 @@ const TechnologyShowcase = () => {
                   <div className={`w-16 h-16 bg-gradient-to-r ${tech.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 mx-auto`}>
                     <tech.icon className="w-8 h-8 text-white mx-auto" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-fuchsia-400 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-fuchsia-400 transition-colors duration-300 text-center">
                     {tech.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed text-center">
                     {tech.description}
                   </p>
                 </CardContent>
