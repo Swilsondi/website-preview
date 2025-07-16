@@ -188,7 +188,7 @@ const MissionSection = () => (
             className="group"
           >
             <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-emerald-500/50 transition-all duration-300">
-              <CardContent className="p-8">
+              <CardContent className="p-8 flex flex-col items-center">
                 <div className={`w-16 h-16 bg-gradient-to-r ${value.accent} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
                   <value.icon className="w-8 h-8 text-white" />
                 </div>
