@@ -459,23 +459,23 @@ const ContactOptions = ({ onSendMessageClick }) => (
             className="group"
           >
             <Card className="h-full bg-gray-900/50 border-gray-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20">
-              <CardContent className="p-8 flex flex-col sm:flex-row items-start gap-3">
-                <div className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-2xl flex items-center justify-center mb-3 sm:mb-0 group-hover:scale-110 transition-transform duration-300`}>
+              <CardContent className="p-8 flex flex-col items-start gap-3">
+                <div className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
                   <option.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="flex-1 flex flex-col items-start text-left">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300 text-left">
+                <div className="flex-1 flex flex-col items-start text-left w-full">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300 text-left w-full">
                     {option.title}
                   </h3>
-                  <p className="text-gray-400 mb-2 text-left">
+                  <p className="text-gray-400 mb-2 text-left w-full">
                     {option.description}
                   </p>
                   {/* Add more left-aligned details if present, e.g. email, response time, etc. */}
                   {option.email && (
-                    <p className="text-gray-300 mb-1 text-left">{option.email}</p>
+                    <p className="text-gray-300 mb-1 text-left w-full">{option.email}</p>
                   )}
                   {option.responseTime && (
-                    <p className="text-gray-400 mb-1 text-left">{option.responseTime}</p>
+                    <p className="text-gray-400 mb-1 text-left w-full">{option.responseTime}</p>
                   )}
                   <Button
                     variant="outline"

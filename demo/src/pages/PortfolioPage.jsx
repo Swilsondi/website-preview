@@ -175,7 +175,7 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
             >
               <Card className="h-full bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden flex flex-col items-center justify-center text-center">
                 <div className="relative overflow-hidden flex flex-col items-center justify-center text-center">
-                  {/* Mobile: show only text, hide image */}
+                  {/* Mobile: show only text, hide image, and left-align text */}
                   <div className="sm:block hidden">
                     <picture>
                       <source srcSet={item.imageWebp} type="image/webp" />
@@ -189,7 +189,7 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                       />
                     </picture>
                   </div>
-                  <div className="sm:hidden block w-full">
+                  <div className="sm:hidden block w-full text-left">
                     <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-left">
                       {item.title}
                     </h3>
