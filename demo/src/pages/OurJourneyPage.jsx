@@ -3,6 +3,33 @@ import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 
 export default function OurJourneyPage() {
+  const milestones = [
+    {
+      year: "2015",
+      title: "Founded with a Vision",
+      description:
+        "Our story began with a mission to redefine digital experiences. From day one, we’ve been committed to excellence.",
+    },
+    {
+      year: "2018",
+      title: "First Major Milestone",
+      description:
+        "Launched our first enterprise-level project, setting new standards for innovation and quality.",
+    },
+    {
+      year: "2021",
+      title: "Global Expansion",
+      description:
+        "Expanded our reach to serve clients across 10+ countries, delivering tailored solutions worldwide.",
+    },
+    {
+      year: "2025",
+      title: "Leading the Industry",
+      description:
+        "Recognized as a top-tier digital agency, driving success for creators, brands, and entrepreneurs.",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
       {/* Hero Section */}
@@ -55,34 +82,9 @@ export default function OurJourneyPage() {
           </div>
 
           <div className="space-y-12">
-            {[
-              {
-                year: "2015",
-                title: "Founded with a Vision",
-                description:
-                  "Our story began with a mission to redefine digital experiences. From day one, we’ve been committed to excellence.",
-              },
-              {
-                year: "2018",
-                title: "First Major Milestone",
-                description:
-                  "Launched our first enterprise-level project, setting new standards for innovation and quality.",
-              },
-              {
-                year: "2021",
-                title: "Global Expansion",
-                description:
-                  "Expanded our reach to serve clients across 10+ countries, delivering tailored solutions worldwide.",
-              },
-              {
-                year: "2025",
-                title: "Leading the Industry",
-                description:
-                  "Recognized as a top-tier digital agency, driving success for creators, brands, and entrepreneurs.",
-              },
-            ].map((milestone, index) => (
-              <div key={index} className="flex items-start gap-6">
-                <div className="text-4xl font-black text-blue-400">
+            {milestones.map((milestone, index) => (
+              <div key={index} className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-6">
+                <div className="text-4xl font-black text-blue-400 mb-2 md:mb-0">
                   {milestone.year}
                 </div>
                 <div>

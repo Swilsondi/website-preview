@@ -361,19 +361,17 @@ const ValuesSection = () => {
               key={index}
               variants={fadeIn}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="group"
+              className="group flex flex-col items-center text-center justify-center"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-blue-500/50 transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${value.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
-                    <value.icon className="w-8 h-8 text-white" />
+              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-blue-500/50 transition-all duration-300 flex flex-col items-center justify-center">
+                <CardContent className="p-8 flex flex-col items-center justify-center">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${value.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 mx-auto`}>
+                    <value.icon className="w-8 h-8 text-white mx-auto" />
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300 text-center">
                     {value.title}
                   </h3>
-                  
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed text-center">
                     {value.description}
                   </p>
                 </CardContent>

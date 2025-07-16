@@ -173,8 +173,8 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="group"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden">
-                <div className="relative overflow-hidden">
+              <Card className="h-full bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden flex flex-col items-center justify-center text-center">
+                <div className="relative overflow-hidden flex flex-col items-center justify-center text-center">
                   <picture>
                     <source srcSet={item.imageWebp} type="image/webp" />
                     <img 
@@ -183,19 +183,18 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                       width={600}
                       height={400}
                       loading="lazy"
-                      className="rounded-lg shadow-lg w-full h-auto object-cover"
+                      className="rounded-lg shadow-lg w-full h-auto object-cover mx-auto"
                     />
                   </picture>
                   <Badge className={`absolute top-4 left-4 bg-gradient-to-r ${item.color} text-white border-0`}>
                     {item.category}
                   </Badge>
                 </div>
-
-                <CardContent className="p-6 flex flex-col items-center justify-center">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 sm:block hidden">
+                <CardContent className="p-6 flex flex-col items-center justify-center text-center">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 sm:block hidden text-center">
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 mb-6 text-sm sm:block hidden">
+                  <p className="text-gray-400 mb-6 text-sm sm:block hidden text-center">
                     {item.description}
                   </p>
 
@@ -238,7 +237,7 @@ const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef })
                   </div>
                 </CardContent>
                 {/* Mobile-only title and description below image */}
-                <div className="sm:hidden px-6 pb-4 flex flex-col items-center justify-center">
+                <div className="sm:hidden px-6 pb-4 flex flex-col items-center justify-center text-center">
                   <h3 className="text-xl font-bold text-white mb-2 text-center">
                     {item.title}
                   </h3>
