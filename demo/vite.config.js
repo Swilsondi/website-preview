@@ -6,6 +6,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { visualizer } from "rollup-plugin-visualizer"; // Add visualizer plugin
 import crypto from "crypto";
+import Pages from "vite-plugin-pages";
+import Sitemap from "vite-plugin-sitemap";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -31,6 +33,14 @@ export default defineConfig({
     visualizer({
       filename: "dist/stats.html",
       open: false, // Don't automatically open in browser
+    }),
+    Pages({
+      dirs: "src/pages", // auto-detect pages in /src/pages
+      extensions: ["jsx", "tsx", "js", "ts"],
+    }),
+    Sitemap({
+      hostname: "https://www.techmotivesupreme.com",
+      routes: undefined, // auto-detect routes from vite-plugin-pages
     }),
   ],
   resolve: {
