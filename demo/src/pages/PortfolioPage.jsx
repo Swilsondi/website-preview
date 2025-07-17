@@ -144,136 +144,87 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
   </section>
 ))
 
-// Portfolio items array
-const portfolioItems = [
+// Industry portfolio items (restored)
+const industryPortfolio = [
   {
-    id: 1,
-    title: "Brand Website for ABC Corp",
-    image: "/assets/portfolio/abc-corp.webp",
-    description: "A modern, responsive site for a local business.",
+    icon: ShoppingCart,
+    title: "Retail & E-Commerce",
+    description: "Conversion-focused online stores and retail brands. Shopify, WooCommerce, and custom solutions.",
+    features: ["Online Storefronts", "Product Catalogs", "Payment Integration"],
+    accent: "from-pink-500 to-red-500"
   },
   {
-    id: 2,
-    title: "E-commerce Platform for XYZ",
-    image: "/assets/portfolio/xyz-shop.webp",
-    description: "Custom online store with Stripe integration.",
+    icon: Heart,
+    title: "Health & Fitness",
+    description: "Gyms, trainers, wellness brands. Booking, memberships, and community features.",
+    features: ["Class Booking", "Trainer Profiles", "Membership Portals"],
+    accent: "from-green-500 to-teal-500"
   },
   {
-    id: 1,
-    title: "FitLife Pro",
-    category: "Health & Wellness",
-    description: "A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&fm=webp",
-    features: ["Class Booking", "Trainer Profiles", "Mobile Responsive", "SEO Optimized"],
-    stats: { clients: "1,200", satisfaction: "100%", launches: "2023" },
-    testimonial: {
-      text: "TechMotive Supreme made it easy for our clients to book classes and learn about our trainers. Our online signups doubled!",
-      author: "Sarah Johnson",
-      role: "Owner, FitLife Pro"
-    },
-    color: "from-green-500 to-emerald-500"
+    icon: TrendingUp,
+    title: "Growth & Startups",
+    description: "Launch-ready sites for SaaS, apps, and growth-stage companies. Fast, scalable, and investor-ready.",
+    features: ["Landing Pages", "Dashboard UI", "Branding"],
+    accent: "from-blue-500 to-purple-500"
   },
   {
-    id: 2,
-    title: "TechFlow Solutions",
-    category: "Technology/SaaS",
-    description: "Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp",
-    features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
-    stats: { clients: "2,500", satisfaction: "100%", launches: "2024" },
-    testimonial: {
-      text: "Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
-      author: "Michael Chen",
-      role: "Founder, TechFlow"
-    },
-    color: "from-blue-500 to-cyan-500"
+    icon: Palette,
+    title: "Creative & Influencers",
+    description: "Personal brands, portfolios, and monetization platforms for creators and influencers.",
+    features: ["Portfolio Galleries", "Blog Integration", "Monetization Tools"],
+    accent: "from-yellow-500 to-pink-500"
   },
   {
-    id: 3,
-    title: "Luxury Estates Co",
-    category: "Real Estate",
-    description: "A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&fm=webp",
-    features: ["Featured Listings", "Lead Forms", "Mobile First", "Photo Gallery"],
-    stats: { clients: "800", satisfaction: "100%", launches: "2023" },
-    testimonial: {
-      text: "I get more inquiries from my website than any other channel. TechMotive Supreme made it easy!",
-      author: "Amanda Rodriguez",
-      role: "Agent, Luxury Estates Co"
-    },
-    color: "from-purple-500 to-pink-500"
+    icon: Globe,
+    title: "Professional Services",
+    description: "Consultants, agencies, and B2B brands. Authority-building and lead generation.",
+    features: ["Lead Forms", "Service Pages", "Testimonials"],
+    accent: "from-gray-500 to-blue-500"
   },
   {
-    id: 4,
-    title: "Artisan Market",
-    category: "E-commerce",
-    description: "A simple e-commerce site for a local artisan collective, with easy product management.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&fm=webp",
-    features: ["Product Catalog", "Easy Checkout", "Inventory Tools", "Customer Reviews"],
-    stats: { clients: "3,400", satisfaction: "100%", launches: "2024" },
-    testimonial: {
-      text: "We love how easy it is to update our products. Our customers always comment on how smooth the checkout is.",
-      author: "David Kim",
-      role: "Co-Founder, Artisan Market"
-    },
-    color: "from-orange-500 to-red-500"
-  },
-  {
-    id: 5,
-    title: "Creative Studio Co",
-    category: "Creative Agency",
-    description: "Portfolio site for a small creative agency, with case studies and a contact form.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop&fm=webp",
-    features: ["Case Studies", "Contact Form", "Gallery", "Blog"],
-    stats: { clients: "650", satisfaction: "100%", launches: "2022" },
-    testimonial: {
-      text: "Our new site finally reflects our work. We get more project inquiries and it’s easy to update.",
-      author: "Lisa Thompson",
-      role: "Creative Director"
-    },
-    color: "from-pink-500 to-purple-500"
-  },
-  {
-    id: 6,
-    title: "Legal Partners LLC",
-    category: "Professional Services",
-    description: "Professional site for a boutique law firm, with attorney bios and appointment booking.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop&fm=webp",
-    features: ["Attorney Bios", "Booking Form", "Practice Areas", "Testimonials"],
-    stats: { clients: "10,000", satisfaction: "100%", launches: "2024" },
-    testimonial: {
-      text: "We needed a site that looked trustworthy and made it easy for clients to reach us. TechMotive Supreme delivered.",
-      author: "Robert Wilson",
-      role: "Managing Partner"
-    },
-    color: "from-gray-600 to-gray-800"
+    icon: Users,
+    title: "Community & Membership",
+    description: "Membership sites, online communities, and subscription platforms.",
+    features: ["Member Portals", "Discussion Forums", "Subscription Payments"],
+    accent: "from-indigo-500 to-blue-500"
   }
 ];
 
-// PortfolioGrid component
-const PortfolioGrid = ({ portfolioItems }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    {portfolioItems.map((item) => (
-      <div key={item.id} className="portfolio-card bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-48 object-cover"
-          loading="lazy"
-        />
-        <div className="p-4">
-          <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-          <p className="text-gray-300">{item.description}</p>
-        </div>
+// Portfolio grid for industries
+const IndustryPortfolioGrid = () => (
+  <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+    <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          Industries We Serve
+        </h2>
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          Explore our work across every major industry. We build high-performing websites for brands ready to grow.
+        </p>
       </div>
-    ))}
-  </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {industryPortfolio.map((industry, idx) => (
+          <Card key={idx} className="bg-gray-800/60 border-gray-700 hover:bg-gray-800/80 transition-colors duration-200">
+            <CardContent className="p-8 flex flex-col items-center">
+              <div className={`w-14 h-14 bg-gradient-to-r ${industry.accent} rounded-xl flex items-center justify-center mb-5`}>
+                <industry.icon className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3 text-center">{industry.title}</h3>
+              <p className="text-gray-300 text-center mb-4">{industry.description}</p>
+              <ul className="space-y-2">
+                {industry.features.map((feature, i) => (
+                  <li key={i} className="flex items-center text-gray-400 text-sm">
+                    <Star className="w-4 h-4 text-yellow-400 mr-2" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
 );
 
 // Results Section
@@ -407,6 +358,55 @@ export default function ShowcasePage() {
     }
   }, [location, isMounted]);
 
+  const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
+
+  return (
+    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      {/* Google Tag Manager */}
+      <script dangerouslySetInnerHTML={{
+        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K85QK9ZX');`
+      }} />
+      {/* End Google Tag Manager */}
+      {/* Custom Scrollbar Styles */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(180deg, #6366f1, #8b5cf6);
+          border-radius: 4px;
+          border: 2px solid transparent;
+          background-clip: content-box;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(180deg, #4f46e5, #7c3aed);
+          border-radius: 4px;
+          border: 2px solid transparent;
+          background-clip: content-box;
+        }
+        html {
+          scrollbar-width: thin;
+          scrollbar-color: #6366f1 transparent;
+        }
+      ` }} />
+      
+      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
+      <div ref={gridRef}>
+        <IndustryPortfolioGrid />
+      </div>
+      <ResultsSection />
+      <PortfolioCTA />
+      <Footer />
+    </div>
+  )
+}
   const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
 
   // Filter portfolioItems by selectedCategory
