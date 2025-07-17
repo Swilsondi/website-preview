@@ -25,6 +25,20 @@
     <!-- Inline critical CSS to avoid render-blocking -->
     <style>
       /* Critical CSS - prevents FOUC */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3H6m3s5wqk2kFQpQ.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3H6m3s5wqk2kFQpQ.woff2') format('woff2');
+      }
       html, body {
         background-color: #111827;
         margin: 0;
@@ -94,11 +108,98 @@
         opacity: 1;
       }
     </style>
-    <!-- Restore external font stylesheet link -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
     <!-- Preload main CSS for faster paint -->
     <link rel="preload" href="/src/main.css" as="style" />
     <link rel="stylesheet" href="/src/main.css" />
+    <!-- Inline Google Fonts CSS to avoid render-blocking -->
+    <style>
+      /* Inter font weights 400, 700 */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3H6m3s5wqk2kFQpQ.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3H6m3s5wqk2kFQpQ.woff2') format('woff2');
+      }
+      /* ...existing critical CSS... */
+      html, body {
+        background-color: #111827;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-display: swap;
+      }
+      
+      #root {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #111827;
+        display: flex;
+        flex-direction: column;
+        isolation: isolate; /* Create new stacking context for better compositing */
+      }
+      
+      /* Optimized loading spinner with reduced motion */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 4px solid #374151;
+        border-top: 4px solid #6366f1;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 9999;
+        will-change: transform;
+        contain: layout style paint; /* Optimize rendering performance */
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      
+      /* Prevent layout shift with improved container */
+      .loading-container {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #111827;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        contain: layout style paint;
+        position: fixed;
+        inset: 0;
+      }
+      
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .loading-spinner {
+          animation: none;
+        }
+      }
+      
+      /* Pre-define key interface classes to reduce CLS */
+      .interface-ready .sidebar,
+      .interface-ready .navbar {
+        transition: opacity 0.3s ease-out;
+        opacity: 1;
+      }
+    </style>
+    <!-- Remove external font stylesheet link to avoid double loading -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" /> -->
     <!-- Modern browser feature detection -->
     <link rel="modulepreload" href="/src/main.jsx" />
     
@@ -205,31 +306,6 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "techmotivesupreme@gmail.com",
-        "contactType": "customer support",
-        "url": "https://techmotivesupreme.com/contact"
-      }
-    }
-    </script>
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K85QK9ZX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div id="root">
-      <div class="loading-container">
-        <div class="loading-spinner"></div>
-      </div>
-    </div>
-    <script type="module" src="/src/main.jsx"></script>
-    
-    <!-- Error recovery script -->
-    <script nomodule>
-      // Fallback for older browsers
-      document.body.innerHTML = '<div style="padding: 2rem; text-align: center; font-family: sans-serif;"><h1>Browser Not Supported</h1><p>Please use a modern browser like Chrome, Firefox, Safari, or Edge to view this site.</p></div>';
-    </script>
-  </body>
-</html>
         "contactType": "customer support",
         "url": "https://techmotivesupreme.com/contact"
       }
