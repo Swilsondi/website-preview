@@ -169,7 +169,7 @@ const PortfolioGrid = () => (
         <img
           src={item.image}
           alt={item.title}
-          className="w-full h-48 object-cover" // No hidden, no responsive display utilities
+          className="w-full h-48 object-cover"
           loading="lazy"
         />
         <div className="p-4">
