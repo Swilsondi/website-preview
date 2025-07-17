@@ -706,3 +706,5 @@ export default function CheckoutPage() {
     </>
   );
 }
+
+// No GTM script here
