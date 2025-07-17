@@ -452,14 +452,14 @@ const ContactSection = () => (
                 <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
                   <contact.icon className="w-6 h-6 text-white" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">
+                <div className="flex flex-col items-start text-left">
+                  <h3 className="text-lg font-semibold text-white text-left mb-1">
                     {contact.title}
                   </h3>
-                  <p className="text-indigo-400 font-medium">
+                  <p className="text-indigo-400 font-medium text-left mb-1">
                     {contact.info}
                   </p>
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-gray-400 text-sm text-left">
                     {contact.subtitle}
                   </p>
                 </div>
