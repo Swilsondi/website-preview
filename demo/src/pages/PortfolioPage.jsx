@@ -2,8 +2,8 @@ import React, { useEffect, useState, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Footer from "@/components/Footer" // ✅ ADD THIS
-import { motion } from "framer-motion" // Add the missing import
+import Footer from "@/components/Footer"
+import { motion } from "framer-motion"
 import { 
   ArrowRight,
   ExternalLink,
@@ -144,7 +144,7 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
   </section>
 ))
 
-// Example portfolio items array (merge with your actual data)
+// Portfolio items array
 const portfolioItems = [
   {
     id: 1,
@@ -257,7 +257,7 @@ const portfolioItems = [
 ];
 
 // PortfolioGrid component
-const PortfolioGrid = () => (
+const PortfolioGrid = ({ portfolioItems }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     {portfolioItems.map((item) => (
       <div key={item.id} className="portfolio-card bg-gray-800 rounded-xl shadow-lg overflow-hidden">
@@ -409,112 +409,10 @@ export default function ShowcasePage() {
 
   const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
 
-  return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      {/* Google Tag Manager */}
-      <script dangerouslySetInnerHTML={{
-        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-K85QK9ZX');`
-      }} />
-      {/* End Google Tag Manager */}
-      {/* Custom Scrollbar Styles */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: linear-gradient(180deg, #6366f1, #8b5cf6);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(180deg, #4f46e5, #7c3aed);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        html {
-          scrollbar-width: thin;
-          scrollbar-color: #6366f1 transparent;
-        }
-      ` }} />
-      
-      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
-      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} gridRef={gridRef} />
-      <ResultsSection />
-      <PortfolioCTA />
-      <Footer /> {/* ✅ ADD THIS */}
-    </div>
-  )
-}
-}
-    title: "Creative Studio Co",
-    category: "Creative Agency",
-    description: "Portfolio site for a small creative agency, with case studies and a contact form.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop&fm=webp",
-    features: ["Case Studies", "Contact Form", "Gallery", "Blog"],
-    stats: { clients: "650", satisfaction: "100%", launches: "2022" },
-    testimonial: {
-      text: "Our new site finally reflects our work. We get more project inquiries and it’s easy to update.",
-      author: "Lisa Thompson",
-      role: "Creative Director"
-    },
-    color: "from-pink-500 to-purple-500"
-  },
-  {
-    id: 6,
-    title: "Legal Partners LLC",
-    category: "Professional Services",
-    description: "Professional site for a boutique law firm, with attorney bios and appointment booking.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop&fm=webp",
-    features: ["Attorney Bios", "Booking Form", "Practice Areas", "Testimonials"],
-    stats: { clients: "10,000", satisfaction: "100%", launches: "2024" },
-    testimonial: {
-      text: "We needed a site that looked trustworthy and made it easy for clients to reach us. TechMotive Supreme delivered.",
-      author: "Robert Wilson",
-      role: "Managing Partner"
-    },
-    color: "from-gray-600 to-gray-800"
-  }
-]
-
-// Main Portfolio Page Component
-export default function ShowcasePage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  // Always call useLocation at the top level
-  const location = useLocation();
-  const [isMounted, setIsMounted] = useState(false);
-  const gridRef = useRef(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    if (isMounted && location) {
-      window.scrollTo(0, 0);
-    }
-  }, [location, isMounted]);
-
-  const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
+  // Filter portfolioItems by selectedCategory
+  const filteredItems = selectedCategory === 'All'
+    ? portfolioItems
+    : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory));
 
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -554,10 +452,12 @@ export default function ShowcasePage() {
       ` }} />
       
       <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
-      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} gridRef={gridRef} />
+      <div ref={gridRef}>
+        <PortfolioGrid portfolioItems={filteredItems} selectedCategory={selectedCategory} gridRef={gridRef} />
+      </div>
       <ResultsSection />
       <PortfolioCTA />
-      <Footer /> {/* ✅ ADD THIS */}
+      <Footer />
     </div>
   )
 }
