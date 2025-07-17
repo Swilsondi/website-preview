@@ -67,16 +67,14 @@
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        /* Remove src if Inter-400.woff2 does not exist */
-        /* src: url('/assets/fonts/Inter-400.woff2') format('woff2'); */
+        /* src removed, fallback to system fonts or Google Fonts if present */
       }
       @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-display: swap;
-        /* Remove src if Inter-700.woff2 does not exist */
-        /* src: url('/assets/fonts/Inter-700.woff2') format('woff2'); */
+        /* src removed, fallback to system fonts or Google Fonts if present */
       }
       html, body {
         background-color: #111827;
@@ -223,7 +221,7 @@
     <!-- Remove Google Fonts stylesheet links -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" media="all" /> -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="all" /> -->
-    <!-- Preload Inter font for faster paint -->
+    <!-- Remove preload links for missing font files -->
     <!-- <link rel="preload" href="/assets/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin> -->
     <!-- <link rel="preload" href="/assets/fonts/Inter-700.woff2" as="font" type="font/woff2" crossorigin> -->
     <!-- Defer main CSS: load with media="print" then switch to "all" on load -->
@@ -445,5 +443,7 @@
 </html>
       document.body.innerHTML = '<div style="padding: 2rem; text-align: center; font-family: sans-serif;"><h1>Browser Not Supported</h1><p>Please use a modern browser like Chrome, Firefox, Safari, or Edge to view this site.</p></div>';
     </script>
+  </body>
+</html>
   </body>
 </html>
