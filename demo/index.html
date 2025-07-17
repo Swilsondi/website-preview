@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="dark">
   <head>
-    <!-- Google Tag Manager & Analytics (defer until user interaction for best performance) -->
+    <!-- Google Tag Manager & Analytics (load only after user interaction for best performance) -->
     <script>
       function shouldLoadTracking() {
         if (navigator.connection) {
@@ -21,13 +21,11 @@
         if (!shouldLoadTracking()) return;
         trackingLoaded = true;
 
-        // Google Tag Manager
         var gtmScript = document.createElement('script');
         gtmScript.async = true;
         gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-K85QK9ZX';
         document.head.appendChild(gtmScript);
 
-        // Google Analytics
         var gtagScript = document.createElement('script');
         gtagScript.async = true;
         gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-SF5L7MJ4C9';
@@ -41,8 +39,8 @@
         };
       }
 
-      // Load tracking only after first meaningful user interaction
-      ['scroll', 'click', 'keydown', 'touchstart', 'mousemove'].forEach(function(evt) {
+      // Load tracking only after first user interaction (scroll, click, keydown, touch)
+      ['scroll', 'click', 'keydown', 'touchstart'].forEach(function(evt) {
         window.addEventListener(evt, loadTrackingScripts, { once: true, passive: true });
       });
     </script>
@@ -443,6 +441,8 @@
 </html>
       document.body.innerHTML = '<div style="padding: 2rem; text-align: center; font-family: sans-serif;"><h1>Browser Not Supported</h1><p>Please use a modern browser like Chrome, Firefox, Safari, or Edge to view this site.</p></div>';
     </script>
+  </body>
+</html>
   </body>
 </html>
   </body>
