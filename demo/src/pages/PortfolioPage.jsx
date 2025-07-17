@@ -143,48 +143,56 @@ const portfolioItems = [
     title: "Brand Website for ABC Corp",
     image: "/assets/portfolio/abc-corp.webp",
     description: "A modern, responsive site for a local business.",
+    category: "Professional Services"
   },
   {
     id: 2,
     title: "E-commerce Platform for XYZ",
     image: "/assets/portfolio/xyz-shop.webp",
     description: "Custom online store with Stripe integration.",
+    category: "E-commerce"
   },
   {
     id: 3,
     title: "FitLife Pro",
     image: "/assets/banner-logo.jpeg",
     description: "A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
+    category: "Health & Wellness"
   },
   {
     id: 4,
     title: "TechFlow Solutions",
     image: "/assets/banner-logo.jpeg",
     description: "Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
+    category: "Technology/SaaS"
   },
   {
     id: 5,
     title: "Luxury Estates Co",
     image: "/assets/banner-logo.jpeg",
     description: "A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
+    category: "Real Estate"
   },
   {
     id: 6,
     title: "Artisan Market",
     image: "/assets/banner-logo.jpeg",
     description: "A simple e-commerce site for a local artisan collective, with easy product management.",
+    category: "E-commerce"
   },
   {
     id: 7,
     title: "Creative Studio Co",
     image: "/assets/banner-logo.jpeg",
     description: "Portfolio site for a small creative agency, with case studies and a contact form.",
+    category: "Creative Agency"
   },
   {
     id: 8,
     title: "Legal Partners LLC",
     image: "/assets/banner-logo.jpeg",
     description: "Professional site for a boutique law firm, with attorney bios and appointment booking.",
+    category: "Professional Services"
   }
 ];
 
@@ -341,7 +349,7 @@ export default function ShowcasePage() {
   const location = useLocation();
   const [isMounted, setIsMounted] = useState(false);
   const gridRef = useRef(null);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
     setIsMounted(true);
