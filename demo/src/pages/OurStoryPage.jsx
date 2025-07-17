@@ -147,7 +147,7 @@ const OriginStorySection = () => (
               <source srcSet="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80" type="image/webp" />
               <img 
                 src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80"
-                alt="Our Beginnings" 
+                alt="Our Beginnings - Unsplash workspace photo"
                 width={872}
                 height={580}
                 loading="lazy"
@@ -422,7 +422,7 @@ const TeamPhotoSection = ({ navigate }) => (
       >
         <img 
           src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
-          alt="TechMotiveSupreme Team" 
+          alt="TechMotiveSupreme Team group photo"
           className="w-full h-full object-cover"
         />
         
@@ -466,7 +466,7 @@ const VisionSection = () => {
           </blockquote>
           <div className="flex flex-col items-center mb-6">
             <img 
-              src="/assets/dark-logo-36x36.png" // Use optimized logo size for avatar
+              src="/assets/dark-logo-36x36.png"
               alt="Spencer Wilson / TechMotiveSupreme Logo"
               width={36}
               height={36}

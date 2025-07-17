@@ -24,7 +24,7 @@ const TopNavbar = ({ isOnline }) => {
               <div className="rounded-full overflow-hidden bg-white flex items-center justify-center h-9 w-9">
                 <img 
                   src="/assets/dark-logo-36x36.png"
-                  alt="Site Logo"
+                  alt="TechMotiveSupreme site logo"
                   width={36}
                   height={36}
                   className="h-9 w-9 rounded-full object-cover bg-white"

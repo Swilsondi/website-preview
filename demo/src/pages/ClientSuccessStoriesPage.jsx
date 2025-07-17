@@ -42,7 +42,8 @@ const SuccessHero = () => (
         animate={{
           scale: [1, 1.1, 1],
           opacity: [0.04, 0.08, 0.04],
-        }}
+        }
+        }
         transition={{
           duration: 8,
           repeat: Infinity,
@@ -139,7 +140,7 @@ const FeaturedCaseStudy = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-transparent to-transparent z-10"></div>
             <img
               src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
-              alt="FutureTech Office"
+              alt="FutureTech Office workspace"
               className="w-full h-full object-cover object-center"
             />
 
@@ -267,7 +268,7 @@ const CaseStudiesGrid = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10"></div>
                     <img
                       src={study.image}
-                      alt={study.client}
+                      alt={`${study.client} case study`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute top-4 left-4 z-20">
@@ -377,7 +378,7 @@ const TestimonialsSection = () => {
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden flex-shrink-0 border-4 border-teal-500/30">
                 <img
                   src={testimonials[activeIndex].image}
-                  alt={testimonials[activeIndex].author}
+                  alt={`Testimonial from ${testimonials[activeIndex].author}`}
                   className="w-full h-full object-cover"
                 />
               </div>
