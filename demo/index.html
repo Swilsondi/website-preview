@@ -10,7 +10,7 @@
     <!-- End Google Tag Manager -->
     
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="TechMotiveSupreme - Web design for small businesses, affordable business website DMV, professional website design near me, web design agency DMV, local business website design, starter website package DMV, mobile responsive website DMV, best website designers Northern Virginia, fast-loading business website, website redesign services DMV. Premium web development and digital solutions for creators and businesses in the DMV and Northern Virginia." />
     <meta name="keywords" content="web design for small businesses, affordable business website DMV, professional website design near me, web design agency DMV, local business website design, starter website package DMV, mobile responsive website DMV, best website designers Northern Virginia, fast-loading business website, website redesign services DMV, web development, digital solutions, website design, business growth, Northern Virginia, DMV" />
     <meta name="author" content="TechMotiveSupreme" />
@@ -22,9 +22,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <!-- Preload main font for performance -->
-    <!-- Removed unused preloads for react.svg and main-font.woff2 -->
-    <!-- Use font-display: swap for fast text rendering -->
+    <!-- Preload main CSS for faster paint -->
+    <link rel="preload" href="/src/main.css" as="style" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
     
     <!-- Modern browser feature detection -->
@@ -51,6 +50,7 @@
         font-display: swap;
         touch-action: manipulation; /* Improves mobile scrolling and tap responsiveness */
         -webkit-tap-highlight-color: transparent; /* Removes tap highlight on mobile */
+        will-change: opacity, transform;
       }
       
       /* Responsive root container for mobile */
@@ -63,6 +63,7 @@
         isolation: isolate; /* Create new stacking context for better compositing */
         min-width: 0;
         max-width: 100vw;
+        will-change: opacity, transform;
       }
       
       /* Optimized loading spinner with reduced motion */
