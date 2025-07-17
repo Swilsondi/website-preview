@@ -67,14 +67,16 @@
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url('/assets/fonts/Inter-400.woff2') format('woff2');
+        /* Remove src if Inter-400.woff2 does not exist */
+        /* src: url('/assets/fonts/Inter-400.woff2') format('woff2'); */
       }
       @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-display: swap;
-        src: url('/assets/fonts/Inter-700.woff2') format('woff2');
+        /* Remove src if Inter-700.woff2 does not exist */
+        /* src: url('/assets/fonts/Inter-700.woff2') format('woff2'); */
       }
       html, body {
         background-color: #111827;
@@ -218,14 +220,15 @@
         opacity: 1;
       }
     </style>
+    <!-- Remove Google Fonts stylesheet links -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" media="all" /> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="all" /> -->
     <!-- Preload Inter font for faster paint -->
-    <link rel="preload" href="/assets/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/fonts/Inter-700.woff2" as="font" type="font/woff2" crossorigin>
-    <!-- Only load one Google Fonts stylesheet for Inter 400,700 -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" media="all" />
+    <!-- <link rel="preload" href="/assets/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin> -->
+    <!-- <link rel="preload" href="/assets/fonts/Inter-700.woff2" as="font" type="font/woff2" crossorigin> -->
     <!-- Defer main CSS: load with media="print" then switch to "all" on load -->
-    <link rel="stylesheet" href="/src/main.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/src/main.css"></noscript>
+    <link rel="stylesheet" href="/assets/index-Dw0wGZAQ.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/index-Dw0wGZAQ.css"></noscript>
     <!-- Updated favicon to use optimized logo size -->
     <link rel="icon" type="image/png" href="/assets/dark-logo-36x36.png" sizes="36x36" />
     <!-- Add manifest for PWA support -->
