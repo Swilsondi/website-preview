@@ -39,11 +39,11 @@ const portfolioItems = [
 	},
 	{
 		id: 2,
-		title: "E-commerce Platform for XYZ",
-		subtitle: "Technology/SaaS",
+		title: "TechFlow Solutions",
+		subtitle: "E-commerce",
 		image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
 		description:
-			"Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
+			"Landing page and dashboard UI for a SaaS e-commerce startup, focused on clarity and conversion.",
 		features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
 		stats: [
 			{ value: "+2,500", label: "clients" },
@@ -53,9 +53,9 @@ const portfolioItems = [
 		testimonial: {
 			quote:
 				"Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
-			author: "Michael Chen - Founder, TechFlow",
+			author: "Michael Chen - Founder, TechFlow Solutions",
 		},
-		category: "Technology/SaaS",
+		category: "E-commerce",
 	},
 	{
 		id: 3,
