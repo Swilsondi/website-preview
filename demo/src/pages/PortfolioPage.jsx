@@ -141,47 +141,67 @@ const portfolioItems = [
 	},
 ]
 
-// Portfolio section rendering
-const PortfolioSection = () => (
-	<section className="py-16 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900">
-		<div className="max-w-4xl mx-auto px-4 md:px-8">
-			{portfolioItems.map((item, idx) => (
-				<motion.div
-					key={item.id}
-					initial={{ opacity: 0, y: 40 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.7, delay: idx * 0.1 }}
-					className="mb-16"
-				>
-					<Card className="bg-gray-800/80 border border-gray-700 rounded-2xl shadow-xl p-8 flex flex-col md:flex-row gap-8">
+// Portfolio grid layout (restored)
+const PortfolioGrid = ({ portfolioItems }) => (
+	<section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+		<div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+			<div className="text-center mb-16">
+				<h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+					Portfolio Projects
+				</h2>
+				<p className="text-xl text-gray-300 max-w-3xl mx-auto">
+					Explore our recent work across different industries and business types.
+				</p>
+			</div>
+			<motion.div
+				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+				initial="initial"
+				animate="animate"
+			>
+				{portfolioItems.map((item, idx) => (
+					<motion.div
+						key={item.id}
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6, delay: idx * 0.1 }}
+						whileHover={{
+							scale: 1.04,
+							y: -4,
+							boxShadow:
+								"0 8px 32px 0 rgba(80,80,255,0.15)",
+						}}
+						className="rounded-2xl overflow-hidden shadow-xl bg-gray-800/70 border border-gray-700 hover:bg-gray-800/90 transition-all duration-300 flex flex-col"
+					>
 						<img
 							src={item.image}
 							alt={item.title}
-							className="w-32 h-32 object-cover rounded-xl mb-6 md:mb-0 md:mr-8"
+							className="w-full h-48 object-cover"
+							loading="lazy"
 						/>
-						<div className="flex-1">
-							<div className="text-lg font-semibold text-purple-400 mb-1">
-								{item.subtitle}
-							</div>
-							<h2 className="text-3xl font-black text-white mb-2">
+						<div className="p-6 flex-1 flex flex-col justify-between">
+							<h3 className="text-xl font-bold text-white mb-2">
 								{item.title}
-							</h2>
-							<p className="text-gray-300 mb-4">{item.description}</p>
-							<div className="mb-4">
-								<span className="font-bold text-white">Key Features:</span>
+							</h3>
+							<p className="text-gray-300 mb-2">
+								{item.description}
+							</p>
+							<div className="mb-2">
+								<span className="font-bold text-white">
+									Key Features:
+								</span>
 								<ul className="list-disc list-inside text-gray-200 ml-2">
 									{item.features.map((f, i) => (
 										<li key={i}>{f}</li>
 									))}
 								</ul>
 							</div>
-							<div className="flex gap-8 mb-4">
+							<div className="flex gap-4 mb-2">
 								{item.stats.map((stat, i) => (
 									<div key={i} className="text-center">
-										<div className="text-2xl font-black text-purple-300">
+										<div className="text-lg font-black text-purple-300">
 											{stat.value}
 										</div>
-										<div className="text-gray-400 text-sm">
+										<div className="text-gray-400 text-xs">
 											{stat.label}
 										</div>
 									</div>
@@ -190,13 +210,13 @@ const PortfolioSection = () => (
 							<blockquote className="italic text-gray-200 border-l-4 border-purple-400 pl-4 mb-2">
 								"{item.testimonial.quote}"
 							</blockquote>
-							<div className="text-gray-400 text-sm font-semibold">
+							<div className="text-gray-400 text-xs font-semibold">
 								{item.testimonial.author}
 							</div>
 						</div>
-					</Card>
-				</motion.div>
-			))}
+					</motion.div>
+				))}
+			</motion.div>
 		</div>
 	</section>
 )
@@ -209,8 +229,7 @@ export default function ShowcasePage() {
 
 	return (
 		<div className="min-h-screen bg-gray-900 w-full overflow-x-hidden">
-			<PortfolioSection />
-			{/* You can add CTA and Footer below if needed */}
+			<PortfolioGrid portfolioItems={portfolioItems} />
 			<Footer />
 		</div>
 	)
