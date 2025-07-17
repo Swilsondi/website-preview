@@ -22,22 +22,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <!-- Preload main CSS for faster paint -->
-    <link rel="preload" href="/src/main.css" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-    
-    <!-- Modern browser feature detection -->
-    <link rel="modulepreload" href="/src/main.jsx" />
-    
-    <!-- Updated favicon to use dark logo -->
-    <link rel="icon" type="image/png" href="/assets/dark-logo.png" />
-    <!-- Add manifest for PWA support -->
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#111827" />
-    
-    <title>TechMotiveSupreme - Digital Excellence</title>
-    
+    <!-- Inline critical CSS to avoid render-blocking -->
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
       /* Critical CSS - prevents FOUC */
       html, body {
         background-color: #111827;
@@ -108,6 +95,21 @@
         opacity: 1;
       }
     </style>
+    <!-- Remove external font stylesheet link to avoid double loading -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" /> -->
+    <!-- Preload main CSS for faster paint -->
+    <link rel="preload" href="/src/main.css" as="style" />
+    <link rel="stylesheet" href="/src/main.css" />
+    <!-- Modern browser feature detection -->
+    <link rel="modulepreload" href="/src/main.jsx" />
+    
+    <!-- Updated favicon to use dark logo -->
+    <link rel="icon" type="image/png" href="/assets/dark-logo.png" />
+    <!-- Add manifest for PWA support -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#111827" />
+    
+    <title>TechMotiveSupreme - Digital Excellence</title>
     
     <!-- Inline script for early connection optimizations -->
     <script>
