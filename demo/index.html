@@ -35,6 +35,9 @@
         overflow-x: hidden;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         font-display: swap;
+        /* Add font-smoothing for better mobile rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
       
       #root {
@@ -44,6 +47,8 @@
         display: flex;
         flex-direction: column;
         isolation: isolate; /* Create new stacking context for better compositing */
+        /* Add overflow for mobile layouts */
+        overflow-x: hidden;
       }
       
       /* Optimized loading spinner with reduced motion */
@@ -93,6 +98,25 @@
       .interface-ready .navbar {
         transition: opacity 0.3s ease-out;
         opacity: 1;
+      }
+      
+      /* Add media query for improved mobile spacing */
+      @media (max-width: 640px) {
+        html, body {
+          font-size: 16px;
+        }
+        #root {
+          padding: 0;
+        }
+        .loading-container {
+          min-height: 100vh;
+          padding: 0;
+        }
+        /* Prevent horizontal scroll on mobile */
+        body, html {
+          max-width: 100vw;
+          overflow-x: hidden;
+        }
       }
     </style>
     <!-- Remove external font stylesheet link to avoid double loading -->
