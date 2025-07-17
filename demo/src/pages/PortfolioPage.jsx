@@ -269,11 +269,11 @@ const PortfolioGrid = ({ portfolioItems }) => (
 						}}
 						className="rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 hover:bg-gray-800/90 transition-all duration-300 flex flex-col"
 					>
-						<div className="w-full h-64 bg-gray-800 flex items-center justify-center overflow-hidden">
+						<div className="w-full h-64 bg-gray-800 overflow-hidden">
 							<img
 								src={item.image}
 								alt={item.title}
-								className="w-full h-full object-cover rounded-t-2xl"
+								className="w-full h-full object-cover object-top rounded-t-2xl"
 								loading="lazy"
 							/>
 						</div>
