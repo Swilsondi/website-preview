@@ -48,39 +48,68 @@
         overflow-x: hidden;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         font-display: swap;
+        /* Mobile performance: Reduce font size, prevent zoom, optimize tap targets */
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        font-size: 16px;
       }
-      
       #root {
         width: 100%;
         min-height: 100vh;
         background-color: #111827;
         display: flex;
         flex-direction: column;
-        isolation: isolate; /* Create new stacking context for better compositing */
+        isolation: isolate;
+        min-width: 0;
+        max-width: 100vw;
       }
-      
       /* Optimized loading spinner with reduced motion */
       .loading-spinner {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 40px;
-        height: 40px;
-        border: 4px solid #374151;
-        border-top: 4px solid #6366f1;
+        width: 32px;
+        height: 32px;
+        border: 3px solid #374151;
+        border-top: 3px solid #6366f1;
         border-radius: 50%;
         animation: spin 1s linear infinite;
         z-index: 9999;
         will-change: transform;
-        contain: layout style paint; /* Optimize rendering performance */
+        contain: layout style paint;
       }
-      
       @keyframes spin {
         0% { transform: translate(-50%, -50%) rotate(0deg); }
         100% { transform: translate(-50%, -50%) rotate(360deg); }
       }
-      
+      .loading-container {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #111827;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        contain: layout style paint;
+        position: fixed;
+        inset: 0;
+      }
+      @media (max-width: 640px) {
+        html, body {
+          font-size: 16px;
+        }
+        #root {
+          padding: 0;
+        }
+        .loading-container {
+          min-height: 100vh;
+          padding: 0;
+        }
+        body, html {
+          max-width: 100vw;
+          overflow-x: hidden;
+        }
+      }
       /* Prevent layout shift with improved container */
       .loading-container {
         width: 100%;
