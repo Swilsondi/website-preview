@@ -169,7 +169,7 @@ const PortfolioGrid = () => (
         <img
           src={item.image}
           alt={item.title}
-          className="w-full h-48 object-cover"
+          className="w-full h-48 object-cover" // No hidden, no responsive display utilities
           loading="lazy"
         />
         <div className="p-4">
@@ -284,6 +284,104 @@ const categories = [
   'Creative Agency',
   'Professional Services'
 ];
+const portfolioItems = [
+  {
+    id: 1,
+    title: "FitLife Pro",
+    category: "Health & Wellness",
+    description: "A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
+    image: "/assets/banner-logo.jpeg",
+    imageWebp: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&fm=webp",
+    features: ["Class Booking", "Trainer Profiles", "Mobile Responsive", "SEO Optimized"],
+    stats: { clients: "1,200", satisfaction: "100%", launches: "2023" },
+    testimonial: {
+      text: "TechMotive Supreme made it easy for our clients to book classes and learn about our trainers. Our online signups doubled!",
+      author: "Sarah Johnson",
+      role: "Owner, FitLife Pro"
+    },
+    color: "from-green-500 to-emerald-500"
+  },
+  {
+    id: 2,
+    title: "TechFlow Solutions",
+    category: "Technology/SaaS",
+    description: "Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
+    image: "/assets/banner-logo.jpeg",
+    imageWebp: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp",
+    features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
+    stats: { clients: "2,500", satisfaction: "100%", launches: "2024" },
+    testimonial: {
+      text: "Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
+      author: "Michael Chen",
+      role: "Founder, TechFlow"
+    },
+    color: "from-blue-500 to-cyan-500"
+  },
+  {
+    id: 3,
+    title: "Luxury Estates Co",
+    category: "Real Estate",
+    description: "A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
+    image: "/assets/banner-logo.jpeg",
+    imageWebp: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&fm=webp",
+    features: ["Featured Listings", "Lead Forms", "Mobile First", "Photo Gallery"],
+    stats: { clients: "800", satisfaction: "100%", launches: "2023" },
+    testimonial: {
+      text: "I get more inquiries from my website than any other channel. TechMotive Supreme made it easy!",
+      author: "Amanda Rodriguez",
+      role: "Agent, Luxury Estates Co"
+    },
+    color: "from-purple-500 to-pink-500"
+  },
+  {
+    id: 4,
+    title: "Artisan Market",
+    category: "E-commerce",
+    description: "A simple e-commerce site for a local artisan collective, with easy product management.",
+    image: "/assets/banner-logo.jpeg",
+    imageWebp: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&fm=webp",
+    features: ["Product Catalog", "Easy Checkout", "Inventory Tools", "Customer Reviews"],
+    stats: { clients: "3,400", satisfaction: "100%", launches: "2024" },
+    testimonial: {
+      text: "We love how easy it is to update our products. Our customers always comment on how smooth the checkout is.",
+      author: "David Kim",
+      role: "Co-Founder, Artisan Market"
+    },
+    color: "from-orange-500 to-red-500"
+  },
+  {
+    id: 5,
+    title: "Creative Studio Co",
+    category: "Creative Agency",
+    description: "Portfolio site for a small creative agency, with case studies and a contact form.",
+    image: "/assets/banner-logo.jpeg",
+    imageWebp: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop&fm=webp",
+    features: ["Case Studies", "Contact Form", "Gallery", "Blog"],
+    stats: { clients: "650", satisfaction: "100%", launches: "2022" },
+    testimonial: {
+      text: "Our new site finally reflects our work. We get more project inquiries and it’s easy to update.",
+      author: "Lisa Thompson",
+      role: "Creative Director"
+    },
+    color: "from-pink-500 to-purple-500"
+  },
+  {
+    id: 6,
+    title: "Legal Partners LLC",
+    category: "Professional Services",
+    description: "Professional site for a boutique law firm, with attorney bios and appointment booking.",
+    image: "/assets/banner-logo.jpeg",
+    imageWebp: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop&fm=webp",
+    features: ["Attorney Bios", "Booking Form", "Practice Areas", "Testimonials"],
+    stats: { clients: "10,000", satisfaction: "100%", launches: "2024" },
+    testimonial: {
+      text: "We needed a site that looked trustworthy and made it easy for clients to reach us. TechMotive Supreme delivered.",
+      author: "Robert Wilson",
+      role: "Managing Partner"
+    },
+    color: "from-gray-600 to-gray-800"
+  }
+]
 
 // Main Portfolio Page Component
 export default function ShowcasePage() {
@@ -361,104 +459,6 @@ export default function ShowcasePage() {
     </div>
   )
 }
-            onClick={() => window.location.href = '/pricing'}
-          >
-            Start Your Project
-            <ArrowRight className="ml-3 w-6 h-6" />
-          </Button>
-          
-          <Button 
-            size="lg" 
-            variant="outline"
-            className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
-            onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
-          >
-            Free Consultation
-            <Globe className="ml-3 w-6 h-6" />
-          </Button>
-        </div>
-      </motion.div>
-    </div>
-  </section>
-)
-
-// Move categories and portfolioItems outside of ShowcasePage to avoid re-creation on every render
-const categories = [
-  'All',
-  'E-commerce',
-  'Technology/SaaS',
-  'Health & Wellness',
-  'Real Estate',
-  'Creative Agency',
-  'Professional Services'
-];
-const portfolioItems = [
-  {
-    id: 1,
-    title: "FitLife Pro",
-    category: "Health & Wellness",
-    description: "A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&fm=webp",
-    features: ["Class Booking", "Trainer Profiles", "Mobile Responsive", "SEO Optimized"],
-    stats: { clients: "1,200", satisfaction: "100%", launches: "2023" },
-    testimonial: {
-      text: "TechMotive Supreme made it easy for our clients to book classes and learn about our trainers. Our online signups doubled!",
-      author: "Sarah Johnson",
-      role: "Owner, FitLife Pro"
-    },
-    color: "from-green-500 to-emerald-500"
-  },
-  {
-    id: 2,
-    title: "TechFlow Solutions",
-    category: "Technology/SaaS",
-    description: "Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&fm=webp",
-    features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
-    stats: { clients: "2,500", satisfaction: "100%", launches: "2024" },
-    testimonial: {
-      text: "Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
-      author: "Michael Chen",
-      role: "Founder, TechFlow"
-    },
-    color: "from-blue-500 to-cyan-500"
-  },
-  {
-    id: 3,
-    title: "Luxury Estates Co",
-    category: "Real Estate",
-    description: "A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop&fm=webp",
-    features: ["Featured Listings", "Lead Forms", "Mobile First", "Photo Gallery"],
-    stats: { clients: "800", satisfaction: "100%", launches: "2023" },
-    testimonial: {
-      text: "I get more inquiries from my website than any other channel. TechMotive Supreme made it easy!",
-      author: "Amanda Rodriguez",
-      role: "Agent, Luxury Estates Co"
-    },
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    id: 4,
-    title: "Artisan Market",
-    category: "E-commerce",
-    description: "A simple e-commerce site for a local artisan collective, with easy product management.",
-    image: "/assets/banner-logo.jpeg",
-    imageWebp: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop&fm=webp",
-    features: ["Product Catalog", "Easy Checkout", "Inventory Tools", "Customer Reviews"],
-    stats: { clients: "3,400", satisfaction: "100%", launches: "2024" },
-    testimonial: {
-      text: "We love how easy it is to update our products. Our customers always comment on how smooth the checkout is.",
-      author: "David Kim",
-      role: "Co-Founder, Artisan Market"
-    },
-    color: "from-orange-500 to-red-500"
-  },
-  {
-    id: 5,
     title: "Creative Studio Co",
     category: "Creative Agency",
     description: "Portfolio site for a small creative agency, with case studies and a contact form.",
