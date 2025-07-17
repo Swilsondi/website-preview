@@ -424,112 +424,59 @@ const ContactOptions = ({ onSendMessageClick }) => (
         </p>
       </motion.div>
 
+      {/* Reordered contact info cards below */}
       <div className="grid md:grid-cols-3 gap-8">
-        {[
-          {
-            icon: Phone,
-            title: "Call Us",
-            description: "Speak directly with our team",
-            action: "Schedule Call",
-            color: "from-green-500 to-emerald-500",
-            onClick: () => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')
-          },
-          {
-            icon: Mail,
-            title: "Email Us",
-            description: "Get detailed information",
-            action: "Send Message",
-            color: "from-blue-500 to-cyan-500",
-            onClick: onSendMessageClick
-          },
-          {
-            icon: MessageSquare,
-            title: "Live Chat",
-            description: "Instant answers to your questions",
-            action: "Start Chat",
-            color: "from-purple-500 to-pink-500",
-            onClick: () => {} // Placeholder
-          }
-        ].map((option, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="group"
-          >
-            <Card className="h-full bg-gray-900/50 border-gray-700 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20">
-              <CardContent className="p-8 flex flex-col items-start gap-3">
-                <div className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                  <option.icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="flex-1 flex flex-col items-start text-left w-full">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300 text-left w-full">
-                    {option.title}
-                  </h3>
-                  <p className="text-gray-400 mb-2 text-left w-full">
-                    {option.description}
-                  </p>
-                  {/* Add more left-aligned details if present, e.g. email, response time, etc. */}
-                  {option.email && (
-                    <p className="text-gray-300 mb-1 text-left w-full">{option.email}</p>
-                  )}
-                  {option.responseTime && (
-                    <p className="text-gray-400 mb-1 text-left w-full">{option.responseTime}</p>
-                  )}
-                  <Button
-                    variant="outline"
-                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 hover:border-purple-500 transition-all duration-300"
-                    onClick={option.onClick}
-                  >
-                    {option.action}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </section>
-)
-
-// Get In Touch Section (reordered)
-const GetInTouchSection = () => (
-  <section className="py-20 bg-gray-900">
-    <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
-      <div className="grid gap-8">
         {/* Response Time First */}
-        <Card className="bg-gray-800/50 border-gray-700">
-          <CardContent className="p-8 flex items-center gap-4">
-            <Clock className="w-8 h-8 text-blue-400" />
-            <div>
-              <h3 className="text-lg font-bold text-white mb-1">Typical Response Time</h3>
-              <p className="text-gray-300">We reply to most inquiries within 2-6 hours (Mon-Fri).</p>
-            </div>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0 }}
+          viewport={{ once: true }}
+        >
+          <Card className="bg-gray-900/50 border-gray-700">
+            <CardContent className="p-8 flex items-center gap-4">
+              <Clock className="w-8 h-8 text-blue-400" />
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">Typical Response Time</h3>
+                <p className="text-gray-300">We reply to most inquiries within 2-6 hours (Mon-Fri).</p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
         {/* Location Second */}
-        <Card className="bg-gray-800/50 border-gray-700">
-          <CardContent className="p-8 flex items-center gap-4">
-            <Globe className="w-8 h-8 text-green-400" />
-            <div>
-              <h3 className="text-lg font-bold text-white mb-1">Location</h3>
-              <p className="text-gray-300">DMV & Northern Virginia (Remote & In-Person)</p>
-            </div>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
+          <Card className="bg-gray-900/50 border-gray-700">
+            <CardContent className="p-8 flex items-center gap-4">
+              <Globe className="w-8 h-8 text-green-400" />
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">Location</h3>
+                <p className="text-gray-300">DMV & Northern Virginia (Remote & In-Person)</p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
         {/* Email Last */}
-        <Card className="bg-gray-800/50 border-gray-700">
-          <CardContent className="p-8 flex items-center gap-4">
-            <Mail className="w-8 h-8 text-purple-400" />
-            <div>
-              <h3 className="text-lg font-bold text-white mb-1">Email Us</h3>
-              <p className="text-gray-300">techmotivesupreme@gmail.com</p>
-            </div>
-          </CardContent>
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <Card className="bg-gray-900/50 border-gray-700">
+            <CardContent className="p-8 flex items-center gap-4">
+              <Mail className="w-8 h-8 text-purple-400" />
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">Email Us</h3>
+                <p className="text-gray-300">techmotivesupreme@gmail.com</p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </div>
   </section>
@@ -621,7 +568,6 @@ export default function ContactPage() {
         }} />
         {consultationType !== 'consultation' && <ProjectForm selectedPlan={selectedPlan} formRef={formRef} />}
         <ContactOptions onSendMessageClick={() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })} />
-        <GetInTouchSection />
       </div>
     </>
   )
