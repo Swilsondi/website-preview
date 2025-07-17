@@ -24,7 +24,6 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <!-- Inline critical CSS to avoid render-blocking -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
       /* Critical CSS - prevents FOUC */
       html, body {
         background-color: #111827;
@@ -35,9 +34,6 @@
         overflow-x: hidden;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         font-display: swap;
-        /* Add font-smoothing for better mobile rendering */
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
       }
       
       #root {
@@ -47,8 +43,6 @@
         display: flex;
         flex-direction: column;
         isolation: isolate; /* Create new stacking context for better compositing */
-        /* Add overflow for mobile layouts */
-        overflow-x: hidden;
       }
       
       /* Optimized loading spinner with reduced motion */
@@ -99,28 +93,9 @@
         transition: opacity 0.3s ease-out;
         opacity: 1;
       }
-      
-      /* Add media query for improved mobile spacing */
-      @media (max-width: 640px) {
-        html, body {
-          font-size: 16px;
-        }
-        #root {
-          padding: 0;
-        }
-        .loading-container {
-          min-height: 100vh;
-          padding: 0;
-        }
-        /* Prevent horizontal scroll on mobile */
-        body, html {
-          max-width: 100vw;
-          overflow-x: hidden;
-        }
-      }
     </style>
-    <!-- Remove external font stylesheet link to avoid double loading -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" /> -->
+    <!-- Restore external font stylesheet link -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
     <!-- Preload main CSS for faster paint -->
     <link rel="preload" href="/src/main.css" as="style" />
     <link rel="stylesheet" href="/src/main.css" />
@@ -230,6 +205,31 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "techmotivesupreme@gmail.com",
+        "contactType": "customer support",
+        "url": "https://techmotivesupreme.com/contact"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K85QK9ZX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="root">
+      <div class="loading-container">
+        <div class="loading-spinner"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Error recovery script -->
+    <script nomodule>
+      // Fallback for older browsers
+      document.body.innerHTML = '<div style="padding: 2rem; text-align: center; font-family: sans-serif;"><h1>Browser Not Supported</h1><p>Please use a modern browser like Chrome, Firefox, Safari, or Edge to view this site.</p></div>';
+    </script>
+  </body>
+</html>
         "contactType": "customer support",
         "url": "https://techmotivesupreme.com/contact"
       }
