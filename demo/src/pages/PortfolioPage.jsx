@@ -7,9 +7,9 @@ import { motion } from "framer-motion"
 const portfolioItems = [
 	{
 		id: 1,
-		title: "FitLife Pro",
+		title: "Brand Website for ABC Corp",
 		subtitle: "Health & Wellness",
-		image: "/assets/banner-logo.jpeg",
+		image: "/assets/portfolio/abc-corp.webp",
 		description:
 			"A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
 		features: [
@@ -31,9 +31,9 @@ const portfolioItems = [
 	},
 	{
 		id: 2,
-		title: "TechFlow Solutions",
+		title: "E-commerce Platform for XYZ",
 		subtitle: "Technology/SaaS",
-		image: "/assets/banner-logo.jpeg",
+		image: "/assets/portfolio/xyz-shop.webp",
 		description:
 			"Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
 		features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
@@ -50,9 +50,9 @@ const portfolioItems = [
 	},
 	{
 		id: 3,
-		title: "Luxury Estates Co",
-		subtitle: "Real Estate",
-		image: "/assets/banner-logo.jpeg",
+		title: "FitLife Pro",
+		subtitle: "Health & Wellness",
+		image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
 		description:
 			"A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
 		features: [
@@ -74,9 +74,9 @@ const portfolioItems = [
 	},
 	{
 		id: 4,
-		title: "Artisan Market",
-		subtitle: "E-commerce",
-		image: "/assets/banner-logo.jpeg",
+		title: "TechFlow Solutions",
+		subtitle: "Technology/SaaS",
+		image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
 		description:
 			"A simple e-commerce site for a local artisan collective, with easy product management.",
 		features: [
@@ -98,9 +98,9 @@ const portfolioItems = [
 	},
 	{
 		id: 5,
-		title: "Creative Studio Co",
-		subtitle: "Creative Agency",
-		image: "/assets/banner-logo.jpeg",
+		title: "Luxury Estates Co",
+		subtitle: "Real Estate",
+		image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
 		description:
 			"Portfolio site for a small creative agency, with case studies and a contact form.",
 		features: ["Case Studies", "Contact Form", "Gallery", "Blog"],
@@ -117,9 +117,9 @@ const portfolioItems = [
 	},
 	{
 		id: 6,
-		title: "Legal Partners LLC",
-		subtitle: "Professional Services",
-		image: "/assets/banner-logo.jpeg",
+		title: "Artisan Market",
+		subtitle: "E-commerce",
+		image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
 		description:
 			"Professional site for a boutique law firm, with attorney bios and appointment booking.",
 		features: [
