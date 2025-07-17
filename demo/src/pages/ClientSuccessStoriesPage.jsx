@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -526,6 +527,14 @@ export default function ClientSuccessStoriesPage() {
         })(window,document,'script','dataLayer','GTM-K85QK9ZX');`
       }} />
       {/* End Google Tag Manager */}
+      <Helmet>
+        <title>Client Success Stories | TechMotiveSupreme</title>
+        <meta name="description" content="See how TechMotiveSupreme helped real businesses achieve extraordinary results." />
+        <meta property="og:title" content="Client Success Stories | TechMotiveSupreme" />
+        <meta property="og:description" content="See how TechMotiveSupreme helped real businesses achieve extraordinary results." />
+        <meta property="og:image" content="/assets/dark-logo-256x256.png" /> {/* Use optimized image */}
+        <meta property="og:url" content="https://techmotivesupreme.com/client-success-stories" />
+      </Helmet>
       <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <SuccessHero />
         <FeaturedCaseStudy />

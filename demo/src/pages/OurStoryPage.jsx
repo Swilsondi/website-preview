@@ -466,8 +466,10 @@ const VisionSection = () => {
           </blockquote>
           <div className="flex flex-col items-center mb-6">
             <img 
-              src={darkLogo} 
+              src="/assets/dark-logo-36x36.png" // Use optimized logo size for avatar
               alt="Spencer Wilson / TechMotiveSupreme Logo"
+              width={36}
+              height={36}
               className="w-28 h-28 object-contain rounded-full border-4 border-blue-500 bg-gray-900 mb-3"
             />
             <div className="text-center">

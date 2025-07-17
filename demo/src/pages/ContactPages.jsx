@@ -619,7 +619,7 @@ export default function ContactPage() {
         <meta name="description" content="Contact TechMotiveSupreme for a free consultation, project inquiry, or support. Fast response guaranteed." />
         <meta property="og:title" content="Contact | TechMotiveSupreme" />
         <meta property="og:description" content="Get in touch for a free consultation or project inquiry. Fast response guaranteed." />
-        <meta property="og:image" content="/assets/dark-logo.png" />
+        <meta property="og:image" content="/assets/dark-logo-256x256.png" /> {/* Use optimized image */}
         <meta property="og:url" content="https://techmotivesupreme.com/contact" />
       </Helmet>
       <div
