@@ -144,150 +144,42 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
   </section>
 ))
 
-// Portfolio Grid Section
-const PortfolioGrid = React.memo(({ portfolioItems, selectedCategory, gridRef }) => {
-  const [animateKey, setAnimateKey] = useState(0);
-  useEffect(() => {
-    setAnimateKey((k) => k + 1);
-  }, [selectedCategory]);
-  const filteredItems = normalize(selectedCategory) === 'all'
-    ? portfolioItems
-    : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory))
+// Example portfolio items array (replace with your actual data)
+const portfolioItems = [
+  {
+    id: 1,
+    title: "Brand Website for ABC Corp",
+    image: "/assets/portfolio/abc-corp.webp",
+    description: "A modern, responsive site for a local business.",
+  },
+  {
+    id: 2,
+    title: "E-commerce Platform for XYZ",
+    image: "/assets/portfolio/xyz-shop.webp",
+    description: "Custom online store with Stripe integration.",
+  },
+  // ...add more items as needed...
+];
 
-  return (
-    <>
-      <Helmet>
-        <title>Portfolio | TechMotiveSupreme</title>
-        <meta name="description" content="See our portfolio of successful web, branding, and digital transformation projects." />
-        <meta property="og:title" content="Portfolio | TechMotiveSupreme" />
-        <meta property="og:description" content="Browse our portfolio of web, branding, and digital transformation projects." />
-        <meta property="og:image" content="/assets/dark-logo.png" />
-        <meta property="og:url" content="https://techmotivesupreme.com/showcase" />
-      </Helmet>
-      <section className="py-24 bg-gray-900" ref={gridRef}>
-        <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-          {/* Portfolio Grid */}
-          <motion.div
-            key={animateKey}
-            variants={stagger}
-            initial="initial"
-            animate="animate"
-            transition={{ duration: 0.3 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {filteredItems.map((item) => (
-              <motion.div
-                key={item.id}
-                variants={fadeInUp}
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group"
-              >
-                <Card className="h-full bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden flex flex-col items-center justify-center text-center">
-                  <div className="relative overflow-hidden flex flex-col items-center justify-center text-center">
-                    {/* Mobile: show only text, hide image, and left-align text */}
-                    <div className="sm:block hidden">
-                      <picture>
-                        <source srcSet={item.imageWebp} type="image/webp" />
-                        <img 
-                          src={item.image}
-                          alt={`Portfolio: ${item.title}`}
-                          width={600}
-                          height={400}
-                          loading="lazy"
-                          className="rounded-lg shadow-lg w-full h-auto object-cover mx-auto"
-                        />
-                      </picture>
-                    </div>
-                    <div className="sm:hidden block w-full text-left">
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-left">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-400 mb-6 text-sm text-left">
-                        {item.description}
-                      </p>
-                    </div>
-
-                    <Badge className={`absolute top-4 left-4 bg-gradient-to-r ${item.color} text-white border-0`}>
-                      {item.category}
-                    </Badge>
-                  </div>
-                  <CardContent className="p-6 flex flex-col items-center justify-center text-center">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 hidden sm:block text-center">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-400 mb-6 text-sm hidden sm:block text-center">
-                      {item.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="mb-6">
-                      <h4 className="text-white font-semibold mb-3 text-sm">Key Features:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {item.features.map((feature, i) => (
-                          <Badge key={i} variant="outline" className="text-xs border-gray-600 text-gray-300">
-                            {feature}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Stats */}
-                    <div className="grid grid-cols-3 gap-2 mb-6 p-4 bg-gray-900/50 rounded-lg">
-                      {Object.entries(item.stats).map(([key, value], i) => (
-                        <div key={i} className="text-center">
-                          <div className="text-lg font-bold text-purple-400">+{value}</div>
-                          <div className="text-xs text-gray-400 capitalize">{key}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Testimonial */}
-                    <div className="relative p-4 bg-purple-500/10 rounded-lg border border-purple-500/20" style={{ background: 'rgba(80, 0, 120, 0.5)', backdropFilter: 'blur(6px)' }}>
-                      <Quote className="w-6 h-6 text-purple-400 mb-2" />
-                      <p className="text-gray-300 text-sm mb-3 italic">"{item.testimonial.text}"</p>
-                      <div className="flex items-center gap-2">
-                        <div className="flex">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
-                          ))}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          <span className="text-white font-semibold">{item.testimonial.author}</span> - {item.testimonial.role}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                  {/* Mobile-only title and description below image */}
-                  <div className="sm:hidden px-6 pb-4 flex flex-col items-center justify-center text-center">
-                    <h3 className="text-xl font-bold text-white mb-2 text-center">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-400 mb-4 text-sm text-center">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Desktop only: show title and description over image */}
-                  {typeof window !== 'undefined' && window.innerWidth >= 640 && (
-                    <>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300 text-center">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-400 mb-6 text-sm text-center">
-                        {item.description}
-                      </p>
-                    </>
-                  )}
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+// PortfolioGrid component
+const PortfolioGrid = () => (
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {portfolioItems.map((item) => (
+      <div key={item.id} className="portfolio-card bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-48 object-cover"
+          loading="lazy"
+        />
+        <div className="p-4">
+          <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+          <p className="text-gray-300">{item.description}</p>
         </div>
-      </section>
-    </>
-  )
-})
+      </div>
+    ))}
+  </div>
+);
 
 // Results Section
 const ResultsSection = () => (
@@ -361,6 +253,114 @@ const PortfolioCTA = () => (
           <Button 
             size="lg" 
             className="text-xl px-12 py-6 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold shadow-2xl transition-all duration-300"
+            onClick={() => window.location.href = '/pricing'}
+          >
+            Start Your Project
+            <ArrowRight className="ml-3 w-6 h-6" />
+          </Button>
+          
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+            onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
+          >
+            Free Consultation
+            <Globe className="ml-3 w-6 h-6" />
+          </Button>
+        </div>
+      </motion.div>
+    </div>
+  </section>
+)
+
+// Move categories and portfolioItems outside of ShowcasePage to avoid re-creation on every render
+const categories = [
+  'All',
+  'E-commerce',
+  'Technology/SaaS',
+  'Health & Wellness',
+  'Real Estate',
+  'Creative Agency',
+  'Professional Services'
+];
+
+// Main Portfolio Page Component
+export default function ShowcasePage() {
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  // Always call useLocation at the top level
+  const location = useLocation();
+  const [isMounted, setIsMounted] = useState(false);
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+    const timer = setTimeout(() => {
+      setPageLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted && location) {
+      window.scrollTo(0, 0);
+    }
+  }, [location, isMounted]);
+
+  const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
+
+  return (
+    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      {/* Google Tag Manager */}
+      <script dangerouslySetInnerHTML={{
+        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K85QK9ZX');`
+      }} />
+      {/* End Google Tag Manager */}
+      {/* Custom Scrollbar Styles */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(180deg, #6366f1, #8b5cf6);
+          border-radius: 4px;
+          border: 2px solid transparent;
+          background-clip: content-box;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(180deg, #4f46e5, #7c3aed);
+          border-radius: 4px;
+          border: 2px solid transparent;
+          background-clip: content-box;
+        }
+        html {
+          scrollbar-width: thin;
+          scrollbar-color: #6366f1 transparent;
+        }
+      ` }} />
+      
+      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
+      <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto">
+        <PortfolioGrid />
+      </section>
+      <ResultsSection />
+      <PortfolioCTA />
+      <Footer /> {/* ✅ ADD THIS */}
+    </div>
+  )
+}
             onClick={() => window.location.href = '/pricing'}
           >
             Start Your Project
