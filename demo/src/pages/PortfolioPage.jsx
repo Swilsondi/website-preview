@@ -15,7 +15,7 @@ const portfolioItems = [
 		id: 1,
 		title: "Brand Website for ABC Corp",
 		subtitle: "Health & Wellness",
-		image: "/assets/portfolio/abc-corp.webp",
+		image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
 		description:
 			"A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
 		features: [
@@ -40,7 +40,7 @@ const portfolioItems = [
 		id: 2,
 		title: "E-commerce Platform for XYZ",
 		subtitle: "Technology/SaaS",
-		image: "/assets/portfolio/xyz-shop.webp",
+		image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
 		description:
 			"Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
 		features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
