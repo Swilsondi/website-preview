@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="dark">
   <head>
-    <!-- Google Tag Manager & Analytics (load only after user interaction for best performance) -->
+    <!-- Google Tag Manager & Analytics (defer until user interaction for best performance) -->
     <script>
       function shouldLoadTracking() {
         if (navigator.connection) {
@@ -21,11 +21,13 @@
         if (!shouldLoadTracking()) return;
         trackingLoaded = true;
 
+        // Google Tag Manager
         var gtmScript = document.createElement('script');
         gtmScript.async = true;
         gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-K85QK9ZX';
         document.head.appendChild(gtmScript);
 
+        // Google Analytics
         var gtagScript = document.createElement('script');
         gtagScript.async = true;
         gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-SF5L7MJ4C9';
