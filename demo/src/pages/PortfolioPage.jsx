@@ -13,7 +13,7 @@ const normalize = (str) => (str ? str.trim().toLowerCase() : "")
 const portfolioItems = [
 	{
 		id: 1,
-		title: "Brand Website for ABC Corp",
+		title: "FitLife Pro",
 		subtitle: "Health & Wellness",
 		image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
 		description:
@@ -35,6 +35,7 @@ const portfolioItems = [
 			author: "Sarah Johnson - Owner, FitLife Pro",
 		},
 		category: "Health & Wellness",
+		accent: "from-green-400 to-emerald-500",
 	},
 	{
 		id: 2,
@@ -105,6 +106,7 @@ const portfolioItems = [
 			author: "David Kim - Co-Founder, Artisan Market",
 		},
 		category: "E-commerce",
+		accent: "from-pink-500 to-yellow-400",
 	},
 	{
 		id: 5,
