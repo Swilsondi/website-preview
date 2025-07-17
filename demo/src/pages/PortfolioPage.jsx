@@ -55,7 +55,7 @@ const portfolioItems = [
 				"Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
 			author: "Michael Chen - Founder, TechFlow Solutions",
 		},
-		category: "E-commerce",
+		category: "Technology/SaaS",
 	},
 	{
 		id: 3,
