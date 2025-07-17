@@ -108,12 +108,12 @@
         opacity: 1;
       }
     </style>
-    <!-- Preload main CSS for faster paint -->
+    <!-- Preload main CSS for faster paint and defer non-critical CSS -->
     <link rel="preload" href="/src/main.css" as="style" />
-    <link rel="stylesheet" href="/src/main.css" />
-    <!-- Only load one Google Fonts stylesheet to reduce critical request chain -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-    <!-- Remove duplicate or unnecessary font weights/stylesheets -->
+    <link rel="stylesheet" href="/src/main.css" media="all" />
+    <!-- Only load one Google Fonts stylesheet for Inter 400,700 to reduce render-blocking -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" media="all" />
+    <!-- Remove duplicate font weights/stylesheets and avoid loading unnecessary font variants -->
     <!-- Modern browser feature detection -->
     <link rel="modulepreload" href="/src/main.jsx" />
     
