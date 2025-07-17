@@ -450,13 +450,13 @@ export default function ShowcasePage() {
       ` }} />
       
       <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
-      <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto">
-        <PortfolioGrid />
-      </section>
+      <PortfolioGrid portfolioItems={portfolioItems} selectedCategory={selectedCategory} gridRef={gridRef} />
       <ResultsSection />
       <PortfolioCTA />
       <Footer /> {/* ✅ ADD THIS */}
     </div>
+  )
+}
   )
 }
     title: "Creative Studio Co",
