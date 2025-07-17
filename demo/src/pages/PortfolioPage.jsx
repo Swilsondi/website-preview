@@ -418,46 +418,4 @@ export default function ShowcasePage() {
       <PortfolioCTA />
       <Footer />
     </div>
-  )
-}
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-K85QK9ZX');`
-      }} />
-      {/* End Google Tag Manager */}
-      {/* Custom Scrollbar Styles */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: linear-gradient(180deg, #6366f1, #8b5cf6);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(180deg, #4f46e5, #7c3aed);
-          border-radius: 4px;
-          border: 2px solid transparent;
-          background-clip: content-box;
-        }
-        html {
-          scrollbar-width: thin;
-          scrollbar-color: #6366f1 transparent;
-        }
-      ` }} />
-      
-      <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
-      <div ref={gridRef}>
-        <PortfolioGrid portfolioItems={filteredItems} selectedCategory={selectedCategory} gridRef={gridRef} />
-      </div>
-      <ResultsSection />
-      <PortfolioCTA />
-      <Footer />
-    </div>
-  )
-}
+)}
