@@ -70,11 +70,14 @@ export default defineConfig({
         },
       },
     },
-    minify: "esbuild", // Use esbuild for faster minification
+    minify: "terser", // Ensure minification is enabled
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console logs
+        drop_console: true, // Remove console logs for smaller bundle
         drop_debugger: true, // Remove debugger statements
+      },
+      format: {
+        comments: false, // Remove comments
       },
     },
     sourcemap: false, // Disable source maps for production to reduce bundle size
