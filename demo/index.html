@@ -108,7 +108,7 @@
         opacity: 1;
       }
     </style>
-    <!-- Preload main CSS for faster paint -->
+    <!-- Preload main CSS for faster paint and defer non-critical CSS -->
     <link rel="preload" href="/src/main.css" as="style" />
     <link rel="stylesheet" href="/src/main.css" media="all" />
     <!-- Only load one Google Fonts stylesheet for Inter 400,700 to reduce render-blocking -->
@@ -163,6 +163,7 @@
     <meta property="og:title" content="TechMotiveSupreme - Digital Excellence" />
     <meta property="og:description" content="Premium web development and digital solutions for creators and businesses." />
     <meta property="og:image" content="/assets/dark-logo-256x256.png" />
+    <meta name="twitter:image" content="/assets/dark-logo-256x256.png" />
     <meta property="og:url" content="https://techmotivesupreme.com" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="TechMotiveSupreme - Digital Excellence" />
@@ -248,7 +249,6 @@
 <!-- No changes needed in index.html for forced reflow issues. -->
 <!-- Forced reflow is caused by JavaScript in your app bundle (e.g. querying offsetWidth/offsetHeight after DOM changes). -->
 <!-- To mitigate, review your React components and avoid reading layout properties immediately after changing styles or DOM. -->
-    <meta property="og:image" content="/assets/dark-logo-256x256.png" />
     <meta property="og:url" content="https://techmotivesupreme.com" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="TechMotiveSupreme - Digital Excellence" />
