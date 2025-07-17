@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from "react"
+import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -6,15 +6,7 @@ import Footer from "@/components/Footer"
 import { motion } from "framer-motion"
 import { 
   ArrowRight,
-  ExternalLink,
-  Star,
-  Quote,
   Globe,
-  Smartphone,
-  Zap,
-  TrendingUp,
-  Heart,
-  Eye,
   ShoppingCart,
   Users
 } from "lucide-react"
@@ -144,81 +136,84 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
   </section>
 ))
 
-// Industry portfolio items (restored)
-const industryPortfolio = [
+// Portfolio items array (restored simple project boxes)
+const portfolioItems = [
   {
-    icon: ShoppingCart,
-    title: "Retail & E-Commerce",
-    description: "Conversion-focused online stores and retail brands. Shopify, WooCommerce, and custom solutions.",
-    features: ["Online Storefronts", "Product Catalogs", "Payment Integration"],
-    accent: "from-pink-500 to-red-500"
+    id: 1,
+    title: "Brand Website for ABC Corp",
+    image: "/assets/portfolio/abc-corp.webp",
+    description: "A modern, responsive site for a local business.",
   },
   {
-    icon: Heart,
-    title: "Health & Fitness",
-    description: "Gyms, trainers, wellness brands. Booking, memberships, and community features.",
-    features: ["Class Booking", "Trainer Profiles", "Membership Portals"],
-    accent: "from-green-500 to-teal-500"
+    id: 2,
+    title: "E-commerce Platform for XYZ",
+    image: "/assets/portfolio/xyz-shop.webp",
+    description: "Custom online store with Stripe integration.",
   },
   {
-    icon: TrendingUp,
-    title: "Growth & Startups",
-    description: "Launch-ready sites for SaaS, apps, and growth-stage companies. Fast, scalable, and investor-ready.",
-    features: ["Landing Pages", "Dashboard UI", "Branding"],
-    accent: "from-blue-500 to-purple-500"
+    id: 3,
+    title: "FitLife Pro",
+    image: "/assets/banner-logo.jpeg",
+    description: "A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
   },
   {
-    icon: Palette,
-    title: "Creative & Influencers",
-    description: "Personal brands, portfolios, and monetization platforms for creators and influencers.",
-    features: ["Portfolio Galleries", "Blog Integration", "Monetization Tools"],
-    accent: "from-yellow-500 to-pink-500"
+    id: 4,
+    title: "TechFlow Solutions",
+    image: "/assets/banner-logo.jpeg",
+    description: "Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
   },
   {
-    icon: Globe,
-    title: "Professional Services",
-    description: "Consultants, agencies, and B2B brands. Authority-building and lead generation.",
-    features: ["Lead Forms", "Service Pages", "Testimonials"],
-    accent: "from-gray-500 to-blue-500"
+    id: 5,
+    title: "Luxury Estates Co",
+    image: "/assets/banner-logo.jpeg",
+    description: "A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
   },
   {
-    icon: Users,
-    title: "Community & Membership",
-    description: "Membership sites, online communities, and subscription platforms.",
-    features: ["Member Portals", "Discussion Forums", "Subscription Payments"],
-    accent: "from-indigo-500 to-blue-500"
+    id: 6,
+    title: "Artisan Market",
+    image: "/assets/banner-logo.jpeg",
+    description: "A simple e-commerce site for a local artisan collective, with easy product management.",
+  },
+  {
+    id: 7,
+    title: "Creative Studio Co",
+    image: "/assets/banner-logo.jpeg",
+    description: "Portfolio site for a small creative agency, with case studies and a contact form.",
+  },
+  {
+    id: 8,
+    title: "Legal Partners LLC",
+    image: "/assets/banner-logo.jpeg",
+    description: "Professional site for a boutique law firm, with attorney bios and appointment booking.",
   }
 ];
 
-// Portfolio grid for industries
-const IndustryPortfolioGrid = () => (
+// Portfolio grid (restored simple grid)
+const PortfolioGrid = ({ portfolioItems }) => (
   <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-16">
         <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-          Industries We Serve
+          Portfolio Projects
         </h2>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-          Explore our work across every major industry. We build high-performing websites for brands ready to grow.
+          Explore our recent work across different industries and business types.
         </p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {industryPortfolio.map((industry, idx) => (
-          <Card key={idx} className="bg-gray-800/60 border-gray-700 hover:bg-gray-800/80 transition-colors duration-200">
-            <CardContent className="p-8 flex flex-col items-center">
-              <div className={`w-14 h-14 bg-gradient-to-r ${industry.accent} rounded-xl flex items-center justify-center mb-5`}>
-                <industry.icon className="w-7 h-7 text-white" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {portfolioItems.map((item) => (
+          <Card key={item.id} className="bg-gray-800/60 border-gray-700 hover:bg-gray-800/80 transition-colors duration-200 overflow-hidden">
+            <CardContent className="p-0">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-48 object-cover"
+                loading="lazy"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-gray-300">{item.description}</p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 text-center">{industry.title}</h3>
-              <p className="text-gray-300 text-center mb-4">{industry.description}</p>
-              <ul className="space-y-2">
-                {industry.features.map((feature, i) => (
-                  <li key={i} className="flex items-center text-gray-400 text-sm">
-                    <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
             </CardContent>
           </Card>
         ))}
@@ -334,11 +329,8 @@ const categories = [
 // Main Portfolio Page Component
 export default function ShowcasePage() {
   const [pageLoaded, setPageLoaded] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  // Always call useLocation at the top level
   const location = useLocation();
   const [isMounted, setIsMounted] = useState(false);
-  const gridRef = useRef(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -357,8 +349,6 @@ export default function ShowcasePage() {
       window.scrollTo(0, 0);
     }
   }, [location, isMounted]);
-
-  const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
 
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -395,6 +385,16 @@ export default function ShowcasePage() {
           scrollbar-width: thin;
           scrollbar-color: #6366f1 transparent;
         }
+      ` }} />
+      
+      <PortfolioHero categories={categories} selectedCategory={""} onCategoryChange={() => {}} gridRef={useRef(null)} />
+      <PortfolioGrid portfolioItems={portfolioItems} />
+      <ResultsSection />
+      <PortfolioCTA />
+      <Footer />
+    </div>
+  )
+}
       ` }} />
       
       <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
