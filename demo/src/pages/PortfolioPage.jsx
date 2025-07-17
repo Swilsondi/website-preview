@@ -277,35 +277,29 @@ const PortfolioGrid = ({ portfolioItems }) => (
 								loading="lazy"
 							/>
 						</div>
-						<div className="p-8 flex-1 flex flex-col justify-between">
-							<h3 className="text-2xl font-bold text-white mb-3">
-								{item.title}
-							</h3>
-							<p className="text-gray-300 mb-4">{item.description}</p>
-							<div className="mb-4">
-								<span className="font-bold text-white">Key Features:</span>
-								<ul className="list-disc list-inside text-gray-200 ml-2">
+						<div className="p-8 flex-1 flex flex-col items-center justify-between text-center">
+							<h3 className="text-2xl font-extrabold text-white mb-2 leading-snug">{item.title}</h3>
+							<p className="text-base text-gray-300 mb-4 leading-relaxed">{item.description}</p>
+							<div className="mb-4 w-full">
+								<span className="font-semibold text-white block mb-1 text-sm">Key Features:</span>
+								<ul className="list-disc list-inside text-gray-200 ml-2 mb-2 text-sm">
 									{item.features.map((f, i) => (
 										<li key={i}>{f}</li>
 									))}
 								</ul>
 							</div>
-							<div className="flex gap-6 mb-4">
+							<div className="flex flex-row justify-center items-center gap-6 mb-4 w-full">
 								{item.stats.map((stat, i) => (
-									<div key={i} className="text-center">
-										<div className="text-lg font-black text-purple-300">
-											{stat.value}
-										</div>
-										<div className="text-gray-400 text-xs">
-											{stat.label}
-										</div>
+									<div key={i} className="flex flex-col items-center flex-1 min-w-0">
+										<div className="text-lg font-bold text-purple-300 leading-tight">{stat.value}</div>
+										<div className="text-gray-400 text-xs uppercase tracking-wide">{stat.label}</div>
 									</div>
 								))}
 							</div>
-							<blockquote className="italic text-gray-200 border-l-4 border-purple-400 pl-4 mb-2">
+							<blockquote className="italic text-gray-200 border-l-4 border-purple-400 pl-4 mb-2 w-full text-left text-sm">
 								"{item.testimonial.quote}"
 							</blockquote>
-							<div className="text-gray-400 text-xs font-semibold">
+							<div className="text-gray-400 text-xs font-semibold w-full text-left">
 								{item.testimonial.author}
 							</div>
 						</div>
