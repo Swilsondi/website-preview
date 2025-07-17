@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -136,7 +136,7 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
   </section>
 ))
 
-// Portfolio items array (restored simple project boxes)
+// Portfolio items array (keep as before)
 const portfolioItems = [
   {
     id: 1,
@@ -188,7 +188,7 @@ const portfolioItems = [
   }
 ];
 
-// Portfolio grid (restored simple grid)
+// Animated Portfolio grid (restored layout & animation)
 const PortfolioGrid = ({ portfolioItems }) => (
   <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
     <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -200,24 +200,33 @@ const PortfolioGrid = ({ portfolioItems }) => (
           Explore our recent work across different industries and business types.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {portfolioItems.map((item) => (
-          <Card key={item.id} className="bg-gray-800/60 border-gray-700 hover:bg-gray-800/80 transition-colors duration-200 overflow-hidden">
-            <CardContent className="p-0">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-48 object-cover"
-                loading="lazy"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-gray-300">{item.description}</p>
-              </div>
-            </CardContent>
-          </Card>
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+        variants={stagger}
+        initial="initial"
+        animate="animate"
+      >
+        {portfolioItems.map((item, idx) => (
+          <motion.div
+            key={item.id}
+            variants={fadeInUp}
+            whileHover={{ scale: 1.04, y: -4, boxShadow: "0 8px 32px 0 rgba(80,80,255,0.15)" }}
+            transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            className="rounded-2xl overflow-hidden shadow-xl bg-gray-800/70 border border-gray-700 hover:bg-gray-800/90 transition-all duration-300 flex flex-col"
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-48 object-cover"
+              loading="lazy"
+            />
+            <div className="p-6 flex-1 flex flex-col justify-between">
+              <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+              <p className="text-gray-300">{item.description}</p>
+            </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   </section>
 );
@@ -331,6 +340,8 @@ export default function ShowcasePage() {
   const [pageLoaded, setPageLoaded] = useState(false);
   const location = useLocation();
   const [isMounted, setIsMounted] = useState(false);
+  const gridRef = useRef(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     setIsMounted(true);
@@ -349,6 +360,18 @@ export default function ShowcasePage() {
       window.scrollTo(0, 0);
     }
   }, [location, isMounted]);
+
+  const handleCategoryChange = (cat) => {
+    setSelectedCategory(cat);
+    if (gridRef.current) {
+      gridRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // Filter portfolioItems by selectedCategory
+  const filteredItems = selectedCategory === 'All'
+    ? portfolioItems
+    : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory));
 
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -387,19 +410,9 @@ export default function ShowcasePage() {
         }
       ` }} />
       
-      <PortfolioHero categories={categories} selectedCategory={""} onCategoryChange={() => {}} gridRef={useRef(null)} />
-      <PortfolioGrid portfolioItems={portfolioItems} />
-      <ResultsSection />
-      <PortfolioCTA />
-      <Footer />
-    </div>
-  )
-}
-      ` }} />
-      
       <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
       <div ref={gridRef}>
-        <IndustryPortfolioGrid />
+        <PortfolioGrid portfolioItems={filteredItems} selectedCategory={selectedCategory} gridRef={gridRef} />
       </div>
       <ResultsSection />
       <PortfolioCTA />
@@ -407,19 +420,6 @@ export default function ShowcasePage() {
     </div>
   )
 }
-  const handleCategoryChange = useCallback((cat) => setSelectedCategory(cat), []);
-
-  // Filter portfolioItems by selectedCategory
-  const filteredItems = selectedCategory === 'All'
-    ? portfolioItems
-    : portfolioItems.filter(item => normalize(item.category) === normalize(selectedCategory));
-
-  return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      {/* Google Tag Manager */}
-      <script dangerouslySetInnerHTML={{
-        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-K85QK9ZX');`
