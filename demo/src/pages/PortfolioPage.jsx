@@ -412,7 +412,7 @@ export default function ShowcasePage() {
       
       <PortfolioHero categories={categories} selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange} gridRef={gridRef} />
       <div ref={gridRef}>
-        <PortfolioGrid portfolioItems={filteredItems} selectedCategory={selectedCategory} gridRef={gridRef} />
+        <PortfolioGrid portfolioItems={filteredItems} />
       </div>
       <ResultsSection />
       <PortfolioCTA />
