@@ -270,7 +270,7 @@ const PortfolioGrid = ({ portfolioItems }) => (
 						<img
 							src={item.image}
 							alt={item.title}
-							className="w-full h-48 object-cover"
+							className="w-full aspect-video object-cover"
 							loading="lazy"
 						/>
 						<div className="p-6 flex-1 flex flex-col justify-between">
