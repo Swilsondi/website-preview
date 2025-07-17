@@ -23,7 +23,7 @@ const TopNavbar = ({ isOnline }) => {
             >
               <div className="rounded-full overflow-hidden bg-white flex items-center justify-center h-9 w-9">
                 <img 
-                  src="/assets/dark-logo-36x36.png"
+                  src={logo} // Use imported logo for correct path resolution
                   alt="TechMotiveSupreme site logo"
                   width={36}
                   height={36}
