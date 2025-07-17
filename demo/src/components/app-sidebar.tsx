@@ -63,10 +63,8 @@ export function AppSidebar() {
 
   // Function to handle link clicks
   const handleLinkClick = (url: string, e: React.MouseEvent) => {
-    // Prevent default behavior only if the current path matches the link's URL
     if (location.pathname === url) {
       e.preventDefault();
-      // Optionally, you can add a toast or visual feedback instead of reloading
     }
   };
 
@@ -87,47 +85,28 @@ export function AppSidebar() {
         </motion.div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            <SidebarGroupLabel className="text-gray-400 font-medium px-2">Navigation</SidebarGroupLabel>
-          </motion.div>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: 0.1 * index + 0.5,
-                    duration: 0.4,
-                    ease: "easeOut",
-                  }}
-                  whileHover={{ x: 4 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link
-                        to={item.url}
-                        onClick={(e) => handleLinkClick(item.url, e)}
-                        className="group transition-all duration-200 hover:bg-gray-700/80 hover:text-white text-gray-300 data-[active=true]:bg-indigo-600 data-[active=true]:text-white"
-                        data-active={location.pathname === item.url}
-                      >
-                        <item.icon className="transition-transform duration-200 group-hover:scale-110" />
-                        <span className="font-medium">{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </motion.div>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {/* Wrap sidebar items in a <ul> for accessibility */}
+        <ul role="menu" className="space-y-2">
+          {items.map((item) => (
+            <li
+              key={item.title}
+              data-sidebar="menu-item"
+              className="group/menu-item relative"
+              role="none"
+            >
+              <a
+                href={item.url}
+                className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-700 text-white"
+                onClick={(e) => handleLinkClick(item.url, e)}
+                role="menuitem"
+                tabIndex={0}
+              >
+                <item.icon className="w-5 h-5 text-gray-400" aria-hidden="true" />
+                <span>{item.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </SidebarContent>
       <SidebarFooter className="border-t border-gray-700">
         <motion.div
