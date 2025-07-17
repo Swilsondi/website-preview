@@ -8,7 +8,9 @@ import {
   ArrowRight,
   Globe,
   ShoppingCart,
-  Users
+  Users,
+  Heart,
+  TrendingUp
 } from "lucide-react"
 import { useLocation } from "react-router-dom"
 import { Helmet } from "react-helmet";
