@@ -421,12 +421,12 @@ const ContactSection = () => (
           </div>
 
           <div className="space-y-6">
-            {[
+            {[ // REORDERED: Response Time, Location, Email
               {
-                icon: Mail,
-                title: "Email Us",
-                info: "techmotivesupreme@gmail.com",
-                subtitle: "We typically respond within 4 hours"
+                icon: Clock,
+                title: "Response Time",
+                info: "24 hours",
+                subtitle: "Usually much faster!"
               },
               {
                 icon: MapPin,
@@ -435,10 +435,10 @@ const ContactSection = () => (
                 subtitle: "Available worldwide remotely"
               },
               {
-                icon: Clock,
-                title: "Response Time",
-                info: "24 hours",
-                subtitle: "Usually much faster!"
+                icon: Mail,
+                title: "Email Us",
+                info: "techmotivesupreme@gmail.com",
+                subtitle: "We typically respond within 4 hours"
               }
             ].map((contact, index) => (
               <motion.div
