@@ -144,9 +144,7 @@ const PortfolioHero = React.memo(({ categories, selectedCategory, onCategoryChan
   </section>
 ))
 
-// Find and remove any duplicate portfolioItems declarations.
-// Only ONE declaration should exist, and it should contain all your items.
-
+// Example portfolio items array (merge with your actual data)
 const portfolioItems = [
   {
     id: 1,
@@ -456,8 +454,6 @@ export default function ShowcasePage() {
     </div>
   )
 }
-}
-  )
 }
     title: "Creative Studio Co",
     category: "Creative Agency",
