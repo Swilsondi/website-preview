@@ -27,7 +27,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+1,200", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "2025", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -48,7 +48,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+2,500", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "2025", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -73,7 +73,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+800", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "2025", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -98,7 +98,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+3,400", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "2025", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -119,7 +119,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+650", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "2025", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -139,7 +139,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+10,000", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "2025", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
