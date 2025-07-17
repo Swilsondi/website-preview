@@ -1,11 +1,9 @@
 <!doctype html>
 <html lang="en" class="dark">
   <head>
-    <!-- Google Tag Manager & Analytics (defer for mobile performance) -->
+    <!-- Google Tag Manager & Analytics (load only after user interaction for best performance) -->
     <script>
-      // Only load tracking scripts if user is not on a slow connection or low-end device
       function shouldLoadTracking() {
-        // Check for Data Saver mode or slow connection
         if (navigator.connection) {
           if (navigator.connection.saveData) return false;
           if (navigator.connection.effectiveType && (
@@ -13,13 +11,15 @@
             navigator.connection.effectiveType === 'slow-2g'
           )) return false;
         }
-        // Optionally, check for device memory (low-end devices)
         if (navigator.deviceMemory && navigator.deviceMemory < 2) return false;
         return true;
       }
 
-      window.addEventListener('load', function() {
-        if (!shouldLoadTracking()) return; // Skip loading on slow/low-end devices
+      let trackingLoaded = false;
+      function loadTrackingScripts() {
+        if (trackingLoaded) return;
+        if (!shouldLoadTracking()) return;
+        trackingLoaded = true;
 
         var gtmScript = document.createElement('script');
         gtmScript.async = true;
@@ -37,9 +37,14 @@
           gtag('js', new Date());
           gtag('config', 'G-SF5L7MJ4C9');
         };
+      }
+
+      // Load tracking only after first user interaction (scroll, click, keydown, touch)
+      ['scroll', 'click', 'keydown', 'touchstart'].forEach(function(evt) {
+        window.addEventListener(evt, loadTrackingScripts, { once: true, passive: true });
       });
     </script>
-    <!-- End Google Tag Manager & Analytics (deferred and conditional) -->
+    <!-- End Google Tag Manager & Analytics (user interaction deferred) -->
     
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
