@@ -265,20 +265,22 @@ const PortfolioGrid = ({ portfolioItems }) => (
 							y: -4,
 							boxShadow: "0 8px 32px 0 rgba(80,80,255,0.15)",
 						}}
-						className="rounded-2xl overflow-hidden shadow-xl bg-gray-800/70 border border-gray-700 hover:bg-gray-800/90 transition-all duration-300 flex flex-col"
+						className="rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 hover:bg-gray-800/90 transition-all duration-300 flex flex-col"
 					>
-						<img
-							src={item.image}
-							alt={item.title}
-							className="w-full aspect-video object-cover"
-							loading="lazy"
-						/>
-						<div className="p-6 flex-1 flex flex-col justify-between">
-							<h3 className="text-xl font-bold text-white mb-2">
+						<div className="w-full h-64 bg-gray-800 flex items-center justify-center overflow-hidden">
+							<img
+								src={item.image}
+								alt={item.title}
+								className="w-full h-full object-cover rounded-t-2xl"
+								loading="lazy"
+							/>
+						</div>
+						<div className="p-8 flex-1 flex flex-col justify-between">
+							<h3 className="text-2xl font-bold text-white mb-3">
 								{item.title}
 							</h3>
-							<p className="text-gray-300 mb-2">{item.description}</p>
-							<div className="mb-2">
+							<p className="text-gray-300 mb-4">{item.description}</p>
+							<div className="mb-4">
 								<span className="font-bold text-white">Key Features:</span>
 								<ul className="list-disc list-inside text-gray-200 ml-2">
 									{item.features.map((f, i) => (
@@ -286,7 +288,7 @@ const PortfolioGrid = ({ portfolioItems }) => (
 									))}
 								</ul>
 							</div>
-							<div className="flex gap-4 mb-2">
+							<div className="flex gap-6 mb-4">
 								{item.stats.map((stat, i) => (
 									<div key={i} className="text-center">
 										<div className="text-lg font-black text-purple-300">
