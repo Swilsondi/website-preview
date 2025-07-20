@@ -13,9 +13,9 @@ const normalize = (str) => (str ? str.trim().toLowerCase() : "")
 const portfolioItems = [
 	{
 		id: 1,
-		title: "Brand Website for ABC Corp",
+		title: "FitLife Pro",
 		subtitle: "Health & Wellness",
-		image: "/assets/portfolio/abc-corp.webp",
+		image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
 		description:
 			"A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
 		features: [
@@ -27,7 +27,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+1,200", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2023", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -35,24 +35,25 @@ const portfolioItems = [
 			author: "Sarah Johnson - Owner, FitLife Pro",
 		},
 		category: "Health & Wellness",
+		accent: "from-green-400 to-emerald-500",
 	},
 	{
 		id: 2,
-		title: "E-commerce Platform for XYZ",
-		subtitle: "Technology/SaaS",
-		image: "/assets/portfolio/xyz-shop.webp",
+		title: "TechFlow Solutions",
+		subtitle: "E-commerce",
+		image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
 		description:
-			"Landing page and dashboard UI for a SaaS startup, focused on clarity and conversion.",
+			"Landing page and dashboard UI for a SaaS e-commerce startup, focused on clarity and conversion.",
 		features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
 		stats: [
 			{ value: "+2,500", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2024", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
 				"Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
-			author: "Michael Chen - Founder, TechFlow",
+			author: "Michael Chen - Founder, TechFlow Solutions",
 		},
 		category: "Technology/SaaS",
 	},
@@ -72,7 +73,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+800", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2023", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -97,7 +98,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+3,400", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2024", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -105,6 +106,7 @@ const portfolioItems = [
 			author: "David Kim - Co-Founder, Artisan Market",
 		},
 		category: "E-commerce",
+		accent: "from-pink-500 to-yellow-400",
 	},
 	{
 		id: 5,
@@ -117,7 +119,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+650", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2022", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -137,7 +139,7 @@ const portfolioItems = [
 		stats: [
 			{ value: "+10,000", label: "clients" },
 			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2024", label: "launches" },
+			{ value: "+2025", label: "launch" },
 		],
 		testimonial: {
 			quote:
@@ -265,43 +267,39 @@ const PortfolioGrid = ({ portfolioItems }) => (
 							y: -4,
 							boxShadow: "0 8px 32px 0 rgba(80,80,255,0.15)",
 						}}
-						className="rounded-2xl overflow-hidden shadow-xl bg-gray-800/70 border border-gray-700 hover:bg-gray-800/90 transition-all duration-300 flex flex-col"
+						className="rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 hover:bg-gray-800/90 transition-all duration-300 flex flex-col"
 					>
-						<img
-							src={item.image}
-							alt={item.title}
-							className="w-full h-48 object-cover"
-							loading="lazy"
-						/>
-						<div className="p-6 flex-1 flex flex-col justify-between">
-							<h3 className="text-xl font-bold text-white mb-2">
-								{item.title}
-							</h3>
-							<p className="text-gray-300 mb-2">{item.description}</p>
-							<div className="mb-2">
-								<span className="font-bold text-white">Key Features:</span>
-								<ul className="list-disc list-inside text-gray-200 ml-2">
+						<div className="w-full h-64 bg-gray-800 overflow-hidden">
+							<img
+								src={item.image}
+								alt={item.title}
+								className="w-full h-full object-cover object-top rounded-t-2xl"
+								loading="lazy"
+							/>
+						</div>
+						<div className="p-8 flex-1 flex flex-col items-center justify-between text-center">
+							<h3 className="text-2xl font-extrabold text-white mb-2 leading-snug">{item.title}</h3>
+							<p className="text-base text-gray-300 mb-4 leading-relaxed">{item.description}</p>
+							<div className="mb-4 w-full">
+								<span className="font-semibold text-white block mb-1 text-sm">Key Features:</span>
+								<ul className="list-disc list-inside text-gray-200 ml-2 mb-2 text-sm">
 									{item.features.map((f, i) => (
 										<li key={i}>{f}</li>
 									))}
 								</ul>
 							</div>
-							<div className="flex gap-4 mb-2">
+							<div className="flex flex-row justify-center items-center gap-6 mb-4 w-full">
 								{item.stats.map((stat, i) => (
-									<div key={i} className="text-center">
-										<div className="text-lg font-black text-purple-300">
-											{stat.value}
-										</div>
-										<div className="text-gray-400 text-xs">
-											{stat.label}
-										</div>
+									<div key={i} className="flex flex-col items-center flex-1 min-w-0">
+										<div className="text-lg font-bold text-purple-300 leading-tight">{stat.value}</div>
+										<div className="text-gray-400 text-xs uppercase tracking-wide">{stat.label}</div>
 									</div>
 								))}
 							</div>
-							<blockquote className="italic text-gray-200 border-l-4 border-purple-400 pl-4 mb-2">
+							<blockquote className="italic text-gray-200 border-l-4 border-purple-400 pl-4 mb-2 w-full text-left text-sm">
 								"{item.testimonial.quote}"
 							</blockquote>
-							<div className="text-gray-400 text-xs font-semibold">
+							<div className="text-gray-400 text-xs font-semibold w-full text-left">
 								{item.testimonial.author}
 							</div>
 						</div>

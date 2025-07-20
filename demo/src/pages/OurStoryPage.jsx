@@ -466,7 +466,7 @@ const VisionSection = () => {
           </blockquote>
           <div className="flex flex-col items-center mb-6">
             <img 
-              src="/assets/dark-logo-36x36.png"
+              src="/assets/dark-logo.png"
               alt="Spencer Wilson / TechMotiveSupreme Logo"
               width={36}
               height={36}

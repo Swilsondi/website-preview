@@ -331,11 +331,10 @@ const ContactForm = () => {
               required
             >
               <option value="">Select a budget range</option>
-              <option value="$2,000 - $5,000">$2,000 - $5,000</option>
-              <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-              <option value="$10,000 - $25,000">$10,000 - $25,000</option>
-              <option value="$25,000 - $50,000">$25,000 - $50,000</option>
-              <option value="$50,000+">$50,000+</option>
+              <option value="$400 - $1,000">$400 - $1,000</option>
+              <option value="$1,000 - $2,500">$1,000 - $2,500</option>
+              <option value="$2,500 - $4,000">$2,500 - $4,000</option>
+              <option value="$4,000 - $7,000">$4,000 - $7,000</option>
             </select>
             {errors.budget && (
               <p className="mt-2 text-sm text-red-400">
@@ -421,12 +420,12 @@ const ContactSection = () => (
           </div>
 
           <div className="space-y-6">
-            {[
+            {[ // REORDERED: Response Time, Location, Email
               {
-                icon: Mail,
-                title: "Email Us",
-                info: "techmotivesupreme@gmail.com",
-                subtitle: "We typically respond within 4 hours"
+                icon: Clock,
+                title: "Response Time",
+                info: "24 hours",
+                subtitle: "Usually much faster!"
               },
               {
                 icon: MapPin,
@@ -435,10 +434,10 @@ const ContactSection = () => (
                 subtitle: "Available worldwide remotely"
               },
               {
-                icon: Clock,
-                title: "Response Time",
-                info: "24 hours",
-                subtitle: "Usually much faster!"
+                icon: Mail,
+                title: "Email Us",
+                info: "techmotivesupreme@gmail.com",
+                subtitle: "We typically respond within 4 hours"
               }
             ].map((contact, index) => (
               <motion.div
@@ -452,14 +451,14 @@ const ContactSection = () => (
                 <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
                   <contact.icon className="w-6 h-6 text-white" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">
+                <div className="flex flex-col items-start text-left">
+                  <h3 className="text-lg font-semibold text-white text-left mb-1">
                     {contact.title}
                   </h3>
-                  <p className="text-indigo-400 font-medium">
+                  <p className="text-indigo-400 font-medium text-left mb-1">
                     {contact.info}
                   </p>
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-gray-400 text-sm text-left">
                     {contact.subtitle}
                   </p>
                 </div>
