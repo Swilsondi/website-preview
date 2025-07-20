@@ -22,6 +22,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
 import darkLogo from '@/assets/dark-logo.png'
+import { Helmet } from "react-helmet"
 
 // Animation variants
 const fadeIn = {
@@ -522,6 +523,9 @@ export default function OurStoryPage() {
 
   return (
     <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <Helmet>
+        <link rel="canonical" href="https://www.techmotivesupreme.com/our-story" />
+      </Helmet>
       <StoryHero />
       <OriginStorySection />
       <TimelineSection />

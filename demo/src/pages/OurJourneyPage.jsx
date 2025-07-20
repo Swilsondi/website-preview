@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
+import { Helmet } from "react-helmet";
 
 export default function OurJourneyPage() {
   const milestones = [
@@ -32,6 +33,9 @@ export default function OurJourneyPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
+      <Helmet>
+        <link rel="canonical" href="https://www.techmotivesupreme.com/our-journey" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center px-6 md:px-12 lg:px-20">
         <div className="text-center max-w-4xl">

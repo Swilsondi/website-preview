@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '@/components/Footer';
 import { useScrollControl } from '@/hooks/useScrollControl';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 const StartProjectPage = () => {
   // Use our custom hook for scroll control
@@ -10,6 +11,9 @@ const StartProjectPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
+      <Helmet>
+        <link rel="canonical" href="https://www.techmotivesupreme.com/start-project" />
+      </Helmet>
       {/* Hero Section */}
       <header className="relative py-20 text-center bg-gradient-to-r from-blue-500 to-purple-600 pt-12 md:pt-16">
         <div className="pt-4">

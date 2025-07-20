@@ -16,6 +16,7 @@ const LearnMorePage = () => {
         <meta property="og:description" content="Discover more about our services, expertise, and case studies at TechMotiveSupreme." />
         <meta property="og:image" content="/assets/dark-logo.png" />
         <meta property="og:url" content="https://techmotivesupreme.com/learn-more" />
+        <link rel="canonical" href="https://www.techmotivesupreme.com/learn-more" />
       </Helmet>
       <div className="min-h-screen bg-gray-900 text-white">
         {/* Hero Section */}

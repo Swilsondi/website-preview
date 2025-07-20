@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import Footer from "@/components/Footer"
 import { motion } from "framer-motion"
 import { ArrowRight, Globe, Users, Heart, TrendingUp } from "lucide-react"
+import { Helmet } from "react-helmet"
 
 // Helper
 const normalize = (str) => (str ? str.trim().toLowerCase() : "")
@@ -462,6 +463,9 @@ export default function ShowcasePage() {
 
 	return (
 		<div className="min-h-screen bg-gray-900 w-full overflow-x-hidden">
+			<Helmet>
+				<link rel="canonical" href="https://www.techmotivesupreme.com/portfolio" />
+			</Helmet>
 			<PortfolioHero
 				categories={categories}
 				selectedCategory={selectedCategory}

@@ -424,6 +424,7 @@ export default function HomePage() {
         <meta property="og:description" content="High-performing websites and digital branding for creators, brands, and entrepreneurs." />
         <meta property="og:image" content="/assets/dark-logo.png" />
         <meta property="og:url" content="https://techmotivesupreme.com" />
+        <link rel="canonical" href="https://www.techmotivesupreme.com/" />
       </Helmet>
       <div
         className={`min-h-screen bg-gray-900 w-full overflow-auto transition-all duration-700 ease-out ${
