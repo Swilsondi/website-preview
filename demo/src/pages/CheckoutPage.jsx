@@ -117,20 +117,20 @@ const PreCheckoutQuestions = ({ onComplete }) => {
       );
       setSendSuccess(true);
       onComplete(answers);
-      // Try Zapier proxy, but don't block user if it fails
-      try {
-        await fetch('/api/zapier-proxy', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': '07151999'
-          },
-          body: JSON.stringify(answers)
-        });
-      } catch (zapierErr) {
-        console.warn('Zapier proxy failed:', zapierErr);
-        // Optionally show a non-blocking warning to the user
-      }
+      // Zapier integration temporarily removed due to issues
+      // try {
+      //   await fetch('/api/zapier-proxy', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       'x-api-key': '07151999'
+      //     },
+      //     body: JSON.stringify(answers)
+      //   });
+      // } catch (zapierErr) {
+      //   console.warn('Zapier proxy failed:', zapierErr);
+      //   // Optionally show a non-blocking warning to the user
+      // }
     } catch (err) {
       setSendError('Could not send your info. Please try again.');
       console.error('Checkout form error:', err);
