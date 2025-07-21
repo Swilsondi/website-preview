@@ -24,6 +24,7 @@ import { motion } from "framer-motion"
 import Footer from "@/components/Footer";
 import { sanitizeInput, validateForm } from "@/utils/validation"
 import { Helmet } from "react-helmet";
+import emailjs from 'emailjs-com';
 
 // Custom Select Component
 const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
