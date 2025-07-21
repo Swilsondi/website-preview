@@ -117,13 +117,13 @@ const PreCheckoutQuestions = ({ onComplete }) => {
         'BC0wai72dA16OIPrs'
       );
       console.log('EmailJS welcome email result:', welcomeResult);
-      // Send to Zapier webhook
-      const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/23855957/u2ji8z7/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(answers)
-      });
-      console.log('Zapier webhook response:', zapierResponse);
+      // Send to Zapier webhook (temporarily disabled due to CORS)
+      // await fetch('https://hooks.zapier.com/hooks/catch/23855957/u2ji8z7/', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(answers)
+      // });
+      // console.log('Zapier webhook response:', zapierResponse);
       setSendSuccess(true);
       onComplete(answers);
     } catch (err) {
