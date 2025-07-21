@@ -13,6 +13,8 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Log the incoming request body
+    console.log("Zapier Proxy: Incoming body:", req.body);
     const response = await fetch(
       "https://hooks.zapier.com/hooks/catch/23855957/u2ji8z7/",
       {
@@ -22,8 +24,11 @@ export default async function handler(req, res) {
       }
     );
     const data = await response.text();
-    res.status(200).send(data);
+    // Log the response from Zapier
+    console.log("Zapier Proxy: Zapier response:", data);
+    res.status(200).json({ zapierResponse: data });
   } catch (err) {
+    console.error("Zapier Proxy: Error forwarding to Zapier:", err);
     res.status(500).json({ error: "Failed to forward to Zapier" });
   }
 }
