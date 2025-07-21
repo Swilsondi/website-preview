@@ -103,12 +103,11 @@ const PreCheckoutQuestions = ({ onComplete }) => {
     try {
       // Send main form email
       const mainResult = await emailjs.send(
-        'service_cby8mnr', // Your EmailJS service ID
-        'template_81ka64b', // Your main template ID
+        'service_cby8mnr',
+        'template_81ka64b',
         answers,
-        'BC0wai72dA16OIPrs' // Your EmailJS public key
+        'BC0wai72dA16OIPrs'
       );
-      console.log('EmailJS main form result:', mainResult);
       // Send welcome email
       const welcomeResult = await emailjs.send(
         'service_cby8mnr',
@@ -116,19 +115,22 @@ const PreCheckoutQuestions = ({ onComplete }) => {
         { email: answers.email, name: answers.name },
         'BC0wai72dA16OIPrs'
       );
-      console.log('EmailJS welcome email result:', welcomeResult);
-      // Send to Zapier webhook via backend proxy
-      await fetch('/api/zapier-proxy', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': '07151999'
-        },
-        body: JSON.stringify(answers)
-      });
-      // console.log('Zapier webhook response:', zapierResponse);
       setSendSuccess(true);
       onComplete(answers);
+      // Try Zapier proxy, but don't block user if it fails
+      try {
+        await fetch('/api/zapier-proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': '07151999'
+          },
+          body: JSON.stringify(answers)
+        });
+      } catch (zapierErr) {
+        console.warn('Zapier proxy failed:', zapierErr);
+        // Optionally show a non-blocking warning to the user
+      }
     } catch (err) {
       setSendError('Could not send your info. Please try again.');
       console.error('Checkout form error:', err);
