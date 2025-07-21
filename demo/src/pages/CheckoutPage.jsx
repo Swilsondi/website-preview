@@ -101,11 +101,19 @@ const PreCheckoutQuestions = ({ onComplete }) => {
     setSendSuccess(false);
     // Send email via EmailJS
     try {
+      // Send main form email
       await emailjs.send(
         'service_cby8mnr', // Your EmailJS service ID
-        'template_81ka64b', // Your EmailJS template ID
+        'template_81ka64b', // Your main template ID
         answers,
         'BC0wai72dA16OIPrs' // Your EmailJS public key
+      );
+      // Send welcome email
+      await emailjs.send(
+        'service_cby8mnr',
+        'template_uviodzr',
+        { email: answers.email, name: answers.name },
+        'BC0wai72dA16OIPrs'
       );
       // Send to Zapier webhook
       await fetch('https://hooks.zapier.com/hooks/catch/23855957/u2ji8z7/', {

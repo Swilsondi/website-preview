@@ -211,6 +211,16 @@ const ContactForm = () => {
       // Simulate API call - replace with actual endpoint
       await new Promise(resolve => setTimeout(resolve, 2000))
       
+      // Send main contact form email (simulate or use your actual template)
+      // await emailjs.send('service_cby8mnr', 'your_contact_template', formData, 'BC0wai72dA16OIPrs');
+      // Send welcome email
+      await emailjs.send(
+        'service_cby8mnr',
+        'template_uviodzr',
+        { email: formData.email, name: formData.firstName + ' ' + formData.lastName },
+        'BC0wai72dA16OIPrs'
+      );
+      
       setSubmitStatus('success')
       setFormData({
         firstName: '',
