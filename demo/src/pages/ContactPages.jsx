@@ -219,15 +219,20 @@ const ContactForm = () => {
       // Simulate API call - replace with actual endpoint
       await new Promise(resolve => setTimeout(resolve, 2000))
       
-      // Send main contact form email (simulate or use your actual template)
-      // await emailjs.send('service_cby8mnr', 'your_contact_template', formData, 'BC0wai72dA16OIPrs');
-      // Send welcome email
+      // Send main contact form email
       await emailjs.send(
-        'service_cby8mnr',
-        'template_uviodzr',
-        { email: formData.email, name: formData.firstName + ' ' + formData.lastName },
-        'BC0wai72dA16OIPrs'
+        'service_cby8mnr', // service ID
+        'template_uviodzr', // contact form template
+        formData,
+        'BC0wai72dA16OIPrs' // public key
       );
+      // Send welcome email (optional, if you want a separate welcome message)
+      // await emailjs.send(
+      //   'service_cby8mnr',
+      //   'template_uviodzr',
+      //   { email: formData.email, name: formData.firstName + ' ' + formData.lastName },
+      //   'BC0wai72dA16OIPrs'
+      // );
       
       setSubmitStatus('success')
       setFormData({
