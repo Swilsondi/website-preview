@@ -119,7 +119,7 @@ const PreCheckoutQuestions = ({ onComplete }) => {
       onComplete(answers);
       // Send to Zapier webhook via backend proxy (non-blocking)
       try {
-        await fetch('/api/zapier-proxy', {
+        await fetch('/demo/api/zapier-proxy', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
