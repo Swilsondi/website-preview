@@ -10,7 +10,8 @@ export const validateName = (name) => {
 
 export const sanitizeInput = (input) => {
   if (typeof input !== "string") return "";
-  return input.trim().replace(/<[^>]*>?/gm, ""); // Remove HTML tags
+  // Only remove HTML tags, do not trim spaces
+  return input.replace(/<[^>]*>?/gm, "");
 };
 
 export const validateForm = (formData) => {
@@ -36,7 +37,8 @@ export const validateForm = (formData) => {
     errors.budget = "Please select a budget range";
   }
 
-  if (formData.message.trim().length < 10) {
+  // Only remove HTML tags for message, do not trim spaces
+  if (formData.message.replace(/<[^>]*>?/gm, "").length < 10) {
     errors.message = "Message must be at least 10 characters";
   }
 
