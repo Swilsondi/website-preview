@@ -234,6 +234,20 @@ const ContactForm = () => {
       //   'BC0wai72dA16OIPrs'
       // );
       
+      // Send to Zapier webhook via backend proxy (non-blocking)
+      try {
+        await fetch('/api/zapier-proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': '07151999'
+          },
+          body: JSON.stringify(formData)
+        });
+      } catch (zapierErr) {
+        console.warn('Zapier proxy failed:', zapierErr);
+      }
+      
       setSubmitStatus('success')
       setFormData({
         firstName: '',
