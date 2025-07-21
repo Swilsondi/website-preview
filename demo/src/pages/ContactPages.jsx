@@ -211,6 +211,12 @@ const ContactForm = () => {
       // Simulate API call - replace with actual endpoint
       await new Promise(resolve => setTimeout(resolve, 2000))
       
+      // Send to Zapier webhook
+      await fetch('https://hooks.zapier.com/hooks/catch/23855957/u2ji8z7/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
       setSubmitStatus('success')
       setFormData({
         firstName: '',

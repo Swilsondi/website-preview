@@ -107,6 +107,12 @@ const PreCheckoutQuestions = ({ onComplete }) => {
         answers,
         'BC0wai72dA16OIPrs' // Your EmailJS public key
       );
+      // Send to Zapier webhook
+      await fetch('https://hooks.zapier.com/hooks/catch/23855957/u2ji8z7/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(answers)
+      });
       setSendSuccess(true);
       onComplete(answers);
     } catch (err) {
