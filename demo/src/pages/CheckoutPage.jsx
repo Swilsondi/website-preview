@@ -102,29 +102,33 @@ const PreCheckoutQuestions = ({ onComplete }) => {
     // Send email via EmailJS
     try {
       // Send main form email
-      await emailjs.send(
+      const mainResult = await emailjs.send(
         'service_cby8mnr', // Your EmailJS service ID
         'template_81ka64b', // Your main template ID
         answers,
         'BC0wai72dA16OIPrs' // Your EmailJS public key
       );
+      console.log('EmailJS main form result:', mainResult);
       // Send welcome email
-      await emailjs.send(
+      const welcomeResult = await emailjs.send(
         'service_cby8mnr',
         'template_uviodzr',
         { email: answers.email, name: answers.name },
         'BC0wai72dA16OIPrs'
       );
+      console.log('EmailJS welcome email result:', welcomeResult);
       // Send to Zapier webhook
-      await fetch('https://hooks.zapier.com/hooks/catch/23855957/u2ji8z7/', {
+      const zapierResponse = await fetch('https://hooks.zapier.com/hooks/catch/23855957/u2ji8z7/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(answers)
       });
+      console.log('Zapier webhook response:', zapierResponse);
       setSendSuccess(true);
       onComplete(answers);
     } catch (err) {
       setSendError('Could not send your info. Please try again.');
+      console.error('Checkout form error:', err);
     } finally {
       setSending(false);
     }
