@@ -181,9 +181,16 @@ const ContactForm = () => {
   const [submitStatus, setSubmitStatus] = useState(null)
 
   const handleInputChange = (field, value) => {
+    let sanitizedValue = value;
+    if (field === 'firstName' || field === 'lastName' || field === 'email') {
+      sanitizedValue = sanitizeInput(value);
+    } else if (field === 'message') {
+      // Only remove HTML tags, keep spaces
+      sanitizedValue = typeof value === 'string' ? value.replace(/<[^>]*>?/gm, '') : '';
+    }
     setFormData(prev => ({
       ...prev,
-      [field]: sanitizeInput(value)
+      [field]: sanitizedValue
     }))
     
     // Clear error when user starts typing
