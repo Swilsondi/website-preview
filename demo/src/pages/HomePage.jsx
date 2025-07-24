@@ -1,6 +1,3 @@
-// Make sure you have react-helmet installed:
-// npm install react-helmet
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -85,7 +82,7 @@ const SplitText = ({ children, className = "" }) => {
 }
 
 
-// Enhanced Hero Section - FIXED
+// Enhanced Hero Section 
 const HeroSection = ({ handleNavigation }) => {
   return (
     <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden pt-12 md:pt-16">
