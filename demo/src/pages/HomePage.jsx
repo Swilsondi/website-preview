@@ -416,7 +416,7 @@ export default function HomePage() {
       {/* End Google Tag Manager */}
       <Helmet>
         <title>TechMotiveSupreme | Premium Web Development & Branding</title>
-        <meta name="description" content="High-performing websites and digital branding for creators, brands, and entrepreneurs. Build, launch, and monetize your digital presence." />
+        <meta name="description" content="TechMotive-Supreme builds premium websites that convert. Perfect for creators, entrepreneurs & brands. Get a stunning affordable site that drives real results." />
         <meta property="og:title" content="TechMotiveSupreme | Premium Web Development & Branding" />
         <meta property="og:description" content="High-performing websites and digital branding for creators, brands, and entrepreneurs." />
         <meta property="og:image" content="/assets/dark-logo.png" />
