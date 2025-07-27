@@ -419,8 +419,8 @@ export default function AboutPage() {
         <meta name="description" content="Learn about TechMotiveSupreme's mission, values, expertise, and proven track record in digital excellence." />
         <meta property="og:title" content="About TechMotiveSupreme | Digital Innovation Leaders" />
         <meta property="og:description" content="Discover our mission, values, and expertise in delivering digital excellence." />
-        <meta property="og:image" content="/assets/dark-logo-256x256.png" /> {/* Use optimized image */}
-        <meta property="og:url" content="https://techmotivesupreme.com/about" />
+        <meta property="og:image" content="/assets/dark-logo.png" /> {/* Use optimized image */}
+        <meta property="og:url" content="https://www.techmotivesupreme.com/about" />
       </Helmet>
       <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <AboutHero navigate={navigate} />

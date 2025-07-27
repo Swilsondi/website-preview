@@ -533,8 +533,8 @@ export default function ClientSuccessStoriesPage() {
         <meta name="description" content="See how TechMotiveSupreme helped real businesses achieve extraordinary results." />
         <meta property="og:title" content="Client Success Stories | TechMotiveSupreme" />
         <meta property="og:description" content="See how TechMotiveSupreme helped real businesses achieve extraordinary results." />
-        <meta property="og:image" content="/assets/dark-logo-256x256.png" /> {/* Use optimized image */}
-        <meta property="og:url" content="https://techmotivesupreme.com/client-success-stories" />
+        <meta property="og:image" content="/assets/dark-logo.png" /> {/* Use optimized image */}
+        <meta property="og:url" content="https://www.techmotivesupreme.com/client-success-stories" />
       </Helmet>
       <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <SuccessHero />

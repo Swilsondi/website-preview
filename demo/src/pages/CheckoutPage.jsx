@@ -667,7 +667,7 @@ export default function CheckoutPage() {
         <meta property="og:title" content="Checkout | TechMotiveSupreme" />
         <meta property="og:description" content="Secure checkout for your web development, branding, and add-on services." />
         <meta property="og:image" content="/assets/dark-logo.png" />
-        <meta property="og:url" content="https://techmotivesupreme.com/checkout" />
+        <meta property="og:url" content="https://www.techmotivesupreme.com/checkout" />
       </Helmet>
       <div
         className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out pt-20${

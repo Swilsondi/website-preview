@@ -465,6 +465,7 @@ export default function ShowcasePage() {
 		<div className="min-h-screen bg-gray-900 w-full overflow-x-hidden">
 			<Helmet>
 				<link rel="canonical" href="https://www.techmotivesupreme.com/portfolio" />
+				<meta property="og:url" content="https://www.techmotivesupreme.com/portfolio" />
 			</Helmet>
 			<PortfolioHero
 				categories={categories}
