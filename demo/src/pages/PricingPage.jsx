@@ -838,6 +838,8 @@ export default function PricingPage() {
       <Helmet>
         <link rel="canonical" href="https://www.techmotivesupreme.com/pricing" />
         <meta property="og:url" content="https://www.techmotivesupreme.com/pricing" />
+        <meta property="og:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
+        <meta name="twitter:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
       </Helmet>
       {/* Custom Scrollbar Styles */}
       <style

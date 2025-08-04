@@ -58,8 +58,9 @@ const ServicesHero = ({ navigate }) => (
       <meta name="description" content="Professional web development, branding, mobile apps, analytics, and support services to scale your business." />
       <meta property="og:title" content="Services | TechMotiveSupreme" />
       <meta property="og:description" content="Explore our web development, branding, mobile apps, analytics, and support services." />
-      <meta property="og:image" content="/assets/dark-logo.png" /> {/* Use optimized image */}
+      <meta property="og:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
       <meta property="og:url" content="https://www.techmotivesupreme.com/services" />
+      <meta name="twitter:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
       <link rel="canonical" href="https://www.techmotivesupreme.com/services" />
     </Helmet>
     <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 overflow-hidden pt-12 md:pt-16">

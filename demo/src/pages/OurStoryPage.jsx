@@ -21,7 +21,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
-import darkLogo from '@/assets/dark-logo.png'
+import darkLogo from '/dark-logo.png'
 import { Helmet } from "react-helmet"
 
 // Animation variants
@@ -467,7 +467,7 @@ const VisionSection = () => {
           </blockquote>
           <div className="flex flex-col items-center mb-6">
             <img 
-              src="/assets/dark-logo.png"
+              src="/dark-logo.png"
               alt="Spencer Wilson / TechMotiveSupreme Logo"
               width={36}
               height={36}
@@ -526,6 +526,8 @@ export default function OurStoryPage() {
       <Helmet>
         <link rel="canonical" href="https://www.techmotivesupreme.com/our-story" />
         <meta property="og:url" content="https://www.techmotivesupreme.com/our-story" />
+        <meta property="og:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
+        <meta name="twitter:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
       </Helmet>
       <StoryHero />
       <OriginStorySection />

@@ -14,8 +14,9 @@ const LearnMorePage = () => {
         <meta name="description" content="Discover more about our services, expertise, and case studies at TechMotiveSupreme." />
         <meta property="og:title" content="Learn More | TechMotiveSupreme" />
         <meta property="og:description" content="Discover more about our services, expertise, and case studies at TechMotiveSupreme." />
-        <meta property="og:image" content="/assets/dark-logo.png" />
-        <meta property="og:url" content="https://techmotivesupreme.com/learn-more" />
+        <meta property="og:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
+        <meta property="og:url" content="https://www.techmotivesupreme.com/learn-more" />
+        <meta name="twitter:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
         <link rel="canonical" href="https://www.techmotivesupreme.com/learn-more" />
       </Helmet>
       <div className="min-h-screen bg-gray-900 text-white">

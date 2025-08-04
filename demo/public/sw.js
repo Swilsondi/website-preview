@@ -10,8 +10,6 @@ self.addEventListener("install", (event) => {
         "/assets/dark-logo.png",
         "/assets/banner-logo.jpeg",
         "/index.css",
-        "/App.css",
-        "/src/main.jsx",
       ]);
     })
   );
@@ -37,5 +35,7 @@ self.addEventListener("activate", (event) => {
         })
       );
     })
+  );
+});
   );
 });
