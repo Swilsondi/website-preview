@@ -34,14 +34,14 @@ export default defineConfig({
       filename: "dist/stats.html",
       open: false, // Don't automatically open in browser
     }),
-    Pages({
-      dirs: "src/pages", // auto-detect pages in /src/pages
-      extensions: ["jsx", "tsx", "js", "ts"],
-    }),
-    Sitemap({
-      hostname: "https://www.techmotivesupreme.com",
-      routes: undefined, // auto-detect routes from vite-plugin-pages
-    }),
+    // Pages({
+    //   dirs: "src/pages", // auto-detect pages in /src/pages
+    //   extensions: ["jsx", "tsx", "js", "ts"],
+    // }),
+    // Sitemap({
+    //   hostname: "https://www.techmotivesupreme.com",
+    //   routes: undefined, // auto-detect routes from vite-plugin-pages
+    // }),
   ],
   resolve: {
     alias: {
