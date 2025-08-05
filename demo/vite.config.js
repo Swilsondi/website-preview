@@ -6,8 +6,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { visualizer } from "rollup-plugin-visualizer"; // Add visualizer plugin
 import crypto from "crypto";
-import Pages from "vite-plugin-pages";
-import Sitemap from "vite-plugin-sitemap";
+// import Pages from "vite-plugin-pages";
+// import Sitemap from "vite-plugin-sitemap";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
