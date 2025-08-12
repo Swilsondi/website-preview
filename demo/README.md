@@ -1,10 +1,24 @@
-# TechMotiveSupreme Website
+# TechMotive-Supreme Website
 
-A premium, modern web development portfolio and business website built with React, showcasing digital excellence and professional services.
+TechMotive-Supreme is a modern digital agency website and e-commerce platform built with React, Vite, and Tailwind CSS. This site is designed to showcase and sell premium web development, branding, and digital strategy services to creators, entrepreneurs, and businesses. Our mission is to empower clients with high-performing, visually stunning websites and proven digital solutions that drive real business results.
+
+## 🏆 What We Do & Sell
+
+- **Custom Website Design & Development**: Fast, mobile-friendly, and SEO-optimized websites tailored to your brand and goals.
+- **Branding & Identity**: Logo design, brand strategy, and visual identity packages.
+- **Digital Strategy**: Growth consulting, analytics, and conversion optimization.
+- **E-Commerce Solutions**: Online stores, payment integration, and product management.
+- **Ongoing Support**: Maintenance, updates, and performance monitoring.
 
 ## 🚀 Project Overview
 
-TechMotiveSupreme is a cutting-edge business website designed for a premium web development agency. It features modern animations, responsive design, and optimized performance with a focus on user experience and conversion.
+TechMotive-Supreme is a business website and digital storefront for a premium web development agency. It features:
+
+- Modern animations and interactive UI
+- Responsive, mobile-first design
+- Optimized performance and SEO
+- Secure forms and checkout
+- Real client success stories and testimonials
 
 ### ✨ Key Features
 
@@ -154,7 +168,7 @@ Create a `.env` file in the root directory:
 
 ```env
 VITE_API_URL=https://api.techmotivesupreme.com
-VITE_CONTACT_EMAIL=hello@techmotivesupreme.com
+VITE_CONTACT_EMAIL=contact@techmotivesupreme.com
 VITE_ANALYTICS_ID=your-analytics-id
 VITE_SITE_URL=https://techmotivesupreme.com
 ```
@@ -189,36 +203,6 @@ Custom configuration includes:
    git commit -m "Ready for deployment"
    git push origin main
    ```
-
-2. **Deploy to Vercel**
-   - Connect your GitHub repository to Vercel
-   - Configure environment variables in Vercel dashboard
-   - Deploy automatically on push
-
-### Netlify Alternative
-
-1. **Build the project**
-
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy to Netlify**
-   - Drag and drop `dist` folder to Netlify
-   - Or connect GitHub repository for continuous deployment
-
-### Environment Variables for Production
-
-Set these in your deployment platform:
-
-```
-VITE_API_URL=your-production-api-url
-VITE_CONTACT_EMAIL=your-email
-VITE_ANALYTICS_ID=your-analytics-id
-VITE_SITE_URL=your-domain
-```
-
-## 📊 Performance Optimizations
 
 ### Current Optimizations
 
