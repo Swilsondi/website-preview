@@ -146,7 +146,7 @@ const PricingCards = () => {
   const plans = [
     {
       name: "Starter Site",
-      price: "$500",
+      price: "$850",
       marketValue: "$2,000+",
       duration: "one-time",
       description: "Perfect for small businesses and creators starting their digital presence",
@@ -176,7 +176,7 @@ const PricingCards = () => {
     },
     {
       name: "Platinum Site",
-      price: "$900",
+      price: "$1200",
       marketValue: "$4,000–$7,000",
       duration: "one-time",
       description: "Great for growing businesses who want strong branding and advanced functionality",
@@ -206,7 +206,7 @@ const PricingCards = () => {
     },
     {
       name: "Premium Site",
-      price: "$1,500+",
+      price: "$3,000+",
       marketValue: "$8,000–$15,000+",
       duration: "one-time",
       description: "Ideal for brands that need full digital presence and custom features",
