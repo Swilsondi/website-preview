@@ -176,7 +176,7 @@ const PricingCards = () => {
     },
     {
       name: "Platinum Site",
-      price: "$1200",
+      price: "$1500",
       marketValue: "$4,000–$7,000",
       duration: "one-time",
       description: "Great for growing businesses who want strong branding and advanced functionality",
