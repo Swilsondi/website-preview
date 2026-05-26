@@ -18,7 +18,7 @@ import {
   Sparkles
 } from "lucide-react"
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
 import darkLogo from '/dark-logo.png'
@@ -480,24 +480,14 @@ const VisionSection = () => {
 
 // Main Page Component
 export default function OurStoryPage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Slight delay ensures smoother transition after route change
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className="min-h-screen bg-black w-full overflow-x-hidden">
       <Helmet>
         <link rel="canonical" href="https://www.techmotivesupreme.com/our-story" />
         <meta property="og:url" content="https://www.techmotivesupreme.com/our-story" />

@@ -10,7 +10,6 @@ import { redirectToCheckout } from "@/services/stripeService";
 import { Helmet } from "react-helmet";
 
 export default function FinalPaymentPage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [checkoutError, setCheckoutError] = useState('');
   const [projectDetails, setProjectDetails] = useState(null);
@@ -19,10 +18,6 @@ export default function FinalPaymentPage() {
 
   // Get project ID from URL query params
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-
     const searchParams = new URLSearchParams(location.search);
     const projectId = searchParams.get('project_id');
     
@@ -40,8 +35,6 @@ export default function FinalPaymentPage() {
     };
     
     setProjectDetails(project);
-    
-    return () => clearTimeout(timer);
   }, [location]);
 
   // Handle the final payment checkout
@@ -83,9 +76,7 @@ export default function FinalPaymentPage() {
         <meta property="og:url" content="https://techmotivesupreme.com/final-payment" />
       </Helmet>
       <div
-        className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${
-          pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
+        className="min-h-screen bg-black w-full overflow-x-hidden"
       >
         {/* Hero Section */}
         <section className="relative flex flex-col items-center justify-center min-h-screen pt-[88px] bg-black overflow-hidden">

@@ -580,7 +580,6 @@ const CalendlySection = () => (
 
 // Main Checkout Page Component
 export default function CheckoutPage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
   const { selectedPlan, cart } = useCart();
   const location = useLocation();
   const [currentStep, setCurrentStep] = useState(() =>
@@ -596,14 +595,6 @@ export default function CheckoutPage() {
       setCurrentStep('questions');
     }
   }, [location.search]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   // Check if payment was canceled
   useEffect(() => {
@@ -623,14 +614,6 @@ export default function CheckoutPage() {
     setCurrentStep('checkout');
     navigate('/checkout'); // Ensure we show the full checkout UI after questions
   };
-
-  if (!pageLoaded) {
-    return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <p className="text-white">Loading...</p>
-      </div>
-    );
-  }
 
   // Always show questions step if that's the current step, even if no selectedPlan or only add-ons
   if (currentStep === 'questions') {
@@ -656,9 +639,7 @@ export default function CheckoutPage() {
         <meta property="og:url" content="https://www.techmotivesupreme.com/checkout" />
       </Helmet>
       <div
-        className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out pt-20${
-          pageLoaded ? ' opacity-100 translate-y-0' : ' opacity-0 translate-y-4'
-        }`}
+        className="min-h-screen bg-black w-full overflow-x-hidden pt-20"
       >
         <style dangerouslySetInnerHTML={{ __html: `
           ::-webkit-scrollbar {

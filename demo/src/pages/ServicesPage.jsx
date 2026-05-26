@@ -21,7 +21,7 @@ import {
 } from "lucide-react"
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
 import { LazyMotion } from "@/components/LazyMotion"
@@ -317,23 +317,13 @@ const ServicesCTA = ({ navigate }) => (
 )
 
 export default function ServicesPage() {
-  const [pageLoaded, setPageLoaded] = useState(false)
   const navigate = useNavigate();
-  
+
   // Track page performance
   usePerformance("ServicesPage");
 
-  useEffect(() => {
-    // Slight delay ensures smoother transition after route change
-    const timer = setTimeout(() => {
-      setPageLoaded(true)
-    }, 100)
-    
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
-    <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className="min-h-screen bg-black w-full overflow-x-hidden">
       <ServicesHero navigate={navigate} />
       <ServicesGrid />
       <ProcessSection />

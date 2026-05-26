@@ -16,7 +16,7 @@ import {
   ShoppingCart
 } from "lucide-react"
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCart } from '@/components/CartProvider';
 import Footer from "@/components/Footer"
@@ -519,19 +519,12 @@ const PricingCTA = () => {
 }
 
 export default function PricingPage() {
-  const [pageLoaded, setPageLoaded] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setPageLoaded(true), 100)
-    return () => clearTimeout(timer)
-  }, [])
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-opacity duration-500 ${pageLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className="min-h-screen bg-black w-full overflow-x-hidden">
       <Helmet>
         <link rel="canonical" href="https://www.techmotivesupreme.com/pricing" />
         <meta property="og:url" content="https://www.techmotivesupreme.com/pricing" />

@@ -476,17 +476,6 @@ const CTASection = () => {
 
 // Main Page Component
 export default function ClientSuccessStoriesPage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
-
-  useEffect(() => {
-    // Slight delay ensures smoother transition after route change
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -510,7 +499,7 @@ export default function ClientSuccessStoriesPage() {
         <meta property="og:image" content="/assets/dark-logo.png" /> {/* Use optimized image */}
         <meta property="og:url" content="https://www.techmotivesupreme.com/client-success-stories" />
       </Helmet>
-      <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className="min-h-screen bg-black w-full overflow-x-hidden">
         <SuccessHero />
         <FeaturedCaseStudy />
         <CaseStudiesGrid />

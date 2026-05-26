@@ -18,18 +18,10 @@ import { handleCheckoutSuccess } from "@/services/stripeService";
 import { Helmet } from "react-helmet";
 
 export default function CheckoutSuccessPage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const [orderDetails, setOrderDetails] = useState(null);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Process the successful checkout
   useEffect(() => {
@@ -64,11 +56,7 @@ export default function CheckoutSuccessPage() {
         <meta property="og:image" content="/assets/dark-logo.png" />
         <meta property="og:url" content="https://techmotivesupreme.com/checkout-success" />
       </Helmet>
-      <div 
-        className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${
-          pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
-      >
+      <div className="min-h-screen bg-black w-full overflow-x-hidden">
         {/* Success Hero Section */}
         <section className="relative py-20 bg-black overflow-hidden pt-[88px]">
           <div className="absolute inset-0">

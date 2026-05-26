@@ -11,7 +11,7 @@ import {
   Briefcase,
   Users
 } from "lucide-react"
-import { useEffect, useState, useLayoutEffect } from "react"
+import { useEffect, useLayoutEffect } from "react"
 import { motion } from "framer-motion"
 import Footer from "@/components/Footer"
 import { useNavigate } from 'react-router-dom';
@@ -266,15 +266,9 @@ const CTASection = () => {
 }
 
 export default function HomePage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
   const navigate = useNavigate();
 
   usePerformance('HomePage');
-
-  useEffect(() => {
-    const timer = setTimeout(() => setPageLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, [])
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -307,7 +301,7 @@ export default function HomePage() {
         <meta property="og:url" content="https://www.techmotivesupreme.com" />
         <link rel="canonical" href="https://www.techmotivesupreme.com/" />
       </Helmet>
-      <div className={`min-h-screen bg-black w-full overflow-auto transition-opacity duration-500 ${pageLoaded ? "opacity-100" : "opacity-0"}`}>
+      <div className="min-h-screen bg-black w-full overflow-auto">
         <HeroSection handleNavigation={handleNavigation} />
         <ServicesSection />
         <SocialProofSection />

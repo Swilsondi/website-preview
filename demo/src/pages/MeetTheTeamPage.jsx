@@ -653,17 +653,7 @@ const JoinTeamSection = () => {
 
 // Main Page Component
 export default function MeetTheTeamPage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Slight delay ensures smoother transition after route change
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -690,7 +680,7 @@ export default function MeetTheTeamPage() {
         <meta name="twitter:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
         <link rel="canonical" href="https://www.techmotivesupreme.com/meet-the-team" />
       </Helmet>
-      <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className="min-h-screen bg-black w-full overflow-x-hidden">
         <TeamHero />
         <LeadershipSection />
         <TeamGrid />

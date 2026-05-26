@@ -21,7 +21,7 @@ import {
   Sparkles
 } from "lucide-react"
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Footer from "@/components/Footer"
 import { Helmet } from "react-helmet"
@@ -450,17 +450,6 @@ const InnovationCTA = () => {
 
 // Main Page Component
 export default function InnovationLabPage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
-
-  useEffect(() => {
-    // Slight delay ensures smoother transition after route change
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, []);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -485,7 +474,7 @@ export default function InnovationLabPage() {
         <meta property="og:url" content="https://www.techmotivesupreme.com/innovation-lab" />
         <link rel="canonical" href="https://www.techmotivesupreme.com/innovation-lab" />
       </Helmet>
-      <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className="min-h-screen bg-black w-full overflow-x-hidden">
         <InnovationHero />
         <BrandingServices />
         <InnovationProcess />

@@ -22,7 +22,7 @@ import {
 import { motion } from "framer-motion"
 import Footer from "@/components/Footer"
 import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react' // ✅ ENSURE THIS IS IMPORTED
+import { useEffect } from 'react'
 import { Helmet } from "react-helmet"
 
 // About Hero Section - FIXED
@@ -364,15 +364,7 @@ const AboutCTA = ({ navigate }) => {
 
 // Main About Page Component
 export default function AboutPage() {
-  const [pageLoaded, setPageLoaded] = useState(false)
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setPageLoaded(true)
-    }, 100)
-    return () => clearTimeout(timer)
-  }, [])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -397,7 +389,7 @@ export default function AboutPage() {
         <meta property="og:image" content="/assets/dark-logo.png" /> {/* Use optimized image */}
         <meta property="og:url" content="https://www.techmotivesupreme.com/about" />
       </Helmet>
-      <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className="min-h-screen bg-black w-full overflow-x-hidden">
         <AboutHero navigate={navigate} />
         <MissionSection />
         <ExpertiseSection />

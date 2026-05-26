@@ -604,15 +604,7 @@ const ContactCTA = () => (
 )
 
 export default function ContactPage() {
-  const [pageLoaded, setPageLoaded] = useState(false);
   const formRef = useRef(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setPageLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <>
@@ -634,11 +626,7 @@ export default function ContactPage() {
         <meta property="og:url" content="https://techmotivesupreme.com/contact" />
         <link rel="canonical" href="https://www.techmotivesupreme.com/contact" />
       </Helmet>
-      <div
-        className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${
-          pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
-      >
+      <div className="min-h-screen bg-black w-full overflow-x-hidden">
         <ContactHero onMessageClick={() => {
           if (formRef.current) {
             formRef.current.scrollIntoView({ behavior: 'smooth' });
