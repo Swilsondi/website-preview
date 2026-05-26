@@ -76,7 +76,7 @@ const HeroSection = ({ handleNavigation }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-lg lg:text-xl text-neutral-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl lg:text-2xl text-neutral-400 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             TechMotive-Supreme builds custom websites for creators, brands, and entrepreneurs who are serious about growth.
           </motion.p>
@@ -117,7 +117,7 @@ const HeroSection = ({ handleNavigation }) => {
               { number: "48hrs", label: "Avg Turnaround" },
             ].map((stat, index) => (
               <motion.div key={index} variants={fadeInUp} className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold text-white mb-1">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1">
                   {stat.number}
                 </div>
                 <div className="text-neutral-500 text-xs uppercase tracking-widest">{stat.label}</div>
@@ -156,11 +156,11 @@ const ServicesSection = () => {
   return (
     <section className="py-24 bg-neutral-950 border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-3xl lg:text-5xl font-black text-white mb-4">
+        <div className="mb-16 text-center">
+          <h2 className="text-4xl lg:text-6xl font-black text-white mb-6">
             We don't just build.<br />We launch.
           </h2>
-          <p className="text-neutral-500 max-w-xl text-base">
+          <p className="text-neutral-500 max-w-2xl mx-auto text-lg">
             End-to-end solutions for creators and entrepreneurs who refuse to settle for average.
           </p>
         </div>
@@ -174,17 +174,17 @@ const ServicesSection = () => {
                     <service.icon className="w-5 h-5 text-neutral-300" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-3">
+                  <h3 className="text-xl font-bold text-white mb-3">
                     {service.title}
                   </h3>
 
-                  <p className="text-neutral-500 mb-6 leading-relaxed text-sm">
+                  <p className="text-neutral-500 mb-6 leading-relaxed text-base">
                     {service.description}
                   </p>
 
                   <ul className="space-y-2 mt-auto">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-neutral-400 text-sm">
+                      <li key={i} className="flex items-center text-neutral-400 text-base">
                         <div className="w-1 h-1 rounded-full bg-neutral-500 mr-3 flex-shrink-0" />
                         {feature}
                       </li>
@@ -203,11 +203,11 @@ const ServicesSection = () => {
 const SocialProofSection = () => (
   <section className="py-20 bg-black border-t border-white/[0.06]">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div className="mb-12">
-        <h2 className="text-3xl lg:text-4xl font-black text-white mb-3">
+      <div className="mb-12 text-center">
+        <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">
           Trusted by creators and brands.
         </h2>
-        <p className="text-neutral-500">
+        <p className="text-neutral-500 text-lg">
           Real results from real projects.
         </p>
       </div>
@@ -219,11 +219,11 @@ const SocialProofSection = () => (
           { number: "$30k+", label: "Revenue Generated", icon: TrendingUp },
           { number: "24/7", label: "Support", icon: Users }
         ].map((stat, index) => (
-          <div key={index} className="bg-black p-8 text-center">
-            <div className="text-3xl font-bold text-white mb-2">
+          <div key={index} className="bg-black p-10 text-center">
+            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
               {stat.number}
             </div>
-            <div className="text-neutral-500 text-sm">
+            <div className="text-neutral-500 text-base">
               {stat.label}
             </div>
           </div>
@@ -239,11 +239,11 @@ const CTASection = () => {
     <section className="py-24 bg-neutral-950 border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-3xl mx-auto">
         <div className="text-center">
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
+          <h2 className="text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
             Ready to build something real?
           </h2>
 
-          <p className="text-neutral-400 mb-10 leading-relaxed">
+          <p className="text-neutral-400 mb-10 leading-relaxed text-lg max-w-xl mx-auto">
             Book a free 30-minute strategy session. No commitment, no templates — just a real conversation about your project.
           </p>
 
