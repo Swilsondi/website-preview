@@ -1,41 +1,12 @@
-// Service Worker for TechMotiveSupreme
-// Original version restored
+// Force-unregister: clears all caches and removes this service worker
+self.addEventListener('install', () => self.skipWaiting());
 
-self.addEventListener("install", (event) => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.open("static-v1").then((cache) => {
-      return cache.addAll([
-        "/",
-        "/index.html",
-        "/assets/dark-logo.png",
-        "/assets/banner-logo.jpeg",
-        "/index.css",
-      ]);
-    })
-  );
-});
-
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
-});
-
-// Clear old caches during activation
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== "static-v1") {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
+    caches.keys()
+      .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
+      .then(() => self.registration.unregister())
+      .then(() => self.clients.matchAll())
+      .then((clients) => clients.forEach((client) => client.navigate(client.url)))
   );
 });

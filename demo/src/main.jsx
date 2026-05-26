@@ -12,32 +12,11 @@ setupErrorLogging();
 // Ensure browser does not restore scroll position automatically
 history.scrollRestoration = "manual";
 
-// Service Worker Registration
+// Unregister any previously installed service workers
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then((registration) => {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-
-      registration.addEventListener('updatefound', () => {
-        const newWorker = registration.installing;
-        newWorker.addEventListener('statechange', () => {
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            console.log('New content is available; please refresh.');
-            if (confirm('A new version is available. Refresh now?')) {
-              newWorker.postMessage({ action: 'skipWaiting' });
-              window.location.reload();
-            }
-          }
-        });
-      });
-    }).catch((error) => {
-      console.error('Service worker registration failed:', error);
-    });
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    registrations.forEach((registration) => registration.unregister());
   });
-
-  // navigator.serviceWorker.addEventListener('controllerchange', () => {
-  //   window.location.reload();
-  // });
 }
 
 // Performance marks for initial load
