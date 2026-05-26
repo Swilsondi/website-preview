@@ -105,7 +105,7 @@ const PricingHero = () => (
               <span className="text-2xl">🔥</span>
             </div>
             <p className="text-red-200 text-center mb-2 text-base">
-              Get a <span className="font-bold text-white line-through">$2,000+</span> site for just <span className="font-bold text-yellow-300">$500</span>
+              Get a <span className="font-bold text-white line-through">$2,000+</span> site for just <span className="font-bold text-yellow-300">$850</span>
             </p>
             <p className="text-red-300 text-sm text-center">
               Only available until: <span className="font-semibold text-white">August 15, 2025</span>
@@ -771,7 +771,7 @@ const PricingCTA = () => {
           </h2>
           
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-            Get a $2,000+ site for just $500. Built with premium tools. Delivered fast. No templates. Just results.
+            Get a $2,000+ site for just $850. Built with premium tools. Delivered fast. No templates. Just results.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
