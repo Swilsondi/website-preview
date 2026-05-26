@@ -54,7 +54,7 @@ const PricingHero = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight tracking-tight"
+          className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tight"
         >
           Choose Your Package
         </motion.h1>
@@ -63,7 +63,7 @@ const PricingHero = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-neutral-400 max-w-xl mx-auto text-base leading-relaxed"
+          className="text-neutral-400 max-w-xl mx-auto text-xl lg:text-2xl leading-relaxed"
         >
           From solo creators to growing brands. Every package is built to scale with your vision.
         </motion.p>
@@ -159,10 +159,10 @@ const PricingCards = () => {
     <section className="py-20 bg-black">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="mb-14">
-          <h2 className="text-3xl lg:text-4xl font-black text-white mb-3">
+          <h2 className="text-4xl lg:text-6xl font-black text-white mb-4">
             Transparent pricing.
           </h2>
-          <p className="text-neutral-500 text-sm">
+          <p className="text-neutral-500 text-lg">
             All plans include everything you need to succeed.
           </p>
         </div>
@@ -310,10 +310,10 @@ const AddOnsSection = () => {
     <section className="py-20 bg-neutral-950 border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="mb-14">
-          <h2 className="text-3xl lg:text-4xl font-black text-white mb-3">
+          <h2 className="text-4xl lg:text-6xl font-black text-white mb-4">
             Add-ons
           </h2>
-          <p className="text-neutral-500 text-sm">
+          <p className="text-neutral-500 text-lg">
             Extend your package with professional services.
           </p>
 
@@ -388,8 +388,8 @@ const PaymentTermsSection = () => {
 
   return (
     <div className="mt-20 border border-white/[0.08] rounded-xl p-10 max-w-3xl mx-auto">
-      <h3 className="text-xl font-bold text-white mb-2">Flexible Payment Options</h3>
-      <p className="text-neutral-500 text-sm mb-8">We make it easy to get started with secure, flexible payment terms.</p>
+      <h3 className="text-2xl font-bold text-white mb-3">Flexible Payment Options</h3>
+      <p className="text-neutral-500 text-base mb-8">We make it easy to get started with secure, flexible payment terms.</p>
 
       <div className="grid md:grid-cols-2 gap-8 mb-8">
         <div className="space-y-5">
@@ -439,10 +439,10 @@ const FAQSection = () => (
   <section className="py-20 bg-black border-t border-white/[0.06]">
     <div className="px-4 md:px-6 lg:px-8 max-w-3xl mx-auto">
       <div className="mb-12">
-        <h2 className="text-3xl lg:text-4xl font-black text-white mb-3">
+        <h2 className="text-4xl lg:text-6xl font-black text-white mb-4">
           Common questions.
         </h2>
-        <p className="text-neutral-500 text-sm">
+        <p className="text-neutral-500 text-lg">
           Everything you need to know before getting started.
         </p>
       </div>
@@ -467,8 +467,8 @@ const FAQSection = () => (
           }
         ].map((faq, index, arr) => (
           <div key={index} className={`p-6 ${index < arr.length - 1 ? 'border-b border-neutral-800' : ''}`}>
-            <h3 className="text-sm font-bold text-white mb-2">{faq.question}</h3>
-            <p className="text-neutral-500 text-sm leading-relaxed">{faq.answer}</p>
+            <h3 className="text-base font-bold text-white mb-2">{faq.question}</h3>
+            <p className="text-neutral-500 text-base leading-relaxed">{faq.answer}</p>
           </div>
         ))}
       </div>
@@ -481,11 +481,11 @@ const PricingCTA = () => {
   return (
     <section className="py-20 bg-neutral-950 border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl lg:text-5xl font-black text-white mb-6 leading-tight">
+        <h2 className="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight">
           Ready to transform your business?
         </h2>
 
-        <p className="text-neutral-400 mb-10 text-sm leading-relaxed">
+        <p className="text-neutral-400 mb-10 text-xl leading-relaxed">
           Get a $2,000+ site starting at $850. Built with premium tools. Delivered fast. No templates.
         </p>
 
@@ -510,7 +510,7 @@ const PricingCTA = () => {
 
         <div className="flex items-center justify-center gap-8 text-neutral-600 text-xs">
           {["100% Satisfaction Guarantee", "Lightning Fast Delivery", "Award-Winning Design"].map((item) => (
-            <span key={item}>{item}</span>
+            <span key={item} className="text-sm">{item}</span>
           ))}
         </div>
       </div>
