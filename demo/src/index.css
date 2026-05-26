@@ -122,14 +122,6 @@
   perspective: 1000px;
 }
 
-/* Ensure sidebar positioning */
-[data-sidebar="sidebar"] {
-  position: fixed !important;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  z-index: 40;
-}
 
 /* Contact form field alignment fix */
 .contact-form-fields {
