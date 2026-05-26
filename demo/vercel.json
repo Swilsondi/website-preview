@@ -1,7 +1,6 @@
 {
   "redirects": [
-    { "source": "/portfollio", "destination": "/portfolio", "permanent": true },
-    { "source": "https://techmotivesupreme.com/:path*", "destination": "https://www.techmotivesupreme.com/:path*", "permanent": true }
+    { "source": "/portfollio", "destination": "/portfolio", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
