@@ -16,7 +16,7 @@ export default function LoginPage() {
 
   return (
     <div
-      className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${
+      className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${
         pageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >

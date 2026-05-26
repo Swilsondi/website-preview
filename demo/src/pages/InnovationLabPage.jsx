@@ -44,33 +44,10 @@ const InnovationHero = () => {
   const navigate = useNavigate();
   return (
     <>
-      <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-violet-900 to-indigo-900 overflow-hidden pt-12 md:pt-16">
+      <section className="relative min-h-[70vh] bg-black overflow-hidden pt-12 md:pt-16">
         <div className="absolute inset-0">
-          <motion.div
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.04, 0.08, 0.04],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute top-1/4 left-1/3 w-96 h-96 bg-violet-500 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              scale: [1.2, 1, 1.2],
-              opacity: [0.02, 0.06, 0.02],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500 rounded-full blur-3xl"
-          />
-        </div>
+
+</div>
 
         <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-5xl mx-auto">
@@ -80,9 +57,7 @@ const InnovationHero = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
               className="mb-8 pt-4"
             >
-              <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-violet-500/20 border-violet-400 text-violet-200 mb-8 backdrop-blur-sm">
-                🧪 Innovation Lab • Where Ideas Take Shape
-              </Badge>
+              
             </motion.div>
 
             <motion.h1
@@ -92,7 +67,7 @@ const InnovationHero = () => {
               className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
             >
               Pioneering the 
-              <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent"> Future </span>
+              <span className="text-white"> Future </span>
               of Digital Experiences
             </motion.h1>
 
@@ -117,7 +92,7 @@ const InnovationHero = () => {
             >
               <Button 
                 size="lg" 
-                className="text-lg px-10 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="text-lg px-10 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
                 onClick={() => navigate('/showcase')}
               >
                 Explore Our Innovations
@@ -175,7 +150,7 @@ const BrandingServices = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-900">
+    <section className="py-24 bg-black border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -186,7 +161,7 @@ const BrandingServices = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Innovative 
-            <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent"> Branding </span>
+            <span className="text-white"> Branding </span>
             Solutions
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -205,12 +180,12 @@ const BrandingServices = () => {
               whileHover={{ y: -5 }}
               className="group flex flex-col items-center text-center justify-center"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-violet-500/50 transition-all duration-300 flex flex-col items-center justify-center">
+              <Card className="h-full bg-neutral-900 border-neutral-800 hover:bg-neutral-900 hover:border-neutral-600 transition-all duration-300 flex flex-col items-center justify-center">
                 <CardContent className="p-8 flex flex-col items-center justify-center">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 mx-auto`}>
+                  <div className={`w-16 h-16 bg-neutral-800 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 mx-auto`}>
                     <service.icon className="w-8 h-8 text-white mx-auto" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-violet-400 transition-colors duration-300 text-center">
+                  <h3 className="text-2xl font-bold text-white mb-4 text-center">
                     {service.title}
                   </h3>
                   <p className="text-gray-300 leading-relaxed text-center">
@@ -229,7 +204,7 @@ const BrandingServices = () => {
 // Our Innovation Process
 const InnovationProcess = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-gray-900 to-violet-900">
+    <section className="py-20 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -240,7 +215,7 @@ const InnovationProcess = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Our Innovation 
-            <span className="bg-gradient-to-r from-fuchsia-400 to-indigo-400 bg-clip-text text-transparent"> Process</span>
+            <span className="text-white"> Process</span>
           </h2>
           <p className="text-xl text-violet-200 max-w-3xl mx-auto">
             A systematic approach that transforms bold ideas into groundbreaking solutions.
@@ -293,7 +268,7 @@ const InnovationProcess = () => {
                 
                 {/* Content */}
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} pl-12 md:pl-0`}>
-                  <Card className="bg-gray-800/50 border-gray-700 overflow-hidden">
+                  <Card className="bg-neutral-900 border-neutral-800 overflow-hidden">
                     <CardContent className="p-8">
                       <div className="flex md:hidden items-center mb-4">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-lg shadow-fuchsia-500/50 flex items-center justify-center mr-4">
@@ -369,7 +344,7 @@ const TechnologyShowcase = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-900">
+    <section className="py-24 bg-black border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -380,7 +355,7 @@ const TechnologyShowcase = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Cutting-Edge 
-            <span className="bg-gradient-to-r from-indigo-400 to-fuchsia-400 bg-clip-text text-transparent"> Technologies</span>
+            <span className="text-white"> Technologies</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             We harness the power of emerging technologies to create forward-thinking solutions.
@@ -398,12 +373,12 @@ const TechnologyShowcase = () => {
               whileHover={{ y: -5 }}
               className="group flex flex-col items-center text-center justify-center"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-fuchsia-500/50 transition-all duration-300 flex flex-col items-center justify-center">
+              <Card className="h-full bg-neutral-900 border-neutral-800 hover:bg-neutral-900 hover:border-neutral-600 transition-all duration-300 flex flex-col items-center justify-center">
                 <CardContent className="p-8 flex flex-col items-center justify-center">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${tech.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 mx-auto`}>
+                  <div className={`w-16 h-16 bg-neutral-800 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 mx-auto`}>
                     <tech.icon className="w-8 h-8 text-white mx-auto" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-fuchsia-400 transition-colors duration-300 text-center">
+                  <h3 className="text-2xl font-bold text-white mb-4 text-center">
                     {tech.title}
                   </h3>
                   <p className="text-gray-300 leading-relaxed text-center">
@@ -435,7 +410,7 @@ const InnovationCTA = () => {
         >
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
             Ready to
-            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent"> Innovate </span>
+            <span className="text-white"> Innovate </span>
             With Us?
           </h2>
           
@@ -446,7 +421,7 @@ const InnovationCTA = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
               size="lg" 
-              className="text-xl px-12 py-6 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 hover:from-violet-700 hover:via-fuchsia-700 hover:to-indigo-700 text-white font-bold shadow-2xl transition-all duration-300"
+              className="text-xl px-12 py-6 bg-white text-black hover:bg-neutral-100 font-bold transition-colors duration-200"
               onClick={() => navigate('/contact')}
             >
               Schedule a Consultation
@@ -456,7 +431,7 @@ const InnovationCTA = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+              className="text-xl px-12 py-6 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-bold transition-colors duration-200 bg-transparent"
               onClick={() => navigate('/client-success-stories')}
             >
               View Success Stories
@@ -510,7 +485,7 @@ export default function InnovationLabPage() {
         <meta property="og:url" content="https://www.techmotivesupreme.com/innovation-lab" />
         <link rel="canonical" href="https://www.techmotivesupreme.com/innovation-lab" />
       </Helmet>
-      <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <InnovationHero />
         <BrandingServices />
         <InnovationProcess />

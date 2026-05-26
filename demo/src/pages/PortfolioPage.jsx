@@ -169,7 +169,7 @@ const PortfolioHero = ({
 	onCategoryChange,
 	gridRef,
 }) => (
-	<section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-12 md:pt-16">
+	<section className="relative min-h-[70vh] bg-black overflow-hidden pt-12 md:pt-16">
 		<div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8 pt-4">
 			<div className="text-center max-w-6xl mx-auto">
 				<motion.div
@@ -178,12 +178,7 @@ const PortfolioHero = ({
 					transition={{ duration: 0.6, delay: 0.1, ease: "backOut" }}
 					className="mb-8 pt-4"
 				>
-					<Badge
-						variant="outline"
-						className="px-6 py-3 text-sm font-medium bg-purple-500/20 border-purple-400 text-purple-200 mb-8 backdrop-blur-sm"
-					>
-						🚀 Live Portfolio • Real Results
-					</Badge>
+					
 				</motion.div>
 				<motion.h1
 					initial={{ opacity: 0, y: 30 }}
@@ -192,7 +187,7 @@ const PortfolioHero = ({
 					className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
 				>
 					Our{" "}
-					<span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+					<span className="text-white">
 						Work
 					</span>{" "}
 					In Action
@@ -233,8 +228,8 @@ const PortfolioHero = ({
 							}}
 							className={`px-6 py-2 transition-all duration-200 ${
 								normalize(selectedCategory) === normalize(category)
-									? "bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0"
-									: "border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+									? "bg-white text-black border-0"
+									: "border-neutral-700 text-neutral-300 hover:bg-white/5"
 							}`}
 							tabIndex={0}
 							type="button"
@@ -250,7 +245,7 @@ const PortfolioHero = ({
 
 // Portfolio Grid
 const PortfolioGrid = ({ portfolioItems }) => (
-	<section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+	<section className="py-20 bg-black">
 		<div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
 			<motion.div
 				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
@@ -292,12 +287,12 @@ const PortfolioGrid = ({ portfolioItems }) => (
 							<div className="flex flex-row justify-center items-center gap-6 mb-4 w-full">
 								{item.stats.map((stat, i) => (
 									<div key={i} className="flex flex-col items-center flex-1 min-w-0">
-										<div className="text-lg font-bold text-purple-300 leading-tight">{stat.value}</div>
+										<div className="text-lg font-bold text-white leading-tight">{stat.value}</div>
 										<div className="text-gray-400 text-xs uppercase tracking-wide">{stat.label}</div>
 									</div>
 								))}
 							</div>
-							<blockquote className="italic text-gray-200 border-l-4 border-purple-400 pl-4 mb-2 w-full text-left text-sm">
+							<blockquote className="italic text-gray-200 border-l-4 border-neutral-600 pl-4 mb-2 w-full text-left text-sm">
 								"{item.testimonial.quote}"
 							</blockquote>
 							<div className="text-gray-400 text-xs font-semibold w-full text-left">
@@ -313,7 +308,7 @@ const PortfolioGrid = ({ portfolioItems }) => (
 
 // Results Section
 const ResultsSection = () => (
-	<section className="py-20 bg-gradient-to-br from-purple-900 to-blue-900">
+	<section className="py-20 bg-neutral-950">
 		<div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
@@ -324,12 +319,12 @@ const ResultsSection = () => (
 			>
 				<h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
 					Real Results.
-					<span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+					<span className="text-white">
 						{" "}
 						Real Impact.
 					</span>
 				</h2>
-				<p className="text-xl text-blue-200 max-w-3xl mx-auto">
+				<p className="text-xl text-neutral-400 max-w-3xl mx-auto">
 					50+ clients served • $30k+ revenue generated • 100% satisfaction rate
 				</p>
 			</motion.div>
@@ -368,14 +363,14 @@ const ResultsSection = () => (
 						viewport={{ once: true }}
 						className="text-center flex flex-col items-center"
 					>
-						<Card className="bg-white/10 border-white/20 backdrop-blur-sm p-6 hover:bg-white/20 transition-all duration-300 flex flex-col items-center justify-center">
+						<Card className="bg-neutral-900 border-neutral-800 p-6 hover:border-neutral-600 transition-colors duration-200 flex flex-col items-center justify-center">
 							<item.icon
 								className={`w-12 h-12 ${item.color} mb-4 mx-auto`}
 							/>
 							<div className="text-3xl font-black text-white mb-2 text-center">
 								{item.stat}
 							</div>
-							<div className="text-blue-200 text-sm text-center">
+							<div className="text-neutral-400 text-sm text-center">
 								{item.label}
 							</div>
 						</Card>
@@ -399,7 +394,7 @@ const PortfolioCTA = () => (
 			>
 				<h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
 					Ready to Join Our
-					<span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+					<span className="text-white">
 						{" "}
 						Success Stories
 					</span>
@@ -412,7 +407,7 @@ const PortfolioCTA = () => (
 				<div className="flex flex-col sm:flex-row gap-6 justify-center">
 					<Button
 						size="lg"
-						className="text-xl px-12 py-6 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold shadow-2xl transition-all duration-300"
+						className="text-xl px-12 py-6 bg-white text-black hover:bg-neutral-100 font-bold transition-colors duration-200"
 						onClick={() => (window.location.href = "/pricing")}
 					>
 						Start Your Project
@@ -421,7 +416,7 @@ const PortfolioCTA = () => (
 					<Button
 						size="lg"
 						variant="outline"
-						className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+						className="text-xl px-12 py-6 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-bold transition-colors duration-200 bg-transparent"
 						onClick={() =>
 							window.open(
 								"https://calendly.com/techmotivesupreme/30min",
@@ -462,7 +457,7 @@ export default function ShowcasePage() {
 			  )
 
 	return (
-		<div className="min-h-screen bg-gray-900 w-full overflow-x-hidden">
+		<div className="min-h-screen bg-black w-full overflow-x-hidden">
 			<Helmet>
 				<link rel="canonical" href="https://www.techmotivesupreme.com/portfolio" />
 				<meta property="og:url" content="https://www.techmotivesupreme.com/portfolio" />

@@ -47,33 +47,10 @@ const stagger = {
 
 // Hero Section
 const StoryHero = () => (
-  <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-blue-900 to-teal-900 overflow-hidden pt-12 md:pt-16">
+  <section className="relative min-h-[70vh] bg-black overflow-hidden pt-12 md:pt-16">
     <div className="absolute inset-0">
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.04, 0.08, 0.04],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-500 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.02, 0.06, 0.02],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-teal-500 rounded-full blur-3xl"
-      />
-    </div>
+
+</div>
 
     <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-5xl mx-auto">
@@ -83,9 +60,7 @@ const StoryHero = () => (
           transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
           className="mb-8 pt-4"
         >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-8 backdrop-blur-sm">
-            📖 Our Story • Where Vision Meets Action
-          </Badge>
+          
         </motion.div>
 
         <motion.h1
@@ -95,7 +70,7 @@ const StoryHero = () => (
           className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
         >
           The Journey That 
-          <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent"> Defined </span>
+          <span className="text-white"> Defined </span>
           Our Success
         </motion.h1>
 
@@ -118,7 +93,7 @@ const StoryHero = () => (
 
 // --- Origin Story Section (Personalized) ---
 const OriginStorySection = () => (
-  <section className="py-24 bg-gray-900">
+  <section className="py-24 bg-black border-t border-white/[0.06]">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -129,7 +104,7 @@ const OriginStorySection = () => (
       >
         <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
           Where It All
-          <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"> Began</span>
+          <span className="text-white"> Began</span>
         </h2>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
           A real story of hustle, learning, and helping creators and small businesses thrive online.
@@ -223,7 +198,7 @@ const TimelineSection = () => {
     }
   ];
   return (
-    <section className="py-24 bg-gradient-to-r from-gray-900 to-blue-900">
+    <section className="py-24 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -234,10 +209,10 @@ const TimelineSection = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Our
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"> Journey </span>
+            <span className="text-white"> Journey </span>
             So Far
           </h2>
-          <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+          <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
             A real timeline of growth, learning, and helping clients win online.
           </p>
         </motion.div>
@@ -257,7 +232,7 @@ const TimelineSection = () => {
                   <Calendar className="w-4 h-4 text-white" />
                 </div>
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} pl-12 md:pl-0`}>
-                  <Card className="bg-gray-800/50 border-gray-700 overflow-hidden">
+                  <Card className="bg-neutral-900 border-neutral-800 overflow-hidden">
                     <CardContent className="p-8">
                       <div className="flex md:hidden items-center mb-4">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-teal-500 shadow-lg shadow-teal-500/50 flex items-center justify-center mr-4">
@@ -332,7 +307,7 @@ const ValuesSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-900">
+    <section className="py-24 bg-black border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -343,7 +318,7 @@ const ValuesSection = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Our Core
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"> Values </span>
+            <span className="text-white"> Values </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             The guiding principles that shape our culture and inform every decision we make.
@@ -364,12 +339,12 @@ const ValuesSection = () => {
               whileHover={{ y: -5, scale: 1.02 }}
               className="group flex flex-col items-center text-center justify-center"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-blue-500/50 transition-all duration-300 flex flex-col items-center justify-center">
+              <Card className="h-full bg-neutral-900 border-neutral-800 hover:bg-neutral-900 hover:border-neutral-600 transition-all duration-300 flex flex-col items-center justify-center">
                 <CardContent className="p-8 flex flex-col items-center justify-center">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${value.color} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 mx-auto`}>
+                  <div className={`w-16 h-16 bg-neutral-800 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 mx-auto`}>
                     <value.icon className="w-8 h-8 text-white mx-auto" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300 text-center">
+                  <h3 className="text-2xl font-bold text-white mb-4 text-center">
                     {value.title}
                   </h3>
                   <p className="text-gray-300 leading-relaxed text-center">
@@ -398,7 +373,7 @@ const TeamPhotoSection = ({ navigate }) => (
       >
         <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-6 mb-0">
           The People 
-          <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"> Behind Our Success</span>
+          <span className="text-white"> Behind Our Success</span>
         </h2>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto sm:block hidden">
           Our talented and diverse team is our greatest asset and the driving force behind our achievements.
@@ -407,7 +382,7 @@ const TeamPhotoSection = ({ navigate }) => (
       {/* Mobile-only heading and paragraph below image */}
       <div className="sm:hidden px-4 pt-8 text-center">
         <h2 className="text-3xl font-black text-white mb-4">
-          The People <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">Behind Our Success</span>
+          The People <span className="text-white">Behind Our Success</span>
         </h2>
         <p className="text-lg text-gray-300 mb-6">
           Our talented and diverse team is our greatest asset and the driving force behind our achievements.
@@ -446,7 +421,7 @@ const TeamPhotoSection = ({ navigate }) => (
 const VisionSection = () => {
   const navigate = useNavigate();
   return (
-    <section className="py-24 bg-gradient-to-r from-gray-900 to-blue-900">
+    <section className="py-24 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -457,12 +432,12 @@ const VisionSection = () => {
         >
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
             Looking 
-            <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent"> Forward</span>
+            <span className="text-white"> Forward</span>
           </h2>
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
             Our vision is about more than just websites—it's about empowering creators and businesses to thrive in a digital world, together.
           </p>
-          <blockquote className="text-2xl text-blue-200 italic font-light leading-relaxed mb-8 mx-auto max-w-2xl">
+          <blockquote className="text-2xl text-neutral-400 italic font-light leading-relaxed mb-8 mx-auto max-w-2xl">
             "My goal for TechMotiveSupreme is simple: to help real people and small teams turn their ideas into digital realities that make a difference. We believe in honest work, creative solutions, and building lasting partnerships. Every project is personal to us, and our team is committed to your growth, your vision, and your success."
           </blockquote>
           <div className="flex flex-col items-center mb-6">
@@ -481,7 +456,7 @@ const VisionSection = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
               size="lg" 
-              className="text-xl px-12 py-6 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-bold shadow-2xl transition-all duration-300"
+              className="text-xl px-12 py-6 bg-white text-black hover:bg-neutral-100 font-bold transition-colors duration-200"
               onClick={() => navigate('/contact')}
             >
               Partner With Us
@@ -490,7 +465,7 @@ const VisionSection = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+              className="text-xl px-12 py-6 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-bold transition-colors duration-200 bg-transparent"
               onClick={() => navigate('/innovation-lab')}
             >
               Explore Our Innovation Lab
@@ -522,7 +497,7 @@ export default function OurStoryPage() {
   }, []);
 
   return (
-    <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <Helmet>
         <link rel="canonical" href="https://www.techmotivesupreme.com/our-story" />
         <meta property="og:url" content="https://www.techmotivesupreme.com/our-story" />

@@ -83,26 +83,14 @@ export default function FinalPaymentPage() {
         <meta property="og:url" content="https://techmotivesupreme.com/final-payment" />
       </Helmet>
       <div
-        className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${
+        className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${
           pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >
         {/* Hero Section */}
-        <section className="relative flex flex-col items-center justify-center min-h-screen pt-[88px] bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
+        <section className="relative flex flex-col items-center justify-center min-h-screen pt-[88px] bg-black overflow-hidden">
           <div className="absolute inset-0">
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.03, 0.06, 0.03],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500 rounded-full blur-3xl"
-            />
-          </div>
+</div>
 
           <div className="relative text-center max-w-4xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col items-center justify-center flex-grow w-full">
             <motion.div
@@ -111,9 +99,7 @@ export default function FinalPaymentPage() {
               transition={{ duration: 0.6, delay: 0.1, ease: "backOut" }}
               className="mb-8"
             >
-              <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 mb-6 backdrop-blur-sm">
-                🎉 Project Complete • Final Payment
-              </Badge>
+              
             </motion.div>
 
             <motion.div
@@ -123,7 +109,7 @@ export default function FinalPaymentPage() {
               className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight"
             >
               Complete Your
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent"> Project</span>
+              <span className="text-white"> Project</span>
             </motion.div>
 
             <motion.div
@@ -138,7 +124,7 @@ export default function FinalPaymentPage() {
         </section>
 
         {/* Payment Details Section */}
-        <section className="py-20 bg-gray-900">
+        <section className="py-20 bg-black border-t border-white/[0.06]">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
               {/* Project Summary */}

@@ -65,26 +65,14 @@ export default function CheckoutSuccessPage() {
         <meta property="og:url" content="https://techmotivesupreme.com/checkout-success" />
       </Helmet>
       <div 
-        className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${
+        className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${
           pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >
         {/* Success Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-gray-900 via-green-900 to-blue-900 overflow-hidden pt-[88px]">
+        <section className="relative py-20 bg-black overflow-hidden pt-[88px]">
           <div className="absolute inset-0">
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.03, 0.06, 0.03],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="absolute top-1/4 left-1/3 w-96 h-96 bg-green-500 rounded-full blur-3xl"
-            />
-          </div>
+</div>
 
           <div className="relative px-4 md:px-6 lg:px-8 max-w-4xl mx-auto text-center">
             <motion.div
@@ -93,9 +81,7 @@ export default function CheckoutSuccessPage() {
               transition={{ duration: 0.6, delay: 0.1, ease: "backOut" }}
               className="mb-8"
             >
-              <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-green-500/20 border-green-400 text-green-200 mb-6 backdrop-blur-sm">
-                🎉 Payment Successful • Order Confirmed
-              </Badge>
+              
             </motion.div>
             
             <motion.div 
@@ -114,7 +100,7 @@ export default function CheckoutSuccessPage() {
               className="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight"
             >
               Thank You for Your 
-              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent"> Order</span>
+              <span className="text-white"> Order</span>
             </motion.h1>
 
             <motion.p
@@ -129,13 +115,13 @@ export default function CheckoutSuccessPage() {
         </section>
 
         {/* Order Details Section */}
-        <section className="py-16 bg-gray-900">
+        <section className="py-16 bg-black border-t border-white/[0.06]">
           <div className="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto">
             {error ? (
               <Card className="bg-red-500/20 border-red-500/50 mb-8">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold text-red-200 mb-2">Error</h3>
-                  <p className="text-red-200">{error}</p>
+                  <p className="text-neutral-400">{error}</p>
                 </CardContent>
               </Card>
             ) : (
@@ -237,7 +223,7 @@ export default function CheckoutSuccessPage() {
                         <CheckCircle className="w-6 h-6 text-green-400" />
                       </div>
                       <h3 className="text-xl font-bold text-white mb-2">Step 1: Initial Deposit</h3>
-                      <p className="text-green-300 font-semibold mb-1">50% Deposit Paid ✓</p>
+                      <p className="text-neutral-300 font-semibold mb-1">50% Deposit Paid ✓</p>
                       <p className="text-gray-400 text-sm">
                         <span className="font-semibold text-white">This payment process applies to selected packages only.</span> Add-ons are paid in full up front and do not require a deposit or final payment.
                       </p>
@@ -251,7 +237,7 @@ export default function CheckoutSuccessPage() {
                         <FileText className="w-6 h-6 text-blue-400" />
                       </div>
                       <h3 className="text-xl font-bold text-white mb-2">Step 2: Development</h3>
-                      <p className="text-blue-300 font-semibold mb-1">In Progress...</p>
+                      <p className="text-neutral-300 font-semibold mb-1">In Progress...</p>
                       <p className="text-gray-400 text-sm">
                         We'll design and develop your project according to the specifications and provide revisions.
                       </p>
@@ -265,7 +251,7 @@ export default function CheckoutSuccessPage() {
                         <CreditCard className="w-6 h-6 text-purple-400" />
                       </div>
                       <h3 className="text-xl font-bold text-white mb-2">Step 3: Final Payment</h3>
-                      <p className="text-purple-300 font-semibold mb-1">Coming Soon</p>
+                      <p className="text-neutral-300 font-semibold mb-1">Coming Soon</p>
                       <p className="text-gray-400 text-sm">
                         Once your project is complete, you'll receive a link to make the final 50% payment and receive all deliverables.
                       </p>
@@ -333,7 +319,7 @@ export default function CheckoutSuccessPage() {
         </section>
 
         {/* FAQ Section - Update existing FAQ section */}
-        <section className="py-16 bg-gray-900">
+        <section className="py-16 bg-black border-t border-white/[0.06]">
           <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -373,7 +359,7 @@ export default function CheckoutSuccessPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.1 * index }}
                 >
-                  <Card className="bg-gray-800/50 border-gray-700/50 hover:border-purple-500/30 transition-all duration-300">
+                  <Card className="bg-neutral-900 border-neutral-800/50 hover:border-neutral-700 transition-all duration-300">
                     <CardContent className="p-6">
                       <h3 className="text-lg font-semibold text-white mb-2">{faq.question}</h3>
                       <p className="text-gray-400">{faq.answer}</p>

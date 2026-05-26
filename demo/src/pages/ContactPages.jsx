@@ -75,33 +75,10 @@ const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
 
 // Hero Section - updated to fix content blocking issue
 const ContactHero = ({ onMessageClick }) => (
-  <section className="relative py-24 bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 overflow-hidden">
+  <section className="relative py-24 bg-black overflow-hidden">
     <div className="absolute inset-0">
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.04, 0.08, 0.04],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/3 left-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.02, 0.06, 0.02],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-purple-500 rounded-full blur-3xl"
-      />
-    </div>
+
+</div>
 
     <div className="relative flex items-center justify-center px-4 md:px-6 lg:px-8 py-16">
       <div className="text-center max-w-5xl mx-auto">
@@ -111,9 +88,7 @@ const ContactHero = ({ onMessageClick }) => (
           transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
           className="mb-8"
         >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-indigo-500/20 border-indigo-400 text-indigo-200 mb-8 backdrop-blur-sm">
-            💬 Let's Start Something Amazing • Free Consultation
-          </Badge>
+          
         </motion.div>
 
         <motion.h1
@@ -123,7 +98,7 @@ const ContactHero = ({ onMessageClick }) => (
           className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
         >
           Let's Build 
-          <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"> Something </span>
+          <span className="text-white"> Something </span>
           Together
         </motion.h1>
 
@@ -145,7 +120,7 @@ const ContactHero = ({ onMessageClick }) => (
         >
           <Button 
             size="lg" 
-            className="text-lg px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+            className="text-lg px-10 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
             onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
           >
             Schedule a Call
@@ -155,7 +130,7 @@ const ContactHero = ({ onMessageClick }) => (
           <Button 
             size="lg" 
             variant="outline"
-            className="text-lg px-10 py-4 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-semibold backdrop-blur-sm transition-all duration-300"
+            className="text-lg px-10 py-4 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 bg-transparent"
             onClick={onMessageClick}
           >
             Send a Message
@@ -266,7 +241,7 @@ const ContactForm = () => {
   }
 
   return (
-    <Card className="bg-gray-800/50 border-gray-700 p-8 backdrop-blur-sm">
+    <Card className="bg-neutral-900 border-neutral-800 p-8 backdrop-blur-sm">
       <CardContent className="p-0">
         <h2 className="text-3xl font-bold text-white mb-2">
           Send us a message
@@ -402,7 +377,7 @@ const ContactForm = () => {
           <Button 
             type="submit"
             size="lg" 
-            className="w-full h-14 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold shadow-xl transition-all duration-300 rounded-lg"
+            className="w-full h-14 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200 rounded-lg"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -426,7 +401,7 @@ const ContactForm = () => {
 
 // Contact Section - replaced with updated form
 const ContactSection = () => (
-  <section className="py-24 bg-gray-900">
+  <section className="py-24 bg-black border-t border-white/[0.06]">
     <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-16">
         {/* Contact Form - UPDATED: With validation */}
@@ -485,14 +460,14 @@ const ContactSection = () => (
                 viewport={{ once: true }}
                 className="flex items-start space-x-4"
               >
-                <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 border border-neutral-700 rounded-lg flex items-center justify-center flex-shrink-0">
                   <contact.icon className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex flex-col items-start text-left">
                   <h3 className="text-lg font-semibold text-white text-left mb-1">
                     {contact.title}
                   </h3>
-                  <p className="text-indigo-400 font-medium text-left mb-1">
+                  <p className="text-white font-medium text-left mb-1">
                     {contact.info}
                   </p>
                   <p className="text-gray-400 text-sm text-left">
@@ -503,7 +478,7 @@ const ContactSection = () => (
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl p-6 border border-indigo-500/30 backdrop-blur-sm">
+          <div className="border border-neutral-800 rounded-xl p-6">
             <h3 className="text-xl font-bold text-white mb-4">
               Why Choose TechMotiveSupreme?
             </h3>
@@ -530,7 +505,7 @@ const ContactSection = () => (
 
 // FAQ Section - same as before
 const ContactFAQ = () => (
-  <section className="py-20 bg-gradient-to-r from-indigo-900 to-purple-900">
+  <section className="py-20 bg-neutral-950">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -541,9 +516,9 @@ const ContactFAQ = () => (
       >
         <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
           Quick 
-          <span className="bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent"> Answers</span>
+          <span className="text-white"> Answers</span>
         </h2>
-        <p className="text-xl text-indigo-200">
+        <p className="text-xl text-neutral-400">
           Common questions about working with us.
         </p>
       </motion.div>
@@ -574,12 +549,12 @@ const ContactFAQ = () => (
             transition={{ delay: index * 0.1, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+            <Card className="bg-neutral-900 border-neutral-800 hover:border-neutral-600 transition-all duration-300">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-white mb-3">
                   {faq.question}
                 </h3>
-                <p className="text-indigo-200 leading-relaxed">
+                <p className="text-neutral-400 leading-relaxed">
                   {faq.answer}
                 </p>
               </CardContent>
@@ -604,7 +579,7 @@ const ContactCTA = () => (
       >
         <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
           Ready to Start Your 
-          <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"> Digital Journey?</span>
+          <span className="text-white"> Digital Journey?</span>
         </h2>
         
         <p className="text-xl text-gray-300 mb-12 leading-relaxed">
@@ -613,7 +588,7 @@ const ContactCTA = () => (
         
         <Button 
           size="lg" 
-          className="text-xl px-12 py-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl transition-all duration-300 rounded-lg"
+          className="text-xl px-12 py-6 bg-white text-black hover:bg-neutral-100 font-bold transition-colors duration-200 rounded-lg"
           onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
         >
           Book Free Consultation
@@ -660,7 +635,7 @@ export default function ContactPage() {
         <link rel="canonical" href="https://www.techmotivesupreme.com/contact" />
       </Helmet>
       <div
-        className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${
+        className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${
           pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >

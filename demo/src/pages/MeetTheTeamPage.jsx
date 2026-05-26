@@ -44,33 +44,10 @@ const stagger = {
 
 // Hero Section
 const TeamHero = () => (
-  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 overflow-hidden pt-12 md:pt-16">
+  <section className="relative min-h-[60vh] bg-black overflow-hidden pt-12 md:pt-16">
     <div className="absolute inset-0">
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.04, 0.08, 0.04],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-500 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.02, 0.06, 0.02],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-indigo-500 rounded-full blur-3xl"
-      />
-    </div>
+
+</div>
 
     <div className="relative flex items-center justify-center min-h-[60vh] px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-5xl mx-auto">
@@ -80,9 +57,7 @@ const TeamHero = () => (
           transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
           className="mb-8 pt-4"
         >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-purple-500/20 border-purple-400 text-purple-200 mb-8 backdrop-blur-sm">
-            👥 Meet Our Team • The People Behind The Magic
-          </Badge>
+          
         </motion.div>
 
         <motion.h1
@@ -92,7 +67,7 @@ const TeamHero = () => (
           className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
         >
           The Talented Team 
-          <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent"> Behind </span>
+          <span className="text-white"> Behind </span>
           Our Success
         </motion.h1>
 
@@ -154,7 +129,7 @@ const LeadershipSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-900">
+    <section className="py-24 bg-black border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -165,7 +140,7 @@ const LeadershipSection = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Our
-            <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"> Leadership </span>
+            <span className="text-white"> Leadership </span>
             Team
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -183,7 +158,7 @@ const LeadershipSection = () => {
               viewport={{ once: true }}
               className="group"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-purple-500/50 transition-all duration-300">
+              <Card className="h-full bg-neutral-900 border-neutral-800 hover:bg-neutral-900 hover:border-neutral-600 transition-all duration-300">
                 <CardContent className="p-0">
                   <div className="flex flex-col md:flex-row">
                     <div className="md:w-1/3 relative overflow-hidden">
@@ -196,7 +171,7 @@ const LeadershipSection = () => {
                     </div>
                     
                     <div className="md:w-2/3 p-6 md:p-8">
-                      <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-purple-400 transition-colors duration-300">
+                      <h3 className="text-2xl font-bold text-white mb-1">
                         {leader.name}
                       </h3>
                       
@@ -333,7 +308,7 @@ const TeamGrid = () => {
     : teamMembers.filter(member => member.department === activeFilter);
 
   return (
-    <section className="py-20 bg-gradient-to-r from-gray-900 to-indigo-900">
+    <section className="py-20 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -344,10 +319,10 @@ const TeamGrid = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Meet Our
-            <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"> Amazing </span>
+            <span className="text-white"> Amazing </span>
             Team
           </h2>
-          <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
+          <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
             The talented individuals who make the magic happen every day.
           </p>
         </motion.div>
@@ -389,7 +364,7 @@ const TeamGrid = () => {
               whileHover={{ y: -10 }}
               className="group"
             >
-              <div className="bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-purple-500/30 transition-all duration-300 shadow-xl">
+              <div className="bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-neutral-700 transition-all duration-300 shadow-xl">
                 <div className="aspect-square overflow-hidden relative">
                   <picture>
                     <source srcSet={member.imageWebp} type="image/webp" />
@@ -420,7 +395,7 @@ const TeamGrid = () => {
                 </div>
                 
                 <div className="p-4 text-center">
-                  <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-purple-400 transition-colors duration-300">
+                  <h3 className="text-lg font-semibold text-white mb-1">
                     {member.name}
                   </h3>
                   <p className="text-purple-300 text-sm">{member.role}</p>
@@ -455,7 +430,7 @@ const OfficesSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-900">
+    <section className="py-24 bg-black border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -466,7 +441,7 @@ const OfficesSection = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Where We 
-            <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"> Work</span>
+            <span className="text-white"> Work</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Our offices around the world where we collaborate, innovate, and create.
@@ -487,7 +462,7 @@ const OfficesSection = () => {
                 <img 
                   src={location.image} 
                   alt={location.city} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 
@@ -521,7 +496,7 @@ const CultureSection = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Our
-            <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"> Culture </span>
+            <span className="text-white"> Culture </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             We believe in creating an environment where creativity thrives and everyone belongs.
@@ -621,7 +596,7 @@ const JoinTeamSection = () => {
   const navigate = useNavigate();
   
   return (
-    <section className="py-24 bg-gradient-to-r from-indigo-900 to-purple-900">
+    <section className="py-24 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -632,7 +607,7 @@ const JoinTeamSection = () => {
         >
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
             Want to Join Our
-            <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent"> Exceptional </span>
+            <span className="text-white"> Exceptional </span>
             Team?
           </h2>
           
@@ -643,7 +618,7 @@ const JoinTeamSection = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
               size="lg" 
-              className="text-xl px-12 py-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold shadow-2xl transition-all duration-300"
+              className="text-xl px-12 py-6 bg-white text-black hover:bg-neutral-100 font-bold transition-colors duration-200"
               onClick={() => navigate('/careers')}
             >
               View Open Positions
@@ -653,7 +628,7 @@ const JoinTeamSection = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+              className="text-xl px-12 py-6 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-bold transition-colors duration-200 bg-transparent"
               onClick={() => navigate('/contact')}
             >
               Contact Us
@@ -715,7 +690,7 @@ export default function MeetTheTeamPage() {
         <meta name="twitter:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
         <link rel="canonical" href="https://www.techmotivesupreme.com/meet-the-team" />
       </Helmet>
-      <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <TeamHero />
         <LeadershipSection />
         <TeamGrid />

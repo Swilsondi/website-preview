@@ -19,16 +19,16 @@ const TopNavbar = ({ isOnline }) => {
                 }
               }}
             >
-              <div className="rounded-full overflow-hidden flex items-center justify-center h-8 w-8">
+              <div className="rounded-full overflow-hidden flex items-center justify-center h-10 w-10">
                 <img
                   src={logo}
                   alt="TechMotiveSupreme site logo"
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 rounded-full object-cover"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounded-full object-cover"
                 />
               </div>
-              <span className="text-sm font-semibold text-white tracking-wide">
+              <span className="text-lg font-bold text-white tracking-wide">
                 TechMotive-Supreme
               </span>
             </Link>

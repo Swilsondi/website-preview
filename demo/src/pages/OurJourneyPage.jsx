@@ -32,7 +32,7 @@ export default function OurJourneyPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       <Helmet>
         <link rel="canonical" href="https://www.techmotivesupreme.com/our-journey" />
       </Helmet>
@@ -40,12 +40,7 @@ export default function OurJourneyPage() {
       <section className="relative min-h-[80vh] flex items-center justify-center px-6 md:px-12 lg:px-20">
         <div className="text-center max-w-4xl">
           <div className="mb-6">
-            <Badge
-              variant="outline"
-              className="px-6 py-3 text-sm font-medium bg-blue-500/20 border-blue-400 text-blue-200 backdrop-blur-sm"
-            >
-              🌟 Our Journey • Excellence in Every Step
-            </Badge>
+            
           </div>
 
           <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-6">
@@ -61,7 +56,7 @@ export default function OurJourneyPage() {
           <div>
             <Button
               size="lg"
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="px-8 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
               onClick={() =>
                 window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })
               }
@@ -73,7 +68,7 @@ export default function OurJourneyPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-24 bg-gray-900">
+      <section className="py-24 bg-black border-t border-white/[0.06]">
         <div className="px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black mb-6">
@@ -106,7 +101,7 @@ export default function OurJourneyPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-24 bg-gradient-to-r from-blue-900 to-purple-900">
+      <section className="py-24 bg-neutral-950">
         <div className="px-6 md:px-12 lg:px-20 max-w-4xl mx-auto text-center">
           <h2 className="text-4xl lg:text-5xl font-black mb-8">
             Ready to Be Part of Our Journey?

@@ -36,34 +36,10 @@ const fadeIn = {
 
 // Hero Section
 const SuccessHero = () => (
-  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-cyan-900 to-teal-900 overflow-hidden pt-12 md:pt-16">
+  <section className="relative min-h-[60vh] bg-black overflow-hidden pt-12 md:pt-16">
     <div className="absolute inset-0">
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.04, 0.08, 0.04],
-        }
-        }
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/4 left-1/3 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.02, 0.06, 0.02],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-teal-500 rounded-full blur-3xl"
-      />
-    </div>
+
+</div>
 
     <div className="relative flex items-center justify-center min-h-[60vh] px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-5xl mx-auto">
@@ -73,9 +49,7 @@ const SuccessHero = () => (
           transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
           className="mb-8 pt-4"
         >
-          <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-teal-500/20 border-teal-400 text-teal-200 mb-8 backdrop-blur-sm">
-            💼 Client Success Stories • Real Results
-          </Badge>
+          
         </motion.div>
 
         <motion.h1
@@ -85,7 +59,7 @@ const SuccessHero = () => (
           className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
         >
           Transforming
-          <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-green-400 bg-clip-text text-transparent"> Challenges </span>
+          <span className="text-white"> Challenges </span>
           Into Success
         </motion.h1>
 
@@ -109,7 +83,7 @@ const SuccessHero = () => (
 // Featured Case Study
 const FeaturedCaseStudy = () => {
   return (
-    <section className="py-24 bg-gray-900">
+    <section className="py-24 bg-black border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -120,7 +94,7 @@ const FeaturedCaseStudy = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             Featured
-            <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"> Success Story</span>
+            <span className="text-white"> Success Story</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Our work with FutureTech transformed their online presence and doubled conversion rates.
@@ -234,7 +208,7 @@ const CaseStudiesGrid = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-gray-900 to-cyan-900">
+    <section className="py-20 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -245,7 +219,7 @@ const CaseStudiesGrid = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             More Client
-            <span className="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent"> Success Stories</span>
+            <span className="text-white"> Success Stories</span>
           </h2>
           <p className="text-xl text-cyan-200 max-w-3xl mx-auto">
             Real-world examples of how our solutions transform businesses across industries.
@@ -262,7 +236,7 @@ const CaseStudiesGrid = () => {
               viewport={{ once: true }}
               className="group"
             >
-              <Card className="h-full bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden">
+              <Card className="h-full bg-neutral-900 border-neutral-800 hover:bg-neutral-900 hover:border-neutral-600 transition-all duration-300 overflow-hidden">
                 <CardContent className="p-0">
                   <div className="relative h-48 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10"></div>
@@ -279,7 +253,7 @@ const CaseStudiesGrid = () => {
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">{study.client}</h3>
+                    <h3 className="text-2xl font-bold text-white mb-3">{study.client}</h3>
 
                     <div className="space-y-4 mb-6">
                       <div>
@@ -352,7 +326,7 @@ const TestimonialsSection = () => {
   });
 
   return (
-    <section className="py-24 bg-gray-900">
+    <section className="py-24 bg-black border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -363,7 +337,7 @@ const TestimonialsSection = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
             What Our Clients
-            <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"> Say About Us</span>
+            <span className="text-white"> Say About Us</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Don't just take our word for it — hear directly from the businesses we've helped succeed.
@@ -452,7 +426,7 @@ const CTASection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-24 bg-gradient-to-r from-teal-900 to-cyan-900">
+    <section className="py-24 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -463,7 +437,7 @@ const CTASection = () => {
         >
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
             Ready to Become Our Next
-            <span className="bg-gradient-to-r from-cyan-400 via-teal-400 to-green-400 bg-clip-text text-transparent"> Success Story?</span>
+            <span className="text-white"> Success Story?</span>
           </h2>
 
           <p className="text-xl text-gray-300 mb-12 leading-relaxed">
@@ -473,7 +447,7 @@ const CTASection = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button
               size="lg"
-              className="text-xl px-12 py-6 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold shadow-2xl transition-all duration-300"
+              className="text-xl px-12 py-6 bg-white text-black hover:bg-neutral-100 font-bold transition-colors duration-200"
               onClick={() => navigate('/contact')}
             >
               Start Your Project
@@ -483,7 +457,7 @@ const CTASection = () => {
             <Button
               size="lg"
               variant="outline"
-              className="text-xl px-12 py-6 border-2 border-gray-400 text-gray-300 hover:bg-white hover:text-gray-900 font-bold transition-all duration-300"
+              className="text-xl px-12 py-6 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-bold transition-colors duration-200 bg-transparent"
               onClick={() => navigate('/services')}
             >
               Explore Our Services
@@ -536,7 +510,7 @@ export default function ClientSuccessStoriesPage() {
         <meta property="og:image" content="/assets/dark-logo.png" /> {/* Use optimized image */}
         <meta property="og:url" content="https://www.techmotivesupreme.com/client-success-stories" />
       </Helmet>
-      <div className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <SuccessHero />
         <FeaturedCaseStudy />
         <CaseStudiesGrid />

@@ -25,21 +25,9 @@ import { Helmet } from "react-helmet";
 
 // Checkout Hero Section
 const CheckoutHero = () => (
-  <section className="relative min-h-[60vh] bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 overflow-hidden pt-[88px]">
+  <section className="relative min-h-[60vh] bg-black overflow-hidden pt-[88px]">
     <div className="absolute inset-0">
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.03, 0.06, 0.03],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full blur-3xl"
-      />
-    </div>
+</div>
 
     <div className="relative text-center max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
       <motion.div
@@ -48,9 +36,7 @@ const CheckoutHero = () => (
         transition={{ duration: 0.6, delay: 0.1, ease: "backOut" }}
         className="mb-8"
       >
-        <Badge variant="outline" className="px-6 py-3 text-sm font-medium bg-green-500/20 border-green-400 text-green-200 mb-6 backdrop-blur-sm">
-          🔒 Secure Checkout • SSL Protected
-        </Badge>
+        
       </motion.div>
 
       <motion.div
@@ -60,7 +46,7 @@ const CheckoutHero = () => (
         className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight"
       >
         Complete Your
-        <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Order</span>
+        <span className="text-white"> Order</span>
       </motion.div>
 
       <motion.div
@@ -362,7 +348,7 @@ const CartSection = ({ selectedPlan, cart }) => {
         >
           <h2 className="text-3xl lg:text-4xl font-black text-white mb-6">
             Customize Your 
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Package</span>
+            <span className="text-white"> Package</span>
           </h2>
           <p className="text-xl text-gray-400">
             Add premium services to maximize your website's impact
@@ -381,7 +367,7 @@ const CartSection = ({ selectedPlan, cart }) => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="h-full bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/20">
+                  <Card className="h-full bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700/50 hover:border-neutral-600 transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div className="text-3xl">{addon.icon}</div>
@@ -405,7 +391,7 @@ const CartSection = ({ selectedPlan, cart }) => {
                               size="sm"
                               variant="outline"
                               onClick={() => removeFromCart(addon.id)}
-                              className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 w-10 h-10 p-0"
+                              className="border-neutral-700 text-neutral-300 hover:bg-white/5 w-10 h-10 p-0"
                             >
                               <Minus className="w-4 h-4" />
                             </Button>
@@ -545,7 +531,7 @@ const CartSection = ({ selectedPlan, cart }) => {
 
 // Calendly Integration Section
 const CalendlySection = () => (
-  <section className="py-20 bg-gradient-to-br from-purple-900 to-blue-900">
+  <section className="py-20 bg-neutral-950">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto text-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -556,7 +542,7 @@ const CalendlySection = () => (
         <Calendar className="w-16 h-16 text-purple-400 mx-auto mb-6" />
         <h2 className="text-3xl lg:text-4xl font-black text-white mb-6">
           Schedule Your 
-          <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Kickoff Call</span>
+          <span className="text-white"> Kickoff Call</span>
         </h2>
         <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
           After payment, book your 30-minute strategy call to discuss your vision and get started immediately.
@@ -649,7 +635,7 @@ export default function CheckoutPage() {
   // Always show questions step if that's the current step, even if no selectedPlan or only add-ons
   if (currentStep === 'questions') {
     return (
-      <div className="min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out pt-20">
+      <div className="min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out pt-20">
         <CheckoutHero />
         <div className="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col justify-center min-h-[calc(100vh-64px)]">
           <PreCheckoutQuestions onComplete={handleQuestionsComplete} />
@@ -670,7 +656,7 @@ export default function CheckoutPage() {
         <meta property="og:url" content="https://www.techmotivesupreme.com/checkout" />
       </Helmet>
       <div
-        className={`min-h-screen bg-gray-900 w-full overflow-x-hidden transition-all duration-700 ease-out pt-20${
+        className={`min-h-screen bg-black w-full overflow-x-hidden transition-all duration-700 ease-out pt-20${
           pageLoaded ? ' opacity-100 translate-y-0' : ' opacity-0 translate-y-4'
         }`}
       >
