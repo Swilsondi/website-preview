@@ -109,7 +109,7 @@ const HeroSection = ({ handleNavigation }) => {
             variants={stagger}
             initial="initial"
             animate="animate"
-            className="grid grid-cols-3 gap-8 max-w-xl mx-auto border-t border-white/[0.08] pt-12"
+            className="grid grid-cols-3 gap-12 max-w-3xl mx-auto border-t border-white/[0.08] pt-14 text-center"
           >
             {[
               { number: "50+", label: "Sites Launched" },
@@ -117,10 +117,10 @@ const HeroSection = ({ handleNavigation }) => {
               { number: "48hrs", label: "Avg Turnaround" },
             ].map((stat, index) => (
               <motion.div key={index} variants={fadeInUp} className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-white mb-1">
+                <div className="text-5xl lg:text-6xl font-black text-white mb-2">
                   {stat.number}
                 </div>
-                <div className="text-neutral-500 text-xs uppercase tracking-widest">{stat.label}</div>
+                <div className="text-neutral-400 text-sm uppercase tracking-widest">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -160,7 +160,7 @@ const ServicesSection = () => {
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-6">
             We don't just build.<br />We launch.
           </h2>
-          <p className="text-neutral-500 max-w-2xl mx-auto text-lg">
+          <p className="text-neutral-500 max-w-2xl mx-auto text-lg text-center">
             End-to-end solutions for creators and entrepreneurs who refuse to settle for average.
           </p>
         </div>
