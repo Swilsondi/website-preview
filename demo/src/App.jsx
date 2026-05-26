@@ -6,7 +6,6 @@ import CartProvider from "@/components/CartProvider"
 import { lazy, Suspense, useState, useEffect } from 'react'
 import TopNavbar from "@/components/TopNavbar"
 import ScrollToTop from '@/components/ScrollToTop'
-import { ThemeProvider } from '@/components/theme-provider'
 import SidebarToggle from '@/components/SidebarToggle'
 import CartSidebar from './components/CartSidebar'
 
@@ -49,9 +48,8 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark" storageKey="website-theme">
-        <CartProvider>
-          <div className="dark min-h-screen bg-black w-full">
+      <CartProvider>
+        <div className="dark min-h-screen bg-black w-full">
             <SidebarProvider>
               <div className="flex w-full bg-black">
                 <AppSidebar />
@@ -90,9 +88,8 @@ function App() {
             <Suspense fallback={null}>
               <CartSidebar />
             </Suspense>
-          </div>
-        </CartProvider>
-      </ThemeProvider>
+        </div>
+      </CartProvider>
     </ErrorBoundary>
   );
 }

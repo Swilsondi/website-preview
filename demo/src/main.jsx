@@ -12,6 +12,9 @@ setupErrorLogging();
 // Ensure browser does not restore scroll position automatically
 history.scrollRestoration = "manual";
 
+// Force dark mode always — site is dark-only
+document.documentElement.classList.add('dark');
+
 // Unregister any previously installed service workers
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistrations().then((registrations) => {
