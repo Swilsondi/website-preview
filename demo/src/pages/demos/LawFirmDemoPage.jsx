@@ -68,42 +68,42 @@ export default function LawFirmDemoPage() {
 			<header className="border-b border-slate-200">
 				<div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
 					<div className="flex items-center gap-2">
-						<Scale className="w-6 h-6 text-slate-900" />
-						<span className="text-xl font-black tracking-tight">Whitfield &amp; Hale</span>
+						<Scale className="w-7 h-7 text-slate-900" />
+						<span className="text-2xl font-black tracking-tight">Whitfield &amp; Hale</span>
 					</div>
-					<nav className="hidden md:flex gap-8 text-slate-600 text-sm font-medium">
+					<nav className="hidden md:flex gap-8 text-slate-600 text-base font-medium">
 						<a href="#practice" className="hover:text-slate-900 transition-colors">Practice Areas</a>
 						<a href="#why" className="hover:text-slate-900 transition-colors">Why Us</a>
 						<a href="#attorneys" className="hover:text-slate-900 transition-colors">Attorneys</a>
 						<a href="#faq" className="hover:text-slate-900 transition-colors">FAQ</a>
 						<a href="#contact" className="hover:text-slate-900 transition-colors">Contact</a>
 					</nav>
-					<a href="#contact" className="bg-slate-900 text-white font-bold px-5 py-2 rounded text-sm hover:bg-slate-800 transition-colors">
+					<a href="#contact" className="bg-slate-900 text-white font-bold px-6 py-2.5 rounded text-base hover:bg-slate-800 transition-colors">
 						Book a Consultation
 					</a>
 				</div>
 			</header>
 
-			<section className="py-24 px-6 bg-slate-50">
+			<section className="py-28 px-6 bg-slate-50">
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7 }}
 					className="max-w-4xl mx-auto text-center"
 				>
-					<h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight text-slate-900">
+					<h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight text-slate-900">
 						Trusted Counsel.<br />Proven Results.
 					</h1>
-					<p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
+					<p className="text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
 						Whitfield &amp; Hale provides clear, strategic legal guidance for businesses and
 						families across the region.
 					</p>
 				</motion.div>
 			</section>
 
-			<section id="practice" className="py-20 px-6">
+			<section id="practice" className="py-24 px-6">
 				<div className="max-w-6xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center text-slate-900">
 						Practice Areas
 					</motion.h2>
 					<div className="grid md:grid-cols-3 gap-8">
@@ -116,18 +116,18 @@ export default function LawFirmDemoPage() {
 								transition={{ duration: 0.5, delay: i * 0.1 }}
 								className="border border-slate-200 rounded-lg p-8 hover:border-slate-400 hover:shadow-md transition-all"
 							>
-								<area.icon className="w-8 h-8 text-slate-900 mb-4" />
-								<h3 className="font-bold text-lg mb-2 text-slate-900">{area.title}</h3>
-								<p className="text-slate-600 text-sm leading-relaxed">{area.desc}</p>
+								<area.icon className="w-9 h-9 text-slate-900 mb-5" />
+								<h3 className="font-bold text-xl mb-3 text-slate-900">{area.title}</h3>
+								<p className="text-slate-600 text-base leading-relaxed">{area.desc}</p>
 							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section id="why" className="py-20 px-6 bg-slate-900 text-white">
+			<section id="why" className="py-24 px-6 bg-slate-900 text-white">
 				<div className="max-w-4xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center">
 						Why Clients Choose Us
 					</motion.h2>
 					<div className="grid sm:grid-cols-2 gap-6">
@@ -138,19 +138,19 @@ export default function LawFirmDemoPage() {
 								whileInView={{ opacity: 1, x: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.5, delay: i * 0.1 }}
-								className="flex items-center gap-3 bg-slate-800/60 rounded-lg p-5"
+								className="flex items-center gap-4 bg-slate-800/60 rounded-lg p-6"
 							>
-								<CheckCircle2 className="w-6 h-6 text-amber-400 flex-shrink-0" />
-								<span className="font-medium">{item}</span>
+								<CheckCircle2 className="w-7 h-7 text-amber-400 flex-shrink-0" />
+								<span className="font-medium text-lg">{item}</span>
 							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section id="attorneys" className="py-20 px-6 bg-slate-50">
+			<section id="attorneys" className="py-24 px-6 bg-slate-50">
 				<div className="max-w-4xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center text-slate-900">
 						Our Attorneys
 					</motion.h2>
 					<div className="grid sm:grid-cols-2 gap-8">
@@ -163,21 +163,21 @@ export default function LawFirmDemoPage() {
 								transition={{ duration: 0.5, delay: i * 0.1 }}
 								className="bg-white border border-slate-200 rounded-lg p-8 text-center"
 							>
-								<div className="w-20 h-20 rounded-full bg-slate-900 text-white flex items-center justify-center text-2xl font-black mx-auto mb-4">
+								<div className="w-20 h-20 rounded-full bg-slate-900 text-white flex items-center justify-center text-2xl font-black mx-auto mb-5">
 									{a.name.split(" ").map((n) => n[0]).join("")}
 								</div>
-								<div className="font-bold text-slate-900">{a.name}</div>
-								<div className="text-slate-600 text-sm">{a.title}</div>
-								<div className="text-slate-400 text-xs mt-1">{a.years}</div>
+								<div className="font-bold text-lg text-slate-900">{a.name}</div>
+								<div className="text-slate-600 text-base">{a.title}</div>
+								<div className="text-slate-400 text-sm mt-1">{a.years}</div>
 							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section id="faq" className="py-20 px-6">
+			<section id="faq" className="py-24 px-6">
 				<div className="max-w-3xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center text-slate-900">
 						Frequently Asked Questions
 					</motion.h2>
 					<div className="space-y-3">
@@ -188,24 +188,24 @@ export default function LawFirmDemoPage() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.4, delay: i * 0.05 }}
-								className="group border border-slate-200 rounded-lg px-6 py-4"
+								className="group border border-slate-200 rounded-lg px-6 py-5"
 							>
-								<summary className="flex items-center justify-between cursor-pointer font-bold text-slate-900 list-none">
+								<summary className="flex items-center justify-between cursor-pointer font-bold text-lg text-slate-900 list-none">
 									{f.q}
 									<ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" />
 								</summary>
-								<p className="text-slate-600 text-sm leading-relaxed mt-3">{f.a}</p>
+								<p className="text-slate-600 text-base leading-relaxed mt-4">{f.a}</p>
 							</motion.details>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section id="contact" className="py-20 px-6 bg-slate-50">
+			<section id="contact" className="py-24 px-6 bg-slate-50">
 				<motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-					<h2 className="text-3xl md:text-4xl font-black mb-6 text-slate-900">Schedule a Consultation</h2>
-					<p className="text-slate-600 mb-8">We respond to every inquiry within one business day.</p>
-					<div className="flex flex-col sm:flex-row gap-6 justify-center text-slate-700">
+					<h2 className="text-4xl md:text-5xl font-black mb-6 text-slate-900">Schedule a Consultation</h2>
+					<p className="text-slate-600 text-lg mb-10">We respond to every inquiry within one business day.</p>
+					<div className="flex flex-col sm:flex-row gap-6 justify-center text-slate-700 text-lg">
 						<div className="flex items-center gap-2 justify-center">
 							<Phone className="w-5 h-5" />
 							(212) 555-0139

@@ -69,51 +69,51 @@ export default function RestaurantDemoPage() {
 
 			<header className="border-b border-stone-800">
 				<div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-					<span className="text-2xl font-black tracking-tight text-amber-400">Ember &amp; Oak</span>
-					<nav className="hidden md:flex gap-8 text-stone-300 text-sm font-medium">
+					<span className="text-3xl font-black tracking-tight text-amber-400">Ember &amp; Oak</span>
+					<nav className="hidden md:flex gap-8 text-stone-300 text-base font-medium">
 						<a href="#menu" className="hover:text-amber-400 transition-colors">Menu</a>
 						<a href="#gallery" className="hover:text-amber-400 transition-colors">Gallery</a>
 						<a href="#about" className="hover:text-amber-400 transition-colors">About</a>
 						<a href="#visit" className="hover:text-amber-400 transition-colors">Visit</a>
 					</nav>
-					<a href="#visit" className="bg-amber-500 text-stone-950 font-bold px-5 py-2 rounded-full text-sm hover:bg-amber-400 transition-colors">
+					<a href="#visit" className="bg-amber-500 text-stone-950 font-bold px-6 py-2.5 rounded-full text-base hover:bg-amber-400 transition-colors">
 						Reserve a Table
 					</a>
 				</div>
 			</header>
 
-			<section className="relative h-[70vh] flex items-end overflow-hidden">
+			<section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
 				<img
 					src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=1000&fit=crop"
 					alt="Ember and Oak restaurant interior"
 					className="absolute inset-0 w-full h-full object-cover"
 				/>
-				<div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent" />
+				<div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/60 to-stone-950/30" />
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7 }}
-					className="relative px-6 pb-16 max-w-6xl mx-auto w-full"
+					className="relative px-6 max-w-3xl mx-auto w-full flex flex-col items-center text-center"
 				>
-					<div className="flex items-center gap-1 mb-4 text-amber-400">
+					<div className="flex items-center justify-center gap-2 mb-8 text-amber-400">
 						{[...Array(5)].map((_, i) => (
-							<Star key={i} className="w-4 h-4 fill-amber-400" />
+							<Star key={i} className="w-6 h-6 fill-amber-400" />
 						))}
-						<span className="text-stone-300 text-sm ml-2">4.9 · 300+ reviews</span>
+						<span className="text-stone-200 text-lg ml-3 font-medium">4.9 · 300+ reviews</span>
 					</div>
-					<h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight">
+					<h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
 						Wood-fired.<br />Handcrafted.
 					</h1>
-					<p className="text-lg md:text-xl text-stone-300 max-w-xl">
+					<p className="text-xl md:text-2xl text-stone-200 max-w-2xl mx-auto leading-relaxed">
 						A neighborhood kitchen serving seasonal American plates over an open oak fire.
 					</p>
 				</motion.div>
 			</section>
 
-			<section id="about" className="py-20 px-6">
+			<section id="about" className="py-24 px-6">
 				<motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-					<h2 className="text-3xl md:text-4xl font-black mb-6 text-amber-400">Our Story</h2>
-					<p className="text-stone-300 text-lg leading-relaxed">
+					<h2 className="text-4xl md:text-5xl font-black mb-8 text-amber-400">Our Story</h2>
+					<p className="text-stone-300 text-xl leading-relaxed">
 						Ember &amp; Oak started as a single wood-fired grill at a farmers market. Today we're a
 						full kitchen, but the philosophy hasn't changed: local ingredients, live fire, and food
 						that tastes like it was made by someone who cares.
@@ -121,9 +121,9 @@ export default function RestaurantDemoPage() {
 				</motion.div>
 			</section>
 
-			<section id="gallery" className="py-20 px-6 bg-stone-900/50">
+			<section id="gallery" className="py-24 px-6 bg-stone-900/50">
 				<div className="max-w-5xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-amber-400">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center text-amber-400">
 						Inside the Kitchen
 					</motion.h2>
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -148,25 +148,25 @@ export default function RestaurantDemoPage() {
 				</div>
 			</section>
 
-			<section id="menu" className="py-20 px-6">
+			<section id="menu" className="py-24 px-6">
 				<div className="max-w-4xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-amber-400">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center text-amber-400">
 						Menu
 					</motion.h2>
-					<div className="space-y-12">
+					<div className="space-y-14">
 						{menu.map((section) => (
 							<motion.div key={section.category} {...fadeUp}>
-								<h3 className="text-sm font-bold uppercase tracking-widest text-stone-500 mb-4">
+								<h3 className="text-base font-bold uppercase tracking-widest text-stone-500 mb-5">
 									{section.category}
 								</h3>
-								<div className="space-y-5">
+								<div className="space-y-6">
 									{section.items.map((item) => (
-										<div key={item.name} className="flex justify-between gap-4 border-b border-stone-800 pb-4">
+										<div key={item.name} className="flex justify-between gap-4 border-b border-stone-800 pb-5">
 											<div>
-												<div className="font-bold text-stone-100">{item.name}</div>
-												<div className="text-stone-400 text-sm">{item.desc}</div>
+												<div className="font-bold text-lg text-stone-100">{item.name}</div>
+												<div className="text-stone-400 text-base">{item.desc}</div>
 											</div>
-											<div className="font-bold text-amber-400 whitespace-nowrap">{item.price}</div>
+											<div className="font-bold text-lg text-amber-400 whitespace-nowrap">{item.price}</div>
 										</div>
 									))}
 								</div>
@@ -176,9 +176,9 @@ export default function RestaurantDemoPage() {
 				</div>
 			</section>
 
-			<section className="py-20 px-6 bg-stone-900/50">
+			<section className="py-24 px-6 bg-stone-900/50">
 				<div className="max-w-5xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-amber-400">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center text-amber-400">
 						What Guests Are Saying
 					</motion.h2>
 					<div className="grid md:grid-cols-3 gap-6">
@@ -189,37 +189,37 @@ export default function RestaurantDemoPage() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.5, delay: i * 0.1 }}
-								className="bg-stone-950 border border-stone-800 rounded-xl p-6"
+								className="bg-stone-950 border border-stone-800 rounded-xl p-7"
 							>
-								<div className="flex gap-1 text-amber-400 mb-3">
+								<div className="flex gap-1 text-amber-400 mb-4">
 									{[...Array(5)].map((_, j) => (
-										<Star key={j} className="w-4 h-4 fill-amber-400" />
+										<Star key={j} className="w-5 h-5 fill-amber-400" />
 									))}
 								</div>
-								<p className="text-stone-200 mb-4 leading-relaxed">"{t.quote}"</p>
-								<p className="text-stone-500 text-sm font-semibold">{t.author}</p>
+								<p className="text-stone-200 text-lg mb-4 leading-relaxed">"{t.quote}"</p>
+								<p className="text-stone-500 text-base font-semibold">{t.author}</p>
 							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section id="visit" className="py-20 px-6">
-				<motion.div {...fadeUp} className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
-					<div className="flex flex-col items-center gap-2">
-						<MapPin className="w-6 h-6 text-amber-400" />
-						<div className="font-bold">Location</div>
-						<div className="text-stone-400 text-sm">412 Elm Street<br />Portland, OR</div>
+			<section id="visit" className="py-24 px-6">
+				<motion.div {...fadeUp} className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-10 text-center">
+					<div className="flex flex-col items-center gap-3">
+						<MapPin className="w-7 h-7 text-amber-400" />
+						<div className="font-bold text-lg">Location</div>
+						<div className="text-stone-400 text-base">412 Elm Street<br />Portland, OR</div>
 					</div>
-					<div className="flex flex-col items-center gap-2">
-						<Clock className="w-6 h-6 text-amber-400" />
-						<div className="font-bold">Hours</div>
-						<div className="text-stone-400 text-sm">Tue–Sun<br />5pm – 10pm</div>
+					<div className="flex flex-col items-center gap-3">
+						<Clock className="w-7 h-7 text-amber-400" />
+						<div className="font-bold text-lg">Hours</div>
+						<div className="text-stone-400 text-base">Tue–Sun<br />5pm – 10pm</div>
 					</div>
-					<div className="flex flex-col items-center gap-2">
-						<Phone className="w-6 h-6 text-amber-400" />
-						<div className="font-bold">Reservations</div>
-						<div className="text-stone-400 text-sm">(503) 555-0148</div>
+					<div className="flex flex-col items-center gap-3">
+						<Phone className="w-7 h-7 text-amber-400" />
+						<div className="font-bold text-lg">Reservations</div>
+						<div className="text-stone-400 text-base">(503) 555-0148</div>
 					</div>
 				</motion.div>
 			</section>

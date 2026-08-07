@@ -75,20 +75,20 @@ export default function RealEstateDemoPage() {
 
 			<header className="border-b border-slate-200">
 				<div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-					<span className="text-xl font-black tracking-tight text-blue-700">Meridian Properties</span>
-					<nav className="hidden md:flex gap-8 text-slate-600 text-sm font-medium">
+					<span className="text-2xl font-black tracking-tight text-blue-700">Meridian Properties</span>
+					<nav className="hidden md:flex gap-8 text-slate-600 text-base font-medium">
 						<a href="#listings" className="hover:text-blue-700 transition-colors">Listings</a>
 						<a href="#why" className="hover:text-blue-700 transition-colors">Why Us</a>
 						<a href="#agent" className="hover:text-blue-700 transition-colors">Agent</a>
 						<a href="#contact" className="hover:text-blue-700 transition-colors">Contact</a>
 					</nav>
-					<a href="#contact" className="bg-blue-600 text-white font-bold px-5 py-2 rounded-full text-sm hover:bg-blue-700 transition-colors">
+					<a href="#contact" className="bg-blue-600 text-white font-bold px-6 py-2.5 rounded-full text-base hover:bg-blue-700 transition-colors">
 						Get in Touch
 					</a>
 				</div>
 			</header>
 
-			<section className="relative h-[60vh] flex items-center overflow-hidden">
+			<section className="relative h-[70vh] flex items-center overflow-hidden">
 				<img
 					src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1600&h=1000&fit=crop"
 					alt="Modern home exterior"
@@ -101,18 +101,18 @@ export default function RealEstateDemoPage() {
 					transition={{ duration: 0.7 }}
 					className="relative px-6 max-w-4xl mx-auto w-full text-center text-white"
 				>
-					<h1 className="text-4xl md:text-6xl font-black mb-4 leading-tight">
+					<h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
 						Find Your Next Home
 					</h1>
-					<p className="text-lg md:text-xl text-blue-100">
+					<p className="text-xl md:text-2xl text-blue-100 leading-relaxed">
 						Curated listings across the metro area, matched to how you actually want to live.
 					</p>
 				</motion.div>
 			</section>
 
-			<section id="listings" className="py-20 px-6">
+			<section id="listings" className="py-24 px-6">
 				<div className="max-w-6xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center text-slate-900">
 						Featured Listings
 					</motion.h2>
 					<div className="grid md:grid-cols-3 gap-8">
@@ -133,13 +133,13 @@ export default function RealEstateDemoPage() {
 									/>
 								</div>
 								<div className="p-6">
-									<div className="text-blue-700 font-black text-xl mb-1">{home.price}</div>
-									<div className="font-bold text-slate-900 mb-1">{home.title}</div>
-									<div className="flex items-center gap-1 text-slate-500 text-sm mb-4">
+									<div className="text-blue-700 font-black text-2xl mb-2">{home.price}</div>
+									<div className="font-bold text-lg text-slate-900 mb-1">{home.title}</div>
+									<div className="flex items-center gap-1 text-slate-500 text-base mb-4">
 										<MapPin className="w-4 h-4" />
 										{home.location}
 									</div>
-									<div className="flex gap-4 text-slate-600 text-sm border-t border-slate-100 pt-4">
+									<div className="flex gap-4 text-slate-600 text-base border-t border-slate-100 pt-4">
 										<span className="flex items-center gap-1"><BedDouble className="w-4 h-4" /> {home.beds}</span>
 										<span className="flex items-center gap-1"><Bath className="w-4 h-4" /> {home.baths}</span>
 										<span className="flex items-center gap-1"><Ruler className="w-4 h-4" /> {home.sqft} sqft</span>
@@ -151,9 +151,9 @@ export default function RealEstateDemoPage() {
 				</div>
 			</section>
 
-			<section id="why" className="py-20 px-6 bg-blue-700 text-white">
+			<section id="why" className="py-24 px-6 bg-blue-700 text-white">
 				<div className="max-w-4xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center">
 						Why Work With Jordan
 					</motion.h2>
 					<div className="grid sm:grid-cols-2 gap-6">
@@ -164,19 +164,19 @@ export default function RealEstateDemoPage() {
 								whileInView={{ opacity: 1, x: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.5, delay: i * 0.1 }}
-								className="flex items-center gap-3 bg-blue-800/50 rounded-lg p-5"
+								className="flex items-center gap-4 bg-blue-800/50 rounded-lg p-6"
 							>
-								<CheckCircle2 className="w-6 h-6 text-blue-200 flex-shrink-0" />
-								<span className="font-medium">{item}</span>
+								<CheckCircle2 className="w-7 h-7 text-blue-200 flex-shrink-0" />
+								<span className="font-medium text-lg">{item}</span>
 							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section className="py-20 px-6">
+			<section className="py-24 px-6">
 				<div className="max-w-5xl mx-auto">
-					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+					<motion.h2 {...fadeUp} className="text-4xl md:text-5xl font-black mb-14 text-center text-slate-900">
 						What Clients Say
 					</motion.h2>
 					<div className="grid md:grid-cols-3 gap-6">
@@ -187,40 +187,40 @@ export default function RealEstateDemoPage() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.5, delay: i * 0.1 }}
-								className="bg-slate-50 border border-slate-200 rounded-xl p-6"
+								className="bg-slate-50 border border-slate-200 rounded-xl p-7"
 							>
-								<div className="flex gap-1 text-blue-600 mb-3">
+								<div className="flex gap-1 text-blue-600 mb-4">
 									{[...Array(5)].map((_, j) => (
-										<Star key={j} className="w-4 h-4 fill-blue-600" />
+										<Star key={j} className="w-5 h-5 fill-blue-600" />
 									))}
 								</div>
-								<p className="text-slate-700 mb-4 leading-relaxed">"{t.quote}"</p>
-								<p className="text-slate-500 text-sm font-semibold">{t.author}</p>
+								<p className="text-slate-700 text-lg mb-4 leading-relaxed">"{t.quote}"</p>
+								<p className="text-slate-500 text-base font-semibold">{t.author}</p>
 							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section id="agent" className="py-20 px-6 bg-slate-50">
+			<section id="agent" className="py-24 px-6 bg-slate-50">
 				<motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-					<div className="w-20 h-20 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-black mx-auto mb-4">
+					<div className="w-24 h-24 rounded-full bg-blue-600 text-white flex items-center justify-center text-3xl font-black mx-auto mb-5">
 						JR
 					</div>
-					<h2 className="text-2xl font-black mb-2 text-slate-900">Jordan Reyes</h2>
-					<div className="text-slate-500 text-sm mb-4">Licensed Real Estate Agent</div>
-					<p className="text-slate-600 leading-relaxed">
+					<h2 className="text-3xl font-black mb-2 text-slate-900">Jordan Reyes</h2>
+					<div className="text-slate-500 text-base mb-5">Licensed Real Estate Agent</div>
+					<p className="text-slate-600 text-lg leading-relaxed">
 						Jordan has helped over a hundred families buy and sell homes across the metro area,
 						with a focus on first-time buyers and relocation clients.
 					</p>
 				</motion.div>
 			</section>
 
-			<section id="contact" className="py-20 px-6">
+			<section id="contact" className="py-24 px-6">
 				<motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-					<h2 className="text-3xl md:text-4xl font-black mb-6 text-slate-900">Let's Find Your Home</h2>
-					<p className="text-slate-600 mb-2">(415) 555-0172</p>
-					<p className="text-slate-600">jordan@meridianproperties.example</p>
+					<h2 className="text-4xl md:text-5xl font-black mb-8 text-slate-900">Let's Find Your Home</h2>
+					<p className="text-slate-600 text-lg mb-2">(415) 555-0172</p>
+					<p className="text-slate-600 text-lg">jordan@meridianproperties.example</p>
 				</motion.div>
 			</section>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -71,7 +71,6 @@ const PortfolioHero = ({
 	categories,
 	selectedCategory,
 	onCategoryChange,
-	gridRef,
 }) => (
 	<section className="relative bg-black overflow-hidden pt-28 pb-12 md:pt-36 md:pb-16 px-4 md:px-6 lg:px-8">
 		<div className="relative">
@@ -113,15 +112,7 @@ const PortfolioHero = ({
 									? "default"
 									: "outline"
 							}
-							onClick={() => {
-								onCategoryChange(category)
-								if (gridRef && gridRef.current) {
-									gridRef.current.scrollIntoView({
-										behavior: "smooth",
-										block: "start",
-									})
-								}
-							}}
+							onClick={() => onCategoryChange(category)}
 							className={`px-6 py-2 transition-all duration-200 ${
 								normalize(selectedCategory) === normalize(category)
 									? "bg-white text-black border-0"
@@ -324,7 +315,6 @@ const PortfolioCTA = () => (
 
 export default function ShowcasePage() {
 	const [selectedCategory, setSelectedCategory] = useState("All")
-	const gridRef = useRef(null)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -332,9 +322,6 @@ export default function ShowcasePage() {
 
 	const handleCategoryChange = (cat) => {
 		setSelectedCategory(cat)
-		if (gridRef.current) {
-			gridRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
-		}
 	}
 
 	const filteredItems =
@@ -355,11 +342,8 @@ export default function ShowcasePage() {
 				categories={categories}
 				selectedCategory={selectedCategory}
 				onCategoryChange={handleCategoryChange}
-				gridRef={gridRef}
 			/>
-			<div ref={gridRef}>
-				<PortfolioGrid portfolioItems={filteredItems} />
-			</div>
+			<PortfolioGrid portfolioItems={filteredItems} />
 			<WhyWorkWithUs />
 			<PortfolioCTA />
 			<Footer />
