@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Footer from "@/components/Footer"
 import { motion } from "framer-motion"
-import { ArrowRight, Globe, Users, Heart, TrendingUp } from "lucide-react"
+import { ArrowRight, ExternalLink, Globe, Users, Sparkles } from "lucide-react"
 import { Helmet } from "react-helmet"
 
 // Helper
@@ -14,153 +14,57 @@ const normalize = (str) => (str ? str.trim().toLowerCase() : "")
 const portfolioItems = [
 	{
 		id: 1,
-		title: "FitLife Pro",
-		subtitle: "Health & Wellness",
-		image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+		title: "Team Fever",
+		subtitle: "Culture & Community Collective",
+		url: "https://www.teamfever.org",
+		image: null,
+		accent: "from-fuchsia-600 via-purple-600 to-indigo-700",
 		description:
-			"A modern fitness coaching site for a boutique gym, featuring class schedules and online signups.",
-		features: [
-			"Class Booking",
-			"Trainer Profiles",
-			"Mobile Responsive",
-			"SEO Optimized",
-		],
-		stats: [
-			{ value: "+1,200", label: "clients" },
-			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2025", label: "launch" },
-		],
-		testimonial: {
-			quote:
-				"TechMotive Supreme made it easy for our clients to book classes and learn about our trainers. Our online signups doubled!",
-			author: "Sarah Johnson - Owner, FitLife Pro",
-		},
-		category: "Health & Wellness",
-		accent: "from-green-400 to-emerald-500",
+			"A live site built for Team Fever, a creative collective centered on culture, fashion, and community events. Includes event promotion, community sections, and social integration.",
+		features: ["Event Promotion", "Community Sections", "Social Integration", "Mobile Responsive"],
+		category: "Live Client Work",
+		badgeLabel: "Live Client Project",
 	},
 	{
 		id: 2,
-		title: "TechFlow Solutions",
-		subtitle: "E-commerce",
-		image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+		title: "Ember & Oak",
+		subtitle: "Restaurant",
+		url: "/demo-sites/restaurant",
+		image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
 		description:
-			"Landing page and dashboard UI for a SaaS e-commerce startup, focused on clarity and conversion.",
-		features: ["Landing Page", "Dashboard UI", "Conversion Copy", "Branding"],
-		stats: [
-			{ value: "+2,500", label: "clients" },
-			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2025", label: "launch" },
-		],
-		testimonial: {
-			quote:
-				"Our signups increased and our brand finally looks professional. The process was smooth and collaborative.",
-			author: "Michael Chen - Founder, TechFlow Solutions",
-		},
-		category: "Technology/SaaS",
+			"A demo concept for a wood-fired restaurant — built to show how a menu, reservations, and location info come together in a warm, appetite-driving design.",
+		features: ["Menu Showcase", "Reservation CTA", "Hours & Location", "Warm Visual Identity"],
+		category: "Demo Concepts",
+		badgeLabel: "Demo Concept",
 	},
 	{
 		id: 3,
-		title: "Luxury Estates Co",
-		subtitle: "Real Estate",
-		image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
+		title: "Whitfield & Hale",
+		subtitle: "Legal / Professional Services",
+		url: "/demo-sites/law-firm",
+		image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
 		description:
-			"A clean, mobile-first site for a local real estate agent, with featured listings and lead forms.",
-		features: [
-			"Featured Listings",
-			"Lead Forms",
-			"Mobile First",
-			"Photo Gallery",
-		],
-		stats: [
-			{ value: "+800", label: "clients" },
-			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2025", label: "launch" },
-		],
-		testimonial: {
-			quote:
-				"I get more inquiries from my website than any other channel. TechMotive Supreme made it easy!",
-			author: "Amanda Rodriguez - Agent, Luxury Estates Co",
-		},
-		category: "Real Estate",
+			"A demo concept for a boutique law firm — clean, trustworthy design with practice areas, attorney bios, and a clear path to booking a consultation.",
+		features: ["Practice Areas", "Attorney Bios", "Consultation CTA", "Professional Design"],
+		category: "Demo Concepts",
+		badgeLabel: "Demo Concept",
 	},
 	{
 		id: 4,
-		title: "Artisan Market",
-		subtitle: "E-commerce",
-		image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+		title: "Meridian Properties",
+		subtitle: "Real Estate",
+		url: "/demo-sites/real-estate",
+		image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop",
 		description:
-			"A simple e-commerce site for a local artisan collective, with easy product management.",
-		features: [
-			"Product Catalog",
-			"Easy Checkout",
-			"Inventory Tools",
-			"Customer Reviews",
-		],
-		stats: [
-			{ value: "+3,400", label: "clients" },
-			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2025", label: "launch" },
-		],
-		testimonial: {
-			quote:
-				"We love how easy it is to update our products. Our customers always comment on how smooth the checkout is.",
-			author: "David Kim - Co-Founder, Artisan Market",
-		},
-		category: "E-commerce",
-		accent: "from-pink-500 to-yellow-400",
-	},
-	{
-		id: 5,
-		title: "Creative Studio Co",
-		subtitle: "Creative Agency",
-		image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
-		description:
-			"Portfolio site for a small creative agency, with case studies and a contact form.",
-		features: ["Case Studies", "Contact Form", "Gallery", "Blog"],
-		stats: [
-			{ value: "+650", label: "clients" },
-			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2025", label: "launch" },
-		],
-		testimonial: {
-			quote:
-				"Our new site finally reflects our work. We get more project inquiries and it’s easy to update.",
-			author: "Lisa Thompson - Creative Director",
-		},
-		category: "Creative Agency",
-	},
-	{
-		id: 6,
-		title: "Legal Partners LLC",
-		subtitle: "Professional Services",
-		image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
-		description:
-			"Professional site for a boutique law firm, with attorney bios and appointment booking.",
-		features: ["Attorney Bios", "Booking Form", "Practice Areas", "Testimonials"],
-		stats: [
-			{ value: "+10,000", label: "clients" },
-			{ value: "+100%", label: "satisfaction" },
-			{ value: "+2025", label: "launch" },
-		],
-		testimonial: {
-			quote:
-				"We needed a site that looked trustworthy and made it easy for clients to reach us. TechMotive Supreme delivered.",
-			author: "Robert Wilson - Managing Partner",
-		},
-		category: "Professional Services",
+			"A demo concept for a real estate agency — featured listings grid, agent profile, and lead capture built for a fast-scanning, photo-first experience.",
+		features: ["Listings Grid", "Agent Profile", "Lead Capture", "Photo-First Layout"],
+		category: "Demo Concepts",
+		badgeLabel: "Demo Concept",
 	},
 ]
 
 // Categories
-const categories = [
-	"All",
-	"E-commerce",
-	"Technology/SaaS",
-	"Health & Wellness",
-	"Real Estate",
-	"Creative Agency",
-	"Professional Services",
-]
+const categories = ["All", "Live Client Work", "Demo Concepts"]
 
 // Portfolio Hero Section
 const PortfolioHero = ({
@@ -172,14 +76,6 @@ const PortfolioHero = ({
 	<section className="relative min-h-[70vh] bg-black overflow-hidden pt-12 md:pt-16">
 		<div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8 pt-4">
 			<div className="text-center max-w-6xl mx-auto">
-				<motion.div
-					initial={{ opacity: 0, scale: 0.8, y: -20 }}
-					animate={{ opacity: 1, scale: 1, y: 0 }}
-					transition={{ duration: 0.6, delay: 0.1, ease: "backOut" }}
-					className="mb-8 pt-4"
-				>
-					
-				</motion.div>
 				<motion.h1
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -198,9 +94,9 @@ const PortfolioHero = ({
 					transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
 					className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
 				>
-					Explore stunning websites we've created across industries.{" "}
+					Real client work, plus original demo concepts.{" "}
 					<span className="text-purple-400 font-semibold">
-						Each one designed to convert visitors into customers.
+						Click any card to open the live page in a new tab.
 					</span>
 				</motion.p>
 				<motion.div
@@ -253,8 +149,11 @@ const PortfolioGrid = ({ portfolioItems }) => (
 				animate="animate"
 			>
 				{portfolioItems.map((item, idx) => (
-					<motion.div
+					<motion.a
 						key={item.id}
+						href={item.url}
+						target="_blank"
+						rel="noopener noreferrer"
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, delay: idx * 0.1 }}
@@ -263,43 +162,46 @@ const PortfolioGrid = ({ portfolioItems }) => (
 							y: -4,
 							boxShadow: "0 8px 32px 0 rgba(80,80,255,0.15)",
 						}}
-						className="rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 hover:bg-gray-800/90 transition-all duration-300 flex flex-col"
+						className="group rounded-2xl overflow-hidden shadow-2xl bg-gray-900 border border-gray-800 hover:bg-gray-800/90 transition-all duration-300 flex flex-col text-left cursor-pointer"
 					>
-						<div className="w-full h-64 bg-gray-800 overflow-hidden">
-							<img
-								src={item.image}
-								alt={item.title}
-								className="w-full h-full object-cover object-top rounded-t-2xl"
-								loading="lazy"
-							/>
+						<div className="relative w-full h-64 bg-gray-800 overflow-hidden">
+							{item.image ? (
+								<img
+									src={item.image}
+									alt={item.title}
+									className="w-full h-full object-cover object-top"
+									loading="lazy"
+								/>
+							) : (
+								<div
+									className={`w-full h-full bg-gradient-to-br ${item.accent} flex items-center justify-center`}
+								>
+									<span className="text-white text-3xl font-black tracking-tight text-center px-6">
+										{item.title}
+									</span>
+								</div>
+							)}
+							<Badge className="absolute top-4 left-4 bg-black/70 text-white border-0 backdrop-blur-sm">
+								{item.badgeLabel}
+							</Badge>
 						</div>
 						<div className="p-8 flex-1 flex flex-col items-center justify-between text-center">
-							<h3 className="text-2xl font-extrabold text-white mb-2 leading-snug">{item.title}</h3>
+							<div className="flex items-center gap-2 mb-1">
+								<h3 className="text-2xl font-extrabold text-white leading-snug">{item.title}</h3>
+								<ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" />
+							</div>
+							<p className="text-sm text-purple-400 font-semibold mb-4">{item.subtitle}</p>
 							<p className="text-base text-gray-300 mb-4 leading-relaxed">{item.description}</p>
-							<div className="mb-4 w-full">
+							<div className="w-full">
 								<span className="font-semibold text-white block mb-1 text-sm">Key Features:</span>
-								<ul className="list-disc list-inside text-gray-200 ml-2 mb-2 text-sm">
+								<ul className="list-disc list-inside text-gray-200 ml-2 text-sm">
 									{item.features.map((f, i) => (
 										<li key={i}>{f}</li>
 									))}
 								</ul>
 							</div>
-							<div className="flex flex-row justify-center items-center gap-6 mb-4 w-full">
-								{item.stats.map((stat, i) => (
-									<div key={i} className="flex flex-col items-center flex-1 min-w-0">
-										<div className="text-lg font-bold text-white leading-tight">{stat.value}</div>
-										<div className="text-gray-400 text-xs uppercase tracking-wide">{stat.label}</div>
-									</div>
-								))}
-							</div>
-							<blockquote className="italic text-gray-200 border-l-4 border-neutral-600 pl-4 mb-2 w-full text-left text-sm">
-								"{item.testimonial.quote}"
-							</blockquote>
-							<div className="text-gray-400 text-xs font-semibold w-full text-left">
-								{item.testimonial.author}
-							</div>
 						</div>
-					</motion.div>
+					</motion.a>
 				))}
 			</motion.div>
 		</div>
@@ -318,40 +220,34 @@ const ResultsSection = () => (
 				className="text-center mb-16"
 			>
 				<h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-					Real Results.
+					Real Work.
 					<span className="text-white">
 						{" "}
-						Real Impact.
+						Real Range.
 					</span>
 				</h2>
 				<p className="text-xl text-neutral-400 max-w-3xl mx-auto">
-					50+ clients served • $30k+ revenue generated • 100% satisfaction rate
+					Live client projects, backed by original demo concepts across industries.
 				</p>
 			</motion.div>
-			<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+			<div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
 				{[
 					{
 						icon: Users,
-						stat: "50+",
-						label: "Clients Served",
+						stat: "1",
+						label: "Live Client Project",
 						color: "text-blue-400",
 					},
 					{
-						icon: Globe,
-						stat: "$30k+",
-						label: "Revenue Generated",
+						icon: Sparkles,
+						stat: "3",
+						label: "Demo Concepts",
 						color: "text-purple-400",
 					},
 					{
-						icon: Heart,
-						stat: "100%",
-						label: "Client Satisfaction",
-						color: "text-pink-400",
-					},
-					{
-						icon: TrendingUp,
-						stat: "2025",
-						label: "Years Active",
+						icon: Globe,
+						stat: "2026",
+						label: "Studio Founded",
 						color: "text-green-400",
 					},
 				].map((item, index) => (
@@ -363,7 +259,7 @@ const ResultsSection = () => (
 						viewport={{ once: true }}
 						className="text-center flex flex-col items-center"
 					>
-						<Card className="bg-neutral-900 border-neutral-800 p-6 hover:border-neutral-600 transition-colors duration-200 flex flex-col items-center justify-center">
+						<Card className="bg-neutral-900 border-neutral-800 p-6 hover:border-neutral-600 transition-colors duration-200 flex flex-col items-center justify-center w-full">
 							<item.icon
 								className={`w-12 h-12 ${item.color} mb-4 mx-auto`}
 							/>

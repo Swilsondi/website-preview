@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import './App.css';
 import setupErrorLogging from './utils/errorHandler';
+
+// Standalone portfolio demo sites — rendered without the TechMotive-Supreme app chrome
+// so they read as independent websites when opened from the portfolio page.
+const RestaurantDemoPage = lazy(() => import('./pages/demos/RestaurantDemoPage'));
+const LawFirmDemoPage = lazy(() => import('./pages/demos/LawFirmDemoPage'));
+const RealEstateDemoPage = lazy(() => import('./pages/demos/RealEstateDemoPage'));
 
 // Initialize error logging
 setupErrorLogging();
@@ -29,9 +35,14 @@ if (window.performance && window.performance.mark) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/*" element={<App />} />
-    </Routes>
+    <Suspense fallback={null}>
+      <Routes>
+        <Route path="/demo-sites/restaurant" element={<RestaurantDemoPage />} />
+        <Route path="/demo-sites/law-firm" element={<LawFirmDemoPage />} />
+        <Route path="/demo-sites/real-estate" element={<RealEstateDemoPage />} />
+        <Route path="/*" element={<App />} />
+      </Routes>
+    </Suspense>
   </BrowserRouter>
 );
 
