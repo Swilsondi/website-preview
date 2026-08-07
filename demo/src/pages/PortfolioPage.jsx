@@ -6,6 +6,7 @@ import Footer from "@/components/Footer"
 import { motion } from "framer-motion"
 import { ArrowRight, ExternalLink, Globe, Palette, Zap, Target, LifeBuoy } from "lucide-react"
 import { Helmet } from "react-helmet"
+import teamFeverScreenshot from "@/assets/teamfever-screenshot.png"
 
 // Helper
 const normalize = (str) => (str ? str.trim().toLowerCase() : "")
@@ -17,8 +18,7 @@ const portfolioItems = [
 		title: "Team Fever",
 		subtitle: "Culture & Community Collective",
 		url: "https://www.teamfever.org",
-		image: null,
-		accent: "from-fuchsia-600 via-purple-600 to-indigo-700",
+		image: teamFeverScreenshot,
 		description:
 			"A live site built for Team Fever, a creative collective centered on culture, fashion, and community events. Includes event promotion, community sections, and social integration.",
 		features: ["Event Promotion", "Community Sections", "Social Integration", "Mobile Responsive"],
