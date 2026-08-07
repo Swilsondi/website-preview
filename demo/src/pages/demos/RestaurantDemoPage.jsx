@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { ArrowLeft, MapPin, Clock, Phone } from "lucide-react"
+import { ArrowLeft, MapPin, Clock, Phone, Star } from "lucide-react"
 import { Helmet } from "react-helmet"
 
 const menu = [
@@ -28,6 +28,26 @@ const menu = [
 	},
 ]
 
+const gallery = [
+	"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=600&fit=crop",
+	"https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&h=600&fit=crop",
+	"https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=600&h=600&fit=crop",
+	"https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=600&fit=crop",
+]
+
+const testimonials = [
+	{ quote: "The ribeye alone is worth the drive. Best new spot in the neighborhood.", author: "Local Eats Weekly" },
+	{ quote: "Warm room, warmer service. Our go-to for date night.", author: "Priya M., regular guest" },
+	{ quote: "Every dish tastes like it was made by someone who actually cares.", author: "Portland Food Diary" },
+]
+
+const fadeUp = {
+	initial: { opacity: 0, y: 30 },
+	whileInView: { opacity: 1, y: 0 },
+	viewport: { once: true, margin: "-80px" },
+	transition: { duration: 0.6 },
+}
+
 export default function RestaurantDemoPage() {
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -52,6 +72,7 @@ export default function RestaurantDemoPage() {
 					<span className="text-2xl font-black tracking-tight text-amber-400">Ember &amp; Oak</span>
 					<nav className="hidden md:flex gap-8 text-stone-300 text-sm font-medium">
 						<a href="#menu" className="hover:text-amber-400 transition-colors">Menu</a>
+						<a href="#gallery" className="hover:text-amber-400 transition-colors">Gallery</a>
 						<a href="#about" className="hover:text-amber-400 transition-colors">About</a>
 						<a href="#visit" className="hover:text-amber-400 transition-colors">Visit</a>
 					</nav>
@@ -74,6 +95,12 @@ export default function RestaurantDemoPage() {
 					transition={{ duration: 0.7 }}
 					className="relative px-6 pb-16 max-w-6xl mx-auto w-full"
 				>
+					<div className="flex items-center gap-1 mb-4 text-amber-400">
+						{[...Array(5)].map((_, i) => (
+							<Star key={i} className="w-4 h-4 fill-amber-400" />
+						))}
+						<span className="text-stone-300 text-sm ml-2">4.9 · 300+ reviews</span>
+					</div>
 					<h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight">
 						Wood-fired.<br />Handcrafted.
 					</h1>
@@ -84,22 +111,51 @@ export default function RestaurantDemoPage() {
 			</section>
 
 			<section id="about" className="py-20 px-6">
-				<div className="max-w-3xl mx-auto text-center">
+				<motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
 					<h2 className="text-3xl md:text-4xl font-black mb-6 text-amber-400">Our Story</h2>
 					<p className="text-stone-300 text-lg leading-relaxed">
 						Ember &amp; Oak started as a single wood-fired grill at a farmers market. Today we're a
 						full kitchen, but the philosophy hasn't changed: local ingredients, live fire, and food
 						that tastes like it was made by someone who cares.
 					</p>
+				</motion.div>
+			</section>
+
+			<section id="gallery" className="py-20 px-6 bg-stone-900/50">
+				<div className="max-w-5xl mx-auto">
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-amber-400">
+						Inside the Kitchen
+					</motion.h2>
+					<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+						{gallery.map((src, i) => (
+							<motion.div
+								key={src}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="aspect-square rounded-xl overflow-hidden group"
+							>
+								<img
+									src={src}
+									alt="Ember and Oak dish"
+									className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+									loading="lazy"
+								/>
+							</motion.div>
+						))}
+					</div>
 				</div>
 			</section>
 
-			<section id="menu" className="py-20 px-6 bg-stone-900/50">
+			<section id="menu" className="py-20 px-6">
 				<div className="max-w-4xl mx-auto">
-					<h2 className="text-3xl md:text-4xl font-black mb-12 text-center text-amber-400">Menu</h2>
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-amber-400">
+						Menu
+					</motion.h2>
 					<div className="space-y-12">
 						{menu.map((section) => (
-							<div key={section.category}>
+							<motion.div key={section.category} {...fadeUp}>
 								<h3 className="text-sm font-bold uppercase tracking-widest text-stone-500 mb-4">
 									{section.category}
 								</h3>
@@ -114,14 +170,42 @@ export default function RestaurantDemoPage() {
 										</div>
 									))}
 								</div>
-							</div>
+							</motion.div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section className="py-20 px-6 bg-stone-900/50">
+				<div className="max-w-5xl mx-auto">
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-amber-400">
+						What Guests Are Saying
+					</motion.h2>
+					<div className="grid md:grid-cols-3 gap-6">
+						{testimonials.map((t, i) => (
+							<motion.div
+								key={t.author}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="bg-stone-950 border border-stone-800 rounded-xl p-6"
+							>
+								<div className="flex gap-1 text-amber-400 mb-3">
+									{[...Array(5)].map((_, j) => (
+										<Star key={j} className="w-4 h-4 fill-amber-400" />
+									))}
+								</div>
+								<p className="text-stone-200 mb-4 leading-relaxed">"{t.quote}"</p>
+								<p className="text-stone-500 text-sm font-semibold">{t.author}</p>
+							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
 			<section id="visit" className="py-20 px-6">
-				<div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
+				<motion.div {...fadeUp} className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
 					<div className="flex flex-col items-center gap-2">
 						<MapPin className="w-6 h-6 text-amber-400" />
 						<div className="font-bold">Location</div>
@@ -137,7 +221,7 @@ export default function RestaurantDemoPage() {
 						<div className="font-bold">Reservations</div>
 						<div className="text-stone-400 text-sm">(503) 555-0148</div>
 					</div>
-				</div>
+				</motion.div>
 			</section>
 
 			<footer className="border-t border-stone-800 py-8 px-6 text-center text-stone-500 text-sm">

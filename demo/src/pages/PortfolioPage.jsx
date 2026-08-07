@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Footer from "@/components/Footer"
 import { motion } from "framer-motion"
-import { ArrowRight, ExternalLink, Globe, Users, Sparkles } from "lucide-react"
+import { ArrowRight, ExternalLink, Globe, Palette, Zap, Target, LifeBuoy } from "lucide-react"
 import { Helmet } from "react-helmet"
 
 // Helper
@@ -73,14 +73,14 @@ const PortfolioHero = ({
 	onCategoryChange,
 	gridRef,
 }) => (
-	<section className="relative min-h-[70vh] bg-black overflow-hidden pt-12 md:pt-16">
-		<div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8 pt-4">
+	<section className="relative bg-black overflow-hidden pt-28 pb-12 md:pt-36 md:pb-16 px-4 md:px-6 lg:px-8">
+		<div className="relative">
 			<div className="text-center max-w-6xl mx-auto">
 				<motion.h1
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-					className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+					className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight"
 				>
 					Our{" "}
 					<span className="text-white">
@@ -92,7 +92,7 @@ const PortfolioHero = ({
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-					className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+					className="text-xl lg:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed"
 				>
 					Real client work, plus original demo concepts.{" "}
 					<span className="text-purple-400 font-semibold">
@@ -103,7 +103,7 @@ const PortfolioHero = ({
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-					className="flex flex-wrap gap-4 justify-center mb-10"
+					className="flex flex-wrap gap-4 justify-center"
 				>
 					{categories.map((category) => (
 						<Button
@@ -141,7 +141,7 @@ const PortfolioHero = ({
 
 // Portfolio Grid
 const PortfolioGrid = ({ portfolioItems }) => (
-	<section className="py-20 bg-black">
+	<section className="pt-4 pb-20 bg-black">
 		<div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
 			<motion.div
 				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
@@ -208,8 +208,8 @@ const PortfolioGrid = ({ portfolioItems }) => (
 	</section>
 )
 
-// Results Section
-const ResultsSection = () => (
+// Why Work With Us Section
+const WhyWorkWithUs = () => (
 	<section className="py-20 bg-neutral-950">
 		<div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
 			<motion.div
@@ -220,35 +220,34 @@ const ResultsSection = () => (
 				className="text-center mb-16"
 			>
 				<h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-					Real Work.
-					<span className="text-white">
-						{" "}
-						Real Range.
-					</span>
+					Why Work
+					<span className="text-white"> With Us</span>
 				</h2>
 				<p className="text-xl text-neutral-400 max-w-3xl mx-auto">
-					Live client projects, backed by original demo concepts across industries.
+					Every project — client or concept — gets the same level of craft and attention.
 				</p>
 			</motion.div>
-			<div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
+			<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
 				{[
 					{
-						icon: Users,
-						stat: "1",
-						label: "Live Client Project",
-						color: "text-blue-400",
+						icon: Palette,
+						title: "Custom Design",
+						desc: "No templates. Every site is designed around your brand, not the other way around.",
 					},
 					{
-						icon: Sparkles,
-						stat: "3",
-						label: "Demo Concepts",
-						color: "text-purple-400",
+						icon: Zap,
+						title: "Fast Turnaround",
+						desc: "Most projects go from kickoff to live in a matter of weeks, not months.",
 					},
 					{
-						icon: Globe,
-						stat: "2026",
-						label: "Studio Founded",
-						color: "text-green-400",
+						icon: Target,
+						title: "Built to Convert",
+						desc: "Clear calls-to-action and layouts designed to turn visitors into customers.",
+					},
+					{
+						icon: LifeBuoy,
+						title: "Ongoing Support",
+						desc: "Launch day isn't the finish line — I stick around for updates and fixes.",
 					},
 				].map((item, index) => (
 					<motion.div
@@ -257,18 +256,12 @@ const ResultsSection = () => (
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, delay: index * 0.1 }}
 						viewport={{ once: true }}
-						className="text-center flex flex-col items-center"
+						className="flex"
 					>
-						<Card className="bg-neutral-900 border-neutral-800 p-6 hover:border-neutral-600 transition-colors duration-200 flex flex-col items-center justify-center w-full">
-							<item.icon
-								className={`w-12 h-12 ${item.color} mb-4 mx-auto`}
-							/>
-							<div className="text-3xl font-black text-white mb-2 text-center">
-								{item.stat}
-							</div>
-							<div className="text-neutral-400 text-sm text-center">
-								{item.label}
-							</div>
+						<Card className="bg-neutral-900 border-neutral-800 p-6 hover:border-neutral-600 transition-colors duration-200 flex flex-col items-center text-center w-full">
+							<item.icon className="w-10 h-10 text-purple-400 mb-4" />
+							<div className="font-bold text-white mb-2">{item.title}</div>
+							<div className="text-neutral-400 text-sm leading-relaxed">{item.desc}</div>
 						</Card>
 					</motion.div>
 				))}
@@ -367,7 +360,7 @@ export default function ShowcasePage() {
 			<div ref={gridRef}>
 				<PortfolioGrid portfolioItems={filteredItems} />
 			</div>
-			<ResultsSection />
+			<WhyWorkWithUs />
 			<PortfolioCTA />
 			<Footer />
 		</div>

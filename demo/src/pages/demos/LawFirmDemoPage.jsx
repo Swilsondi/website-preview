@@ -1,7 +1,17 @@
 import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { ArrowLeft, Scale, Building2, Users, ShieldCheck, Phone, Mail } from "lucide-react"
+import {
+	ArrowLeft,
+	Scale,
+	Building2,
+	Users,
+	ShieldCheck,
+	Phone,
+	Mail,
+	CheckCircle2,
+	ChevronDown,
+} from "lucide-react"
 import { Helmet } from "react-helmet"
 
 const practiceAreas = [
@@ -14,6 +24,27 @@ const attorneys = [
 	{ name: "Margaret Whitfield", title: "Founding Partner, Corporate Law", years: "22 years experience" },
 	{ name: "Daniel Hale", title: "Partner, Family Law", years: "15 years experience" },
 ]
+
+const whyUs = [
+	"Free initial consultation",
+	"Transparent, flat-fee pricing",
+	"Direct access to your attorney",
+	"Decades of combined experience",
+]
+
+const faqs = [
+	{ q: "How much does a consultation cost?", a: "Your first consultation is free. We'll review your situation and outline your options before any fees are discussed." },
+	{ q: "How are your fees structured?", a: "Most matters are handled on a transparent flat-fee basis, so you know the cost upfront — no surprise hourly billing." },
+	{ q: "How quickly can I speak with an attorney?", a: "We typically respond to new inquiries within one business day and can schedule a call within the week." },
+	{ q: "Do you handle cases outside the region?", a: "We primarily serve clients across the state, with remote consultations available for out-of-area clients." },
+]
+
+const fadeUp = {
+	initial: { opacity: 0, y: 30 },
+	whileInView: { opacity: 1, y: 0 },
+	viewport: { once: true, margin: "-80px" },
+	transition: { duration: 0.6 },
+}
 
 export default function LawFirmDemoPage() {
 	useEffect(() => {
@@ -42,7 +73,9 @@ export default function LawFirmDemoPage() {
 					</div>
 					<nav className="hidden md:flex gap-8 text-slate-600 text-sm font-medium">
 						<a href="#practice" className="hover:text-slate-900 transition-colors">Practice Areas</a>
+						<a href="#why" className="hover:text-slate-900 transition-colors">Why Us</a>
 						<a href="#attorneys" className="hover:text-slate-900 transition-colors">Attorneys</a>
+						<a href="#faq" className="hover:text-slate-900 transition-colors">FAQ</a>
 						<a href="#contact" className="hover:text-slate-900 transition-colors">Contact</a>
 					</nav>
 					<a href="#contact" className="bg-slate-900 text-white font-bold px-5 py-2 rounded text-sm hover:bg-slate-800 transition-colors">
@@ -70,14 +103,46 @@ export default function LawFirmDemoPage() {
 
 			<section id="practice" className="py-20 px-6">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">Practice Areas</h2>
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+						Practice Areas
+					</motion.h2>
 					<div className="grid md:grid-cols-3 gap-8">
-						{practiceAreas.map((area) => (
-							<div key={area.title} className="border border-slate-200 rounded-lg p-8 hover:border-slate-400 transition-colors">
+						{practiceAreas.map((area, i) => (
+							<motion.div
+								key={area.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="border border-slate-200 rounded-lg p-8 hover:border-slate-400 hover:shadow-md transition-all"
+							>
 								<area.icon className="w-8 h-8 text-slate-900 mb-4" />
 								<h3 className="font-bold text-lg mb-2 text-slate-900">{area.title}</h3>
 								<p className="text-slate-600 text-sm leading-relaxed">{area.desc}</p>
-							</div>
+							</motion.div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="why" className="py-20 px-6 bg-slate-900 text-white">
+				<div className="max-w-4xl mx-auto">
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center">
+						Why Clients Choose Us
+					</motion.h2>
+					<div className="grid sm:grid-cols-2 gap-6">
+						{whyUs.map((item, i) => (
+							<motion.div
+								key={item}
+								initial={{ opacity: 0, x: -20 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="flex items-center gap-3 bg-slate-800/60 rounded-lg p-5"
+							>
+								<CheckCircle2 className="w-6 h-6 text-amber-400 flex-shrink-0" />
+								<span className="font-medium">{item}</span>
+							</motion.div>
 						))}
 					</div>
 				</div>
@@ -85,24 +150,59 @@ export default function LawFirmDemoPage() {
 
 			<section id="attorneys" className="py-20 px-6 bg-slate-50">
 				<div className="max-w-4xl mx-auto">
-					<h2 className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">Our Attorneys</h2>
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+						Our Attorneys
+					</motion.h2>
 					<div className="grid sm:grid-cols-2 gap-8">
-						{attorneys.map((a) => (
-							<div key={a.name} className="bg-white border border-slate-200 rounded-lg p-8 text-center">
+						{attorneys.map((a, i) => (
+							<motion.div
+								key={a.name}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="bg-white border border-slate-200 rounded-lg p-8 text-center"
+							>
 								<div className="w-20 h-20 rounded-full bg-slate-900 text-white flex items-center justify-center text-2xl font-black mx-auto mb-4">
 									{a.name.split(" ").map((n) => n[0]).join("")}
 								</div>
 								<div className="font-bold text-slate-900">{a.name}</div>
 								<div className="text-slate-600 text-sm">{a.title}</div>
 								<div className="text-slate-400 text-xs mt-1">{a.years}</div>
-							</div>
+							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
-			<section id="contact" className="py-20 px-6">
-				<div className="max-w-3xl mx-auto text-center">
+			<section id="faq" className="py-20 px-6">
+				<div className="max-w-3xl mx-auto">
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+						Frequently Asked Questions
+					</motion.h2>
+					<div className="space-y-3">
+						{faqs.map((f, i) => (
+							<motion.details
+								key={f.q}
+								initial={{ opacity: 0, y: 15 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.4, delay: i * 0.05 }}
+								className="group border border-slate-200 rounded-lg px-6 py-4"
+							>
+								<summary className="flex items-center justify-between cursor-pointer font-bold text-slate-900 list-none">
+									{f.q}
+									<ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" />
+								</summary>
+								<p className="text-slate-600 text-sm leading-relaxed mt-3">{f.a}</p>
+							</motion.details>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="contact" className="py-20 px-6 bg-slate-50">
+				<motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
 					<h2 className="text-3xl md:text-4xl font-black mb-6 text-slate-900">Schedule a Consultation</h2>
 					<p className="text-slate-600 mb-8">We respond to every inquiry within one business day.</p>
 					<div className="flex flex-col sm:flex-row gap-6 justify-center text-slate-700">
@@ -115,7 +215,7 @@ export default function LawFirmDemoPage() {
 							intake@whitfieldhale.example
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			</section>
 
 			<footer className="border-t border-slate-200 py-8 px-6 text-center text-slate-400 text-sm">

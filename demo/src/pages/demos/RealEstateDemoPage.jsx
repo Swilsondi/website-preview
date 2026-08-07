@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import { ArrowLeft, BedDouble, Bath, Ruler, MapPin } from "lucide-react"
+import { ArrowLeft, BedDouble, Bath, Ruler, MapPin, Star, CheckCircle2 } from "lucide-react"
 import { Helmet } from "react-helmet"
 
 const listings = [
@@ -34,6 +34,26 @@ const listings = [
 	},
 ]
 
+const whyJordan = [
+	"Local market expertise across the metro area",
+	"Responsive — most inquiries answered same day",
+	"Skilled negotiator focused on your bottom line",
+	"Guided support from offer to closing",
+]
+
+const testimonials = [
+	{ quote: "Jordan found us a home in a market where everyone said we'd never win a bid. Incredible advocate.", author: "The Nguyen Family" },
+	{ quote: "Sold our place in nine days, over asking. Communication the entire way through.", author: "Marcus T." },
+	{ quote: "First-time buyer here — Jordan explained every step and never made me feel rushed.", author: "Alicia R." },
+]
+
+const fadeUp = {
+	initial: { opacity: 0, y: 30 },
+	whileInView: { opacity: 1, y: 0 },
+	viewport: { once: true, margin: "-80px" },
+	transition: { duration: 0.6 },
+}
+
 export default function RealEstateDemoPage() {
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -58,6 +78,7 @@ export default function RealEstateDemoPage() {
 					<span className="text-xl font-black tracking-tight text-blue-700">Meridian Properties</span>
 					<nav className="hidden md:flex gap-8 text-slate-600 text-sm font-medium">
 						<a href="#listings" className="hover:text-blue-700 transition-colors">Listings</a>
+						<a href="#why" className="hover:text-blue-700 transition-colors">Why Us</a>
 						<a href="#agent" className="hover:text-blue-700 transition-colors">Agent</a>
 						<a href="#contact" className="hover:text-blue-700 transition-colors">Contact</a>
 					</nav>
@@ -91,11 +112,26 @@ export default function RealEstateDemoPage() {
 
 			<section id="listings" className="py-20 px-6">
 				<div className="max-w-6xl mx-auto">
-					<h2 className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">Featured Listings</h2>
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+						Featured Listings
+					</motion.h2>
 					<div className="grid md:grid-cols-3 gap-8">
-						{listings.map((home) => (
-							<div key={home.title} className="rounded-xl overflow-hidden border border-slate-200 hover:shadow-lg transition-shadow">
-								<img src={home.image} alt={home.title} className="w-full h-48 object-cover" />
+						{listings.map((home, i) => (
+							<motion.div
+								key={home.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="rounded-xl overflow-hidden border border-slate-200 hover:shadow-lg transition-shadow group"
+							>
+								<div className="overflow-hidden">
+									<img
+										src={home.image}
+										alt={home.title}
+										className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+									/>
+								</div>
 								<div className="p-6">
 									<div className="text-blue-700 font-black text-xl mb-1">{home.price}</div>
 									<div className="font-bold text-slate-900 mb-1">{home.title}</div>
@@ -109,14 +145,65 @@ export default function RealEstateDemoPage() {
 										<span className="flex items-center gap-1"><Ruler className="w-4 h-4" /> {home.sqft} sqft</span>
 									</div>
 								</div>
-							</div>
+							</motion.div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="why" className="py-20 px-6 bg-blue-700 text-white">
+				<div className="max-w-4xl mx-auto">
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center">
+						Why Work With Jordan
+					</motion.h2>
+					<div className="grid sm:grid-cols-2 gap-6">
+						{whyJordan.map((item, i) => (
+							<motion.div
+								key={item}
+								initial={{ opacity: 0, x: -20 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="flex items-center gap-3 bg-blue-800/50 rounded-lg p-5"
+							>
+								<CheckCircle2 className="w-6 h-6 text-blue-200 flex-shrink-0" />
+								<span className="font-medium">{item}</span>
+							</motion.div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section className="py-20 px-6">
+				<div className="max-w-5xl mx-auto">
+					<motion.h2 {...fadeUp} className="text-3xl md:text-4xl font-black mb-12 text-center text-slate-900">
+						What Clients Say
+					</motion.h2>
+					<div className="grid md:grid-cols-3 gap-6">
+						{testimonials.map((t, i) => (
+							<motion.div
+								key={t.author}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: i * 0.1 }}
+								className="bg-slate-50 border border-slate-200 rounded-xl p-6"
+							>
+								<div className="flex gap-1 text-blue-600 mb-3">
+									{[...Array(5)].map((_, j) => (
+										<Star key={j} className="w-4 h-4 fill-blue-600" />
+									))}
+								</div>
+								<p className="text-slate-700 mb-4 leading-relaxed">"{t.quote}"</p>
+								<p className="text-slate-500 text-sm font-semibold">{t.author}</p>
+							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
 
 			<section id="agent" className="py-20 px-6 bg-slate-50">
-				<div className="max-w-3xl mx-auto text-center">
+				<motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
 					<div className="w-20 h-20 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-black mx-auto mb-4">
 						JR
 					</div>
@@ -126,15 +213,15 @@ export default function RealEstateDemoPage() {
 						Jordan has helped over a hundred families buy and sell homes across the metro area,
 						with a focus on first-time buyers and relocation clients.
 					</p>
-				</div>
+				</motion.div>
 			</section>
 
 			<section id="contact" className="py-20 px-6">
-				<div className="max-w-3xl mx-auto text-center">
+				<motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
 					<h2 className="text-3xl md:text-4xl font-black mb-6 text-slate-900">Let's Find Your Home</h2>
 					<p className="text-slate-600 mb-2">(415) 555-0172</p>
 					<p className="text-slate-600">jordan@meridianproperties.example</p>
-				</div>
+				</motion.div>
 			</section>
 
 			<footer className="border-t border-slate-200 py-8 px-6 text-center text-slate-400 text-sm">
