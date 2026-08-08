@@ -64,8 +64,9 @@ const SplitText = ({ children, className = "" }) => {
 
 const HeroSection = ({ handleNavigation }) => {
   return (
-    <section className="relative bg-black overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20 px-4 md:px-6 lg:px-8">
-      <div className="text-center max-w-6xl mx-auto">
+    <section className="relative bg-black overflow-hidden pt-16 px-4 md:px-6 lg:px-8">
+      <div className="min-h-[calc(88vh-4rem)] flex items-center justify-center">
+        <div className="text-center max-w-6xl mx-auto">
 
         <SplitText className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight tracking-tight">
           BUILD. LAUNCH. MONETIZE.
@@ -124,6 +125,7 @@ const HeroSection = ({ handleNavigation }) => {
           ))}
         </motion.div>
 
+      </div>
       </div>
     </section>
   );
