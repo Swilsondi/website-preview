@@ -36,27 +36,14 @@ const fadeIn = {
 
 // Hero Section
 const SuccessHero = () => (
-  <section className="relative min-h-[60vh] bg-black overflow-hidden pt-12 md:pt-16">
-    <div className="absolute inset-0">
-
-</div>
-
-    <div className="relative flex items-center justify-center min-h-[60vh] px-4 md:px-6 lg:px-8">
+  <section className="relative bg-black overflow-hidden pt-16">
+    <div className="min-h-[calc(70vh-4rem)] flex items-center justify-center px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-          className="mb-8 pt-4"
-        >
-          
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+          className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight"
         >
           Transforming
           <span className="text-white"> Challenges </span>
@@ -67,7 +54,7 @@ const SuccessHero = () => (
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          className="text-2xl lg:text-3xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
         >
           See how our solutions have helped
           <span className="text-teal-400 font-semibold"> real businesses </span>
@@ -92,11 +79,11 @@ const FeaturedCaseStudy = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
             Featured
             <span className="text-white"> Success Story</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
             Our work with FutureTech transformed their online presence and doubled conversion rates.
           </p>
         </motion.div>
@@ -208,7 +195,7 @@ const CaseStudiesGrid = () => {
   ];
 
   return (
-    <section className="py-20 bg-neutral-950">
+    <section className="py-24 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -217,11 +204,11 @@ const CaseStudiesGrid = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
             More Client
             <span className="text-white"> Success Stories</span>
           </h2>
-          <p className="text-xl text-cyan-200 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-cyan-200 max-w-3xl mx-auto">
             Real-world examples of how our solutions transform businesses across industries.
           </p>
         </motion.div>
@@ -335,11 +322,11 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
             What Our Clients
             <span className="text-white"> Say About Us</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
             Don't just take our word for it — hear directly from the businesses we've helped succeed.
           </p>
         </motion.div>
@@ -435,12 +422,12 @@ const CTASection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
             Ready to Become Our Next
             <span className="text-white"> Success Story?</span>
           </h2>
 
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed">
             Let's work together to transform your challenges into opportunities and achieve extraordinary results.
           </p>
 

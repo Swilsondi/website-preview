@@ -43,68 +43,51 @@ const fadeIn = {
 const InnovationHero = () => {
   const navigate = useNavigate();
   return (
-    <>
-      <section className="relative min-h-[70vh] bg-black overflow-hidden pt-12 md:pt-16">
-        <div className="absolute inset-0">
+    <section className="relative bg-black overflow-hidden pt-16">
+      <div className="min-h-[calc(88vh-4rem)] flex items-center justify-center px-4 md:px-6 lg:px-8">
+        <div className="text-center max-w-5xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight"
+          >
+            Pioneering the
+            <span className="text-white"> Future </span>
+            of Digital Experiences
+          </motion.h1>
 
-</div>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="text-2xl lg:text-3xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed"
+          >
+            Our innovation lab combines
+            <span className="text-violet-400 font-semibold"> cutting-edge technology </span>
+            with
+            <span className="text-indigo-400 font-semibold"> creative thinking </span>
+            to develop solutions that reshape industries.
+          </motion.p>
 
-        <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
-          <div className="text-center max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-              className="mb-8 pt-4"
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            className="flex justify-center"
+          >
+            <Button
+              size="lg"
+              className="text-lg px-10 py-6 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
+              onClick={() => navigate('/showcase')}
             >
-              
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
-            >
-              Pioneering the 
-              <span className="text-white"> Future </span>
-              of Digital Experiences
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-            >
-              Our innovation lab combines 
-              <span className="text-violet-400 font-semibold"> cutting-edge technology </span>
-              with 
-              <span className="text-indigo-400 font-semibold"> creative thinking </span>
-              to develop solutions that reshape industries.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-              className="flex justify-center"
-            >
-              <Button 
-                size="lg" 
-                className="text-lg px-10 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
-                onClick={() => navigate('/showcase')}
-              >
-                Explore Our Innovations
-                <Sparkles className="ml-2 w-5 h-5" />
-              </Button>
-            </motion.div>
-          </div>
+              Explore Our Innovations
+              <Sparkles className="ml-2 w-5 h-5" />
+            </Button>
+          </motion.div>
         </div>
-      </section>
-      {/* Add spacing between hero and next section */}
-      <div className="h-16 md:h-24 lg:h-32"></div>
-    </>
+      </div>
+    </section>
   )
 }
 
@@ -159,12 +142,12 @@ const BrandingServices = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-            Innovative 
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+            Innovative
             <span className="text-white"> Branding </span>
             Solutions
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
             We create distinctive brand experiences that captivate audiences and drive business growth.
           </p>
         </motion.div>
@@ -188,7 +171,7 @@ const BrandingServices = () => {
                   <h3 className="text-2xl font-bold text-white mb-4 text-center">
                     {service.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed text-center">
+                  <p className="text-gray-300 text-lg leading-relaxed text-center">
                     {service.description}
                   </p>
                 </CardContent>
@@ -204,7 +187,7 @@ const BrandingServices = () => {
 // Our Innovation Process
 const InnovationProcess = () => {
   return (
-    <section className="py-20 bg-neutral-950">
+    <section className="py-24 bg-neutral-950">
       <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -213,11 +196,11 @@ const InnovationProcess = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-            Our Innovation 
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+            Our Innovation
             <span className="text-white"> Process</span>
           </h2>
-          <p className="text-xl text-violet-200 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-violet-200 max-w-3xl mx-auto">
             A systematic approach that transforms bold ideas into groundbreaking solutions.
           </p>
         </motion.div>
@@ -284,7 +267,7 @@ const InnovationProcess = () => {
                       <h3 className="text-2xl font-bold text-white mb-3">
                         {step.title}
                       </h3>
-                      <p className="text-gray-300">
+                      <p className="text-gray-300 text-lg">
                         {step.description}
                       </p>
                     </CardContent>
@@ -353,11 +336,11 @@ const TechnologyShowcase = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-            Cutting-Edge 
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+            Cutting-Edge
             <span className="text-white"> Technologies</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
             We harness the power of emerging technologies to create forward-thinking solutions.
           </p>
         </motion.div>
@@ -381,7 +364,7 @@ const TechnologyShowcase = () => {
                   <h3 className="text-2xl font-bold text-white mb-4 text-center">
                     {tech.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed text-center">
+                  <p className="text-gray-300 text-lg leading-relaxed text-center">
                     {tech.description}
                   </p>
                 </CardContent>
@@ -408,13 +391,13 @@ const InnovationCTA = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
             Ready to
             <span className="text-white"> Innovate </span>
             With Us?
           </h2>
-          
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+
+          <p className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed">
             Let's collaborate to create groundbreaking solutions that push boundaries and set new industry standards.
           </p>
           

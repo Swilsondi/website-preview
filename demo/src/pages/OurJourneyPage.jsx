@@ -37,32 +37,30 @@ export default function OurJourneyPage() {
         <link rel="canonical" href="https://www.techmotivesupreme.com/our-journey" />
       </Helmet>
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center px-6 md:px-12 lg:px-20">
-        <div className="text-center max-w-4xl">
-          <div className="mb-6">
-            
-          </div>
+      <section className="relative pt-16">
+        <div className="min-h-[calc(88vh-4rem)] flex items-center justify-center px-6 md:px-12 lg:px-20">
+          <div className="text-center max-w-4xl">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black leading-tight mb-8">
+              From Vision to Reality
+            </h1>
 
-          <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-6">
-            From Vision to Reality
-          </h1>
+            <p className="text-2xl lg:text-3xl text-gray-300 leading-relaxed mb-10">
+              Discover how we've transformed ambitious ideas into groundbreaking
+              digital experiences. Our journey is a testament to innovation,
+              collaboration, and excellence.
+            </p>
 
-          <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-8">
-            Discover how we’ve transformed ambitious ideas into groundbreaking
-            digital experiences. Our journey is a testament to innovation,
-            collaboration, and excellence.
-          </p>
-
-          <div>
-            <Button
-              size="lg"
-              className="px-8 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
-              onClick={() =>
-                window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })
-              }
-            >
-              Explore Our Story
-            </Button>
+            <div>
+              <Button
+                size="lg"
+                className="text-lg px-10 py-6 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
+                onClick={() =>
+                  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })
+                }
+              >
+                Explore Our Story
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -71,10 +69,10 @@ export default function OurJourneyPage() {
       <section className="py-24 bg-black border-t border-white/[0.06]">
         <div className="px-6 md:px-12 lg:px-20 max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-black mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
               Milestones That Define Us
             </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
               A journey of innovation, growth, and impact. Here are the key moments
               that shaped who we are today.
             </p>
@@ -90,7 +88,7 @@ export default function OurJourneyPage() {
                   <h3 className="text-2xl font-bold mb-2">
                     {milestone.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 text-lg leading-relaxed">
                     {milestone.description}
                   </p>
                 </div>
@@ -103,12 +101,12 @@ export default function OurJourneyPage() {
       {/* Call to Action */}
       <section className="py-24 bg-neutral-950">
         <div className="px-6 md:px-12 lg:px-20 max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-black mb-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8">
             Ready to Be Part of Our Journey?
           </h2>
-          <p className="text-lg text-gray-300 mb-12">
-            Let’s create something extraordinary together. Join us as we continue
-            to push the boundaries of what’s possible.
+          <p className="text-lg md:text-xl text-gray-300 mb-12">
+            Let's create something extraordinary together. Join us as we continue
+            to push the boundaries of what's possible.
           </p>
           <Button
             size="lg"

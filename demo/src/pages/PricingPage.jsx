@@ -46,7 +46,7 @@ const PricingHero = () => (
           className="mb-6"
         >
           <div className="inline-block border border-white/20 rounded-full px-5 py-2 text-base text-neutral-400 mb-8">
-            Launch promo — $2,000+ site starting at <span className="text-white font-semibold">$850</span> · Available until Aug 15, 2025
+            Launch promo — $2,000+ site starting at <span className="text-white font-semibold">$850</span> · Available Aug 15 – Sept 15, 2026
           </div>
         </motion.div>
 

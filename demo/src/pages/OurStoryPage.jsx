@@ -47,29 +47,16 @@ const stagger = {
 
 // Hero Section
 const StoryHero = () => (
-  <section className="relative min-h-[70vh] bg-black overflow-hidden pt-12 md:pt-16">
-    <div className="absolute inset-0">
-
-</div>
-
-    <div className="relative flex items-center justify-center min-h-[70vh] px-4 md:px-6 lg:px-8">
+  <section className="relative bg-black overflow-hidden pt-16">
+    <div className="min-h-[calc(70vh-4rem)] flex items-center justify-center px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-          className="mb-8 pt-4"
-        >
-          
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+          className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight"
         >
-          The Journey That 
+          The Journey That
           <span className="text-white"> Defined </span>
           Our Success
         </motion.h1>
@@ -78,11 +65,11 @@ const StoryHero = () => (
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          className="text-2xl lg:text-3xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
         >
-          From humble beginnings to industry leadership, discover the 
+          From humble beginnings to industry leadership, discover the
           <span className="text-blue-400 font-semibold"> passion </span>
-          and 
+          and
           <span className="text-teal-400 font-semibold"> innovation </span>
           that drive our company forward.
         </motion.p>
@@ -102,11 +89,11 @@ const OriginStorySection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
           Where It All
           <span className="text-white"> Began</span>
         </h2>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
           A real story of hustle, learning, and helping creators and small businesses thrive online.
         </p>
       </motion.div>
@@ -146,14 +133,14 @@ const OriginStorySection = () => (
         >
           <h3 className="text-3xl font-bold text-white mb-6">A Realistic Start for Real Results</h3>
           <div className="prose prose-lg prose-invert">
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 text-lg mb-6 leading-relaxed">
               TechMotiveSupreme was born in 2025 out of a simple idea: help creators and small businesses get online with websites that actually work for them. No big investors, no fancy offices—just a laptop, a passion for design, and a drive to make a difference for real people.
             </p>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 text-lg mb-6 leading-relaxed">
               Our founder started by building sites for friends and local businesses, learning what really matters: clear communication, fast delivery, and results that help clients grow. Every project was a chance to learn, improve, and build trust.
             </p>
-            <p className="text-gray-300 leading-relaxed">
-              Today, TechMotiveSupreme is still focused on what matters most: helping you launch, grow, and succeed online—without the agency fluff. We’re proud to be a small, nimble team that puts people first and delivers real value, every time.
+            <p className="text-gray-300 text-lg leading-relaxed">
+              Today, TechMotiveSupreme is still focused on what matters most: helping you launch, grow, and succeed online—without the agency fluff. We're proud to be a small, nimble team that puts people first and delivers real value, every time.
             </p>
           </div>
         </motion.div>
@@ -207,12 +194,12 @@ const TimelineSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
             Our
             <span className="text-white"> Journey </span>
             So Far
           </h2>
-          <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto">
             A real timeline of growth, learning, and helping clients win online.
           </p>
         </motion.div>
@@ -249,7 +236,7 @@ const TimelineSection = () => {
                           {milestone.title}
                         </h3>
                       </div>
-                      <p className="text-gray-300">
+                      <p className="text-gray-300 text-lg">
                         {milestone.description}
                       </p>
                     </CardContent>
@@ -316,11 +303,11 @@ const ValuesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
             Our Core
             <span className="text-white"> Values </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
             The guiding principles that shape our culture and inform every decision we make.
           </p>
         </motion.div>
@@ -347,7 +334,7 @@ const ValuesSection = () => {
                   <h3 className="text-2xl font-bold text-white mb-4 text-center">
                     {value.title}
                   </h3>
-                  <p className="text-gray-300 leading-relaxed text-center">
+                  <p className="text-gray-300 text-lg leading-relaxed text-center">
                     {value.description}
                   </p>
                 </CardContent>
@@ -369,13 +356,13 @@ const TeamPhotoSection = ({ navigate }) => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-center mb-16 sm:mb-16 mb-0"
+        className="text-center mb-0 sm:mb-16"
       >
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 sm:mb-6 mb-0">
-          The People 
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-0 sm:mb-6">
+          The People
           <span className="text-white"> Behind Our Success</span>
         </h2>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto sm:block hidden">
+        <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto sm:block hidden">
           Our talented and diverse team is our greatest asset and the driving force behind our achievements.
         </p>
       </motion.div>
@@ -430,11 +417,11 @@ const VisionSection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
-            Looking 
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
+            Looking
             <span className="text-white"> Forward</span>
           </h2>
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed">
             Our vision is about more than just websites—it's about empowering creators and businesses to thrive in a digital world, together.
           </p>
           <blockquote className="text-2xl text-neutral-400 italic font-light leading-relaxed mb-8 mx-auto max-w-2xl">
