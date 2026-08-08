@@ -73,31 +73,18 @@ const CustomSelect = ({ label, options, defaultValue, className = "" }) => {
   );
 }
 
-// Hero Section - updated to fix content blocking issue
+// Hero Section
 const ContactHero = ({ onMessageClick }) => (
-  <section className="relative py-24 bg-black overflow-hidden">
-    <div className="absolute inset-0">
-
-</div>
-
-    <div className="relative flex items-center justify-center px-4 md:px-6 lg:px-8 py-16">
+  <section className="relative bg-black overflow-hidden pt-16">
+    <div className="min-h-[calc(88vh-4rem)] flex items-center justify-center px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-          className="mb-8"
-        >
-          
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+          className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight"
         >
-          Let's Build 
+          Let's Build
           <span className="text-white"> Something </span>
           Together
         </motion.h1>
@@ -106,9 +93,9 @@ const ContactHero = ({ onMessageClick }) => (
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          className="text-2xl lg:text-3xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed"
         >
-          Ready to transform your digital presence? 
+          Ready to transform your digital presence?
           <span className="text-indigo-400 font-semibold"> Get in touch and let's discuss your project.</span>
         </motion.p>
 
@@ -118,19 +105,19 @@ const ContactHero = ({ onMessageClick }) => (
           transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-6 justify-center"
         >
-          <Button 
-            size="lg" 
-            className="text-lg px-10 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
+          <Button
+            size="lg"
+            className="text-lg px-10 py-6 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
             onClick={() => window.open('https://calendly.com/techmotivesupreme/30min', '_blank')}
           >
             Schedule a Call
             <Calendar className="ml-2 w-5 h-5" />
           </Button>
-          
-          <Button 
-            size="lg" 
+
+          <Button
+            size="lg"
             variant="outline"
-            className="text-lg px-10 py-4 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 bg-transparent"
+            className="text-lg px-10 py-6 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 bg-transparent"
             onClick={onMessageClick}
           >
             Send a Message
@@ -243,10 +230,10 @@ const ContactForm = () => {
   return (
     <Card className="bg-neutral-900 border-neutral-800 p-8 backdrop-blur-sm">
       <CardContent className="p-0">
-        <h2 className="text-3xl font-bold text-white mb-2">
+        <h2 className="text-4xl font-bold text-white mb-2">
           Send us a message
         </h2>
-        <p className="text-gray-400 mb-8">
+        <p className="text-gray-400 text-lg mb-8">
           Tell us about your project and we'll get back to you within 24 hours.
         </p>
 
@@ -423,7 +410,7 @@ const ContactSection = () => (
           className="space-y-8"
         >
           <div>
-            <h2 className="text-3xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-white mb-6">
               Get in touch
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed mb-8">
@@ -479,20 +466,20 @@ const ContactSection = () => (
           </div>
 
           <div className="border border-neutral-800 rounded-xl p-6">
-            <h3 className="text-xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-white mb-4">
               Why Choose TechMotiveSupreme?
             </h3>
             <ul className="space-y-3">
               {[
                 "Fast 24-48 hour response time",
                 "Free consultation & project scoping",
-                "Transparent pricing with no hidden fees", 
+                "Transparent pricing with no hidden fees",
                 "Dedicated project manager assigned",
                 "Post-launch support included"
               ].map((benefit, index) => (
                 <li key={index} className="flex items-center text-gray-300">
                   <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
-                  <span className="text-sm">{benefit}</span>
+                  <span className="text-base">{benefit}</span>
                 </li>
               ))}
             </ul>
@@ -505,7 +492,7 @@ const ContactSection = () => (
 
 // FAQ Section - same as before
 const ContactFAQ = () => (
-  <section className="py-20 bg-neutral-950">
+  <section className="py-24 bg-neutral-950">
     <div className="px-4 md:px-6 lg:px-8 max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -514,11 +501,11 @@ const ContactFAQ = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-          Quick 
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+          Quick
           <span className="text-white"> Answers</span>
         </h2>
-        <p className="text-xl text-neutral-400">
+        <p className="text-lg md:text-xl text-neutral-400">
           Common questions about working with us.
         </p>
       </motion.div>
@@ -554,7 +541,7 @@ const ContactFAQ = () => (
                 <h3 className="text-xl font-bold text-white mb-3">
                   {faq.question}
                 </h3>
-                <p className="text-neutral-400 leading-relaxed">
+                <p className="text-neutral-400 text-lg leading-relaxed">
                   {faq.answer}
                 </p>
               </CardContent>
@@ -577,12 +564,12 @@ const ContactCTA = () => (
         viewport={{ once: true }}
         className="text-center"
       >
-        <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
-          Ready to Start Your 
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
+          Ready to Start Your
           <span className="text-white"> Digital Journey?</span>
         </h2>
-        
-        <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+
+        <p className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed">
           Book a free consultation and let's discuss how we can help you achieve your goals.
         </p>
         

@@ -25,31 +25,18 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Helmet } from "react-helmet"
 
-// About Hero Section - FIXED
+// About Hero Section
 const AboutHero = ({ navigate }) => (
-  <section className="relative min-h-[80vh] bg-black overflow-hidden pt-12 md:pt-16">
-    <div className="absolute inset-0">
-
-</div>
-
-    <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8 pt-4">
+  <section className="relative bg-black overflow-hidden pt-16">
+    <div className="min-h-[calc(88vh-4rem)] flex items-center justify-center px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-          className="mb-8 pt-4"
-        >
-          
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
+          className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight"
         >
-          Crafting Digital 
+          Crafting Digital
           <span className="text-white"> Excellence </span>
           Since Day One
         </motion.h1>
@@ -58,9 +45,9 @@ const AboutHero = ({ navigate }) => (
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          className="text-2xl lg:text-3xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed"
         >
-          We're not just another web agency. We're 
+          We're not just another web agency. We're
           <span className="text-emerald-400 font-semibold"> digital architects </span>
           who turn ambitious visions into reality through cutting-edge technology and strategic thinking.
         </motion.p>
@@ -69,21 +56,21 @@ const AboutHero = ({ navigate }) => (
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-6 justify-center mb-12"
+          className="flex flex-col sm:flex-row gap-6 justify-center"
         >
-          <Button 
-            size="lg" 
-            className="text-lg px-10 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
+          <Button
+            size="lg"
+            className="text-lg px-10 py-6 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
             onClick={() => navigate('/our-story')}
           >
             Our Story
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
-          
-          <Button 
-            size="lg" 
+
+          <Button
+            size="lg"
             variant="outline"
-            className="text-lg px-10 py-4 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 bg-transparent"
+            className="text-lg px-10 py-6 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 bg-transparent"
             onClick={() => navigate('/client-success-stories')}
           >
             Client Success Stories
@@ -106,11 +93,11 @@ const MissionSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-          Our Mission & 
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+          Our Mission &
           <span className="text-white"> Core Values</span>
         </h2>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
           Everything we do is guided by these fundamental principles that drive our success.
         </p>
       </motion.div>
@@ -172,8 +159,8 @@ const MissionSection = () => (
                 <h3 className="text-2xl font-bold text-white mb-4">
                   {value.title}
                 </h3>
-                
-                <p className="text-gray-300 leading-relaxed">
+
+                <p className="text-gray-300 text-lg leading-relaxed">
                   {value.description}
                 </p>
               </CardContent>
@@ -187,7 +174,7 @@ const MissionSection = () => (
 
 // Team/Expertise Section - FIXED
 const ExpertiseSection = () => (
-  <section className="py-20 bg-neutral-950">
+  <section className="py-24 bg-neutral-950">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -196,11 +183,11 @@ const ExpertiseSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-          World-Class 
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+          World-Class
           <span className="text-white"> Expertise</span>
         </h2>
-        <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto">
           Our team combines technical mastery with creative vision to deliver exceptional results.
         </p>
       </motion.div>
@@ -243,12 +230,12 @@ const ExpertiseSection = () => (
             <div className={`w-20 h-20 bg-neutral-800 rounded-2xl flex items-center justify-center mx-auto mb-6`}>
               <expertise.icon className="w-10 h-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-white mb-4">
               {expertise.title}
             </h3>
             <ul className="space-y-2">
               {expertise.skills.map((skill, i) => (
-                <li key={i} className="text-neutral-400 text-sm">
+                <li key={i} className="text-neutral-400 text-base">
                   {skill}
                 </li>
               ))}
@@ -262,7 +249,7 @@ const ExpertiseSection = () => (
 
 // Stats Section - FIXED
 const StatsSection = () => (
-  <section className="py-20 bg-black border-t border-white/[0.06]">
+  <section className="py-24 bg-black border-t border-white/[0.06]">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -271,11 +258,11 @@ const StatsSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-          Proven Track Record of 
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+          Proven Track Record of
           <span className="text-white"> Success</span>
         </h2>
-        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
           Numbers that speak to our commitment to excellence and client success.
         </p>
       </motion.div>
@@ -298,10 +285,10 @@ const StatsSection = () => (
             <div className="w-14 h-14 border border-neutral-700 rounded-xl flex items-center justify-center mx-auto mb-4">
               <stat.icon className="w-8 h-8 text-white" />
             </div>
-            <div className="text-4xl font-black text-white mb-2">
+            <div className="text-5xl md:text-6xl font-black text-white mb-2">
               {stat.number}
             </div>
-            <div className="text-neutral-400">
+            <div className="text-neutral-400 text-sm md:text-base uppercase tracking-widest">
               {stat.label}
             </div>
           </motion.div>
@@ -323,12 +310,12 @@ const AboutCTA = ({ navigate }) => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
-            Ready to Work 
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
+            Ready to Work
             <span className="text-white"> Together?</span>
           </h2>
-          
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+
+          <p className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed">
             Let's discuss your vision and create something extraordinary that drives real results.
           </p>
           

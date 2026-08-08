@@ -36,8 +36,8 @@ const stagger = {
 }
 
 const PricingHero = () => (
-  <section className="relative min-h-[55vh] bg-black overflow-hidden pt-12 md:pt-16 border-b border-white/[0.06]">
-    <div className="relative flex items-center justify-center min-h-[55vh] px-4 md:px-6 lg:px-8">
+  <section className="relative bg-black overflow-hidden pt-16 border-b border-white/[0.06]">
+    <div className="min-h-[calc(70vh-4rem)] flex items-center justify-center px-4 md:px-6 lg:px-8">
       <div className="text-center max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ const PricingHero = () => (
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-6"
         >
-          <div className="inline-block border border-white/20 rounded-full px-5 py-2 text-sm text-neutral-400 mb-8">
+          <div className="inline-block border border-white/20 rounded-full px-5 py-2 text-base text-neutral-400 mb-8">
             Launch promo — $2,000+ site starting at <span className="text-white font-semibold">$850</span> · Available until Aug 15, 2025
           </div>
         </motion.div>
@@ -54,7 +54,7 @@ const PricingHero = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tight"
+          className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight tracking-tight"
         >
           Choose Your Package
         </motion.h1>
@@ -63,7 +63,7 @@ const PricingHero = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-neutral-400 max-w-xl mx-auto text-xl lg:text-2xl leading-relaxed"
+          className="text-neutral-400 max-w-xl mx-auto text-2xl lg:text-3xl leading-relaxed"
         >
           From solo creators to growing brands. Every package is built to scale with your vision.
         </motion.p>
@@ -156,13 +156,13 @@ const PricingCards = () => {
   ]
 
   return (
-    <section className="py-20 bg-black">
+    <section className="py-24 bg-black">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="mb-14">
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-4">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
             Transparent pricing.
           </h2>
-          <p className="text-neutral-500 text-lg">
+          <p className="text-neutral-500 text-lg md:text-xl">
             All plans include everything you need to succeed.
           </p>
         </div>
@@ -194,17 +194,17 @@ const PricingCards = () => {
                     <plan.icon className="w-5 h-5 text-neutral-300" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-white mb-2">
                     {plan.name}
                   </h3>
 
-                  <p className="text-neutral-500 text-sm mb-6 leading-relaxed">
+                  <p className="text-neutral-500 text-base mb-6 leading-relaxed">
                     {plan.description}
                   </p>
 
                   <div className="mb-8">
                     <div className="flex items-baseline gap-2 mb-1">
-                      <span className="text-4xl font-black text-white">
+                      <span className="text-5xl font-black text-white">
                         {plan.price}
                       </span>
                       <span className="text-neutral-500 text-sm">
@@ -240,10 +240,10 @@ const PricingCards = () => {
                   </Button>
 
                   <div className="space-y-3">
-                    <p className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">Included</p>
+                    <p className="text-sm font-semibold text-neutral-400 uppercase tracking-widest">Included</p>
                     <ul className="space-y-2">
                       {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-start text-neutral-400 text-sm">
+                        <li key={i} className="flex items-start text-neutral-400 text-base">
                           <div className="w-1 h-1 rounded-full bg-neutral-500 mr-3 flex-shrink-0 mt-2" />
                           {feature}
                         </li>
@@ -252,10 +252,10 @@ const PricingCards = () => {
 
                     {plan.notIncluded.length > 0 && (
                       <>
-                        <p className="text-xs font-semibold text-neutral-600 uppercase tracking-widest pt-3">Not included</p>
+                        <p className="text-sm font-semibold text-neutral-600 uppercase tracking-widest pt-3">Not included</p>
                         <ul className="space-y-2">
                           {plan.notIncluded.map((feature, i) => (
-                            <li key={i} className="flex items-start text-neutral-700 text-sm">
+                            <li key={i} className="flex items-start text-neutral-700 text-base">
                               <div className="w-1 h-1 rounded-full bg-neutral-700 mr-3 flex-shrink-0 mt-2" />
                               {feature}
                             </li>
@@ -307,13 +307,13 @@ const AddOnsSection = () => {
   ]
 
   return (
-    <section className="py-20 bg-neutral-950 border-t border-white/[0.06]">
+    <section className="py-24 bg-neutral-950 border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="mb-14">
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-4">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
             Add-ons
           </h2>
-          <p className="text-neutral-500 text-lg">
+          <p className="text-neutral-500 text-lg md:text-xl">
             Extend your package with professional services.
           </p>
 
@@ -436,13 +436,13 @@ const PaymentTermsSection = () => {
 }
 
 const FAQSection = () => (
-  <section className="py-20 bg-black border-t border-white/[0.06]">
+  <section className="py-24 bg-black border-t border-white/[0.06]">
     <div className="px-4 md:px-6 lg:px-8 max-w-3xl mx-auto">
-      <div className="mb-12">
-        <h2 className="text-4xl lg:text-6xl font-black text-white mb-4">
+      <div className="mb-16">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
           Common questions.
         </h2>
-        <p className="text-neutral-500 text-lg">
+        <p className="text-neutral-500 text-lg md:text-xl">
           Everything you need to know before getting started.
         </p>
       </div>
@@ -467,7 +467,7 @@ const FAQSection = () => (
           }
         ].map((faq, index, arr) => (
           <div key={index} className={`p-6 ${index < arr.length - 1 ? 'border-b border-neutral-800' : ''}`}>
-            <h3 className="text-base font-bold text-white mb-2">{faq.question}</h3>
+            <h3 className="text-lg font-bold text-white mb-2">{faq.question}</h3>
             <p className="text-neutral-500 text-base leading-relaxed">{faq.answer}</p>
           </div>
         ))}
@@ -479,13 +479,13 @@ const FAQSection = () => (
 const PricingCTA = () => {
   const navigate = useNavigate()
   return (
-    <section className="py-20 bg-neutral-950 border-t border-white/[0.06]">
+    <section className="py-24 bg-neutral-950 border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
           Ready to transform your business?
         </h2>
 
-        <p className="text-neutral-400 mb-10 text-xl leading-relaxed">
+        <p className="text-neutral-400 mb-10 text-lg md:text-xl leading-relaxed">
           Get a $2,000+ site starting at $850. Built with premium tools. Delivered fast. No templates.
         </p>
 

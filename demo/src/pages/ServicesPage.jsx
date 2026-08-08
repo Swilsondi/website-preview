@@ -63,7 +63,7 @@ const ServicesHero = ({ navigate }) => (
       <meta name="twitter:image" content="https://www.techmotivesupreme.com/dark-logo.png" />
       <link rel="canonical" href="https://www.techmotivesupreme.com/services" />
     </Helmet>
-    <section className="relative min-h-[80vh] bg-black overflow-hidden pt-12 md:pt-16">
+    <section className="relative bg-black overflow-hidden pt-16">
       <div className="absolute inset-0">
         <LazyMotion
           animationType="fadeIn"
@@ -80,36 +80,29 @@ const ServicesHero = ({ navigate }) => (
         />
       </div>
 
-      <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8 pt-4">
-        <div className="text-center max-w-5xl mx-auto">
+      <div className="relative min-h-[calc(88vh-4rem)] flex items-center justify-center px-4 md:px-6 lg:px-8">
+        <div className="text-center max-w-6xl mx-auto">
           <LazyMotion
             animationType="slideUp"
-            className="mb-8 pt-4"
+            className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight"
           >
-            
-          </LazyMotion>
-
-          <LazyMotion
-            animationType="slideUp"
-            className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight"
-          >
-            Services That 
+            Services That
             <span className="text-white"> Scale </span>
             Your Business
           </LazyMotion>
 
           <LazyMotion
             animationType="slideUp"
-            className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+            className="text-2xl lg:text-3xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed"
           >
-            From web development to complete digital transformation. 
+            From web development to complete digital transformation.
             <span className="text-purple-400 font-semibold"> We deliver solutions that drive real growth.</span>
           </LazyMotion>
 
           <LazyMotion animationType="slideUp">
-            <Button 
-              size="lg" 
-              className="text-lg px-10 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
+            <Button
+              size="lg"
+              className="text-lg px-10 py-6 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200"
               onClick={() => window.open('https://www.adobe.com/express/learn/blog/brand-strategy#:~:text=with%20automated%20tools-,What%20is%20brand%20strategy?,consistent%20message%20across%20all%20channels.', '_blank')}
             >
               Explore Branding Solutions
@@ -176,11 +169,11 @@ const ServicesGrid = () => {
           animationType="slideUp"
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-            Everything You Need to 
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+            Everything You Need to
             <span className="text-white"> Succeed Online</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
             Comprehensive digital solutions designed to take your business to the next level.
           </p>
         </LazyMotion>
@@ -201,20 +194,20 @@ const ServicesGrid = () => {
                   <div className={`w-16 h-16 bg-neutral-800 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300`}>
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-white mb-4">
                     {service.title}
                   </h3>
-                  
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+
+                  <p className="text-gray-300 text-lg mb-6 leading-relaxed">
                     {service.description}
                   </p>
-                  
+
                   <ul className="space-y-3">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-center text-gray-400">
                         <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
+                        <span className="text-base">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -230,17 +223,17 @@ const ServicesGrid = () => {
 
 // Process Section - OPTIMIZED
 const ProcessSection = () => (
-  <section className="py-20 bg-neutral-950">
+  <section className="py-24 bg-neutral-950">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
       <LazyMotion
         animationType="slideUp"
         className="text-center mb-16"
       >
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-          Our Proven 
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
+          Our Proven
           <span className="text-white"> Process</span>
         </h2>
-        <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto">
           A streamlined approach that delivers exceptional results every time.
         </p>
       </LazyMotion>
@@ -261,8 +254,8 @@ const ProcessSection = () => (
               <phase.icon className="w-10 h-10 text-purple-300" />
             </div>
             <div className="text-2xl font-bold text-neutral-400 mb-2">{phase.step}</div>
-            <h3 className="text-xl font-bold text-white mb-3">{phase.title}</h3>
-            <p className="text-neutral-400 leading-relaxed">{phase.description}</p>
+            <h3 className="text-2xl font-bold text-white mb-3">{phase.title}</h3>
+            <p className="text-neutral-400 text-lg leading-relaxed">{phase.description}</p>
           </LazyMotion>
         ))}
       </div>
@@ -278,12 +271,12 @@ const ServicesCTA = ({ navigate }) => (
         animationType="fadeIn"
         className="text-center"
       >
-        <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight">
-          Explore Our 
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight">
+          Explore Our
           <span className="text-white"> Unique Offerings</span>
         </h2>
-        
-        <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+
+        <p className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed">
           Discover how we innovate and deliver success through our specialized services.
         </p>
         
