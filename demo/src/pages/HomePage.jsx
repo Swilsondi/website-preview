@@ -64,68 +64,66 @@ const SplitText = ({ children, className = "" }) => {
 
 const HeroSection = ({ handleNavigation }) => {
   return (
-    <section className="relative min-h-[80vh] bg-black overflow-hidden pt-12 md:pt-16">
-      <div className="relative flex items-center justify-center min-h-[80vh] px-4 md:px-6 lg:px-8">
-        <div className="text-center max-w-5xl mx-auto">
+    <section className="relative bg-black overflow-hidden pt-32 pb-20 md:pt-40 md:pb-24 px-4 md:px-6 lg:px-8">
+      <div className="text-center max-w-5xl mx-auto">
 
-          <SplitText className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight tracking-tight">
-            BUILD. LAUNCH. MONETIZE.
-          </SplitText>
+        <SplitText className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
+          BUILD. LAUNCH. MONETIZE.
+        </SplitText>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-xl lg:text-2xl text-neutral-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="text-xl lg:text-2xl text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+        >
+          TechMotive-Supreme builds custom websites for creators, brands, and entrepreneurs who are serious about growth.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+        >
+          <Button
+            size="lg"
+            className="text-base px-8 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200 rounded-lg"
+            onClick={() => handleNavigation("/pricing")}
           >
-            TechMotive-Supreme builds custom websites for creators, brands, and entrepreneurs who are serious about growth.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-20"
+            Book Your Site
+            <ArrowRight className="ml-2 w-4 h-4" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="text-base px-8 py-4 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 rounded-lg bg-transparent"
+            onClick={() => handleNavigation("/showcase")}
           >
-            <Button
-              size="lg"
-              className="text-base px-8 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200 rounded-lg"
-              onClick={() => handleNavigation("/pricing")}
-            >
-              Book Your Site
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-base px-8 py-4 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 rounded-lg bg-transparent"
-              onClick={() => handleNavigation("/showcase")}
-            >
-              View Our Work
-            </Button>
-          </motion.div>
+            View Our Work
+          </Button>
+        </motion.div>
 
-          <motion.div
-            variants={stagger}
-            initial="initial"
-            animate="animate"
-            className="grid grid-cols-3 gap-12 max-w-3xl mx-auto border-t border-white/[0.08] pt-14 text-center"
-          >
-            {[
-              { number: "50+", label: "Sites Launched" },
-              { number: "110%", label: "Avg ROI Increase" },
-              { number: "48hrs", label: "Avg Turnaround" },
-            ].map((stat, index) => (
-              <motion.div key={index} variants={fadeInUp} className="text-center">
-                <div className="text-5xl lg:text-6xl font-black text-white mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-neutral-400 text-sm uppercase tracking-widest">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+        <motion.div
+          variants={stagger}
+          initial="initial"
+          animate="animate"
+          className="grid grid-cols-3 gap-8 md:gap-12 max-w-3xl mx-auto border-t border-white/[0.08] pt-12 text-center"
+        >
+          {[
+            { number: "50+", label: "Sites Launched" },
+            { number: "110%", label: "Avg ROI Increase" },
+            { number: "48hrs", label: "Avg Turnaround" },
+          ].map((stat, index) => (
+            <motion.div key={index} variants={fadeInUp} className="text-center">
+              <div className="text-5xl md:text-6xl font-black text-white mb-2">
+                {stat.number}
+              </div>
+              <div className="text-neutral-400 text-sm md:text-base uppercase tracking-widest">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-        </div>
       </div>
     </section>
   );
@@ -157,10 +155,10 @@ const ServicesSection = () => {
     <section className="py-24 bg-neutral-950 border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
             We don't just build.<br />We launch.
           </h2>
-          <p className="text-neutral-500 max-w-2xl mx-auto text-lg text-center">
+          <p className="text-neutral-500 max-w-2xl mx-auto text-lg md:text-xl text-center">
             End-to-end solutions for creators and entrepreneurs who refuse to settle for average.
           </p>
         </div>
@@ -170,15 +168,15 @@ const ServicesSection = () => {
             <div key={index} className="group">
               <Card className="h-full bg-neutral-900 border-neutral-800 hover:border-neutral-600 transition-colors duration-300 rounded-xl">
                 <CardContent className="p-8 flex flex-col">
-                  <div className="w-10 h-10 border border-neutral-700 rounded-lg flex items-center justify-center mb-6">
-                    <service.icon className="w-5 h-5 text-neutral-300" />
+                  <div className="w-12 h-12 border border-neutral-700 rounded-lg flex items-center justify-center mb-6">
+                    <service.icon className="w-6 h-6 text-neutral-300" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className="text-2xl font-bold text-white mb-3">
                     {service.title}
                   </h3>
 
-                  <p className="text-neutral-500 mb-6 leading-relaxed text-base">
+                  <p className="text-neutral-500 mb-6 leading-relaxed text-lg">
                     {service.description}
                   </p>
 
@@ -201,13 +199,13 @@ const ServicesSection = () => {
 }
 
 const SocialProofSection = () => (
-  <section className="py-20 bg-black border-t border-white/[0.06]">
+  <section className="py-24 bg-black border-t border-white/[0.06]">
     <div className="px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div className="mb-12 text-center">
-        <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">
+      <div className="mb-16 text-center">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
           Trusted by creators and brands.
         </h2>
-        <p className="text-neutral-500 text-lg">
+        <p className="text-neutral-500 text-lg md:text-xl">
           Real results from real projects.
         </p>
       </div>
@@ -220,10 +218,10 @@ const SocialProofSection = () => (
           { number: "24/7", label: "Support", icon: Users }
         ].map((stat, index) => (
           <div key={index} className="bg-black p-10 text-center">
-            <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+            <div className="text-5xl md:text-6xl font-black text-white mb-2">
               {stat.number}
             </div>
-            <div className="text-neutral-500 text-base">
+            <div className="text-neutral-400 text-sm md:text-base uppercase tracking-widest">
               {stat.label}
             </div>
           </div>
@@ -239,11 +237,11 @@ const CTASection = () => {
     <section className="py-24 bg-neutral-950 border-t border-white/[0.06]">
       <div className="px-4 md:px-6 lg:px-8 max-w-3xl mx-auto">
         <div className="text-center">
-          <h2 className="text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
             Ready to build something real?
           </h2>
 
-          <p className="text-neutral-400 mb-10 leading-relaxed text-lg max-w-xl mx-auto">
+          <p className="text-neutral-400 mb-10 leading-relaxed text-lg md:text-xl max-w-xl mx-auto">
             Book a free 30-minute strategy session. No commitment, no templates — just a real conversation about your project.
           </p>
 
