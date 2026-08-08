@@ -64,10 +64,10 @@ const SplitText = ({ children, className = "" }) => {
 
 const HeroSection = ({ handleNavigation }) => {
   return (
-    <section className="relative bg-black overflow-hidden pt-32 pb-20 md:pt-40 md:pb-24 px-4 md:px-6 lg:px-8">
-      <div className="text-center max-w-5xl mx-auto">
+    <section className="relative bg-black overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20 px-4 md:px-6 lg:px-8">
+      <div className="text-center max-w-6xl mx-auto">
 
-        <SplitText className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
+        <SplitText className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight tracking-tight">
           BUILD. LAUNCH. MONETIZE.
         </SplitText>
 
@@ -75,7 +75,7 @@ const HeroSection = ({ handleNavigation }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-xl lg:text-2xl text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="text-2xl lg:text-3xl text-neutral-400 mb-10 max-w-3xl mx-auto leading-relaxed"
         >
           TechMotive-Supreme builds custom websites for creators, brands, and entrepreneurs who are serious about growth.
         </motion.p>
@@ -84,20 +84,20 @@ const HeroSection = ({ handleNavigation }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
         >
           <Button
             size="lg"
-            className="text-base px-8 py-4 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200 rounded-lg"
+            className="text-lg px-10 py-6 bg-white text-black hover:bg-neutral-100 font-semibold transition-colors duration-200 rounded-lg"
             onClick={() => handleNavigation("/pricing")}
           >
             Book Your Site
-            <ArrowRight className="ml-2 w-4 h-4" />
+            <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="text-base px-8 py-4 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 rounded-lg bg-transparent"
+            className="text-lg px-10 py-6 border border-neutral-700 text-neutral-300 hover:bg-white/5 hover:border-neutral-500 font-semibold transition-colors duration-200 rounded-lg bg-transparent"
             onClick={() => handleNavigation("/showcase")}
           >
             View Our Work
@@ -108,7 +108,7 @@ const HeroSection = ({ handleNavigation }) => {
           variants={stagger}
           initial="initial"
           animate="animate"
-          className="grid grid-cols-3 gap-8 md:gap-12 max-w-3xl mx-auto border-t border-white/[0.08] pt-12 text-center"
+          className="grid grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto border-t border-white/[0.08] pt-10 text-center"
         >
           {[
             { number: "50+", label: "Sites Launched" },
@@ -116,10 +116,10 @@ const HeroSection = ({ handleNavigation }) => {
             { number: "48hrs", label: "Avg Turnaround" },
           ].map((stat, index) => (
             <motion.div key={index} variants={fadeInUp} className="text-center">
-              <div className="text-5xl md:text-6xl font-black text-white mb-2">
+              <div className="text-6xl md:text-7xl font-black text-white mb-2">
                 {stat.number}
               </div>
-              <div className="text-neutral-400 text-sm md:text-base uppercase tracking-widest">{stat.label}</div>
+              <div className="text-neutral-400 text-base md:text-lg uppercase tracking-widest">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
