@@ -169,7 +169,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div key={index} className="group">
               <Card className="h-full bg-neutral-900 border-neutral-800 hover:border-neutral-600 transition-colors duration-300 rounded-xl">
-                <CardContent className="p-8 flex flex-col">
+                <CardContent className="p-8 flex flex-col items-center text-center">
                   <div className="w-12 h-12 border border-neutral-700 rounded-lg flex items-center justify-center mb-6">
                     <service.icon className="w-6 h-6 text-neutral-300" />
                   </div>
@@ -184,7 +184,7 @@ const ServicesSection = () => {
 
                   <ul className="space-y-2 mt-auto">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-neutral-400 text-base">
+                      <li key={i} className="flex items-center justify-center text-neutral-400 text-base">
                         <div className="w-1 h-1 rounded-full bg-neutral-500 mr-3 flex-shrink-0" />
                         {feature}
                       </li>
