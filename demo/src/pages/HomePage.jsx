@@ -109,18 +109,18 @@ const HeroSection = ({ handleNavigation }) => {
           variants={stagger}
           initial="initial"
           animate="animate"
-          className="grid grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto border-t border-white/[0.08] pt-10 text-center"
+          className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-12 max-w-4xl mx-auto border-t border-white/[0.08] pt-8 md:pt-10 text-center"
         >
           {[
             { number: "50+", label: "Sites Launched" },
             { number: "110%", label: "Avg ROI Increase" },
             { number: "48hrs", label: "Avg Turnaround" },
           ].map((stat, index) => (
-            <motion.div key={index} variants={fadeInUp} className="text-center">
-              <div className="text-6xl md:text-7xl font-black text-white mb-2">
+            <motion.div key={index} variants={fadeInUp} className="text-center px-1">
+              <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-1 md:mb-2 whitespace-nowrap">
                 {stat.number}
               </div>
-              <div className="text-neutral-400 text-base md:text-lg uppercase tracking-widest">{stat.label}</div>
+              <div className="text-neutral-400 text-[11px] sm:text-sm md:text-base lg:text-lg uppercase tracking-wide md:tracking-widest leading-tight">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

@@ -356,47 +356,37 @@ const TeamPhotoSection = ({ navigate }) => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-center mb-0 sm:mb-16"
+        className="text-center mb-16"
       >
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-0 sm:mb-6">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
           The People
           <span className="text-white"> Behind Our Success</span>
         </h2>
-        <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto sm:block hidden">
+        <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
           Our talented and diverse team is our greatest asset and the driving force behind our achievements.
         </p>
       </motion.div>
-      {/* Mobile-only heading and paragraph below image */}
-      <div className="sm:hidden px-4 pt-8 text-center">
-        <h2 className="text-3xl font-black text-white mb-4">
-          The People <span className="text-white">Behind Our Success</span>
-        </h2>
-        <p className="text-lg text-gray-300 mb-6">
-          Our talented and diverse team is our greatest asset and the driving force behind our achievements.
-        </p>
-      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
-        className="relative rounded-2xl overflow-hidden shadow-2xl"
+        className="relative rounded-2xl overflow-hidden shadow-2xl h-80 sm:h-96 md:h-[30rem]"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+        <img
+          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
           alt="TechMotiveSupreme Team group photo"
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-12">
           <div className="max-w-xl">
-            <h3 className="text-3xl font-bold text-white mb-4">Stronger Together</h3>
-            <p className="text-lg text-gray-300 mb-6">
-              Our team of 7 professionals bringing diverse perspectives and expertise to every project. Starting from the implementation of the design to the security of the code we handle all diverse areas. 
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-4">Stronger Together</h3>
+            <p className="text-sm sm:text-base md:text-lg text-gray-300">
+              Our team of 7 professionals bringing diverse perspectives and expertise to every project. Starting from the implementation of the design to the security of the code we handle all diverse areas.
             </p>
-            
           </div>
         </div>
       </motion.div>

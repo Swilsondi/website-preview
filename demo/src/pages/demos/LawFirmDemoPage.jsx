@@ -66,10 +66,10 @@ export default function LawFirmDemoPage() {
 			</div>
 
 			<header className="border-b border-slate-200">
-				<div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+				<div className="max-w-6xl mx-auto px-6 py-4 sm:py-6 flex flex-col sm:flex-row items-center sm:justify-between gap-3 sm:gap-0">
 					<div className="flex items-center gap-2">
-						<Scale className="w-7 h-7 text-slate-900" />
-						<span className="text-2xl font-black tracking-tight">Whitfield &amp; Hale</span>
+						<Scale className="w-6 h-6 sm:w-7 sm:h-7 text-slate-900" />
+						<span className="text-xl sm:text-2xl font-black tracking-tight">Whitfield &amp; Hale</span>
 					</div>
 					<nav className="hidden md:flex gap-8 text-slate-600 text-base font-medium">
 						<a href="#practice" className="hover:text-slate-900 transition-colors">Practice Areas</a>
@@ -78,7 +78,7 @@ export default function LawFirmDemoPage() {
 						<a href="#faq" className="hover:text-slate-900 transition-colors">FAQ</a>
 						<a href="#contact" className="hover:text-slate-900 transition-colors">Contact</a>
 					</nav>
-					<a href="#contact" className="bg-slate-900 text-white font-bold px-6 py-2.5 rounded text-base hover:bg-slate-800 transition-colors">
+					<a href="#contact" className="bg-slate-900 text-white font-bold px-5 py-2 sm:px-6 sm:py-2.5 rounded text-sm sm:text-base hover:bg-slate-800 transition-colors">
 						Book a Consultation
 					</a>
 				</div>

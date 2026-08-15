@@ -68,15 +68,15 @@ export default function RestaurantDemoPage() {
 			</div>
 
 			<header className="border-b border-stone-800">
-				<div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-					<span className="text-3xl font-black tracking-tight text-amber-400">Ember &amp; Oak</span>
+				<div className="max-w-6xl mx-auto px-6 py-4 sm:py-6 flex flex-col sm:flex-row items-center sm:justify-between gap-3 sm:gap-0">
+					<span className="text-2xl sm:text-3xl font-black tracking-tight text-amber-400">Ember &amp; Oak</span>
 					<nav className="hidden md:flex gap-8 text-stone-300 text-base font-medium">
 						<a href="#menu" className="hover:text-amber-400 transition-colors">Menu</a>
 						<a href="#gallery" className="hover:text-amber-400 transition-colors">Gallery</a>
 						<a href="#about" className="hover:text-amber-400 transition-colors">About</a>
 						<a href="#visit" className="hover:text-amber-400 transition-colors">Visit</a>
 					</nav>
-					<a href="#visit" className="bg-amber-500 text-stone-950 font-bold px-6 py-2.5 rounded-full text-base hover:bg-amber-400 transition-colors">
+					<a href="#visit" className="bg-amber-500 text-stone-950 font-bold px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm sm:text-base hover:bg-amber-400 transition-colors">
 						Reserve a Table
 					</a>
 				</div>

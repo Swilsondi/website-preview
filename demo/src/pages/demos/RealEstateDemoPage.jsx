@@ -74,15 +74,15 @@ export default function RealEstateDemoPage() {
 			</div>
 
 			<header className="border-b border-slate-200">
-				<div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-					<span className="text-2xl font-black tracking-tight text-blue-700">Meridian Properties</span>
+				<div className="max-w-6xl mx-auto px-6 py-4 sm:py-6 flex flex-col sm:flex-row items-center sm:justify-between gap-3 sm:gap-0">
+					<span className="text-xl sm:text-2xl font-black tracking-tight text-blue-700">Meridian Properties</span>
 					<nav className="hidden md:flex gap-8 text-slate-600 text-base font-medium">
 						<a href="#listings" className="hover:text-blue-700 transition-colors">Listings</a>
 						<a href="#why" className="hover:text-blue-700 transition-colors">Why Us</a>
 						<a href="#agent" className="hover:text-blue-700 transition-colors">Agent</a>
 						<a href="#contact" className="hover:text-blue-700 transition-colors">Contact</a>
 					</nav>
-					<a href="#contact" className="bg-blue-600 text-white font-bold px-6 py-2.5 rounded-full text-base hover:bg-blue-700 transition-colors">
+					<a href="#contact" className="bg-blue-600 text-white font-bold px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm sm:text-base hover:bg-blue-700 transition-colors">
 						Get in Touch
 					</a>
 				</div>
