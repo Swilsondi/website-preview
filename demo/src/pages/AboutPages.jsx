@@ -267,7 +267,7 @@ const StatsSection = () => (
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {[
           { number: "100%", label: "Client Satisfaction", icon: Star },
           { number: "2025", label: "Founded In", icon: Award },
@@ -285,10 +285,10 @@ const StatsSection = () => (
             <div className="w-14 h-14 border border-neutral-700 rounded-xl flex items-center justify-center mx-auto mb-4">
               <stat.icon className="w-8 h-8 text-white" />
             </div>
-            <div className="text-5xl md:text-6xl font-black text-white mb-2">
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-2 whitespace-nowrap">
               {stat.number}
             </div>
-            <div className="text-neutral-400 text-sm md:text-base uppercase tracking-widest">
+            <div className="text-neutral-400 text-xs sm:text-sm lg:text-base uppercase tracking-widest">
               {stat.label}
             </div>
           </motion.div>

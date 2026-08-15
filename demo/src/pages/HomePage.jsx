@@ -109,7 +109,7 @@ const HeroSection = ({ handleNavigation }) => {
           variants={stagger}
           initial="initial"
           animate="animate"
-          className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-12 max-w-4xl mx-auto border-t border-white/[0.08] pt-8 md:pt-10 text-center"
+          className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 lg:gap-12 max-w-4xl mx-auto border-t border-white/[0.08] pt-8 md:pt-10 text-center"
         >
           {[
             { number: "50+", label: "Sites Launched" },
@@ -117,7 +117,7 @@ const HeroSection = ({ handleNavigation }) => {
             { number: "48hrs", label: "Avg Turnaround" },
           ].map((stat, index) => (
             <motion.div key={index} variants={fadeInUp} className="text-center px-1">
-              <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-1 md:mb-2 whitespace-nowrap">
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-1 md:mb-2 whitespace-nowrap">
                 {stat.number}
               </div>
               <div className="text-neutral-400 text-[11px] sm:text-sm md:text-base lg:text-lg uppercase tracking-wide md:tracking-widest leading-tight">{stat.label}</div>
@@ -212,18 +212,18 @@ const SocialProofSection = () => (
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-800">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-800">
         {[
           { number: "50+", label: "Projects Launched", icon: Rocket },
           { number: "100%", label: "Client Satisfaction", icon: Star },
           { number: "$30k+", label: "Revenue Generated", icon: TrendingUp },
           { number: "24/7", label: "Support", icon: Users }
         ].map((stat, index) => (
-          <div key={index} className="bg-black p-10 text-center">
-            <div className="text-5xl md:text-6xl font-black text-white mb-2">
+          <div key={index} className="bg-black p-6 sm:p-8 lg:p-10 text-center">
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-2 whitespace-nowrap">
               {stat.number}
             </div>
-            <div className="text-neutral-400 text-sm md:text-base uppercase tracking-widest">
+            <div className="text-neutral-400 text-xs sm:text-sm lg:text-base uppercase tracking-widest">
               {stat.label}
             </div>
           </div>

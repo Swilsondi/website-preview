@@ -327,23 +327,25 @@ const AddOnsSection = () => {
           )}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {addOns.map((addon) => (
-            <Card key={addon.id} className="bg-neutral-900 border-neutral-800 hover:border-neutral-600 transition-colors duration-300 rounded-xl">
-              <CardContent className="p-6 flex flex-col">
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-xl">{addon.icon}</span>
-                  <div className="text-right">
-                    <div className="text-xl font-bold text-white">${addon.price}</div>
-                    {addon.unit && <div className="text-xs text-neutral-500">{addon.unit}</div>}
-                  </div>
+            <Card key={addon.id} className="group bg-neutral-900 border-neutral-800 hover:border-neutral-600 transition-all duration-300 rounded-xl hover:-translate-y-1">
+              <CardContent className="p-6 flex flex-col items-center text-center h-full">
+                <div className="w-14 h-14 bg-neutral-800 rounded-2xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {addon.icon}
                 </div>
 
-                <h3 className="text-sm font-bold text-white mb-2">{addon.service}</h3>
-                <p className="text-neutral-500 text-xs leading-relaxed mb-5 flex-1">{addon.description}</p>
+                <h3 className="text-lg font-bold text-white mb-1">{addon.service}</h3>
+
+                <div className="flex items-baseline justify-center gap-1.5 mb-3">
+                  <span className="text-2xl font-black text-white">${addon.price}</span>
+                  {addon.unit && <span className="text-neutral-500 text-xs">{addon.unit}</span>}
+                </div>
+
+                <p className="text-neutral-500 text-sm leading-relaxed mb-6 flex-1">{addon.description}</p>
 
                 {getCartQuantity(addon.id) > 0 ? (
-                  <div className="flex items-center justify-between border border-neutral-700 rounded-lg p-2">
+                  <div className="flex items-center justify-between border border-neutral-700 rounded-lg p-2 w-full">
                     <Button
                       size="sm"
                       variant="ghost"
@@ -366,10 +368,10 @@ const AddOnsSection = () => {
                   <Button
                     onClick={() => addToCart(addon)}
                     variant="outline"
-                    className="w-full border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white text-xs h-9 rounded-lg transition-colors duration-200 bg-transparent"
+                    className="w-full border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white text-sm h-10 rounded-lg transition-colors duration-200 bg-transparent"
                   >
                     Add to Package
-                    <Plus className="ml-2 w-3 h-3" />
+                    <Plus className="ml-2 w-4 h-4" />
                   </Button>
                 )}
               </CardContent>
